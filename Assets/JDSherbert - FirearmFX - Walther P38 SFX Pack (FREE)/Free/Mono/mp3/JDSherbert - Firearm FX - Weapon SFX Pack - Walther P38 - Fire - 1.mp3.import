@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bw5cxkwrlldwq"
+path="res://.godot/imported/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Fire - 1.mp3-c79b49e56ce6733626876b12fc73b5d6.mp3str"
+
+[deps]
+
+source_file="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Mono/mp3/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Fire - 1.mp3"
+dest_files=["res://.godot/imported/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Fire - 1.mp3-c79b49e56ce6733626876b12fc73b5d6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

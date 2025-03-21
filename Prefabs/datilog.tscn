@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://caswcwrx7x2lg"]
+
+[ext_resource type="Texture2D" uid="uid://6rpb1ljtl5v7" path="res://Assets/Prontos/promptMenssagem.png" id="1_rt401"]
+
+[sub_resource type="FontFile" id="FontFile_l0c2y"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+cache/0/22/0/ascent = 0.0
+cache/0/22/0/descent = 0.0
+cache/0/22/0/underline_position = 0.0
+cache/0/22/0/underline_thickness = 0.0
+cache/0/22/0/scale = 1.0
+cache/0/23/0/ascent = 0.0
+cache/0/23/0/descent = 0.0
+cache/0/23/0/underline_position = 0.0
+cache/0/23/0/underline_thickness = 0.0
+cache/0/23/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/26/0/ascent = 0.0
+cache/0/26/0/descent = 0.0
+cache/0/26/0/underline_position = 0.0
+cache/0/26/0/underline_thickness = 0.0
+cache/0/26/0/scale = 1.0
+cache/0/27/0/ascent = 0.0
+cache/0/27/0/descent = 0.0
+cache/0/27/0/underline_position = 0.0
+cache/0/27/0/underline_thickness = 0.0
+cache/0/27/0/scale = 1.0
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+cache/0/29/0/ascent = 0.0
+cache/0/29/0/descent = 0.0
+cache/0/29/0/underline_position = 0.0
+cache/0/29/0/underline_thickness = 0.0
+cache/0/29/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/31/0/ascent = 0.0
+cache/0/31/0/descent = 0.0
+cache/0/31/0/underline_position = 0.0
+cache/0/31/0/underline_thickness = 0.0
+cache/0/31/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/33/0/ascent = 0.0
+cache/0/33/0/descent = 0.0
+cache/0/33/0/underline_position = 0.0
+cache/0/33/0/underline_thickness = 0.0
+cache/0/33/0/scale = 1.0
+cache/0/34/0/ascent = 0.0
+cache/0/34/0/descent = 0.0
+cache/0/34/0/underline_position = 0.0
+cache/0/34/0/underline_thickness = 0.0
+cache/0/34/0/scale = 1.0
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nk70o"]
+font = SubResource("FontFile_l0c2y")
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+outline_size = 12
+shadow_size = 16
+shadow_color = Color(0.960784, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 424.0
+offset_bottom = 236.0
+
+[node name="background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rt401")
+region_rect = Rect2(84, 148, 276, 172)
+patch_margin_left = 28
+patch_margin_top = 120
+patch_margin_right = 28
+patch_margin_bottom = 116
+
+[node name="backgroundLabel" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 40
+
+[node name="menssagemdetexto" type="Label" parent="backgroundLabel"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_nk70o")
+vertical_alignment = 1
+
+[node name="tempo_de_digito" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="tempo_de_digito" to="." method="_on_tempo_de_digito_timeout"]

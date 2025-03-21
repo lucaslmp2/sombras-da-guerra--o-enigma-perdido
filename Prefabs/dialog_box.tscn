@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsdq73iy3ehgk"]
+
+[ext_resource type="Texture2D" uid="uid://dfpqtelbpli1x" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.jpg" id="1_0hpaj"]
+[ext_resource type="Script" path="res://scripts/dialog_box.gd" id="1_mpm1u"]
+[ext_resource type="FontFile" uid="uid://bwd0ixjtgp8q4" path="res://Assets/Fonts/Pixica Fonts/Pixica-Regular.ttf" id="2_askjg"]
+
+[node name="dialog_box" type="MarginContainer"]
+offset_right = 36.0
+offset_bottom = 80.0
+script = ExtResource("1_mpm1u")
+
+[node name="background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_0hpaj")
+region_rect = Rect2(828.069, 509.503, 419.636, 269.836)
+patch_margin_left = 59
+patch_margin_top = 71
+patch_margin_right = 71
+patch_margin_bottom = 54
+
+[node name="label_margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="text_label" type="Label" parent="label_margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14902, 0.0980392, 0.0470588, 1)
+theme_override_colors/font_shadow_color = Color(0.513726, 0.372549, 0.219608, 1)
+theme_override_colors/font_outline_color = Color(0.52549, 0.447059, 0.419608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_askjg")
+theme_override_font_sizes/font_size = 30
+vertical_alignment = 1
+
+[node name="letter_timer_display" type="Timer" parent="."]
+
+[connection signal="timeout" from="letter_timer_display" to="." method="_on_letter_timer_display_timeout"]

@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cjlhl8bp4htsg"
+valid=false
+
+[deps]
+
+source_file="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Stereo/ogg/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Equip - 1.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

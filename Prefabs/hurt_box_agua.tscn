@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://btpkprxpeeyrg"]
+
+[ext_resource type="Script" path="res://scripts/hurt_box.gd" id="1_i2av5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf2gv"]
+size = Vector2(119.5, 25)
+
+[node name="HurtBoxAgua" type="Area2D"]
+script = ExtResource("1_i2av5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(65.25, 17.5)
+shape = SubResource("RectangleShape2D_nf2gv")
+debug_color = Color(0.954677, 0.180888, 0.297235, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

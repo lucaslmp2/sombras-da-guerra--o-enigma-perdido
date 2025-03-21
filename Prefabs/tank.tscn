@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://cpxlng0msrgcx"]
+
+[ext_resource type="Texture2D" uid="uid://dlu7ugvuwv54y" path="res://Assets/Prontos/tank_statico.png" id="1_jc304"]
+[ext_resource type="Script" path="res://Prefabs/tank.gd" id="1_qdsdq"]
+[ext_resource type="Texture2D" uid="uid://cj2unn8ap24ca" path="res://Assets/Prontos/tank_statico2 (1).png" id="2_ewstf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or70p"]
+atlas = ExtResource("2_ewstf")
+region = Rect2(0, 670, 744, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a6p2"]
+atlas = ExtResource("2_ewstf")
+region = Rect2(0, 0, 744, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr5ui"]
+atlas = ExtResource("2_ewstf")
+region = Rect2(744, 0, 744, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drnrj"]
+atlas = ExtResource("1_jc304")
+region = Rect2(0, 0, 744, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8pda"]
+atlas = ExtResource("2_ewstf")
+region = Rect2(0, 0, 744, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frqsg"]
+atlas = ExtResource("2_ewstf")
+region = Rect2(0, 335, 744, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8vwa"]
+atlas = ExtResource("2_ewstf")
+region = Rect2(744, 0, 744, 335)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6om5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or70p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a6p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr5ui")
+}],
+"loop": true,
+"name": &"correndo",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drnrj")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8pda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frqsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8vwa")
+}],
+"loop": true,
+"name": &"tiro",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7yvm"]
+size = Vector2(160, 76)
+
+[node name="enemie" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_qdsdq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.299059, 0.292164)
+sprite_frames = SubResource("SpriteFrames_f6om5")
+animation = &"correndo"
+autoplay = "correndo"
+frame_progress = 0.0305117
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g7yvm")
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+target_position = Vector2(-120, 0)
+collision_mask = 6
