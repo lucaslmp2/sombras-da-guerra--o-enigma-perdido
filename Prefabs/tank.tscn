@@ -72,11 +72,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7yvm"]
-size = Vector2(160, 76)
+size = Vector2(192, 86)
 
 [node name="enemie" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_qdsdq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -87,6 +87,7 @@ autoplay = "correndo"
 frame_progress = 0.0305117
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 5)
 shape = SubResource("RectangleShape2D_g7yvm")
 
 [node name="wall_detector" type="RayCast2D" parent="."]

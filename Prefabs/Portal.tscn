@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://caym0mxpcgkqx" path="res://Assets/Portals v2/16.png" id="16_rgtiv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1icjs"]
-radius = 480.0
+radius = 393.304
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ck1o"]
 animations = [{

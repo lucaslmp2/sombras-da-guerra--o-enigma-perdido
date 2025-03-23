@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=4 uid="uid://ceo0vfd7exhkj"]
+[gd_scene load_steps=45 format=4 uid="uid://ceo0vfd7exhkj"]
 
 [ext_resource type="Texture2D" uid="uid://pxro83rlfmrf" path="res://Assets/Prontos/brilho.png" id="1_fbytg"]
 [ext_resource type="Texture2D" uid="uid://7832muwx4nay" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Village Props.png" id="1_juyv5"]
 [ext_resource type="PackedScene" uid="uid://pq14fdsamqd5" path="res://Prefabs/Portal.tscn" id="1_qgx6q"]
+[ext_resource type="PackedScene" uid="uid://cj0qxh6t675w3" path="res://Prefabs/criança1.tscn" id="8_e4gtt"]
 [ext_resource type="Texture2D" uid="uid://dn47vbajm43g" path="res://Assets/Pixel Art Platformer - Village Props/Texture/TX Tileset Ground.png" id="10_byjto"]
 [ext_resource type="Texture2D" uid="uid://db0jgew8rrp4m" path="res://Assets/Pixel Art Platformer - Village Props v2.1.0/TX Tileset Ground.png" id="10_e37o6"]
 [ext_resource type="Texture2D" uid="uid://b2h5l1l5dnyps" path="res://Assets/5 - Misc. universal tiles/Water_frames (16 x 32).png" id="11_t18c7"]
@@ -2842,10 +2843,9 @@ tile_map_data = PackedByteArray("AAD7/wcAAgAAABgAAAD7/wgAEQABAAEAAAD7/wkAEQABAAI
 tile_set = SubResource("TileSet_dnkg4")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1, 0)
+position = Vector2(1, -18)
 motion_mirroring = Vector2(864, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -2855,6 +2855,7 @@ texture = ExtResource("20_s2q5j")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -18)
 motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(864, 0)
 
@@ -2865,23 +2866,23 @@ texture = ExtResource("21_nlrxt")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1.90735e-06, 1)
+position = Vector2(1.90735e-06, -17)
 motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(864, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(0, 18)
+position = Vector2(0, 17)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("22_elth8")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1.90735e-06, 1)
+position = Vector2(1.90735e-06, -17)
 motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(864, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(0, -0.999997)
+position = Vector2(0, -22)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("23_di3i5")
 centered = false
@@ -2892,8 +2893,11 @@ position = Vector2(2448, 168)
 [node name="Node2D" parent="." instance=ExtResource("19_bujjg")]
 position = Vector2(904, 160)
 
+[node name="CharacterBody2D" parent="." instance=ExtResource("8_e4gtt")]
+position = Vector2(226, 354)
+
 [node name="npcBryan" parent="." instance=ExtResource("19_h1gw0")]
-position = Vector2(296, 338)
+position = Vector2(297, 339)
 collision_mask = 2
 
 [node name="warning_sign" type="Node2D" parent="."]
@@ -2914,14 +2918,14 @@ position = Vector2(-1, 15)
 shape = SubResource("RectangleShape2D_oypdf")
 
 [node name="HurtBoxFloor" parent="." instance=ExtResource("35_2m15r")]
-position = Vector2(1632, 400)
+position = Vector2(3181, 398)
 
 [node name="HurtBoxAgua" parent="." instance=ExtResource("27_bysoq")]
 position = Vector2(1534, 390)
 
 [node name="enemie" parent="." instance=ExtResource("22_sh0y3")]
-position = Vector2(2957, 322)
-collision_mask = 2
+position = Vector2(3068, 309)
+disable_mode = 2
 
 [node name="Informação" type="Node2D" parent="."]
 position = Vector2(1393, 297)
@@ -2940,5 +2944,5 @@ position = Vector2(-0.5, 30.5)
 shape = SubResource("RectangleShape2D_uv5j7")
 
 [node name="Player" parent="." instance=ExtResource("18_wbq16")]
-position = Vector2(175, 275)
-collision_mask = 2
+position = Vector2(2384, 168)
+collision_mask = 14

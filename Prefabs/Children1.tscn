@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wjvo0c4ynxvg"]
+
+[ext_resource type="PackedScene" uid="uid://cj0qxh6t675w3" path="res://Prefabs/criança1.tscn" id="1_5ac3g"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_5ac3g")]

@@ -285,15 +285,15 @@ position = Vector2(38, 32)
 script = ExtResource("1_btl8f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -1.5)
-scale = Vector2(1.05, 1.04688)
+position = Vector2(-3, 4.00008)
+scale = Vector2(0.925, 0.875002)
 sprite_frames = SubResource("SpriteFrames_1rtee")
 animation = &"correr"
 autoplay = "idle"
 frame_progress = 0.804804
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-position = Vector2(2, 8)
+position = Vector2(-2, 8)
 shape = SubResource("CapsuleShape2D_6t581")
 
 [node name="camera" type="Camera2D" parent="."]
@@ -304,9 +304,9 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
 [node name="ray_right" type="RayCast2D" parent="."]
-position = Vector2(2, 8)
+position = Vector2(-1, 8)
 target_position = Vector2(18, 0)
 
 [node name="ray_left" type="RayCast2D" parent="."]
-position = Vector2(2, 8)
+position = Vector2(-4, 8)
 target_position = Vector2(-14, 0)
