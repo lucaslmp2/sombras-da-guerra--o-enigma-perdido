@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl7ipgfkknmos"]
+
+[ext_resource type="PackedScene" uid="uid://b56qw8hdesy4a" path="res://Prefabs/item2.tscn" id="1_makl1"]
+
+[node name="Item" instance=ExtResource("1_makl1")]

@@ -1,40 +1,43 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsdq73iy3ehgk"]
 
-[ext_resource type="Texture2D" uid="uid://dfpqtelbpli1x" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.jpg" id="1_0hpaj"]
-[ext_resource type="Script" path="res://scripts/dialog_box.gd" id="1_mpm1u"]
-[ext_resource type="FontFile" uid="uid://bwd0ixjtgp8q4" path="res://Assets/Fonts/Pixica Fonts/Pixica-Regular.ttf" id="2_askjg"]
+[ext_resource type="Script" path="res://scripts/dialog_box.gd" id="1_ptiwq"]
+[ext_resource type="Texture2D" uid="uid://den0gvsiwxfwg" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.png" id="1_u1rtb"]
+[ext_resource type="FontFile" uid="uid://byi5aplfgjr8y" path="res://Assets/Fonts/Pixica Fonts/PixicaMono-Wide.ttf" id="2_sd1ab"]
 
 [node name="dialog_box" type="MarginContainer"]
-offset_right = 36.0
-offset_bottom = 80.0
-script = ExtResource("1_mpm1u")
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ptiwq")
 
 [node name="background" type="NinePatchRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_0hpaj")
-region_rect = Rect2(828.069, 509.503, 419.636, 269.836)
-patch_margin_left = 59
-patch_margin_top = 71
-patch_margin_right = 71
-patch_margin_bottom = 54
+texture = ExtResource("1_u1rtb")
+region_rect = Rect2(652, 864, 424, 272)
+patch_margin_left = 76
+patch_margin_top = 72
+patch_margin_right = 72
+patch_margin_bottom = 60
 
 [node name="label_margin" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 45
 
 [node name="text_label" type="Label" parent="label_margin"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14902, 0.0980392, 0.0470588, 1)
-theme_override_colors/font_shadow_color = Color(0.513726, 0.372549, 0.219608, 1)
-theme_override_colors/font_outline_color = Color(0.52549, 0.447059, 0.419608, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_askjg")
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.145098, 0.105882, 0.0509804, 1)
+theme_override_colors/font_shadow_color = Color(0.25098, 0.239216, 0.305882, 1)
+theme_override_colors/font_outline_color = Color(0.584314, 0.411765, 0.219608, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_sd1ab")
+theme_override_font_sizes/font_size = 10
 vertical_alignment = 1
 
 [node name="letter_timer_display" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="letter_timer_display" to="." method="_on_letter_timer_display_timeout"]

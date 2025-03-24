@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6mk38m3it0ac"]
 
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_21l3k"]
-[ext_resource type="Texture2D" uid="uid://ga8icpff0sxx" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/498-4983477_pixel-gun-weapon-png-clipart.png" id="1_763e8"]
+[ext_resource type="Texture2D" uid="uid://di7a5mt2ntu0" path="res://Assets/Prontos/alena-fedorova-lunaris-ui (pergaminho).png" id="2_wo60q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwea"]
 size = Vector2(22, 18)
@@ -11,9 +11,9 @@ position = Vector2(0, -30)
 script = ExtResource("1_21l3k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.38419e-07, -2)
-scale = Vector2(0.00571429, 0.0058309)
-texture = ExtResource("1_763e8")
+position = Vector2(-4.76837e-07, -2)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("2_wo60q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

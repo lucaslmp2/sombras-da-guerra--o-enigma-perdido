@@ -9,7 +9,8 @@ var is_jumping := false
 var player_life := 10
 var knockback_vector := Vector2.ZERO
 
-@onready var animation := $AnimatedSprite2D as AnimatedSprite2D
+@onready var anim_soldado: AnimatedSprite2D = $anim_soldado
+@onready var animation := $anim_inicial as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
 
 func _physics_process(delta):

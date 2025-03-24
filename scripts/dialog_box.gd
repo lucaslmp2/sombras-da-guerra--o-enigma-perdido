@@ -2,7 +2,7 @@ extends MarginContainer
 @onready var text_label = $label_margin/text_label
 @onready var letter_timer_display = $letter_timer_display
 
-const MAX_WIDTH = 256
+const MAX_WIDTH = 1024
 var text = ""
 var letter_index = 0
 var letter_display_timer := 0.07

@@ -71,6 +71,8 @@ animations = [{
 size = Vector2(20, 16)
 
 [node name="chest" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_owa2d")
 item_scene = ExtResource("2_okv10")
 

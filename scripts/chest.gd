@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var item_scene: PackedScene  # Referência para o item a ser criado
+@export var item_scene: PackedScene  # Referência ao item
 
 var is_open = false
 
@@ -20,7 +20,10 @@ func open_chest():
 	spawn_item()
 
 func spawn_item():
-	if item_scene:  # Verifica se a cena do item está configurada
+	if item_scene:
 		var item_instance = item_scene.instantiate()  # Cria uma instância do item
-		item_instance.global_position = global_position + Vector2(0, -20)  # Define a posição
-		get_parent().add_child(item_instance)  # Adiciona o item na cena
+		if item_instance is Area2D:  # Verifica se o item é do tipo correto
+			item_instance.global_position = global_position + Vector2(0, -20)
+			get_parent().add_child(item_instance)
+		else:
+			print("Erro: item_scene não é um Area2D!")

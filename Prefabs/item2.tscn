@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b56qw8hdesy4a"]
+
+[ext_resource type="PackedScene" uid="uid://b6mk38m3it0ac" path="res://Prefabs/item.tscn" id="1_l7chd"]
+[ext_resource type="Texture2D" uid="uid://di7a5mt2ntu0" path="res://Assets/Prontos/alena-fedorova-lunaris-ui (pergaminho).png" id="2_0pags"]
+
+[node name="Item" instance=ExtResource("1_l7chd")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -2)
+scale = Vector2(0.114583, 0.140625)
+texture = ExtResource("2_0pags")

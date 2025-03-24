@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://q52ojf1xim6e"]
+[gd_scene load_steps=48 format=3 uid="uid://q52ojf1xim6e"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_btl8f"]
 [ext_resource type="Texture2D" uid="uid://c6kxa8g6a27pm" path="res://Assets/Prontos/Male Skin1-4.png.png" id="2_3ncn4"]
+[ext_resource type="Texture2D" uid="uid://cip3nbmh73sk0" path="res://Assets/Prontos/Gangsters_1/Idle.png" id="3_jwaic"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vixmi"]
 atlas = ExtResource("2_3ncn4")
@@ -278,35 +279,94 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t581"]
 radius = 11.0
-height = 46.0
+height = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2i2o"]
+atlas = ExtResource("3_jwaic")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojd35"]
+atlas = ExtResource("3_jwaic")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi2x1"]
+atlas = ExtResource("3_jwaic")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nadu0"]
+atlas = ExtResource("3_jwaic")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jklig"]
+atlas = ExtResource("3_jwaic")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbw0l"]
+atlas = ExtResource("3_jwaic")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fcsr8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2i2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojd35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi2x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nadu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jklig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbw0l")
+}],
+"loop": true,
+"name": &"idle_soldado",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(38, 32)
+position = Vector2(38, 35)
+collision_mask = 10
 script = ExtResource("1_btl8f")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, 4.00008)
-scale = Vector2(0.925, 0.875002)
+[node name="anim_inicial" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0.500009)
+scale = Vector2(1.15, 1.01563)
 sprite_frames = SubResource("SpriteFrames_1rtee")
-animation = &"correr"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.804804
+frame_progress = 0.435829
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-position = Vector2(-2, 8)
+position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_6t581")
 
 [node name="camera" type="Camera2D" parent="."]
-position = Vector2(2, -56)
+position = Vector2(-1, -54)
 limit_left = -50
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
 [node name="ray_right" type="RayCast2D" parent="."]
-position = Vector2(-1, 8)
+position = Vector2(-1, 1)
 target_position = Vector2(18, 0)
 
 [node name="ray_left" type="RayCast2D" parent="."]
-position = Vector2(-4, 8)
+position = Vector2(-1, 1)
 target_position = Vector2(-14, 0)
+
+[node name="anim_soldado" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -9.5)
+scale = Vector2(0.6875, 0.648438)
+sprite_frames = SubResource("SpriteFrames_fcsr8")
+animation = &"idle_soldado"
+frame_progress = 0.746594

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbjdv0r0cicqt"
-path="res://.godot/imported/Village Set_Background  Sky- Layer 00.png-184f79d3086e95a0e96e0d6d9f20548a.ctex"
+uid="uid://di7a5mt2ntu0"
+path="res://.godot/imported/alena-fedorova-lunaris-ui (pergaminho).png-c430d59ab06081fb0366f126f4f3e39c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Foreground and Background/Village Set_Background  Sky- Layer 00.png"
-dest_files=["res://.godot/imported/Village Set_Background  Sky- Layer 00.png-184f79d3086e95a0e96e0d6d9f20548a.ctex"]
+source_file="res://Assets/Prontos/alena-fedorova-lunaris-ui (pergaminho).png"
+dest_files=["res://.godot/imported/alena-fedorova-lunaris-ui (pergaminho).png-c430d59ab06081fb0366f126f4f3e39c.ctex"]
 
 [params]
 

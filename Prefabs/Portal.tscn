@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://pq14fdsamqd5"]
+[gd_scene load_steps=20 format=3 uid="uid://pq14fdsamqd5"]
 
+[ext_resource type="Script" path="res://Prefabs/portal.gd" id="1_4n8tn"]
 [ext_resource type="Texture2D" uid="uid://bbwbno7l88pej" path="res://Assets/Portals v2/1.png" id="1_ijgis"]
 [ext_resource type="Texture2D" uid="uid://cn5qmro4jtmr7" path="res://Assets/Portals v2/2.png" id="2_cllcu"]
 [ext_resource type="Texture2D" uid="uid://cuwjuru0p6iru" path="res://Assets/Portals v2/3.png" id="3_vc2g5"]
@@ -18,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://caym0mxpcgkqx" path="res://Assets/Portals v2/16.png" id="16_rgtiv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1icjs"]
-radius = 393.304
+radius = 32.9848
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ck1o"]
 animations = [{
@@ -77,13 +78,14 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_4n8tn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1icjs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, 0)
-scale = Vector2(2.90625, 2.78125)
+position = Vector2(-1.90735e-06, -3.8147e-06)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_8ck1o")
 animation = &"portal"
 autoplay = "portal"

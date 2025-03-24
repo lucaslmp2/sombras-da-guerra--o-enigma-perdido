@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2en0vndcdex3"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xh4ia"]
+[ext_resource type="Texture2D" uid="uid://cflowttr811n0" path="res://Assets/Prontos/download.png" id="2_etlro"]
+[ext_resource type="FontFile" uid="uid://byi5aplfgjr8y" path="res://Assets/Fonts/Pixica Fonts/PixicaMono-Wide.ttf" id="3_oxdyl"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 300.0
+offset_top = 231.0
+offset_right = 300.0
+offset_bottom = 231.0
+script = ExtResource("1_xh4ia")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -298.0
+offset_top = -256.0
+offset_right = 337.0
+offset_bottom = 256.0
+texture = ExtResource("2_etlro")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -29.5
+offset_right = 20.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sombras da Guerra" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14902, 0.101961, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.247059, 0.239216, 0.294118, 1)
+theme_override_colors/font_outline_color = Color(0.623529, 0.403922, 0.2, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = -1
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_oxdyl")
+theme_override_font_sizes/font_size = 46
+text = "SOMBRAS DA GUERRA
+o enigma perdido"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonJogar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "JOGAR"
+
+[node name="ButtonOpcoes" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "OPÇÕES"
+
+[node name="ButtonSair" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SAIR"

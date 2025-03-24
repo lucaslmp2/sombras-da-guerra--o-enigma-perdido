@@ -10,7 +10,6 @@ const lines : Array[String] = [
 	"Sua jornada está apenas...",
 	"...COMEÇANDO!",
 ]
-
 func _unhandled_input(event):
 	if area_sign.get_overlapping_bodies().size() > 0:
 		texture.show()
