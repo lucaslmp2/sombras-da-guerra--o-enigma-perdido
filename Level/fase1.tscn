@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bviefo46qn2tu"]
+[gd_scene load_steps=38 format=4 uid="uid://bviefo46qn2tu"]
 
 [ext_resource type="Texture2D" uid="uid://bwpsm34wry6oq" path="res://Assets/War/Background parts/craftpix-net-154389-forest-and-trees-free-pixel-backgrounds/1/1.png" id="1_00vuh"]
 [ext_resource type="Texture2D" uid="uid://dn47vbajm43g" path="res://Assets/Pixel Art Platformer - Village Props/Texture/TX Tileset Ground.png" id="1_fvbcy"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://q52ojf1xim6e" path="res://Players/Player.tscn" id="6_wqyxw"]
 [ext_resource type="PackedScene" uid="uid://byraj151pdcn4" path="res://Prefabs/npc_bryan.tscn" id="7_aj0eu"]
 [ext_resource type="PackedScene" uid="uid://pq14fdsamqd5" path="res://Prefabs/Portal.tscn" id="7_b2sui"]
+[ext_resource type="PackedScene" uid="uid://ccta8cig4qgd8" path="res://Prefabs/falling_plataform.tscn" id="7_dulf2"]
 [ext_resource type="PackedScene" uid="uid://cdpanb3tigvwu" path="res://Prefabs/chest.tscn" id="9_kd6sw"]
 [ext_resource type="Script" path="res://scripts/instruções_iniciais.gd" id="11_m23p3"]
 [ext_resource type="Texture2D" uid="uid://briokd0gc78vq" path="res://Assets/Quest/1.png" id="12_kbdqi"]
@@ -2668,12 +2669,24 @@ position = Vector2(2008, 408)
 [node name="npcBryan" parent="." instance=ExtResource("7_aj0eu")]
 position = Vector2(160, 435)
 
+[node name="falling_plataform" parent="." instance=ExtResource("7_dulf2")]
+position = Vector2(1528, 344)
+
+[node name="falling_plataform2" parent="." instance=ExtResource("7_dulf2")]
+position = Vector2(1560, 344)
+
+[node name="falling_plataform3" parent="." instance=ExtResource("7_dulf2")]
+position = Vector2(1600, 344)
+
+[node name="falling_plataform4" parent="." instance=ExtResource("7_dulf2")]
+position = Vector2(1640, 344)
+
 [node name="chest" parent="." instance=ExtResource("9_kd6sw")]
 position = Vector2(1744, 328)
 collision_mask = 3
 
 [node name="Player" parent="." instance=ExtResource("6_wqyxw")]
-position = Vector2(1864, 312)
+position = Vector2(80, 336)
 collision_mask = 14
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

@@ -41,7 +41,10 @@ func _physics_process(delta):
 		velocity = knockback_vector
 		
 	move_and_slide()
-	
+	for plataforms in get_slide_collision_count():
+		var collision = get_slide_collision(plataforms)
+		if collision.get_collider().has_method("has_collided_with"):
+			collision.get_collider().has_collided_with(collision, self)
 #func _on_hurtbox_body_entered(body: Node2D) -> void:
 	##if body.is_in_group("enemies"):
 		##queue_free()

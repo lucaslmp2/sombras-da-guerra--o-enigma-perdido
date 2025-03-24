@@ -1,11 +1,16 @@
 extends Control
 
-@export var game_scene: String = "res://Level/fase1.tscn"  # Define a cena do jogo
+@export var game_scene: String = "res://Level/fase_0.tscn"  # Define a cena do jogo
+@export var menu_scene: String = "res://Level/main_menu.tscn"  # Define a cena do menu principal
 
 func _ready() -> void:
 	$VBoxContainer/ButtonJogar.pressed.connect(_on_jogar_pressed)
 	$VBoxContainer/ButtonOpcoes.pressed.connect(_on_opcoes_pressed)
 	$VBoxContainer/ButtonSair.pressed.connect(_on_sair_pressed)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		get_tree().change_scene_to_file(menu_scene)  # Volta para o menu principal
 
 func _on_jogar_pressed() -> void:
 	get_tree().change_scene_to_file(game_scene)  # Vai para o jogo

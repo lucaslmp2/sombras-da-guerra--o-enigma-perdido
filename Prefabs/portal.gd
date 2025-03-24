@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var next_scene: String = "res://Level/fase2.tscn"
+@export var next_scene: String = "res://Level/fase1.tscn"
 
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
