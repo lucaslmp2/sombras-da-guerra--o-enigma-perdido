@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmmrem1u8vffk"]
+
+[ext_resource type="Texture2D" uid="uid://htowpvhfcq01" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (2).png" id="1_7wv0l"]
+[ext_resource type="Texture2D" uid="uid://bhm7v7jddj8vm" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (1).png" id="2_7qgcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b0qj"]
+size = Vector2(44, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x2rc"]
+atlas = ExtResource("1_7wv0l")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdjw5"]
+atlas = ExtResource("1_7wv0l")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyxhw"]
+atlas = ExtResource("2_7qgcw")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joegi"]
+atlas = ExtResource("2_7qgcw")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guvco"]
+atlas = ExtResource("2_7qgcw")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4s50n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x2rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdjw5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guvco")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(198, 117)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 7)
+shape = SubResource("RectangleShape2D_7b0qj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.14, 0.114)
+sprite_frames = SubResource("SpriteFrames_4s50n")
+animation = &"shot"
+autoplay = "shot"
+frame_progress = 0.719521

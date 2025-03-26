@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://cs7ve4ye8jru6"]
+
+[ext_resource type="Texture2D" uid="uid://3uor3deln3yi" path="res://Assets/Prontos/xis5ailoxa141.png" id="1_vxag1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5hnj"]
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dl62"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr546"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(600, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opec1"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(1200, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crdno"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(0, 600, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cw83"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(600, 600, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvgxn"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(1200, 600, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k47mx"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(0, 1200, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hont"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(600, 1200, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qavl1"]
+atlas = ExtResource("1_vxag1")
+region = Rect2(1200, 1200, 600, 600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qu81p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dl62")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dl62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr546")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opec1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crdno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cw83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvgxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k47mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hont")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qavl1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="patrulha" type="Area2D"]
+position = Vector2(496, 341)
+collision_layer = 4
+collision_mask = 2
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_l5hnj")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 3)
+scale = Vector2(0.0633333, 0.0800001)
+sprite_frames = SubResource("SpriteFrames_qu81p")
+animation = &"idle"

@@ -52,6 +52,8 @@ vertical_alignment = 1
 
 [node name="ButtonJogar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+button_mask = 0
+keep_pressed_outside = true
 text = "JOGAR"
 
 [node name="ButtonOpcoes" type="Button" parent="VBoxContainer"]
