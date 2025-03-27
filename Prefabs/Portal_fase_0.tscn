@@ -1,0 +1,94 @@
+[gd_scene load_steps=20 format=3 uid="uid://dk8axmkb577ce"]
+
+[ext_resource type="Texture2D" uid="uid://bbwbno7l88pej" path="res://Assets/Portals v2/1.png" id="2_q6bju"]
+[ext_resource type="Texture2D" uid="uid://cn5qmro4jtmr7" path="res://Assets/Portals v2/2.png" id="3_7ufet"]
+[ext_resource type="Texture2D" uid="uid://cuwjuru0p6iru" path="res://Assets/Portals v2/3.png" id="4_8lwqg"]
+[ext_resource type="Texture2D" uid="uid://dbyfvshs68w2y" path="res://Assets/Portals v2/4.png" id="5_lydm6"]
+[ext_resource type="Texture2D" uid="uid://eqrpvvoby6w4" path="res://Assets/Portals v2/5.png" id="6_4tn4g"]
+[ext_resource type="Texture2D" uid="uid://c6t2e7qs3lydq" path="res://Assets/Portals v2/6.png" id="7_om6ft"]
+[ext_resource type="Texture2D" uid="uid://cp57x5yxai4w5" path="res://Assets/Portals v2/7.png" id="8_81t8m"]
+[ext_resource type="Texture2D" uid="uid://dddjsyeoc4bf0" path="res://Assets/Portals v2/8.png" id="9_yhj7k"]
+[ext_resource type="Texture2D" uid="uid://rdapytvsmd2y" path="res://Assets/Portals v2/9.png" id="10_lunih"]
+[ext_resource type="Texture2D" uid="uid://kl4hg5vcar1x" path="res://Assets/Portals v2/10.png" id="11_5bo1i"]
+[ext_resource type="Texture2D" uid="uid://do4v2gjtbn4bk" path="res://Assets/Portals v2/11.png" id="12_0lvbw"]
+[ext_resource type="Texture2D" uid="uid://eaqrq6gk461c" path="res://Assets/Portals v2/12.png" id="13_3q5nb"]
+[ext_resource type="Texture2D" uid="uid://blmeyodvqjnd7" path="res://Assets/Portals v2/13.png" id="14_rq0kj"]
+[ext_resource type="Texture2D" uid="uid://bqp1klrlucpht" path="res://Assets/Portals v2/14.png" id="15_wtqfg"]
+[ext_resource type="Texture2D" uid="uid://bl53wdotvb4h3" path="res://Assets/Portals v2/15.png" id="16_ejcfp"]
+[ext_resource type="Texture2D" uid="uid://caym0mxpcgkqx" path="res://Assets/Portals v2/16.png" id="17_sgcmg"]
+
+[sub_resource type="Resource" id="Resource_uc406"]
+metadata/__load_path__ = "res://Prefabs/portal.gd"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1icjs"]
+radius = 32.9848
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ck1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q6bju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7ufet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8lwqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lydm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4tn4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_om6ft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_81t8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yhj7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lunih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5bo1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0lvbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3q5nb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rq0kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wtqfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ejcfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_sgcmg")
+}],
+"loop": true,
+"name": &"portal",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = SubResource("Resource_uc406")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1icjs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, -3.8147e-06)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_8ck1o")
+animation = &"portal"
+autoplay = "portal"
+frame_progress = 0.836697

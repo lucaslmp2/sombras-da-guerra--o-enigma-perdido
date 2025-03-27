@@ -1,16 +1,16 @@
 [gd_scene load_steps=21 format=4 uid="uid://bswnv7q76fitd"]
 
-[ext_resource type="Script" path="res://Level/fase_0.gd" id="1_7jeaf"]
+[ext_resource type="Script" uid="uid://d2qnx2adi7mtm" path="res://Level/fase_0.gd" id="1_7jeaf"]
 [ext_resource type="Texture2D" uid="uid://dn47vbajm43g" path="res://Assets/Pixel Art Platformer - Village Props/Texture/TX Tileset Ground.png" id="2_ec6jm"]
 [ext_resource type="Texture2D" uid="uid://f1wi1d7c45h0" path="res://Assets/5 - Misc. universal tiles/ben-specklin-newlevelsequence-0131 (1).png" id="3_ygixi"]
 [ext_resource type="Texture2D" uid="uid://bq2mjlgsysvtt" path="res://Assets/5 - Misc. universal tiles/ben-specklin-newlevelsequence-0131 (2).png" id="4_00u3h"]
 [ext_resource type="Texture2D" uid="uid://dsvao1je5hbfq" path="res://Assets/5 - Misc. universal tiles/istockphoto-1223221880-612x612.png" id="4_tfdd4"]
 [ext_resource type="FontFile" uid="uid://byi5aplfgjr8y" path="res://Assets/Fonts/Pixica Fonts/PixicaMono-Wide.ttf" id="4_vvnrp"]
 [ext_resource type="PackedScene" uid="uid://pq14fdsamqd5" path="res://Prefabs/Portal.tscn" id="5_fflsv"]
-[ext_resource type="Script" path="res://scripts/computador.gd" id="8_hbjid"]
+[ext_resource type="Script" uid="uid://ne63y46i7335" path="res://scripts/computador.gd" id="8_hbjid"]
+[ext_resource type="Script" uid="uid://bf3pj36blii8p" path="res://scripts/portal_fase_0.gd" id="9_ggrvo"]
 [ext_resource type="Texture2D" uid="uid://cm7svyq136bqw" path="res://Assets/5 - Misc. universal tiles/Captura de tela 2025-03-24 204802.png" id="9_hjkwg"]
 [ext_resource type="PackedScene" uid="uid://bmre8pc6hkini" path="res://Players/elias.tscn" id="9_n0uli"]
-[ext_resource type="Script" path="res://enigma.gd" id="12_gysv4"]
 [ext_resource type="Texture2D" uid="uid://o6ut6ukmql24" path="res://Assets/5 - Misc. universal tiles/images.jpeg" id="23_u7xg7"]
 [ext_resource type="Texture2D" uid="uid://k41ud11ga1rx" path="res://Assets/5 - Misc. universal tiles/documentos-encontrados-pelo-simon-wiesenthal-center-1583520385750_v2_3x4.jpg" id="24_5wqno"]
 
@@ -235,18 +235,19 @@ position = Vector2(141, 71)
 script = ExtResource("1_7jeaf")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD3/xIAAAAAAAYAAAD4/xIAAAABAAYAAAD5/xIAAAACAAYAAAD6/xIAAAADAAYAAAD7/xIAAAAEAAYAAAD8/xIAAAAFAAYAAAD9/xIAAAAAAAYAAAARABIAAAANAAYAAAASABIAAAAAAAYAAAATABIAAAABAAYAAAAUABIAAAACAAYAAAAVABIAAAADAAYAAAAWABIAAAAEAAYAAAAXABIAAAAFAAYAAAAYABIAAAAAAAYAAAAZABIAAAABAAYAAAAaABIAAAACAAYAAAAbABIAAAADAAYAAAAcABIAAAAEAAYAAAAdABIAAAAFAAYAAAAeABIAAAAAAA0AAAAfABIAAAAAAA0AAAAgABIAAAACAAYAAAAhABIAAAADAAYAAAAiABIAAAAEAAYAAAAjABIAAAAFAAYAAAD2/w0AAAAFAAgAAAD2/w4AAAAFAAkAAAD2/w8AAAAFAAoAAAD2/xAAAAAFAAsAAAD2/xEAAAAFAAwAAAD2/xIAAAAFAA0AAAD2/wcAAAAFAAgAAAD2/wgAAAAFAAkAAAD2/wkAAAAFAAoAAAD2/woAAAAFAAsAAAD2/wsAAAAFAAwAAAD2/wwAAAAFAA0AAAD2/wEAAAAFAA0AAAD2/wIAAAAFAAkAAAD2/wMAAAAFAAoAAAD2/wQAAAAFAAsAAAD2/wUAAAAFAAwAAAD2/wYAAAAFAA0AAAD2//z/AAAFAAgAAAD2//3/AAAFAAkAAAD2//7/AAAFAAoAAAD2////AAAFAAsAAAD2/wAAAAAFAAwAAAAgAAwAAAAAAAgAAAAgAA0AAAAAAAkAAAAgAA4AAAAAAAoAAAAgAA8AAAAAAAsAAAAgABAAAAAAAAwAAAAgABEAAAAAAA0AAAAgAAYAAAAAAAgAAAAgAAcAAAAAAAkAAAAgAAgAAAAAAAoAAAAgAAkAAAAAAAsAAAAgAAoAAAAAAAwAAAAgAAsAAAAAAA0AAAAgAAAAAAAAAAgAAAAgAAEAAAAAAAkAAAAgAAIAAAAAAAoAAAAgAAMAAAAAAAsAAAAgAAQAAAAAAAwAAAAgAAUAAAAAAA0AAAAgAPr/AAAAAAgAAAAgAPv/AAAAAAkAAAAgAPz/AAAAAAoAAAAgAP3/AAAAAAsAAAAgAP7/AAAAAAwAAAAgAP//AAAAAA0AAAAfAA0AAAAAAAgAAAAfAA4AAAAAAAkAAAAfAA8AAAAAAAoAAAAfABAAAAAAAAsAAAAfABEAAAAAAAwAAAAfAAcAAAAAAAgAAAAfAAgAAAAAAAkAAAAfAAkAAAAAAAoAAAAfAAoAAAAAAAsAAAAfAAsAAAAAAAwAAAAfAAwAAAAAAA0AAAAfAAEAAAAAAA0AAAAfAAIAAAAAAAkAAAAfAAMAAAAAAAoAAAAfAAQAAAAAAAsAAAAfAAUAAAAAAAwAAAAfAAYAAAAAAA0AAAAfAPz/AAAAAAgAAAAfAP3/AAAAAAkAAAAfAP7/AAAAAAoAAAAfAP//AAAAAAsAAAAfAAAAAAAAAAwAAAAeAA0AAAAAAAgAAAAeAA4AAAAAAAkAAAAeAA8AAAAAAAoAAAAeABAAAAAAAAsAAAAeABEAAAAAAAwAAAAeAAcAAAAAAAwAAAAeAAgAAAAAAA0AAAAeAAkAAAAAAAoAAAAeAAoAAAAAAAsAAAAeAAsAAAAAAAwAAAAeAAwAAAAAAA0AAAAeAAMAAAAAAA0AAAAeAAQAAAAAAAkAAAAeAAUAAAAAAAoAAAAeAAYAAAAAAAsAAAAeAP7/AAAAAAgAAAAeAP//AAAAAAkAAAAeAAAAAAAAAAoAAAAeAAEAAAAAAAsAAAAeAAIAAAAAAAwAAAD+/xEAAAAKAAkAAAD//xEAAAALAAkAAAAAABAAAAAMAAgAAAABABAAAAANAAgAAAAOABAAAAAMAAUAAAAPABAAAAALAAQAAAAQABEAAAAMAAUAAAARABEAAAANAAUAAAACABAAAAAAAAYAAAADABAAAAABAAYAAAAEABAAAAACAAYAAAAFABAAAAADAAYAAAAGABAAAAAEAAYAAAAHABAAAAAFAAYAAAAIABAAAAAAAAYAAAAJABAAAAABAAYAAAAKABAAAAACAAYAAAALABAAAAADAAYAAAAMABAAAAAEAAYAAAANABAAAAAFAAYAAAA=")
+position = Vector2(35, 89)
+tile_map_data = PackedByteArray("AAD3/xIAAAAAAAYAAAD4/xIAAAABAAYAAAD5/xIAAAACAAYAAAD6/xIAAAADAAYAAAD7/xIAAAAEAAYAAAD8/xIAAAAFAAYAAAD9/xIAAAAAAAYAAAD2/w0AAAAFAAgAAAD2/w4AAAAFAAkAAAD2/w8AAAAFAAoAAAD2/xAAAAAFAAsAAAD2/xEAAAAFAAwAAAD2/xIAAAAFAA0AAAD2/wcAAAAFAAgAAAD2/wgAAAAFAAkAAAD2/wkAAAAFAAoAAAD2/woAAAAFAAsAAAD2/wsAAAAFAAwAAAD2/wwAAAAFAA0AAAD2/wEAAAAFAA0AAAD2/wIAAAAFAAkAAAD2/wMAAAAFAAoAAAD2/wQAAAAFAAsAAAD2/wUAAAAFAAwAAAD2/wYAAAAFAA0AAAD2//z/AAAFAAgAAAD2//3/AAAFAAkAAAD2//7/AAAFAAoAAAD2////AAAFAAsAAAD2/wAAAAAFAAwAAAD+/xEAAAAKAAkAAAD//xEAAAALAAkAAAAAABAAAAAMAAgAAAABABAAAAANAAgAAAACABAAAAAAAAYAAAADABAAAAABAAYAAAAEABAAAAACAAYAAAAFABAAAAADAAYAAAAGABAAAAAEAAYAAAAHABAAAAAFAAYAAAAIABAAAAAAAAYAAAAJABAAAAABAAYAAAAKABAAAAACAAYAAAALABAAAAADAAYAAAAMABAAAAAEAAYAAAANABAAAAAFAAYAAAAkAA0AAAAAAAgAAAAkAA4AAAAAAAkAAAAkAA8AAAAAAAoAAAAkABAAAAAAAAsAAAAkABEAAAAAAAwAAAAkABIAAAAAAA0AAAAkAAcAAAAAAA0AAAAkAAgAAAAAAAkAAAAkAAkAAAAAAAoAAAAkAAoAAAAAAAsAAAAkAAsAAAAAAAwAAAAkAAwAAAAAAA0AAAAkAAIAAAAAAAgAAAAkAAMAAAAAAAkAAAAkAAQAAAAAAAoAAAAkAAUAAAAAAAsAAAAkAAYAAAAAAAwAAAAkAPz/AAAAAAgAAAAkAP3/AAAAAAkAAAAkAP7/AAAAAAoAAAAkAP//AAAAAAsAAAAkAAAAAAAAAAwAAAAkAAEAAAAAAA0AAAAOABAAAAAAAAYAAAAPABAAAAABAAYAAAAQABAAAAACAAYAAAARABAAAAADAAYAAAASABAAAAAEAAYAAAATABAAAAAAAAYAAAAUABAAAAABAAYAAAAaABAAAAAEAAYAAAAbABAAAAAFAAYAAAAcABAAAAAAAAYAAAAdABAAAAABAAYAAAAeABAAAAAAAAYAAAAfABAAAAABAAYAAAAgABAAAAACAAYAAAAhABAAAAADAAYAAAAiABAAAAAEAAYAAAAjABAAAAAFAAYAAAAVABAAAAACAAYAAAAWABAAAAAAAAYAAAAXABAAAAABAAYAAAAYABAAAAACAAYAAAAZABAAAAADAAYAAAA=")
 tile_set = SubResource("TileSet_3rbr6")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(177.188, 116.5)
-scale = Vector2(0.331055, 0.347222)
+position = Vector2(255.188, 169)
+scale = Vector2(0.412305, 0.444444)
 texture = ExtResource("3_ygixi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.717647, 0.772549, 0.721569, 1)
 self_modulate = Color(0.721569, 0.776471, 0.72549, 1)
-position = Vector2(-6, 25)
+position = Vector2(19, 57)
 rotation = 0.0850558
 scale = Vector2(0.0545731, 0.106407)
 texture = ExtResource("23_u7xg7")
@@ -254,7 +255,7 @@ texture = ExtResource("23_u7xg7")
 [node name="Documentos-encontrados-pelo-simon-wiesenthal-center-1583520385750V23x4" type="Sprite2D" parent="."]
 modulate = Color(0.764706, 0.815686, 0.776471, 1)
 self_modulate = Color(0.764706, 0.815686, 0.776471, 1)
-position = Vector2(86, 80)
+position = Vector2(131, 129)
 rotation = -0.13543
 scale = Vector2(0.0513991, 0.0524635)
 texture = ExtResource("24_5wqno")
@@ -265,12 +266,14 @@ collision_layer = 2
 script = ExtResource("8_hbjid")
 
 [node name="collision_computador" type="CollisionShape2D" parent="Computador"]
-position = Vector2(-1, 13)
+position = Vector2(97, 77)
 shape = SubResource("RectangleShape2D_yiky1")
 
 [node name="CapturaDeTela2025-03-24144422" type="Sprite2D" parent="Computador"]
 visible = false
-position = Vector2(-3, -119)
+modulate = Color(0.00784314, 0.133333, 0.00392157, 1)
+self_modulate = Color(0, 0.0117647, 0, 1)
+position = Vector2(89, -67)
 scale = Vector2(0.642736, 0.662005)
 texture = ExtResource("9_hjkwg")
 
@@ -278,37 +281,37 @@ texture = ExtResource("9_hjkwg")
 one_shot = true
 
 [node name="Transição" parent="Computador" instance=ExtResource("5_fflsv")]
-visible = false
-position = Vector2(220, -28)
+position = Vector2(295, 26)
+collision_layer = 4
+script = ExtResource("9_ggrvo")
 
 [node name="Dialogo" type="RichTextLabel" parent="."]
-offset_left = 147.0
-offset_top = 37.0
-offset_right = 318.0
-offset_bottom = 121.0
-theme_override_colors/default_color = Color(0.470588, 0.796078, 0.854902, 1)
+offset_left = 235.0
+offset_top = 68.0
+offset_right = 409.0
+offset_bottom = 173.0
+theme_override_colors/default_color = Color(0.0431373, 0.388235, 0.0196078, 1)
 theme_override_fonts/normal_font = ExtResource("4_vvnrp")
 theme_override_fonts/bold_italics_font = SubResource("FontFile_trdi8")
 
 [node name="Elias" parent="." groups=["player"] instance=ExtResource("9_n0uli")]
-position = Vector2(-73, 168)
-collision_mask = 3
+position = Vector2(-29, 257)
+collision_mask = 7
 
 [node name="Background2" type="Sprite2D" parent="."]
-position = Vector2(177, 116)
-scale = Vector2(0.330729, 0.347685)
+position = Vector2(255.25, 168.625)
+scale = Vector2(0.41224, 0.445139)
 texture = ExtResource("4_00u3h")
 
 [node name="Enigma" type="Area2D" parent="."]
 position = Vector2(109, 207)
-script = ExtResource("12_gysv4")
 
 [node name="collision_enigma" type="CollisionShape2D" parent="Enigma"]
-position = Vector2(30, 58)
+position = Vector2(150, 154)
 shape = SubResource("RectangleShape2D_j40km")
 
 [node name="Anim_enigma" type="AnimatedSprite2D" parent="Enigma"]
-position = Vector2(-7.62938e-06, 1.00001)
+position = Vector2(62, 82)
 rotation = 0.0214362
 scale = Vector2(0.0899105, 0.0622627)
 sprite_frames = SubResource("SpriteFrames_tyhsl")
@@ -317,10 +320,10 @@ animation = &"idle"
 [node name="EnigmaUI" type="Control" parent="Enigma"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -114.0
-offset_top = -6.0
-offset_right = 142.0
-offset_bottom = 82.0
+offset_left = -106.0
+offset_top = 82.0
+offset_right = 150.0
+offset_bottom = 170.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -334,7 +337,7 @@ anchor_bottom = 0.5
 offset_left = -41.0
 offset_top = -20.0
 offset_right = 26.0625
-offset_bottom = 11.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -354,10 +357,10 @@ grow_vertical = 2
 text = "OK"
 
 [node name="Historia" type="RichTextLabel" parent="."]
-offset_left = -130.0
-offset_top = -44.0
-offset_right = 464.0
-offset_bottom = 92.0
+offset_left = 171.0
+offset_top = -23.0
+offset_right = 408.0
+offset_bottom = 113.0
 theme_override_colors/default_color = Color(0.394161, 0.785715, 0.349014, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_vvnrp")
@@ -370,7 +373,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="collision" type="CollisionShape2D" parent="TravaBody"]
-position = Vector2(-81, 220)
+position = Vector2(-37, 313)
 shape = SubResource("RectangleShape2D_gfnen")
 
 [connection signal="body_entered" from="Computador" to="Computador" method="_on_body_entered"]

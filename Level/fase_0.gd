@@ -20,13 +20,9 @@ var resposta_correta = "1942"  # Exemplo de resposta correta
 var historia_concluida = false
 var pode_mover = true  # Variável para controlar se o jogador pode se mover ou não
 var velocidade = -200  # Velocidade do personagem
-var historia_texto: String = "A Segunda Guerra Mundial está em pleno andamento. Você se encontra em uma base secreta, onde segredos valiosos estão escondidos. No entanto, a missão é mais difícil do que parece. 
-Sua tarefa é decifrar enigmas e descobrir informações cruciais para alterar o curso da guerra. A jornada será perigosa e cheia de desafios. 
-Use as setas do teclado para se mover e interagir com os elementos ao seu redor. As respostas corretas são a chave para avançar. 
-Mas cuidado, o tempo está contra você. A cada passo que você dá, a pressão aumenta, e os enigmas ficam mais difíceis. Apenas aqueles que desvendarem os mistérios conseguirão completar a missão... 
-Vamos começar. Prepare-se, a missão está prestes a começar!"
+var historia_texto: String = "Olá, Elias Carter decifre um enigma crucial nesta etapa. Use as setas do teclado 'DIREITA' e 'ESQUERDA' para se movimentar pelo cenário. O tempo urge. Acesse o computador para saber mais sobre a missão.!"
 var indice_texto: int = 0  # Índice do texto que será exibido
-var velocidade_digitar: float = 0.07  # Velocidade do efeito de digitação (em segundos por letra)
+var velocidade_digitar: float = 0.05  # Velocidade do efeito de digitação (em segundos por letra)
 
 func _ready():
 	# Inicializa a história com uma string vazia para que o efeito de digitação funcione
@@ -76,7 +72,14 @@ func _on_historia_concluida():
 # Funções de interação com o computador e enigma
 func _on_computador_colidido(body):
 	if body == elias and not enigma_resolvido:
-		dialogo.text = "Qual o ano da batalha de Stalingrado?"
+		dialogo.text = "Na Segunda Guerra, um marco crucial,
+Em solo soviético, um embate brutal.
+Um nome de cidade, hoje renomeada,
+Onde a história da guerra foi transformada.
+De agosto a fevereiro, um inverno cruel,
+Um milhão de vidas, em um duelo cruel.
+Qual ano, em dois atos, viu a batalha sangrenta,
+Onde o Eixo ruiu, em derrota violenta?"
 
 func _on_computador_saida(body):
 	if body == elias:
@@ -90,12 +93,12 @@ func _on_enigma_interacao(body):
 func _on_resposta_digitada(texto):
 	if texto == resposta_correta:
 		enigma_resolvido = true
-		dialogo.text = "Você decifrou o enigma!"
+		historia.text = "Você decifrou o enigma!"
 		enigma_ui.visible = false
 		transicao.visible = true  # Faz a transição aparecer
 		collision_transicao.disabled = false  # Ativa a colisão da transição ao resolver o enigma
 	else:
-		dialogo.text = "Resposta incorreta. Tente novamente."
+		historia.text = "Resposta incorreta. Tente novamente."
 		entrada_texto.text = ""
 
 func _on_button_pressed():
@@ -104,7 +107,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		get_tree().change_scene_to_file(menu_scene)  # Volta para o menu principal
 # Lógica de movimento
-func _process(delta):
+func _process(delta) -> void:
 		
 	if pode_mover:
 		var movimento = Vector2.ZERO

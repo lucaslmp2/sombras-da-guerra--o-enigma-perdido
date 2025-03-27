@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://y7py3gmn8c7w"
+path="res://.godot/imported/Imagem do WhatsApp de 2025-03-26 à(s) 20.03.26_4c16b239.png-ddff034eae954fe2001f37fbc0342367.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Assets/5 - Misc. universal tiles/Imagem do WhatsApp de 2025-03-26 à(s) 20.03.26_4c16b239.png"
+dest_files=["res://.godot/imported/Imagem do WhatsApp de 2025-03-26 à(s) 20.03.26_4c16b239.png-ddff034eae954fe2001f37fbc0342367.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6mk38m3it0ac"]
 
-[ext_resource type="Script" path="res://scripts/item.gd" id="1_21l3k"]
+[ext_resource type="Script" uid="uid://duop4j360jlt" path="res://scripts/item.gd" id="1_21l3k"]
 [ext_resource type="Texture2D" uid="uid://di7a5mt2ntu0" path="res://Assets/Prontos/alena-fedorova-lunaris-ui (pergaminho).png" id="2_wo60q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwea"]

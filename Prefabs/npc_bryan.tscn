@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://byraj151pdcn4"]
 
-[ext_resource type="Script" path="res://scripts/npc_bryan.gd" id="1_qlfa6"]
+[ext_resource type="Script" uid="uid://bbvqlpyuoysnx" path="res://scripts/npc_bryan.gd" id="1_qlfa6"]
 [ext_resource type="Texture2D" uid="uid://djbyc5oq04mu7" path="res://Assets/Prontos/Village-NPC-Pixel-Art-Character-Sprite-Pack4 Falando.png" id="2_asfku"]
 [ext_resource type="Texture2D" uid="uid://dfrft4ssgj8ea" path="res://Assets/Prontos/Village-NPC-Pixel-Art-Character-Sprite-Pack4 idle.png" id="2_ynug6"]
-[ext_resource type="Texture2D" uid="uid://den0gvsiwxfwg" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.png" id="4_p1qrp"]
+[ext_resource type="Texture2D" uid="uid://6rpb1ljtl5v7" path="res://Assets/Prontos/promptMenssagem.png" id="4_87bfi"]
 [ext_resource type="FontFile" uid="uid://byi5aplfgjr8y" path="res://Assets/Fonts/Pixica Fonts/PixicaMono-Wide.ttf" id="5_xcawo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6d5s"]
@@ -139,6 +139,35 @@ collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_qlfa6")
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = -73.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = -19.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_87bfi")
+region_rect = Rect2(84, 146, 280, 176)
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.145098, 0.0980392, 0.0705882, 1)
+theme_override_fonts/font = ExtResource("5_xcawo")
+theme_override_font_sizes/font_size = 16
+text = "ola aventureiro"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 8)
 scale = Vector2(0.352407, 0.336253)
@@ -153,37 +182,3 @@ shape = SubResource("CapsuleShape2D_mwyec")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-59, 0)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
-offset_left = -68.0
-offset_top = -171.0
-offset_right = 77.0
-offset_bottom = -18.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
-layout_mode = 2
-texture = ExtResource("4_p1qrp")
-region_rect = Rect2(652, 864, 424, 272)
-patch_margin_left = 52
-patch_margin_top = 72
-patch_margin_right = 48
-patch_margin_bottom = 64
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 72
-theme_override_constants/margin_top = 72
-theme_override_constants/margin_right = 72
-theme_override_constants/margin_bottom = 72
-
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.145098, 0.0980392, 0.0705882, 1)
-theme_override_colors/font_shadow_color = Color(0.333333, 0.301961, 0.341176, 1)
-theme_override_colors/font_outline_color = Color(0.615686, 0.419608, 0.239216, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = -1
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_xcawo")
-theme_override_font_sizes/font_size = 10

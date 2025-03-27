@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cpxlng0msrgcx"]
 
 [ext_resource type="Texture2D" uid="uid://dlu7ugvuwv54y" path="res://Assets/Prontos/tank_statico.png" id="1_jc304"]
-[ext_resource type="Script" path="res://Prefabs/tank.gd" id="1_qdsdq"]
+[ext_resource type="Script" uid="uid://dabm111i3er07" path="res://Prefabs/tank.gd" id="1_qdsdq"]
 [ext_resource type="Texture2D" uid="uid://cj2unn8ap24ca" path="res://Assets/Prontos/tank_statico2 (1).png" id="2_ewstf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_or70p"]

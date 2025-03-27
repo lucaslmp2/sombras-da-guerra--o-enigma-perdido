@@ -33,18 +33,18 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		animation.scale.x = direction
 		if !is_jumping:
-			animation.play("run")
+			animation.play("run_gangster")
 	elif is_jumping:
-		animation.play("jump")
+		animation.play("jump_gangster")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animation.play("idle")
+		animation.play("idle_gangster")
 
 	# Verifica os inputs para ataque
 	if Input.is_action_just_pressed("attack"):
-		await play_attack_animation("atack_1")  # Chama a função para tocar ataque 1
+		await play_attack_animation("atack_gangster_1")  # Chama a função para tocar ataque 1
 	elif Input.is_action_just_pressed("attack_2"):
-		await play_attack_animation("atack_2")  # Chama a função para tocar ataque 2
+		await play_attack_animation("shot")  # Chama a função para tocar ataque 2
 
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector

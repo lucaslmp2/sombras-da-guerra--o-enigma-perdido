@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccta8cig4qgd8"]
 
-[ext_resource type="Script" path="res://scripts/falling_plataform.gd" id="1_hhdks"]
+[ext_resource type="Script" uid="uid://bstcl38aa7vu0" path="res://scripts/falling_plataform.gd" id="1_hhdks"]
 [ext_resource type="Texture2D" uid="uid://bihrn123j0wt7" path="res://Assets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="1_hnuxg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bm2wl"]
@@ -39,8 +39,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ibgl5"]
 _data = {
-"RESET": SubResource("Animation_p0s3k"),
-"shake": SubResource("Animation_3bb3g")
+&"RESET": SubResource("Animation_p0s3k"),
+&"shake": SubResource("Animation_3bb3g")
 }
 
 [node name="falling_plataform" type="AnimatableBody2D"]

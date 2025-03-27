@@ -10,11 +10,12 @@ const lines : Array[String] = [
 	"É muito bom vê-lo por aqui...",
 	"A nossa jornada começa agora...",
 	"Espero que esteja preparado...",
-	"Encontre o pergaminnho com pistas do seu primeiro desafio!!!",
+	"Encontre o pergaminnho com pistas\n do seu primeiro desafio!!!",
 	"Aqui vai uma dica!!!",
-	"Cuidado com a aguá você pode se afogar!!! Cuidado com as plataformas elas balançam um pouco você pode cair!!!",
-	"Você pode coletar itens em baús espalhados pelo mapa...",
-	"Encontre o pergaminnho com pistas do seu primeiro desafio!!!",
+	"Cuidado com a aguá você pode se afogar!!!", 
+	"Cuidado com as plataformas \nelas balançam um pouco você pode cair!!!",
+	"Você pode coletar itens em \nbaús espalhados pelo mapa...",
+	"Encontre o pergaminnho com \npistas do seu primeiro desafio!!!",
 	"Continue explorando o jogo...",
 ]
 func _unhandled_input(event):

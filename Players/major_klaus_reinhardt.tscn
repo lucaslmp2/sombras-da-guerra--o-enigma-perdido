@@ -1,6 +1,6 @@
 [gd_scene load_steps=97 format=3 uid="uid://bgpcuo4ewsxn6"]
 
-[ext_resource type="Script" path="res://teste/major_klaus_reinhardt.gd" id="1_gmd26"]
+[ext_resource type="Script" uid="uid://cftrsjopijjre" path="res://teste/major_klaus_reinhardt.gd" id="1_gmd26"]
 [ext_resource type="Texture2D" uid="uid://bbyu2hgas1cha" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Attack.png" id="2_jhfot"]
 [ext_resource type="Texture2D" uid="uid://dp132sypqeoak" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Idle.png" id="3_4sjwa"]
 [ext_resource type="Texture2D" uid="uid://c7xgtyryn23b8" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Dead.png" id="3_7vnmw"]

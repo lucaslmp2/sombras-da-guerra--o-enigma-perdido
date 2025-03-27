@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://btpkprxpeeyrg"]
 
-[ext_resource type="Script" path="res://scripts/hurt_box.gd" id="1_i2av5"]
+[ext_resource type="Script" uid="uid://cmhcl73y7con6" path="res://scripts/hurt_box.gd" id="1_i2av5"]
 [ext_resource type="Texture2D" uid="uid://capjsdrvtetrx" path="res://Assets/Prontos/Water_frames (16 x 32).png" id="2_hmix3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf2gv"]

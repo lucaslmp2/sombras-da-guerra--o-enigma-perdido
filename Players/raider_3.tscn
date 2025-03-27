@@ -1,6 +1,6 @@
 [gd_scene load_steps=68 format=3 uid="uid://dwjjsmbfvfqfg"]
 
-[ext_resource type="Script" path="res://teste/raider_3.gd" id="1_veof5"]
+[ext_resource type="Script" uid="uid://c3mnsduk6827m" path="res://teste/raider_3.gd" id="1_veof5"]
 [ext_resource type="Texture2D" uid="uid://biduntn2wg4we" path="res://Assets/Prontos/Raider_3/Attack_1.png" id="2_os3p8"]
 [ext_resource type="Texture2D" uid="uid://crucwhhfiu0vm" path="res://Assets/Prontos/Raider_3/Idle.png" id="2_rp0ga"]
 [ext_resource type="Texture2D" uid="uid://bw6xfjkgaek8f" path="res://Assets/Prontos/Raider_3/Idle_2.png" id="3_0xahb"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=175 format=3 uid="uid://bmre8pc6hkini"]
 
-[ext_resource type="Script" path="res://scripts/elias.gd" id="1_3fhkc"]
+[ext_resource type="Script" uid="uid://capkhvaygfhjk" path="res://scripts/elias.gd" id="1_3fhkc"]
 [ext_resource type="Texture2D" uid="uid://rwfxq2mdja07" path="res://Assets/Prontos/Gangsters_2/Attack_1.png" id="2_m5amu"]
 [ext_resource type="Texture2D" uid="uid://d2pl0ek3lenla" path="res://Assets/Prontos/Gangsters_2/Attack_2.png" id="3_fwd4q"]
 [ext_resource type="Texture2D" uid="uid://bimpuiqeinbdn" path="res://Assets/Prontos/Gangsters_2/Attack_3.png" id="4_ep5f6"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2bbhywn4jdxv"]
 
 [ext_resource type="Texture2D" uid="uid://dxf3ovtdvgk7c" path="res://Assets/5 - Misc. universal tiles/Flag_of_Germany_(1935–1945).svg.png" id="1_aw4hf"]
-[ext_resource type="Script" path="res://scenes/tile.gd" id="1_tixbm"]
+[ext_resource type="Script" uid="uid://ddmr85l7esr2b" path="res://scenes/tile.gd" id="1_tixbm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv1a4"]
 draw_center = false
