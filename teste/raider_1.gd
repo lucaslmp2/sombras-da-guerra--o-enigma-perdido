@@ -1,46 +1,59 @@
 extends CharacterBody2D
 
-@onready var animation: AnimatedSprite2D = $Anim
+@export var speed : float = 100
+@export var shooting_interval : float = 2.0
+@onready var player = null
+@export var bullet_scene : PackedScene = preload("res://Prefabs/Bullet.tscn")
+@export var health : int = 3
+@export var jump_force : float = -600 # Força do pulo
+@onready var raycast : RayCast2D = $RayCast2D # Adiciona o RayCast2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-var velocidade = 200  # Velocidade do jogador
-var velocidade_salto = 600  # Velocidade do salto
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var is_jumping := false
-var player_life := 10
-var knockback_vector := Vector2.ZERO
-# Variáveis de controle
-var movimento = Vector2.ZERO
-const JUMP_FORCE = -250.0
+var shooting_timer : float = 0.0
+var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-# Função chamada a cada quadro de física
+func _ready():
+	player = get_parent().get_node("Player")
+
 func _physics_process(delta):
-	# Add the gravity.
+	# Aplica gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_FORCE
-		is_jumping = true
-	elif is_on_floor():
-		is_jumping = false
 
-	var direction = Input.get_axis("ui_left", "ui_right")
+	if player:
+		var direction = (player.global_position - global_position).normalized()
+		velocity.x = direction.x * speed # Ajuste para usar apenas direção horizontal
+		flip()
+		move_and_slide()
+		shooting_timer -= delta
+		if shooting_timer <= 0:
+			shoot()
+			shooting_timer = shooting_interval
 
-	if direction != 0:
-		velocity.x = direction * SPEED
-		animation.scale.x = direction
-		if !is_jumping: #if is_not jumping
-			animation.play("walk")
-	elif is_jumping: #is_jumping == true
-		animation.play("jump")
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animation.play("idle")
-		
-		
-	if knockback_vector != Vector2.ZERO:
-		velocity = knockback_vector
-		
-	move_and_slide()
+		# Pulo automático com RayCast2D
+		if raycast.is_colliding() and is_on_floor():
+			var collider = raycast.get_collider()
+			if collider is TileMapLayer: # Verifica se o colisor é um TileMap
+				velocity.y = jump_force
+
+func flip():
+	if velocity.x > 0:
+		$Anim.flip_h = false
+		$Anim.play("run")
+		# Ajusta a posição do RayCast2D para a direita
+		raycast.position.x = abs(raycast.position.x)
+	elif velocity.x < 0:
+		$Anim.flip_h = true
+		$Anim.play("run")
+		# Ajusta a posição do RayCast2D para a esquerda
+		raycast.position.x = -abs(raycast.position.x)
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	bullet.position = global_position
+	bullet.set_velocity((player.global_position - global_position).normalized() * 600) # Use set_velocity()
+	get_parent().add_child(bullet)
+
+func take_damage(amount: int):
+	health -= amount
+	if health <= 0:
+		queue_free()

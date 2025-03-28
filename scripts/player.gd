@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
+signal player_damaged(damage_amount)
+signal player_died()
+
 const SPEED = 200.0
 const JUMP_FORCE = -250.0
 
+@export var bullet_scene : PackedScene = preload("res://Prefabs/Bullet.tscn") # Adiciona a cena da bala
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping := false
-var is_attacking := false  # Adiciona flag para ataque
+var is_attacking := false
 var player_life := 10
 var knockback_vector := Vector2.ZERO
 
@@ -14,11 +18,9 @@ var knockback_vector := Vector2.ZERO
 @onready var remote_transform := $remote as RemoteTransform2D
 
 func _physics_process(delta):
-	# Se está atacando, impede qualquer outro movimento
 	if is_attacking:
-		return  
+		return
 
-	# Adiciona a gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -40,11 +42,10 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animation.play("idle_gangster")
 
-	# Verifica os inputs para ataque
 	if Input.is_action_just_pressed("attack"):
-		await play_attack_animation("atack_gangster_1")  # Chama a função para tocar ataque 1
+		await play_attack_animation("atack_gangster_1")
 	elif Input.is_action_just_pressed("attack_2"):
-		await play_attack_animation("shot")  # Chama a função para tocar ataque 2
+		attack_shot() # Change to attack_shot
 
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
@@ -57,19 +58,41 @@ func _physics_process(delta):
 			collision.get_collider().has_collided_with(collision, self)
 
 func play_attack_animation(attack_name: String):
-	is_attacking = true  # Bloqueia movimento durante o ataque
+	is_attacking = true
 	animation.play(attack_name)
-	await animation.animation_finished  # Aguarda a animação acabar
-	is_attacking = false  # Libera movimento
+	await animation.animation_finished
+	is_attacking = false
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote_transform.remote_path = camera_path
 
-func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
-	player_life -= 1
+func take_damage(damage := 1, knockback_force := Vector2.ZERO, duration := 0.25):
+	print("take_damage() chamado. Dano: ", damage) # Adicionado
+	player_life -= damage
+	print("Vida do jogador após dano: ", player_life) # Adicionado
+	emit_signal("player_damaged", damage)
+	if player_life <= 0:
+		print("Jogador morreu!") # Adicionado
+		emit_signal("player_died")
+		queue_free() # Destrói o jogador
 	if knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force
-		
 		var knockback_tween := get_tree().create_tween()
 		knockback_tween.tween_property(self, "knockback_vector", Vector2.ZERO, duration)
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+
+	# Ajusta a posição da bala com base na escala horizontal do jogador
+	bullet.position = global_position + Vector2(animation.scale.x * 20, -12) # Ajuste o valor 20 conforme necessário
+
+	# Determina a direção do tiro com base na escala horizontal do player
+	var direction = Vector2(animation.scale.x, 0).normalized()
+
+	bullet.velocity = direction * 600
+	get_parent().add_child(bullet)
+
+func attack_shot():
+	shoot()
+	play_attack_animation("shot")

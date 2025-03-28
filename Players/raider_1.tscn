@@ -535,9 +535,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wx4kl")
 }],
-"loop": true,
+"loop": false,
 "name": &"shot",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -572,21 +572,28 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdk7t"]
 height = 66.0
 
-[node name="raider_1" type="CharacterBody2D"]
+[node name="raider_1" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(309, 302)
-collision_mask = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_d3p28")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 2)
+position = Vector2(3, 2)
 sprite_frames = SubResource("SpriteFrames_8si2i")
-animation = &"atack_1"
+animation = &"jump"
 autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 32)
+position = Vector2(3, 34)
 shape = SubResource("CapsuleShape2D_jdk7t")
 
-[node name="camera" type="Camera2D" parent="."]
-position = Vector2(-4, -26)
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(4, 50)
+target_position = Vector2(24, 0)
+collision_mask = 2

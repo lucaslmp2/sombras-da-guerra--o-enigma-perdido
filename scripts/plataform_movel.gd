@@ -1,7 +1,7 @@
 extends Node2D
 const WAIT_DURATION := 1.0
 @onready var plataform: AnimatableBody2D = $Plataform
-@export var movie_speed := 3.0
+@export var movie_speed := 15.0
 @export var distance := 192
 @export var movie_horizontal := true
 var follow := Vector2.ZERO

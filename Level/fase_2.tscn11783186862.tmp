@@ -136,6 +136,7 @@ movie_horizontal = false
 
 [node name="raider_1" parent="." instance=ExtResource("5_xi11c")]
 position = Vector2(1019, 57)
+collision_layer = 4
 
 [node name="Player" parent="." instance=ExtResource("2_ib1je")]
 position = Vector2(256, 200)
