@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4srjjwwmfm1a"]
+[gd_scene load_steps=4 format=3 uid="uid://cnrjbl5id2yv5"]
 
-[ext_resource type="Texture2D" uid="uid://g8xngfmhkph" path="res://Assets/Prontos/bullet_rider (1).png" id="1_62lvt"]
-[ext_resource type="Script" uid="uid://xpqy81t3j86o" path="res://scripts/bullet.gd" id="1_pv5ng"]
+[ext_resource type="Script" uid="uid://2ovstdl34fgv" path="res://scripts/bullet_rider_1.gd" id="1_ip6ev"]
+[ext_resource type="Texture2D" uid="uid://g8xngfmhkph" path="res://Assets/Prontos/bullet_rider (1).png" id="2_f0kgk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv5ng"]
 radius = 1.0
 height = 5.99926
 
 [node name="Node2D" type="Area2D"]
-collision_mask = 6
-script = ExtResource("1_pv5ng")
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_ip6ev")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 14)
@@ -19,7 +20,7 @@ shape = SubResource("CapsuleShape2D_pv5ng")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 15.5)
 scale = Vector2(0.032, 0.034)
-texture = ExtResource("1_62lvt")
+texture = ExtResource("2_f0kgk")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

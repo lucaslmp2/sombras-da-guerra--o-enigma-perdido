@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=3 uid="uid://q52ojf1xim6e"]
+[gd_scene load_steps=175 format=3 uid="uid://q52ojf1xim6e"]
 
 [ext_resource type="Script" uid="uid://bwpk77dc0rwif" path="res://scripts/player.gd" id="1_btl8f"]
 [ext_resource type="Texture2D" uid="uid://rwfxq2mdja07" path="res://Assets/Prontos/Gangsters_2/Attack_1.png" id="3_hfae2"]
@@ -22,58 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://cco5yaww8a25x" path="res://Assets/Prontos/Gangsters_1/Walk.png" id="20_qsegn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t581"]
-radius = 11.0
-height = 48.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2i2o"]
-atlas = ExtResource("3_jwaic")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ojd35"]
-atlas = ExtResource("3_jwaic")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fi2x1"]
-atlas = ExtResource("3_jwaic")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nadu0"]
-atlas = ExtResource("3_jwaic")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jklig"]
-atlas = ExtResource("3_jwaic")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbw0l"]
-atlas = ExtResource("3_jwaic")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fcsr8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k2i2o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ojd35")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fi2x1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nadu0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jklig")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fbw0l")
-}],
-"loop": true,
-"name": &"idle_soldado",
-"speed": 5.0
-}]
+radius = 6.0
+height = 22.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi2od"]
 atlas = ExtResource("3_hfae2")
@@ -1152,7 +1102,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_gangster",
-"speed": 5.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1247,8 +1197,8 @@ position = Vector2(38, 35)
 collision_mask = 11
 script = ExtResource("1_btl8f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 2)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-15, -16)
 shape = SubResource("CapsuleShape2D_6t581")
 
 [node name="camera" type="Camera2D" parent="."]
@@ -1264,21 +1214,18 @@ target_position = Vector2(18, 0)
 
 [node name="ray_left" type="RayCast2D" parent="."]
 position = Vector2(-1, 1)
-target_position = Vector2(-14, 0)
-
-[node name="anim_soldado" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1, -9.5)
-scale = Vector2(0.6875, 0.648438)
-sprite_frames = SubResource("SpriteFrames_fcsr8")
-animation = &"idle_soldado"
-frame_progress = 0.746594
+target_position = Vector2(-28, 0)
 
 [node name="anim_inicial" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -19)
+position = Vector2(-6, -19)
 scale = Vector2(0.671875, 0.703125)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"shot"
+animation = &"hurt_gangster"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.867022
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-7, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 15)
+shape = SubResource("CapsuleShape2D_6t581")

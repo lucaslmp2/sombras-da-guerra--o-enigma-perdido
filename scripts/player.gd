@@ -4,7 +4,8 @@ signal player_damaged(damage_amount)
 signal player_died()
 
 const SPEED = 200.0
-const JUMP_FORCE = -250.0
+const JUMP_FORCE = -300.0
+@onready var marker_2d: Marker2D = $Marker2D
 
 @export var bullet_scene : PackedScene = preload("res://Prefabs/Bullet.tscn") # Adiciona a cena da bala
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -12,8 +13,6 @@ var is_jumping := false
 var is_attacking := false
 var player_life := 10
 var knockback_vector := Vector2.ZERO
-
-@onready var anim_soldado: AnimatedSprite2D = $anim_soldado
 @onready var animation := $anim_inicial as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
 
@@ -68,12 +67,9 @@ func follow_camera(camera):
 	remote_transform.remote_path = camera_path
 
 func take_damage(damage := 1, knockback_force := Vector2.ZERO, duration := 0.25):
-	print("take_damage() chamado. Dano: ", damage) # Adicionado
 	player_life -= damage
-	print("Vida do jogador após dano: ", player_life) # Adicionado
 	emit_signal("player_damaged", damage)
 	if player_life <= 0:
-		print("Jogador morreu!") # Adicionado
 		emit_signal("player_died")
 		queue_free() # Destrói o jogador
 	if knockback_force != Vector2.ZERO:

@@ -321,7 +321,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s6w0v")
 }],
-"loop": true,
+"loop": false,
 "name": &"atack_1",
 "speed": 5.0
 }, {
@@ -335,7 +335,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cq5q1")
 }],
-"loop": true,
+"loop": false,
 "name": &"atack_2",
 "speed": 5.0
 }, {
@@ -352,7 +352,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dpmsb")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 5.0
 }, {
@@ -362,8 +362,20 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ksbne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8648")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksbne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8648")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksbne")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -537,7 +549,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shot",
-"speed": 3.0
+"speed": 33.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -570,30 +582,41 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdk7t"]
-height = 66.0
+radius = 6.0
+height = 28.0
 
 [node name="raider_1" type="CharacterBody2D" groups=["enemy"]]
-position = Vector2(309, 302)
+position = Vector2(316, 311)
 collision_layer = 4
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_d3p28")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(3, 2)
+position = Vector2(2, 11.5)
+scale = Vector2(0.84375, 0.851563)
 sprite_frames = SubResource("SpriteFrames_8si2i")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
-
-[node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(3, 34)
-shape = SubResource("CapsuleShape2D_jdk7t")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Gun" type="Node2D" parent="."]
+position = Vector2(0, 30)
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 52)
+shape = SubResource("CapsuleShape2D_jdk7t")
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(0, 50)
+target_position = Vector2(-15, 0)
+collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(4, 50)
-target_position = Vector2(24, 0)
+position = Vector2(1, 50)
+target_position = Vector2(15, 0)
 collision_mask = 2
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
