@@ -108,31 +108,21 @@ func shoot():
 
 func take_damage(amount: int):
 	health -= amount
-	print("Dano recebido: ", amount, " | Vida restante: ", health)  # Exibe o dano e a vida restante
 	if health <= 0:
-		print("Rider_1 morreu! Vida chegou a zero.")
 		
 		# Interrompe qualquer animação em andamento e toca a animação de "dead"
 		animation.stop()  # Para qualquer animação em andamento
 		animation.play("dead")  # Toca a animação "dead"
 		
 		# Aguarda a animação "dead" terminar antes de destruir o rider_1
-		print("Esperando animação de morte terminar...")
 		await animation.animation_finished  # Espera a animação "dead" terminar
-		print("Animação de morte concluída.")
 		
 		# Após a animação "dead", destrói o rider_1
 		queue_free()  # Destrói o rider_1
 	else:
 		# Interrompe qualquer animação atual e executa a animação de dano (hurt)
-		print("Iniciando animação de dano.")
 		animation.stop()  # Para qualquer animação em andamento
 		animation.play("hurt")  # Toca a animação "hurt"
 		
 		# Aguarda a animação de "hurt" terminar com um delay fixo
-		print("Esperando animação de dano terminar...")
 		await get_tree().create_timer(0.5).timeout  # Aguarda 0.5 segundos para garantir que a animação seja visível
-		print("Animação de dano concluída.")
-		
-		# Após a animação "hurt" terminar, o rider_1 pode continuar com as ações normais
-		print("Rider_1 pode continuar a ação após o dano.")

@@ -1,10 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmmrem1u8vffk"]
+[gd_scene load_steps=14 format=3 uid="uid://cmmrem1u8vffk"]
 
+[ext_resource type="Texture2D" uid="uid://dksjcjkqyl8rb" path="res://Assets/Prontos/soldierbunkerdead.png" id="1_2fecv"]
 [ext_resource type="Texture2D" uid="uid://htowpvhfcq01" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (2).png" id="1_7wv0l"]
+[ext_resource type="Script" uid="uid://dfag2i6vcc6tl" path="res://scripts/artilheiro_bunker.gd" id="1_6052q"]
 [ext_resource type="Texture2D" uid="uid://bhm7v7jddj8vm" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (1).png" id="2_7qgcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b0qj"]
-size = Vector2(44, 45)
+size = Vector2(47, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6052q"]
+atlas = ExtResource("1_2fecv")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cal2v"]
+atlas = ExtResource("1_2fecv")
+region = Rect2(500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7x2rc"]
 atlas = ExtResource("1_7wv0l")
@@ -30,6 +40,17 @@ region = Rect2(0, 500, 500, 500)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6052q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cal2v")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7x2rc")
 }, {
 "duration": 1.0,
@@ -48,24 +69,65 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_guvco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
 }],
-"loop": true,
+"loop": false,
 "name": &"shot",
-"speed": 10.0
+"speed": 8.0
 }]
 
 [node name="Area2D" type="Area2D"]
 position = Vector2(198, 117)
+collision_layer = 4
 collision_mask = 2
+script = ExtResource("1_6052q")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-1, -0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 7)
+position = Vector2(29.5, 10.5)
 shape = SubResource("RectangleShape2D_7b0qj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(21, 5.5)
 scale = Vector2(0.14, 0.114)
 sprite_frames = SubResource("SpriteFrames_4s50n")
-animation = &"shot"
-autoplay = "shot"
-frame_progress = 0.719521
+animation = &"idle"
+autoplay = "idle"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(12, -0.5)
+target_position = Vector2(-206, 0)
