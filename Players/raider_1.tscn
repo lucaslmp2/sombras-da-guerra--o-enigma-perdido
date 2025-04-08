@@ -583,7 +583,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdk7t"]
 radius = 6.0
-height = 28.0
+height = 44.0
 
 [node name="raider_1" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(316, 311)
@@ -604,7 +604,7 @@ autoplay = "idle"
 position = Vector2(0, 30)
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 52)
+position = Vector2(0, 44)
 shape = SubResource("CapsuleShape2D_jdk7t")
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]

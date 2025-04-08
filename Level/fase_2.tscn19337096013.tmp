@@ -146,7 +146,7 @@ movie_horizontal = false
 position = Vector2(3912, 624)
 
 [node name="Player" parent="." instance=ExtResource("2_ib1je")]
-position = Vector2(301, 360)
+position = Vector2(377, 473)
 
 [node name="falling_plataform" parent="." instance=ExtResource("3_vpid3")]
 position = Vector2(708, 240)

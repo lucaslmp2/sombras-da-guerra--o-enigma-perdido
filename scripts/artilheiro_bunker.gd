@@ -10,10 +10,9 @@ var shooting = false
 @export var spawn_offset: Vector2 = Vector2(-20, -12)  # 10px acima
 
 var bullet_count: int = 0
-var health: int = 1  # Vida do artilheiro
+@export var health: int = 3  # Vida do artilheiro
 
 func _ready():
-	# Conectar evento de colisão com projéteis
 	body_entered.connect(_on_body_entered)
 
 func _process(delta):
@@ -63,7 +62,14 @@ func shoot_burst():
 
 func _on_body_entered(body):
 	if body.is_in_group("bullet"):
+		take_damage(1)
+
+func take_damage(amount: int):
+	health -= amount
+	if health <= 0:
 		die()
+	else:
+		animated_sprite_2d.play("idle")
 
 func die():
 	health = 0

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bihrn123j0wt7" path="res://Assets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="1_hnuxg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bm2wl"]
-size = Vector2(16, 16)
+size = Vector2(32, 16)
 
 [sub_resource type="Animation" id="Animation_p0s3k"]
 length = 0.5
@@ -61,7 +61,7 @@ one_way_collision = true
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ibgl5")
+&"": SubResource("AnimationLibrary_ibgl5")
 }
 
 [connection signal="timeout" from="respawn_timer" to="." method="_on_respawn_timer_timeout"]

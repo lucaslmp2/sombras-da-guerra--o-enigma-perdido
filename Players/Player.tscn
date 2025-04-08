@@ -21,10 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://cavulsofta64e" path="res://Assets/Prontos/Gangsters_2/Walk.png" id="19_xxup7"]
 [ext_resource type="Texture2D" uid="uid://cco5yaww8a25x" path="res://Assets/Prontos/Gangsters_1/Walk.png" id="20_qsegn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t581"]
-radius = 6.0
-height = 22.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi2od"]
 atlas = ExtResource("3_hfae2")
 region = Rect2(0, 0, 128, 128)
@@ -1192,14 +1188,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t581"]
+radius = 9.0
+height = 48.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(38, 35)
 collision_mask = 10
 script = ExtResource("1_btl8f")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-15, -16)
-shape = SubResource("CapsuleShape2D_6t581")
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(-14, -48)
@@ -1227,5 +1223,5 @@ autoplay = "idle"
 position = Vector2(2, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-14, 15)
+position = Vector2(-15, 2)
 shape = SubResource("CapsuleShape2D_6t581")
