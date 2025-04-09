@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgrqlj7psoi4g"]
+
+[ext_resource type="Texture2D" uid="uid://dfpqtelbpli1x" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.jpg" id="1_42e7q"]
+[ext_resource type="Script" uid="uid://qnbbmm16i554" path="res://scripts/counter_bullets.gd" id="2_m25nh"]
+[ext_resource type="Texture2D" uid="uid://g8xngfmhkph" path="res://Assets/Prontos/bullet_rider (1).png" id="2_tdnxn"]
+[ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="3_fw654"]
+[ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="4_m25nh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hmw6a"]
+font = ExtResource("4_m25nh")
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
+
+[node name="counter_bulets" type="NinePatchRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_42e7q")
+region_rect = Rect2(577, 114, 55, 39)
+patch_margin_left = 6
+patch_margin_top = 8
+patch_margin_right = 5
+patch_margin_bottom = 7
+script = ExtResource("2_m25nh")
+
+[node name="bala" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = 28.0
+offset_right = 1.0
+offset_bottom = 83.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5708
+texture = ExtResource("2_tdnxn")
+expand_mode = 3
+flip_v = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -13.5
+offset_right = 46.0
+offset_bottom = 12.5
+grow_vertical = 2
+theme = ExtResource("3_fw654")
+theme_override_colors/font_color = Color(0.705882, 0.627451, 0.552941, 1)
+theme_override_colors/font_shadow_color = Color(0.258824, 0.254902, 0.305882, 1)
+theme_override_colors/font_outline_color = Color(0.615686, 0.419608, 0.258824, 1)
+text = "10"
+label_settings = SubResource("LabelSettings_hmw6a")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

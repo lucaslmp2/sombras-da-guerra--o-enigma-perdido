@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr57trjkre8y3"]
+
+[ext_resource type="PackedScene" uid="uid://pea2ltdddcbv" path="res://Interface/counter/Counter_life.tscn" id="1_q5xbw"]
+[ext_resource type="PackedScene" uid="uid://dgrqlj7psoi4g" path="res://Interface/counter/Counter_bullets.tscn" id="2_kqlm8"]
+[ext_resource type="PackedScene" uid="uid://c3onesj6vxk6w" path="res://Interface/counter/Counter_granada.tscn" id="3_kqlm8"]
+[ext_resource type="PackedScene" uid="uid://bw5w034b733in" path="res://Interface/counter/Counter_score.tscn" id="4_tutnl"]
+[ext_resource type="PackedScene" uid="uid://b7wivyq2tis3d" path="res://Interface/counter/Timer_counter.tscn" id="5_i2fxc"]
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 40.0
+offset_top = -8.0
+offset_right = 144.0
+offset_bottom = 96.0
+
+[node name="counter_life" parent="VBoxContainer" instance=ExtResource("1_q5xbw")]
+layout_mode = 2
+
+[node name="counter_bulets" parent="VBoxContainer" instance=ExtResource("2_kqlm8")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="counter_granada" parent="VBoxContainer" instance=ExtResource("3_kqlm8")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_top = -8.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="counter_score" parent="HBoxContainer" instance=ExtResource("4_tutnl")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="counter_Timer" parent="." instance=ExtResource("5_i2fxc")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_top = -8.0
+offset_right = 85.0
+grow_horizontal = 2
+size_flags_horizontal = 6

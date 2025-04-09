@@ -11,7 +11,7 @@ const JUMP_FORCE = -300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping := false
 var is_attacking := false
-var player_life := 10
+var player_life := Globals.life
 var knockback_vector := Vector2.ZERO
 @onready var animation := $anim_inicial as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
@@ -79,6 +79,7 @@ func take_damage(damage := 1, knockback_force := Vector2.ZERO, duration := 0.25)
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
+	Globals.bulets -= 1
 
 	# Ajusta a posição da bala com base na escala horizontal do jogador
 	bullet.position = global_position + Vector2(animation.scale.x * 20, -12) # Ajuste o valor 20 conforme necessário

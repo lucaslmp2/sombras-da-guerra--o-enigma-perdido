@@ -15,8 +15,8 @@ shape = SubResource("RectangleShape2D_nf2gv")
 debug_color = Color(0.954677, 0.180888, 0.297235, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(85, 10)
-scale = Vector2(3, 1)
+position = Vector2(85, 18)
+scale = Vector2(3, 2.15625)
 texture = ExtResource("2_hmix3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

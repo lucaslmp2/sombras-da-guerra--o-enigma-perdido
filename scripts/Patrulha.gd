@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+const DETECTION_RANGE_X = 500  # Distância máxima para detectar o player no eixo X
 @onready var character_body_2d: CharacterBody2D = $"."
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var gun: Node2D = $Gun
@@ -10,19 +10,31 @@ extends CharacterBody2D
 @export var health: int = 5  # Vida do inimigo
 @export var bullet_scene : PackedScene = preload("res://Prefabs/bullet_rider_1.tscn")
 var player: Node2D = null
-
+var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
+const SAFE_DISTANCE_X = 100  # Distância mínima para parar de avançar
+var is_shooting := false  # Controla se o inimigo está atirando
+var should_follow_player := false  # Define se o inimigo pode seguir
 func _ready():
 	player = get_parent().get_node("Player")
 
 func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	var distance_x = INF  # Define um valor alto inicial para evitar erros
+
 	if player:
-		var distance_to_player = global_position.distance_to(player.global_position)
-		if distance_to_player <= attack_range:
-			attack()
-		elif distance_to_player <= detection_range:
-			run_towards_player()
-		else:
-			patrol()
+		distance_x = abs(player.global_position.x - global_position.x)
+		should_follow_player = distance_x <= DETECTION_RANGE_X
+
+	# Só persegue se estiver dentro da área de detecção e não estiver atirando
+	if should_follow_player and not is_shooting and distance_x > SAFE_DISTANCE_X:
+		var direction = (player.global_position - global_position).normalized()
+		velocity.x = direction.x * speed
+		flip()
+	else:
+		velocity.x = 0  # Para completamente se estiver longe, atirando ou muito perto
+
 	move_and_slide()
 
 func attack():

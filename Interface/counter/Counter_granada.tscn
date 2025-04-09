@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3onesj6vxk6w"]
+
+[ext_resource type="Texture2D" uid="uid://dfpqtelbpli1x" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.jpg" id="1_g82hc"]
+[ext_resource type="Script" uid="uid://ibt07gymrjpr" path="res://scripts/counter_granada.gd" id="2_mrxel"]
+[ext_resource type="Texture2D" uid="uid://6kih8guq17kc" path="res://Assets/5 - Misc. universal tiles/grenade2.png" id="2_nbdct"]
+[ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="3_mrxel"]
+[ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="4_gkqgd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hmw6a"]
+font = ExtResource("4_gkqgd")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
+
+[node name="counter_granada" type="NinePatchRect"]
+offset_right = 85.0
+offset_bottom = 45.0
+size_flags_vertical = 3
+texture = ExtResource("1_g82hc")
+region_rect = Rect2(577, 114, 55, 39)
+patch_margin_left = 6
+patch_margin_top = 8
+patch_margin_right = 5
+patch_margin_bottom = 7
+script = ExtResource("2_mrxel")
+
+[node name="granada" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -15.5
+offset_right = -3.0
+offset_bottom = 18.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_nbdct")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -13.5
+offset_right = 46.0
+offset_bottom = 12.5
+grow_vertical = 2
+theme = ExtResource("3_mrxel")
+theme_override_colors/font_color = Color(0.705882, 0.627451, 0.552941, 1)
+theme_override_colors/font_shadow_color = Color(0.258824, 0.254902, 0.305882, 1)
+theme_override_colors/font_outline_color = Color(0.615686, 0.419608, 0.258824, 1)
+text = "10"
+label_settings = SubResource("LabelSettings_hmw6a")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
