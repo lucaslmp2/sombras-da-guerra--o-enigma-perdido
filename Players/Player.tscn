@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=3 uid="uid://q52ojf1xim6e"]
+[gd_scene load_steps=184 format=3 uid="uid://q52ojf1xim6e"]
 
 [ext_resource type="Script" uid="uid://bwpk77dc0rwif" path="res://scripts/player.gd" id="1_btl8f"]
 [ext_resource type="Texture2D" uid="uid://rwfxq2mdja07" path="res://Assets/Prontos/Gangsters_2/Attack_1.png" id="3_hfae2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bimpuiqeinbdn" path="res://Assets/Prontos/Gangsters_2/Attack_3.png" id="5_u4up2"]
 [ext_resource type="Texture2D" uid="uid://clp5kdthyxgwu" path="res://Assets/Prontos/Gangsters_1/Attack_1.png" id="6_purl7"]
 [ext_resource type="Texture2D" uid="uid://d4ccubfu2in72" path="res://Assets/Prontos/Gangsters_1/Dead.png" id="7_2maub"]
+[ext_resource type="Texture2D" uid="uid://c3f2crl6s306b" path="res://Assets/Prontos/Gangsters_1/granade.png" id="8_3u7t7"]
 [ext_resource type="Texture2D" uid="uid://dl3k7p1ib7kio" path="res://Assets/Prontos/Gangsters_1/Jump.png" id="8_a72c0"]
 [ext_resource type="Texture2D" uid="uid://vaoo5xvfwwo8" path="res://Assets/Prontos/Gangsters_2/Hurt.png" id="9_6k4kd"]
 [ext_resource type="Texture2D" uid="uid://3xmdd2wyay56" path="res://Assets/Prontos/Gangsters_1/Hurt.png" id="10_ymq04"]
@@ -140,6 +141,38 @@ region = Rect2(1024, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ivlq"]
 atlas = ExtResource("8_a72c0")
 region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls07k"]
+atlas = ExtResource("8_3u7t7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rpo8"]
+atlas = ExtResource("8_3u7t7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oup7"]
+atlas = ExtResource("8_3u7t7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arxj1"]
+atlas = ExtResource("8_3u7t7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hdqr"]
+atlas = ExtResource("8_3u7t7")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5dsh"]
+atlas = ExtResource("8_3u7t7")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fvxs"]
+atlas = ExtResource("8_3u7t7")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jgay"]
+atlas = ExtResource("8_3u7t7")
+region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygda3"]
 atlas = ExtResource("9_6k4kd")
@@ -753,6 +786,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ls07k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rpo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oup7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arxj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hdqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5dsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fvxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jgay")
+}],
+"loop": false,
+"name": &"granade",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ygda3")
 }, {
 "duration": 1.0,
@@ -1216,8 +1278,10 @@ target_position = Vector2(-28, 0)
 position = Vector2(-12, -19)
 scale = Vector2(0.671875, 0.703125)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"idle_gangster"
+animation = &"granade"
 autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(2, -2)

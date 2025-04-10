@@ -1,23 +1,26 @@
 extends CharacterBody2D
 
-@export var speed : float = 100
-@export var shooting_interval : float = 2.0
+@export var speed: float = 100
+@export var shooting_interval: float = 2.0
+@export var health: int = 3
+@export var jump_force: float = -300
+@export var bullet_scene: PackedScene = preload("res://Prefabs/bullet_rider_1.tscn")
+
 @onready var player = null
-@export var bullet_scene : PackedScene = preload("res://Prefabs/bullet_rider_1.tscn")
-@export var health : int = 3
-@export var jump_force : float = -300
-@onready var raycast : RayCast2D = $RayCast2D
+@onready var raycast: RayCast2D = $RayCast2D
 @onready var ray_cast_2d_2: RayCast2D = $RayCast2D2
 @onready var gun: Node2D = $Gun
 @onready var animation := $Anim
 
-var shooting_timer : float = 0.0
-var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
-var is_shooting := false  # Controla se o inimigo está atirando
-var should_follow_player := false  # Define se o inimigo pode seguir
-const DETECTION_RANGE_X = 500  # Distância máxima para detectar o player no eixo X
-const SHOOTING_RANGE_X = 300  # Distância máxima para atirar no eixo X
-const SAFE_DISTANCE_X = 100  # Distância mínima para parar de avançar
+var shooting_timer: float = 0.0
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var is_shooting := false
+var should_follow_player := false
+
+const DETECTION_RANGE_X = 500
+const SHOOTING_RANGE_X = 300
+const SAFE_DISTANCE_X = 100
+const MAX_HEIGHT_DIFFERENCE = 50  # Tolerância de altura para evitar perseguição/tiros errados
 
 func _ready():
 	player = get_parent().get_node("Player")
@@ -26,30 +29,31 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	var distance_x = INF  # Define um valor alto inicial para evitar erros
-
 	if player:
-		distance_x = abs(player.global_position.x - global_position.x)
-		should_follow_player = distance_x <= DETECTION_RANGE_X
+		var distance_x = abs(player.global_position.x - global_position.x)
+		var distance_y = abs(player.global_position.y - global_position.y)
 
-	# Só persegue se estiver dentro da área de detecção e não estiver atirando
-	if should_follow_player and not is_shooting and distance_x > SAFE_DISTANCE_X:
-		var direction = (player.global_position - global_position).normalized()
-		velocity.x = direction.x * speed
-		flip()
-	else:
-		velocity.x = 0  # Para completamente se estiver longe, atirando ou muito perto
+		# O inimigo só detecta o jogador se estiver na mesma altura
+		should_follow_player = distance_x <= DETECTION_RANGE_X and distance_y <= MAX_HEIGHT_DIFFERENCE
 
-	move_and_slide()
+		# Só persegue se estiver dentro da área de detecção, na mesma altura e não estiver atirando
+		if should_follow_player and not is_shooting and distance_x > SAFE_DISTANCE_X:
+			var direction = (player.global_position - global_position).normalized()
+			velocity.x = direction.x * speed
+			flip()
+		else:
+			velocity.x = 0
 
-	# O inimigo só atira se o jogador estiver dentro do alcance X
-	if should_follow_player and distance_x <= SHOOTING_RANGE_X:
-		shooting_timer -= delta
-		if shooting_timer <= 0 and not is_shooting:
-			shoot()
-			shooting_timer = shooting_interval  # Reinicia o temporizador de tiro
-	else:
-		is_shooting = false  # Para o tiro se o jogador estiver longe
+		move_and_slide()
+
+		# O inimigo só atira se o jogador estiver dentro do alcance X e na mesma altura
+		if should_follow_player and distance_x <= SHOOTING_RANGE_X:
+			shooting_timer -= delta
+			if shooting_timer <= 0 and not is_shooting:
+				shoot()
+				shooting_timer = shooting_interval
+		else:
+			is_shooting = false  # Para o tiro se o jogador estiver longe ou em outra altura
 
 	# **Evita que o inimigo continue se aproximando ao detectar o player**
 	if raycast.is_colliding() and is_on_floor() or ray_cast_2d_2.is_colliding() and is_on_floor():
@@ -105,24 +109,15 @@ func shoot():
 
 	is_shooting = false  # Permite que ele volte a se mover
 	should_follow_player = abs(player.global_position.x - global_position.x) <= DETECTION_RANGE_X  # Só volta a seguir se o player ainda estiver perto
-
 func take_damage(amount: int):
 	health -= amount
 	if health <= 0:
-		
-		# Interrompe qualquer animação em andamento e toca a animação de "dead"
-		animation.stop()  # Para qualquer animação em andamento
-		animation.play("dead")  # Toca a animação "dead"
-		
-		# Aguarda a animação "dead" terminar antes de destruir o rider_1
-		await animation.animation_finished  # Espera a animação "dead" terminar
-		
-		# Após a animação "dead", destrói o rider_1
-		queue_free()  # Destrói o rider_1
+		animation.stop()
+		animation.play("dead")
+		await animation.animation_finished
+		Globals.score += 300
+		queue_free()
 	else:
-		# Interrompe qualquer animação atual e executa a animação de dano (hurt)
-		animation.stop()  # Para qualquer animação em andamento
-		animation.play("hurt")  # Toca a animação "hurt"
-		
-		# Aguarda a animação de "hurt" terminar com um delay fixo
-		await get_tree().create_timer(0.5).timeout  # Aguarda 0.5 segundos para garantir que a animação seja visível
+		animation.stop()
+		animation.play("hurt")
+		await get_tree().create_timer(0.5).timeout

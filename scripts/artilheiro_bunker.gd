@@ -75,5 +75,6 @@ func die():
 	health = 0
 	shooting = false
 	animated_sprite_2d.play("dead")
+	Globals.score += 200
 	await animated_sprite_2d.animation_finished
 	queue_free()

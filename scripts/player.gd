@@ -6,7 +6,7 @@ signal player_died()
 const SPEED = 200.0
 const JUMP_FORCE = -300.0
 @onready var marker_2d: Marker2D = $Marker2D
-
+@export var grenade_scene: PackedScene = preload("res://Prefabs/granada2.tscn")
 @export var bullet_scene : PackedScene = preload("res://Prefabs/Bullet.tscn") # Adiciona a cena da bala
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping := false
@@ -15,7 +15,13 @@ var player_life := Globals.life
 var knockback_vector := Vector2.ZERO
 @onready var animation := $anim_inicial as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
+func throw_grenade():
+	var grenade = grenade_scene.instantiate()
+	grenade.position = global_position
+	get_parent().add_child(grenade)
 
+	var throw_direction = Vector2(1, -1) if animation.scale.x > 0 else Vector2(-1, -1)
+	grenade.throw_grenade(throw_direction)
 func _physics_process(delta):
 	if is_attacking:
 		return
@@ -42,7 +48,8 @@ func _physics_process(delta):
 		animation.play("idle_gangster")
 
 	if Input.is_action_just_pressed("attack"):
-		await play_attack_animation("atack_gangster_1")
+		await play_attack_animation("granade")
+		throw_grenade()
 	elif Input.is_action_just_pressed("attack_2"):
 		attack_shot() # Change to attack_shot
 

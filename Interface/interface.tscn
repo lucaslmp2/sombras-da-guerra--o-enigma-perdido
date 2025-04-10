@@ -16,10 +16,10 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 40.0
-offset_top = -8.0
-offset_right = 144.0
-offset_bottom = 96.0
+offset_left = 24.0
+offset_top = -15.0
+offset_right = 128.0
+offset_bottom = 89.0
 
 [node name="counter_life" parent="VBoxContainer" instance=ExtResource("1_q5xbw")]
 layout_mode = 2
@@ -31,27 +31,32 @@ size_flags_vertical = 3
 [node name="counter_granada" parent="VBoxContainer" instance=ExtResource("3_kqlm8")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -176.0
-offset_top = -8.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_left = 0.786
+anchor_top = -0.012
+anchor_right = 1.028
+anchor_bottom = 0.079
+offset_left = 18.528
+offset_top = -10.224
+offset_right = 18.744
+offset_bottom = -10.192
 grow_horizontal = 0
 
 [node name="counter_score" parent="HBoxContainer" instance=ExtResource("4_tutnl")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="counter_Timer" parent="." instance=ExtResource("5_i2fxc")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -72.0
-offset_top = -8.0
-offset_right = 85.0
+offset_left = -75.0
+offset_top = -15.0
+offset_right = 82.0
+offset_bottom = 33.0
 grow_horizontal = 2
 size_flags_horizontal = 6
