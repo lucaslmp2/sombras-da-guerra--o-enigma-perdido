@@ -6,7 +6,7 @@ const SHOOT_DISTANCE_X = 200  # Distância ideal para atirar
 const HEIGHT_TOLERANCE = 30  # Margem de tolerância no eixo Y para considerar que estão na mesma altura
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var gun: Node2D = $Gun
-
+@onready var wall_ray = $WallRay
 @export var direction: int = 1  # 1 para direita, -1 para esquerda
 @export var speed: float = 50
 @export var health: int = 5  # Vida do inimigo
@@ -26,21 +26,22 @@ func _physics_process(delta):
 	var distance_x = INF  
 	var distance_y = INF  
 
+	# Verifica se a referência do jogador ainda é válida
 	if player:
 		distance_x = abs(player.global_position.x - global_position.x)
 		distance_y = abs(player.global_position.y - global_position.y)
 
 		should_follow_player = distance_x <= DETECTION_RANGE_X and distance_y <= HEIGHT_TOLERANCE
 
-	if should_follow_player and not is_shooting:
-		if distance_x > SAFE_DISTANCE_X:
-			run_towards_player()  # Corre em direção ao player
+		if should_follow_player and not is_shooting:
+			if distance_x > SAFE_DISTANCE_X:
+				run_towards_player()
+			else:
+				attack()
 		else:
-			attack()  # Para e atira
-	else:
-		patrol()  # Patrulha se o player não for detectado
+			patrol()  # Se o player não for detectado ou o inimigo não estiver atirando, patrulha
 
-	move_and_slide()
+	move_and_slide()  # Movimento do inimigo
 
 func attack():
 	if abs(player.global_position.y - global_position.y) > HEIGHT_TOLERANCE:
@@ -59,12 +60,22 @@ func attack():
 func patrol():
 	if is_shooting:
 		return
+	
 	velocity.x = speed * direction
 	animated_sprite_2d.play("walk")
 
-	if is_on_wall():
+	# Inverter direção se detectar parede à frente
+	if wall_ray.is_colliding():
 		direction *= -1
-		flip()
+		update_direction()
+func update_direction():
+	animated_sprite_2d.flip_h = direction < 0
+	gun.position.x = abs(gun.position.x) * direction
+
+	# Atualiza a direção do RayCast2D
+	wall_ray.target_position.x = 16 * direction
+
+
 
 func run_towards_player():
 	direction = 1 if player.global_position.x > global_position.x else -1

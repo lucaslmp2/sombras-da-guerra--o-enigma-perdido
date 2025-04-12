@@ -13,15 +13,30 @@ var is_jumping := false
 var is_attacking := false
 var player_life := Globals.life
 var knockback_vector := Vector2.ZERO
+var can_throw_grenade = true # Variável de controle
 @onready var animation := $anim_inicial as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
-func throw_grenade():
-	var grenade = grenade_scene.instantiate()
-	grenade.position = global_position
-	get_parent().add_child(grenade)
 
-	var throw_direction = Vector2(1, -1) if animation.scale.x > 0 else Vector2(-1, -1)
-	grenade.throw_grenade(throw_direction)
+func throw_grenade():
+	if can_throw_grenade and Globals.granada > 0:
+		var grenade = grenade_scene.instantiate()
+		grenade.position = global_position
+		get_parent().add_child(grenade)
+
+		var throw_direction = Vector2(1, -1) if animation.scale.x > 0 else Vector2(-1, -1)
+		grenade.throw_grenade(throw_direction)
+		Globals.granada -= 1
+		if Globals.granada == 0:
+			can_throw_grenade = false # Impede lançar se não houver granadas
+	elif Globals.granada <= 0:
+		can_throw_grenade = false # Garante que não tente lançar sem granadas
+
+func disable_throwing():
+	can_throw_grenade = false
+
+func enable_throwing():
+	can_throw_grenade = true
+
 func _physics_process(delta):
 	if is_attacking:
 		return
@@ -50,6 +65,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack"):
 		await play_attack_animation("granade")
 		throw_grenade()
+
 	elif Input.is_action_just_pressed("attack_2"):
 		attack_shot() # Change to attack_shot
 
@@ -98,5 +114,6 @@ func shoot():
 	get_parent().add_child(bullet)
 
 func attack_shot():
-	shoot()
-	play_attack_animation("shot")
+	if Globals.bulets > 0:
+		shoot()
+		play_attack_animation("shot")

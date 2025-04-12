@@ -23,13 +23,28 @@ offset_bottom = 89.0
 
 [node name="counter_life" parent="VBoxContainer" instance=ExtResource("1_q5xbw")]
 layout_mode = 2
+region_rect = Rect2(1159, 230, 101, 70)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="counter_bulets" parent="VBoxContainer" instance=ExtResource("2_kqlm8")]
 layout_mode = 2
 size_flags_vertical = 3
+region_rect = Rect2(1159, 230, 100, 70)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="counter_granada" parent="VBoxContainer" instance=ExtResource("3_kqlm8")]
 layout_mode = 2
+region_rect = Rect2(1158, 230, 101, 70)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -48,6 +63,11 @@ grow_horizontal = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+region_rect = Rect2(1159, 230, 100, 70)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="counter_Timer" parent="." instance=ExtResource("5_i2fxc")]
 layout_mode = 1
@@ -60,3 +80,8 @@ offset_right = 82.0
 offset_bottom = 33.0
 grow_horizontal = 2
 size_flags_horizontal = 6
+region_rect = Rect2(1159, 230, 100, 70)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3

@@ -366,12 +366,17 @@ script = ExtResource("1_yvfvc")
 position = Vector2(33.5, -30)
 scale = Vector2(0.851563, 0.78125)
 sprite_frames = SubResource("SpriteFrames_b0iiw")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(30, -4)
+position = Vector2(30, -5)
 shape = SubResource("CapsuleShape2D_g4on0")
 
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2(52, -21)
+
+[node name="WallRay" type="RayCast2D" parent="."]
+position = Vector2(30, -5)
+target_position = Vector2(16, 0)
+collision_mask = 2

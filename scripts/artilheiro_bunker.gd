@@ -1,4 +1,4 @@
-extends Area2D 
+extends Area2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
@@ -18,45 +18,53 @@ func _ready():
 func _process(delta):
 	if health > 0 and ray_cast_2d.is_colliding():
 		var target = ray_cast_2d.get_collider()
-		if target.is_in_group("player") and not shooting:
+		# Adicionando uma verificação para garantir que 'target' não seja nulo
+		if target != null and target.is_in_group("player") and not shooting:
 			start_shooting()
 	else:
 		stop_shooting()
 
 func start_shooting():
 	if health <= 0:
+		stop_shooting() # Garante que não comece a atirar se já estiver morto
 		return
 	shooting = true
 	shoot_burst()
 
 func stop_shooting():
 	shooting = false
+	if health > 0:
+		animated_sprite_2d.play("idle") # Volta para a animação idle se ainda estiver vivo
 
 func shoot_burst():
 	if not shooting or health <= 0:
 		animated_sprite_2d.play("idle")
+		shooting = false # Garante que a flag de shooting seja desligada
 		return
-	
+
 	var origin = global_position + spawn_offset
-	
+
 	var target_direction = Vector2.RIGHT
 	if ray_cast_2d.is_colliding():
-		target_direction = (ray_cast_2d.get_collision_point() - origin).normalized()
-	
+		var collision = ray_cast_2d.get_collider()
+		# Adicionando uma verificação para garantir que houve uma colisão válida
+		if collision != null:
+			target_direction = (ray_cast_2d.get_collision_point() - origin).normalized()
+
 	for i in range(burst_count):
 		if not shooting or health <= 0:
 			break
 
 		animated_sprite_2d.play("shot")
-	
+
 		var bullet = bullet_scene.instantiate()
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = origin
-		
+
 		bullet.set_velocity(target_direction)
-		
+
 		await get_tree().create_timer(fire_rate).timeout
-	
+
 	if shooting and health > 0:
 		shoot_burst()
 
