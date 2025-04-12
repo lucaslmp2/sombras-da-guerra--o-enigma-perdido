@@ -1,5 +1,6 @@
 extends Node2D
 @onready var player: CharacterBody2D = $Player
+@onready var interface: Control = $HUD/Interface
 
 @export var menu_scene: String = "res://Level/main_menu.tscn"  # Define a cena do menu principal
 func _input(event: InputEvent) -> void:

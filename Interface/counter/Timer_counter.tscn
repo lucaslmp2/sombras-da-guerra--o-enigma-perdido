@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7wivyq2tis3d"]
+[gd_scene load_steps=6 format=3 uid="uid://b7wivyq2tis3d"]
 
 [ext_resource type="Texture2D" uid="uid://dfpqtelbpli1x" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.jpg" id="1_0ke1l"]
 [ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="2_monut"]
+[ext_resource type="Script" uid="uid://c5eomojibwjld" path="res://scripts/timer_counter.gd" id="2_oroyi"]
 [ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="3_oroyi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hmw6a"]
@@ -22,6 +23,8 @@ patch_margin_left = 6
 patch_margin_top = 8
 patch_margin_right = 5
 patch_margin_bottom = 7
+script = ExtResource("2_oroyi")
+default_minutes = 5
 
 [node name="timer" type="Label" parent="."]
 layout_mode = 1
@@ -56,3 +59,8 @@ label_settings = SubResource("LabelSettings_hmw6a")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="counter_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="counter_timer" to="." method="_on_counter_timer_timeout"]
