@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://opgcpokvn6pa"]
+[gd_scene load_steps=27 format=4 uid="uid://opgcpokvn6pa"]
 
 [ext_resource type="Texture2D" uid="uid://bxq6b27jc8a2p" path="res://Assets/5 - Misc. universal tiles/warTileset_16x16.png" id="1_2w2vl"]
 [ext_resource type="Script" uid="uid://civw34f02h7k0" path="res://scripts/fase_2.gd" id="1_y5cg7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccta8cig4qgd8" path="res://Prefabs/falling_plataform.tscn" id="3_vpid3"]
 [ext_resource type="PackedScene" uid="uid://f5vq1wjg4xht" path="res://Prefabs/plataform_movel.tscn" id="4_lorl8"]
 [ext_resource type="PackedScene" uid="uid://btpkprxpeeyrg" path="res://Prefabs/hurt_box_agua.tscn" id="4_v4h6t"]
+[ext_resource type="PackedScene" uid="uid://dgiu1tjm7umvf" path="res://Prefabs/cartucheira_de_balas.tscn" id="5_e7nru"]
 [ext_resource type="Texture2D" uid="uid://c43h57wfuayh1" path="res://Assets/War/Background parts/War1/Bright/sky.png" id="5_tknjo"]
 [ext_resource type="PackedScene" uid="uid://cnidnkigi8fn5" path="res://Players/raider_1.tscn" id="5_xi11c"]
 [ext_resource type="Texture2D" uid="uid://dluv8aywme1wu" path="res://Assets/War/Background parts/War1/Bright/sun.png" id="6_gxw76"]
@@ -78,6 +79,11 @@ tile_set = SubResource("TileSet_18e2x")
 
 [node name="granada" parent="granadas" instance=ExtResource("24_7t40f")]
 position = Vector2(224, 632)
+
+[node name="Balas" type="Node2D" parent="."]
+
+[node name="cartucheira_de_balas" parent="Balas" instance=ExtResource("5_e7nru")]
+position = Vector2(360, 196)
 
 [node name="lifes" type="Node2D" parent="."]
 
@@ -318,4 +324,4 @@ position = Vector2(3355, 399)
 position = Vector2(480, 668)
 
 [node name="Player" parent="." instance=ExtResource("2_ib1je")]
-position = Vector2(3862, 520)
+position = Vector2(301, 198)

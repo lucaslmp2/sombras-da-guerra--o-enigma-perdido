@@ -1,0 +1,10 @@
+extends Area2D
+@onready var texture: Sprite2D = $Sprite2D
+
+var bullets := 5
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage") and body is CharacterBody2D: # Supondo que o player tem 'take_damage'
+		Globals.bulets += bullets
+		queue_free()
+	else:
+		print("Corpo que entrou não é o player.")
