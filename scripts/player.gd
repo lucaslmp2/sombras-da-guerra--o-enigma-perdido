@@ -17,6 +17,18 @@ var can_throw_grenade = true # Variável de controle
 @onready var animation := $anim_inicial as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
 
+func _ready():
+	# ... outras conexões de sinal ...
+	if get_parent().has_node("HartPickup"): # Ajuste o nome do nó conforme necessário
+		var hart_pickup = get_parent().get_node("HartPickup")
+		hart_pickup.hart_collected.connect(_on_hart_collected)
+
+func _on_hart_collected(amount):
+	print("Função _on_hart_collected chamada com amount:", amount)
+	Globals.life += amount # Isso já está correto no script de coleta
+	player_life = Globals.life # Atualize a vida do player com o novo valor global
+	print("Vida coletada! player_life:", player_life, "Globals.life:", Globals.life)
+
 func throw_grenade():
 	if can_throw_grenade and Globals.granada > 0:
 		var grenade = grenade_scene.instantiate()
@@ -91,10 +103,11 @@ func follow_camera(camera):
 
 func take_damage(damage := 1, knockback_force := Vector2.ZERO, duration := 0.25):
 	player_life -= damage
+	Globals.life = player_life # Mantenha a vida global sincronizada com a vida do player ao receber dano
 	emit_signal("player_damaged", damage)
 	if player_life <= 0:
 		emit_signal("player_died")
-		queue_free() # Destrói o jogador
+		queue_free()
 	if knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force
 		var knockback_tween := get_tree().create_tween()

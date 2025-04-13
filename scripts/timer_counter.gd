@@ -35,7 +35,6 @@ func reset_clock_timer():
 	counter_timer.start() # Reinicia o timer quando o clock é resetado
 
 func _on_timer_is_up():
-	print("Tempo acabou! Resetando o jogo...")
 	# Adicione aqui a lógica para resetar o seu jogo
 	# Isso pode incluir:
 	# - Recarregar a cena atual:

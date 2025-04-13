@@ -16,7 +16,7 @@ shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
 
 [node name="counter_life" type="NinePatchRect"]
 offset_right = 120.0
-offset_bottom = 40.0
+offset_bottom = 26.0
 size_flags_vertical = 3
 texture = ExtResource("1_717l5")
 region_rect = Rect2(1156, 228, 104, 76)

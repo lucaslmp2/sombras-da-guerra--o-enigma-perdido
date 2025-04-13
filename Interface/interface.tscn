@@ -19,7 +19,7 @@ layout_mode = 1
 offset_left = 24.0
 offset_top = -15.0
 offset_right = 128.0
-offset_bottom = 89.0
+offset_bottom = 43.0
 
 [node name="counter_life" parent="VBoxContainer" instance=ExtResource("1_q5xbw")]
 layout_mode = 2
@@ -49,14 +49,14 @@ patch_margin_bottom = 3
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.786
-anchor_top = -0.012
-anchor_right = 1.028
-anchor_bottom = 0.079
-offset_left = 18.528
-offset_top = -10.224
-offset_right = 18.744
-offset_bottom = -10.192
+anchor_left = 0.802
+anchor_top = -0.028
+anchor_right = 1.044
+anchor_bottom = 0.011
+offset_left = 0.0960083
+offset_top = 0.144001
+offset_right = 0.312012
+offset_bottom = 8.872
 grow_horizontal = 0
 
 [node name="counter_score" parent="HBoxContainer" instance=ExtResource("4_tutnl")]
@@ -77,7 +77,7 @@ anchor_right = 0.5
 offset_left = -75.0
 offset_top = -15.0
 offset_right = 82.0
-offset_bottom = 33.0
+offset_bottom = 9.0
 grow_horizontal = 2
 size_flags_horizontal = 6
 region_rect = Rect2(1159, 230, 100, 70)

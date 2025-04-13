@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8fostgfwbtjo"]
+
+[ext_resource type="Script" uid="uid://c54rwgyinf11w" path="res://scripts/explosion.gd" id="1_nfi1t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfh8g"]
+radius = 74.5252
+
+[node name="Area2D" type="Area2D"]
+collision_mask = 5
+script = ExtResource("1_nfi1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lfh8g")
+debug_color = Color(0.99751, 0, 0.164338, 0.42)

@@ -16,7 +16,7 @@ shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
 
 [node name="counter_granada" type="NinePatchRect"]
 offset_right = 85.0
-offset_bottom = 45.0
+offset_bottom = 29.0
 size_flags_vertical = 3
 texture = ExtResource("1_g82hc")
 region_rect = Rect2(577, 114, 55, 39)

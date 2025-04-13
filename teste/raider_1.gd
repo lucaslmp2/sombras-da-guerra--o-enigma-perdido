@@ -24,21 +24,23 @@ const MAX_HEIGHT_DIFFERENCE = 50  # Tolerância de altura para evitar perseguiç
 
 func _ready():
 	player = get_parent().get_node("Player")
+	if is_instance_valid(player) and player.has_signal("player_died"):
+		player.player_died.connect(_on_player_died)
+	elif not is_instance_valid(player):
+		print("AVISO: Player não é uma instância válida, não é possível conectar ao sinal de morte.")
+	elif not player.has_signal("player_died"):
+		print("AVISO: Player não tem o sinal 'player_died'.")
 
 func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	if is_instance_valid(player):
+		var player_pos = player.global_position
+		var distance_x = abs(player_pos.x - global_position.x)
+		var distance_y = abs(player_pos.y - global_position.y)
 
-	if player:
-		var distance_x = abs(player.global_position.x - global_position.x)
-		var distance_y = abs(player.global_position.y - global_position.y)
-
-		# O inimigo só detecta o jogador se estiver na mesma altura
 		should_follow_player = distance_x <= DETECTION_RANGE_X and distance_y <= MAX_HEIGHT_DIFFERENCE
 
-		# Só persegue se estiver dentro da área de detecção, na mesma altura e não estiver atirando
 		if should_follow_player and not is_shooting and distance_x > SAFE_DISTANCE_X:
-			var direction = (player.global_position - global_position).normalized()
+			var direction = (player_pos - global_position).normalized()
 			velocity.x = direction.x * speed
 			flip()
 		else:
@@ -46,24 +48,18 @@ func _physics_process(delta):
 
 		move_and_slide()
 
-		# O inimigo só atira se o jogador estiver dentro do alcance X e na mesma altura
 		if should_follow_player and distance_x <= SHOOTING_RANGE_X:
 			shooting_timer -= delta
 			if shooting_timer <= 0 and not is_shooting:
 				shoot()
 				shooting_timer = shooting_interval
 		else:
-			is_shooting = false  # Para o tiro se o jogador estiver longe ou em outra altura
-
-	# **Evita que o inimigo continue se aproximando ao detectar o player**
-	if raycast.is_colliding() and is_on_floor() or ray_cast_2d_2.is_colliding() and is_on_floor():
-		var collider = raycast.get_collider()
-		var collider2 = ray_cast_2d_2.get_collider()
-		if collider or collider2 is TileMapLayer:
-			velocity.y = jump_force  # Faz o inimigo pular
-		else:
-			velocity.x = 0  # Se não for um obstáculo, para de se mover
-
+			is_shooting = false
+	else:
+		player = null
+		should_follow_player = false
+		is_shooting = false
+		velocity.x = 0
 func flip():
 	if velocity.x > 0:
 		animation.flip_h = false
@@ -88,7 +84,7 @@ func shoot():
 		# Define o offset para que as balas não saiam todas da mesma posição
 		var offset = Vector2(30 * sign(velocity.x), 0) + Vector2(i * 10 - 10, 0)  # Ajuste o valor 10 conforme necessário para distribuir as balas
 		bullet.position = gun.global_position + offset
-		
+
 		# Calcular a direção de cada bala com base nos ângulos
 		var angle = deg_to_rad(angles[i])  # Converte o ângulo para radiano
 		var direction = Vector2(cos(angle), sin(angle)).normalized()  # Calcula a direção com base no ângulo
@@ -109,6 +105,7 @@ func shoot():
 
 	is_shooting = false  # Permite que ele volte a se mover
 	should_follow_player = abs(player.global_position.x - global_position.x) <= DETECTION_RANGE_X  # Só volta a seguir se o player ainda estiver perto
+
 func take_damage(amount: int):
 	health -= amount
 	if health <= 0:
@@ -121,3 +118,10 @@ func take_damage(amount: int):
 		animation.stop()
 		animation.play("hurt")
 		await get_tree().create_timer(0.5).timeout
+
+func _on_player_died():
+	player = null
+	should_follow_player = false
+	is_shooting = false
+	velocity.x = 0
+	# Você pode adicionar aqui qualquer outra lógica que este inimigo deva fazer ao player morrer
