@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgiu1tjm7umvf"]
 
-[ext_resource type="Texture2D" uid="uid://b0anntuum7hql" path="res://Assets/Prontos/cartucheira_de_balaspng.png" id="1_2f1hu"]
 [ext_resource type="Script" uid="uid://6tfbrb1tvy0l" path="res://scripts/cartucheira_de_balas.gd" id="1_gj0kc"]
+[ext_resource type="Texture2D" uid="uid://2y44hjq1y7t4" path="res://Assets/Prontos/cartucheira_de_balaspng (1).png" id="2_gj0kc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gj0kc"]
 
@@ -15,6 +15,6 @@ shape = SubResource("RectangleShape2D_gj0kc")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.38419e-07, 0)
 scale = Vector2(0.046, 0.062)
-texture = ExtResource("1_2f1hu")
+texture = ExtResource("2_gj0kc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

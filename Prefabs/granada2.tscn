@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dfgplefpvn8ah" path="res://Assets/Prontos/grenade3.png" id="2_h2te7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojmll"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eeddk"]
 atlas = ExtResource("1_ojmll")
