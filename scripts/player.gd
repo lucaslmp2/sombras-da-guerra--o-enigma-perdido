@@ -75,8 +75,9 @@ func _physics_process(delta):
 		animation.play("idle_gangster")
 
 	if Input.is_action_just_pressed("attack"):
-		await play_attack_animation("granade")
-		throw_grenade()
+		if Globals.granada > 0:
+			await play_attack_animation("granade")
+			throw_grenade()
 
 	elif Input.is_action_just_pressed("attack_2"):
 		attack_shot() # Change to attack_shot

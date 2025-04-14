@@ -75,8 +75,6 @@ func update_direction():
 	# Atualiza a direção do RayCast2D
 	wall_ray.target_position.x = 16 * direction
 
-
-
 func run_towards_player():
 	direction = 1 if player.global_position.x > global_position.x else -1
 	velocity.x = speed * direction * 1.5  # Corre mais rápido quando detecta o jogador

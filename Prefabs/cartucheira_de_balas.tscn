@@ -13,8 +13,8 @@ script = ExtResource("1_gj0kc")
 shape = SubResource("RectangleShape2D_gj0kc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.98023e-07, 1.19209e-06)
-scale = Vector2(0.06, 0.08)
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(0.046, 0.062)
 texture = ExtResource("1_2f1hu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -80,15 +80,48 @@ tile_set = SubResource("TileSet_18e2x")
 [node name="granada" parent="granadas" instance=ExtResource("24_7t40f")]
 position = Vector2(224, 632)
 
+[node name="granada2" parent="granadas" instance=ExtResource("24_7t40f")]
+position = Vector2(2823, 271)
+
+[node name="granada3" parent="granadas" instance=ExtResource("24_7t40f")]
+position = Vector2(3968, 512)
+
 [node name="Balas" type="Node2D" parent="."]
 
 [node name="cartucheira_de_balas" parent="Balas" instance=ExtResource("5_e7nru")]
-position = Vector2(360, 196)
+position = Vector2(994, 352)
+
+[node name="cartucheira_de_balas2" parent="Balas" instance=ExtResource("5_e7nru")]
+position = Vector2(1376, 647)
+
+[node name="cartucheira_de_balas3" parent="Balas" instance=ExtResource("5_e7nru")]
+position = Vector2(2304, 433)
+
+[node name="cartucheira_de_balas5" parent="Balas" instance=ExtResource("5_e7nru")]
+position = Vector2(3178, 536)
+
+[node name="cartucheira_de_balas6" parent="Balas" instance=ExtResource("5_e7nru")]
+position = Vector2(3596, 407)
+
+[node name="cartucheira_de_balas4" parent="Balas" instance=ExtResource("5_e7nru")]
+position = Vector2(1856, 652)
 
 [node name="lifes" type="Node2D" parent="."]
 
 [node name="hart" parent="lifes" instance=ExtResource("2_6ory5")]
 position = Vector2(240, 336)
+
+[node name="hart2" parent="lifes" instance=ExtResource("2_6ory5")]
+position = Vector2(1840, 528)
+
+[node name="hart3" parent="lifes" instance=ExtResource("2_6ory5")]
+position = Vector2(2546, 528)
+
+[node name="hart4" parent="lifes" instance=ExtResource("2_6ory5")]
+position = Vector2(2550, 368)
+
+[node name="hart5" parent="lifes" instance=ExtResource("2_6ory5")]
+position = Vector2(3578, 512)
 
 [node name="chest" parent="." instance=ExtResource("15_miokp")]
 position = Vector2(3984, 680)
@@ -315,13 +348,16 @@ centered = false
 position = Vector2(1073, 126)
 
 [node name="Area2D2" parent="." groups=["enemy"] instance=ExtResource("19_630vd")]
-position = Vector2(2149, 271)
+position = Vector2(2322, 271)
 
 [node name="Area2D3" parent="." groups=["enemy"] instance=ExtResource("19_630vd")]
-position = Vector2(3355, 399)
+position = Vector2(3416, 286)
+
+[node name="Area2D4" parent="." groups=["enemy"] instance=ExtResource("19_630vd")]
+position = Vector2(3823, 286)
 
 [node name="Patrulha" parent="." groups=["enemy"] instance=ExtResource("20_58tnr")]
 position = Vector2(480, 668)
 
 [node name="Player" parent="." instance=ExtResource("2_ib1je")]
-position = Vector2(301, 198)
+position = Vector2(268, 199)
