@@ -4,6 +4,7 @@
 
 [resource]
 default_font = ExtResource("1_kgbq8")
+default_font_size = 36
 Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0.211765, 0.239216, 0.290196, 1)
+Label/colors/font_outline_color = Color(0.0352941, 0.0470588, 0.0470588, 1)
+Label/colors/font_shadow_color = Color(0.443137, 0.282353, 0.2, 1)

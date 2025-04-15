@@ -16,14 +16,18 @@ shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
 
 [node name="counter_bulets" type="NinePatchRect"]
 anchors_preset = -1
-anchor_right = 0.121
-anchor_bottom = 0.1
-offset_right = -0.391998
-offset_bottom = -38.8
+anchor_top = 0.029
+anchor_right = 0.122
+anchor_bottom = 0.069
+offset_left = 2.0
+offset_top = 0.208
+offset_right = 0.455994
+offset_bottom = 0.287998
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 texture = ExtResource("1_42e7q")
-region_rect = Rect2(577, 114, 55, 39)
+region_rect = Rect2(853, 2111, 122, 54)
 patch_margin_left = 6
 patch_margin_top = 8
 patch_margin_right = 5

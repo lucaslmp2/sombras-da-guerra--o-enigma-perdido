@@ -33,7 +33,6 @@ patch_margin_bottom = 3
 
 [node name="counter_bulets" parent="VBoxContainer" instance=ExtResource("2_kqlm8")]
 layout_mode = 2
-size_flags_vertical = 3
 texture = null
 region_rect = Rect2(1159, 230, 100, 70)
 patch_margin_left = 3
@@ -43,6 +42,7 @@ patch_margin_bottom = 3
 
 [node name="counter_granada" parent="VBoxContainer" instance=ExtResource("3_kqlm8")]
 layout_mode = 2
+texture = null
 region_rect = Rect2(1158, 230, 101, 70)
 patch_margin_left = 3
 patch_margin_top = 3
@@ -101,24 +101,31 @@ patch_margin_bottom = 3
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
+anchor_top = 0.0
 anchor_right = 0.5
-offset_left = -77.0
+anchor_bottom = 0.0
+offset_left = -145.0
 offset_top = -12.0
-offset_right = 80.0
+offset_right = 142.0
 offset_bottom = 12.0
-grow_horizontal = 2
+grow_vertical = 1
 size_flags_horizontal = 6
-texture = null
 region_rect = Rect2(1159, 230, 100, 70)
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="counter_Timer"]
 z_index = -1
-layout_mode = 0
-offset_top = 3.0
-offset_right = 153.0
-offset_bottom = 25.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.243137)
+metadata/_edit_use_anchors_ = true

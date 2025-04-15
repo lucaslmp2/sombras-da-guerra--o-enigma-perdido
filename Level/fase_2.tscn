@@ -9,21 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://f5vq1wjg4xht" path="res://Prefabs/plataform_movel.tscn" id="4_lorl8"]
 [ext_resource type="PackedScene" uid="uid://btpkprxpeeyrg" path="res://Prefabs/hurt_box_agua.tscn" id="4_v4h6t"]
 [ext_resource type="PackedScene" uid="uid://dgiu1tjm7umvf" path="res://Prefabs/cartucheira_de_balas.tscn" id="5_e7nru"]
-[ext_resource type="Texture2D" uid="uid://c43h57wfuayh1" path="res://Assets/War/Background parts/War1/Bright/sky.png" id="5_tknjo"]
 [ext_resource type="PackedScene" uid="uid://cnidnkigi8fn5" path="res://Players/raider_1.tscn" id="5_xi11c"]
 [ext_resource type="Texture2D" uid="uid://dluv8aywme1wu" path="res://Assets/War/Background parts/War1/Bright/sun.png" id="6_gxw76"]
-[ext_resource type="Texture2D" uid="uid://dqbxv4r1xf7ev" path="res://Assets/War/Background parts/War1/Bright/ruins.png" id="7_ql23s"]
-[ext_resource type="Texture2D" uid="uid://dexewev4sl680" path="res://Assets/War/Background parts/War1/Bright/houses2.png" id="8_3uu7p"]
-[ext_resource type="Texture2D" uid="uid://t7bk2y0qc5j7" path="res://Assets/War/Background parts/War1/Bright/house3.png" id="9_0ytmc"]
-[ext_resource type="Texture2D" uid="uid://b34x32ddl34xg" path="res://Assets/War/Background parts/War1/Bright/fence.png" id="10_jb0gx"]
-[ext_resource type="Texture2D" uid="uid://bklejqooljfxc" path="res://Assets/War/Background parts/War1/Bright/road.png" id="11_ntgto"]
-[ext_resource type="Texture2D" uid="uid://bkdk5u53grk16" path="res://Assets/War/Background parts/War1/Bright/crater3.png" id="12_fasvq"]
-[ext_resource type="Texture2D" uid="uid://b0ac50kfkt24l" path="res://Assets/War/Background parts/War1/Bright/crater2.png" id="13_njh78"]
-[ext_resource type="Texture2D" uid="uid://ct72jv67mfehm" path="res://Assets/War/Background parts/War1/Bright/crater1.png" id="14_0ncnp"]
+[ext_resource type="Texture2D" uid="uid://g2sg06r6iobs" path="res://Assets/War/Background parts/War2/Bright/sky.png" id="13_qwr5j"]
 [ext_resource type="PackedScene" uid="uid://cdpanb3tigvwu" path="res://Prefabs/chest.tscn" id="15_miokp"]
+[ext_resource type="Texture2D" uid="uid://c6fn4d22c0kxk" path="res://Assets/War/Background parts/War2/Bright/houses4.png" id="15_ueuog"]
+[ext_resource type="Texture2D" uid="uid://c7evwovndkwt" path="res://Assets/War/Background parts/War2/Bright/houses3.png" id="16_ylhbf"]
+[ext_resource type="Texture2D" uid="uid://dx8ymnibvjegq" path="res://Assets/War/Background parts/War2/Bright/houses2.png" id="17_dxylu"]
+[ext_resource type="Texture2D" uid="uid://bh2pvggnfsj8u" path="res://Assets/War/Background parts/War2/Bright/houses1.png" id="18_8xh5f"]
+[ext_resource type="Texture2D" uid="uid://2hss7wpapvgq" path="res://Assets/War/Background parts/War2/Bright/wall.png" id="19_7a6dq"]
 [ext_resource type="PackedScene" uid="uid://cmmrem1u8vffk" path="res://Prefabs/artilheiro_bunker.tscn" id="19_630vd"]
+[ext_resource type="Texture2D" uid="uid://8lvr8c35jobv" path="res://Assets/War/Background parts/War2/Bright/road.png" id="20_5nhru"]
 [ext_resource type="PackedScene" uid="uid://dbak1g00f1x70" path="res://Prefabs/patrulha2.tscn" id="20_58tnr"]
+[ext_resource type="Texture2D" uid="uid://juv88eqq6gxq" path="res://Assets/War/Background parts/War2/Bright/cracks2.png" id="21_2wb77"]
 [ext_resource type="PackedScene" uid="uid://cr57trjkre8y3" path="res://Interface/interface.tscn" id="21_v5nu6"]
+[ext_resource type="Texture2D" uid="uid://3ar7smswog7o" path="res://Assets/War/Background parts/War2/Bright/cracks1.png" id="22_cq3k4"]
 [ext_resource type="PackedScene" uid="uid://brfyk6iufmosp" path="res://Prefabs/granada.tscn" id="24_7t40f"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="26_qwr5j"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="27_ueuog"]
@@ -80,7 +80,7 @@ script = ExtResource("1_y5cg7")
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(330, 199)
-zoom = Vector2(0.9, 0.9)
+zoom = Vector2(1.1, 1)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -163,107 +163,8 @@ script = ExtResource("26_qwr5j")
 tween_resource = SubResource("Resource_ueuog")
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
-[node name="plataform_movel" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(1168, 664)
-distance = 488
-movie_horizontal = false
-
-[node name="plataform_movel4" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(1376, 552)
-distance = 384
-movie_horizontal = false
-
-[node name="plataform_movel5" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(1712, 664)
-distance = 144
-movie_horizontal = false
-
-[node name="plataform_movel6" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(1840, 424)
-distance = 120
-movie_horizontal = false
-
-[node name="plataform_movel7" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(2096, 424)
-distance = 120
-movie_horizontal = false
-
-[node name="plataform_movel8" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(2232, 664)
-distance = 160
-movie_horizontal = false
-
-[node name="plataform_movel9" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(2448, 664)
-distance = 496
-movie_horizontal = false
-
-[node name="plataform_movel10" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(2920, 664)
-distance = 80
-movie_horizontal = false
-
-[node name="plataform_movel12" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(3040, 664)
-distance = 336
-movie_horizontal = false
-
-[node name="plataform_movel13" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(3344, 664)
-distance = 80
-movie_horizontal = false
-
-[node name="plataform_movel14" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(3496, 664)
-distance = 224
-movie_horizontal = false
-
-[node name="plataform_movel15" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(3744, 664)
-distance = 336
-movie_horizontal = false
-
-[node name="plataform_movel11" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(2648, 472)
-distance = 148
-movie_horizontal = false
-
-[node name="plataform_movel2" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(864, 520)
-distance = 128
-movie_horizontal = false
-
-[node name="plataform_movel3" parent="." instance=ExtResource("4_lorl8")]
-position = Vector2(360, 520)
-distance = 128
-movie_horizontal = false
-
 [node name="raider_1" parent="." instance=ExtResource("5_xi11c")]
 position = Vector2(3912, 622)
-
-[node name="falling_plataform" parent="." instance=ExtResource("3_vpid3")]
-position = Vector2(708, 240)
-
-[node name="falling_plataform8" parent="." instance=ExtResource("3_vpid3")]
-position = Vector2(750, 240)
-
-[node name="falling_plataform5" parent="." instance=ExtResource("3_vpid3")]
-position = Vector2(666, 240)
-
-[node name="falling_plataform2" parent="." instance=ExtResource("3_vpid3")]
-position = Vector2(624, 240)
-
-[node name="falling_plataform6" parent="." instance=ExtResource("3_vpid3")]
-position = Vector2(584, 240)
-
-[node name="falling_plataform7" parent="." instance=ExtResource("3_vpid3")]
-position = Vector2(544, 240)
-
-[node name="falling_plataform3" parent="." instance=ExtResource("3_vpid3")]
-position = Vector2(504, 240)
-
-[node name="falling_plataform4" parent="." instance=ExtResource("3_vpid3")]
-position = Vector2(464, 240)
 
 [node name="Agua" type="Node2D" parent="."]
 
@@ -272,14 +173,13 @@ z_index = -1
 position = Vector2(411, 336)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("5_tknjo")
+texture = ExtResource("13_qwr5j")
 centered = false
 
 [node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -288,10 +188,11 @@ motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer11"]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("5_tknjo")
+texture = ExtResource("13_qwr5j")
 centered = false
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer10"]
@@ -305,7 +206,7 @@ motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer9"]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("7_ql23s")
+texture = ExtResource("15_ueuog")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -314,7 +215,7 @@ motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("8_3uu7p")
+texture = ExtResource("16_ylhbf")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -323,7 +224,7 @@ motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("9_0ytmc")
+texture = ExtResource("17_dxylu")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -332,46 +233,40 @@ motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_jb0gx")
+texture = ExtResource("18_8xh5f")
 centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1536, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
-position = Vector2(0, 1.52588e-05)
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("11_ntgto")
+texture = ExtResource("19_7a6dq")
 centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
-visible = false
+position = Vector2(0, 1.52588e-05)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("12_fasvq")
+texture = ExtResource("20_5nhru")
 centered = false
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
-visible = false
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("13_njh78")
+texture = ExtResource("21_2wb77")
 centered = false
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer8"]
-visible = false
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("14_0ncnp")
+texture = ExtResource("22_cq3k4")
 centered = false
 
 [node name="Patrulha" parent="." groups=["enemy"] instance=ExtResource("20_58tnr")]
@@ -390,7 +285,7 @@ script = ExtResource("26_qwr5j")
 priority = 5
 follow_mode = 2
 follow_target = NodePath("../Player")
-zoom = Vector2(0.9, 0.9)
+zoom = Vector2(1.1, 1)
 snap_to_pixel = true
 tween_resource = SubResource("Resource_qwr5j")
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
@@ -408,3 +303,106 @@ position = Vector2(3416, 286)
 
 [node name="Area2D4" parent="Artilheiros_bunker" groups=["enemy"] instance=ExtResource("19_630vd")]
 position = Vector2(3823, 286)
+
+[node name="Plataformas_ingrimes" type="Node2D" parent="."]
+
+[node name="falling_plataform" parent="Plataformas_ingrimes" instance=ExtResource("3_vpid3")]
+position = Vector2(708, 240)
+
+[node name="falling_plataform8" parent="Plataformas_ingrimes" instance=ExtResource("3_vpid3")]
+position = Vector2(750, 240)
+
+[node name="falling_plataform5" parent="Plataformas_ingrimes" instance=ExtResource("3_vpid3")]
+position = Vector2(666, 240)
+
+[node name="falling_plataform2" parent="Plataformas_ingrimes" instance=ExtResource("3_vpid3")]
+position = Vector2(624, 240)
+
+[node name="falling_plataform6" parent="Plataformas_ingrimes" instance=ExtResource("3_vpid3")]
+position = Vector2(584, 240)
+
+[node name="falling_plataform7" parent="Plataformas_ingrimes" instance=ExtResource("3_vpid3")]
+position = Vector2(544, 240)
+
+[node name="falling_plataform3" parent="Plataformas_ingrimes" instance=ExtResource("3_vpid3")]
+position = Vector2(504, 240)
+
+[node name="falling_plataform4" parent="Plataformas_ingrimes" instance=ExtResource("3_vpid3")]
+position = Vector2(464, 240)
+
+[node name="Plataformas_moveis" type="Node2D" parent="."]
+
+[node name="plataform_movel" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(1168, 664)
+distance = 488
+movie_horizontal = false
+
+[node name="plataform_movel4" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(1376, 552)
+distance = 384
+movie_horizontal = false
+
+[node name="plataform_movel5" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(1712, 664)
+distance = 144
+movie_horizontal = false
+
+[node name="plataform_movel6" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(1840, 424)
+distance = 120
+movie_horizontal = false
+
+[node name="plataform_movel7" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(2096, 424)
+distance = 120
+movie_horizontal = false
+
+[node name="plataform_movel8" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(2232, 664)
+distance = 160
+movie_horizontal = false
+
+[node name="plataform_movel9" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(2448, 664)
+distance = 496
+movie_horizontal = false
+
+[node name="plataform_movel10" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(2920, 664)
+distance = 80
+movie_horizontal = false
+
+[node name="plataform_movel12" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(3040, 664)
+distance = 336
+movie_horizontal = false
+
+[node name="plataform_movel13" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(3344, 664)
+distance = 80
+movie_horizontal = false
+
+[node name="plataform_movel14" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(3496, 664)
+distance = 224
+movie_horizontal = false
+
+[node name="plataform_movel15" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(3744, 664)
+distance = 336
+movie_horizontal = false
+
+[node name="plataform_movel11" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(2648, 472)
+distance = 148
+movie_horizontal = false
+
+[node name="plataform_movel2" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(864, 520)
+distance = 128
+movie_horizontal = false
+
+[node name="plataform_movel3" parent="Plataformas_moveis" instance=ExtResource("4_lorl8")]
+position = Vector2(360, 520)
+distance = 128
+movie_horizontal = false
