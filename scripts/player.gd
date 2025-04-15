@@ -11,14 +11,14 @@ const JUMP_FORCE = -300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping := false
 var is_attacking := false
-var player_life := Globals.life
+var player_life := Globals.life # Inicializa a vida do player com o valor global
 var knockback_vector := Vector2.ZERO
 var can_throw_grenade = true # Variável de controle
 @onready var animation := $anim_inicial as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
 
 func _ready():
-	pass
+	player_life = Globals.life
 
 func throw_grenade():
 	if can_throw_grenade and Globals.granada > 0:
@@ -96,10 +96,23 @@ func follow_camera(camera):
 func take_damage(damage := 1, knockback_force := Vector2.ZERO, duration := 0.25):
 	player_life -= damage
 	Globals.life = player_life # Mantenha a vida global sincronizada com a vida do player ao receber dano
+	play_attack_animation("hurt_gangster")
 	emit_signal("player_damaged", damage)
 	if player_life <= 0:
+		play_attack_animation("dead_gangster")
 		emit_signal("player_died")
-		queue_free()
+		# Desabilita a colisão do player DEFERRED (CORRETO)
+		if has_node("CollisionShape2D"):
+			call_deferred("set", "get_node(\"CollisionShape2D\").disabled", true)
+		elif has_node("CollisionPolygon2D"):
+			call_deferred("set", "get_node(\"CollisionPolygon2D\").disabled", true)
+		# Adicione outras formas de colisão que seu player possa ter aqui
+
+	if knockback_force != Vector2.ZERO:
+		knockback_vector = knockback_force
+		var knockback_tween := get_tree().create_tween()
+		knockback_tween.tween_property(self, "knockback_vector", Vector2.ZERO, duration)
+
 	if knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force
 		var knockback_tween := get_tree().create_tween()

@@ -26,10 +26,6 @@ func _ready():
 	player = get_parent().get_node("character/Player")
 	if is_instance_valid(player) and player.has_signal("player_died"):
 		player.player_died.connect(_on_player_died)
-	elif not is_instance_valid(player):
-		print("AVISO: Player não é uma instância válida, não é possível conectar ao sinal de morte.")
-	elif not player.has_signal("player_died"):
-		print("AVISO: Player não tem o sinal 'player_died'.")
 
 func _physics_process(delta):
 	if is_instance_valid(player):
@@ -69,43 +65,43 @@ func flip():
 		animation.flip_h = true
 		animation.play("run")
 		raycast.position.x = -abs(raycast.position.x)
-
 func shoot():
-	is_shooting = true  # Para tudo enquanto atira
-	should_follow_player = false  # Para de perseguir o player enquanto atira
+	is_shooting = true
+	should_follow_player = false
 
-	# Definir os ângulos de disparo para as balas
-	var angles = [-10, 0, 10]  # A bala no centro (0°), uma para a esquerda (-10°) e uma para a direita (+10°)
+	if not is_instance_valid(player):
+		is_shooting = false
+		return
 
-	# Instancia as 3 balas
+	var angles = [-10, 0, 10]
+
 	for i in range(3):
 		var bullet = bullet_scene.instantiate()
-
-		# Define o offset para que as balas não saiam todas da mesma posição
-		var offset = Vector2(30 * sign(velocity.x), 0) + Vector2(i * 10 - 10, 0)  # Ajuste o valor 10 conforme necessário para distribuir as balas
+		var offset = Vector2(30 * sign(velocity.x), 0) + Vector2(i * 10 - 10, 0)
 		bullet.position = gun.global_position + offset
+		var angle = deg_to_rad(angles[i])
+		var direction = Vector2(cos(angle), sin(angle)).normalized()
 
-		# Calcular a direção de cada bala com base nos ângulos
-		var angle = deg_to_rad(angles[i])  # Converte o ângulo para radiano
-		var direction = Vector2(cos(angle), sin(angle)).normalized()  # Calcula a direção com base no ângulo
+		if is_instance_valid(player):
+			var player_direction = (player.global_position - global_position).normalized()
+			direction.x = player_direction.x
+			bullet.velocity = direction * 600
+			get_parent().add_child(bullet)
+		else:
+			bullet.queue_free()
 
-		# Agora calculamos a direção para o player, independentemente da direção do rider_1
-		var player_direction = (player.global_position - global_position).normalized()  # Direção do jogador
-		direction.x = player_direction.x  # Direção das balas agora segue a direção do jogador, não do rider_1
-
-		# Aplica a velocidade na direção
-		bullet.velocity = direction * 600  # Velocidade das balas
-
-		get_parent().add_child(bullet)  # Adiciona a bala ao jogo
-
-	# Toca a animação de tiro
 	animation.play("shot")
-	await get_tree().create_timer(0.3).timeout  # Mantém a animação visível por 0.3s
+	await get_tree().create_timer(0.3).timeout
+
+	# **ADICIONE ESTA VERIFICAÇÃO APÓS O TIMER**
+	if not is_instance_valid(player):
+		is_shooting = false
+		return
+
 	await animation.animation_finished
 
-	is_shooting = false  # Permite que ele volte a se mover
-	should_follow_player = abs(player.global_position.x - global_position.x) <= DETECTION_RANGE_X  # Só volta a seguir se o player ainda estiver perto
-
+	is_shooting = false
+	should_follow_player = abs(player.global_position.x - global_position.x) <= DETECTION_RANGE_X
 func take_damage(amount: int):
 	health -= amount
 	if health <= 0:

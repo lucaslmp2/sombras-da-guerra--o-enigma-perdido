@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3onesj6vxk6w"]
+[gd_scene load_steps=6 format=3 uid="uid://c3onesj6vxk6w"]
 
-[ext_resource type="Texture2D" uid="uid://dfpqtelbpli1x" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.jpg" id="1_g82hc"]
 [ext_resource type="Script" uid="uid://ibt07gymrjpr" path="res://scripts/counter_granada.gd" id="2_mrxel"]
 [ext_resource type="Texture2D" uid="uid://6kih8guq17kc" path="res://Assets/5 - Misc. universal tiles/grenade2.png" id="2_nbdct"]
 [ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="3_mrxel"]
@@ -18,7 +17,6 @@ shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
 offset_right = 85.0
 offset_bottom = 29.0
 size_flags_vertical = 3
-texture = ExtResource("1_g82hc")
 region_rect = Rect2(577, 114, 55, 39)
 patch_margin_left = 6
 patch_margin_top = 8

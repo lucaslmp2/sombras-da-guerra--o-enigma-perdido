@@ -8,7 +8,7 @@ const HEIGHT_TOLERANCE = 30  # Margem de tolerância no eixo Y para considerar q
 @onready var gun: Node2D = $Gun/Marker2D
 @onready var wall_ray = $WallRay
 @export var direction: int = 1  # 1 para direita, -1 para esquerda
-@export var speed: float = 50
+@export var speed: float = 100
 @export var health: int = 5  # Vida do inimigo
 @export var bullet_scene: PackedScene = preload("res://Prefabs/bullet_rider_1.tscn")
 

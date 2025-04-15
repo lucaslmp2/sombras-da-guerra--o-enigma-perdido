@@ -848,7 +848,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt_gangster",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1271,7 +1271,7 @@ target_position = Vector2(-28, 0)
 position = Vector2(-12, -19)
 scale = Vector2(0.671875, 0.703125)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"jump_gangster"
+animation = &"idle_gangster_2"
 autoplay = "idle"
 
 [node name="Marker2D" type="Marker2D" parent="."]
