@@ -5,7 +5,7 @@ const SAFE_DISTANCE_X = 100  # Distância mínima para parar de avançar
 const SHOOT_DISTANCE_X = 200  # Distância ideal para atirar
 const HEIGHT_TOLERANCE = 30  # Margem de tolerância no eixo Y para considerar que estão na mesma altura
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var gun: Node2D = $Gun
+@onready var gun: Node2D = $Gun/Marker2D
 @onready var wall_ray = $WallRay
 @export var direction: int = 1  # 1 para direita, -1 para esquerda
 @export var speed: float = 50
@@ -18,7 +18,7 @@ var is_shooting := false
 var should_follow_player := false
 
 func _ready():
-	player = get_parent().get_node("Player")
+	player = get_parent().get_node("character/Player")
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta

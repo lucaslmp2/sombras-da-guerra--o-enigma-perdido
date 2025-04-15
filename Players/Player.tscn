@@ -1259,13 +1259,6 @@ position = Vector2(38, 35)
 collision_mask = 10
 script = ExtResource("1_btl8f")
 
-[node name="camera" type="Camera2D" parent="."]
-position = Vector2(-14, -48)
-limit_left = -50
-limit_smoothed = true
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-
 [node name="ray_right" type="RayCast2D" parent="."]
 position = Vector2(-13, 1)
 target_position = Vector2(27, 0)
@@ -1278,9 +1271,8 @@ target_position = Vector2(-28, 0)
 position = Vector2(-12, -19)
 scale = Vector2(0.671875, 0.703125)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"idle_gangster"
+animation = &"jump_gangster"
 autoplay = "idle"
-frame_progress = 0.553784
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(2, -2)

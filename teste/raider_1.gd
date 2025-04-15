@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal player_died()
 @export var speed: float = 100
 @export var shooting_interval: float = 2.0
 @export var health: int = 3
@@ -23,7 +23,7 @@ const SAFE_DISTANCE_X = 100
 const MAX_HEIGHT_DIFFERENCE = 50  # Tolerância de altura para evitar perseguição/tiros errados
 
 func _ready():
-	player = get_parent().get_node("Player")
+	player = get_parent().get_node("character/Player")
 	if is_instance_valid(player) and player.has_signal("player_died"):
 		player.player_died.connect(_on_player_died)
 	elif not is_instance_valid(player):
@@ -124,4 +124,5 @@ func _on_player_died():
 	should_follow_player = false
 	is_shooting = false
 	velocity.x = 0
+	emit_signal("player_died")
 	# Você pode adicionar aqui qualquer outra lógica que este inimigo deva fazer ao player morrer

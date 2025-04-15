@@ -4,18 +4,33 @@
 [ext_resource type="Texture2D" uid="uid://capjsdrvtetrx" path="res://Assets/Prontos/Water_frames (16 x 32).png" id="2_hmix3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf2gv"]
-size = Vector2(94, 21)
+size = Vector2(384, 32)
 
 [node name="HurtBoxAgua" type="Area2D"]
 script = ExtResource("1_i2av5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(85, 15.5)
+position = Vector2(192, 40)
 shape = SubResource("RectangleShape2D_nf2gv")
 debug_color = Color(0.954677, 0.180888, 0.297235, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(85, 18)
+position = Vector2(48, 24)
+scale = Vector2(3, 2.15625)
+texture = ExtResource("2_hmix3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(240, 24)
+scale = Vector2(3, 2.15625)
+texture = ExtResource("2_hmix3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(336, 24)
+scale = Vector2(3, 2.15625)
+texture = ExtResource("2_hmix3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(144, 24)
 scale = Vector2(3, 2.15625)
 texture = ExtResource("2_hmix3")
 

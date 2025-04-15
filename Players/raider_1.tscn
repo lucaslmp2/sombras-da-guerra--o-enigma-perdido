@@ -595,7 +595,7 @@ script = ExtResource("1_d3p28")
 position = Vector2(2, 11.5)
 scale = Vector2(0.84375, 0.851563)
 sprite_frames = SubResource("SpriteFrames_8si2i")
-animation = &"idle"
+animation = &"shot"
 autoplay = "idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

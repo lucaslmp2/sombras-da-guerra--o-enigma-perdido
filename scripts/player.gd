@@ -18,16 +18,7 @@ var can_throw_grenade = true # Variável de controle
 @onready var remote_transform := $remote as RemoteTransform2D
 
 func _ready():
-	# ... outras conexões de sinal ...
-	if get_parent().has_node("HartPickup"): # Ajuste o nome do nó conforme necessário
-		var hart_pickup = get_parent().get_node("HartPickup")
-		hart_pickup.hart_collected.connect(_on_hart_collected)
-
-func _on_hart_collected(amount):
-	print("Função _on_hart_collected chamada com amount:", amount)
-	Globals.life += amount # Isso já está correto no script de coleta
-	player_life = Globals.life # Atualize a vida do player com o novo valor global
-	print("Vida coletada! player_life:", player_life, "Globals.life:", Globals.life)
+	pass
 
 func throw_grenade():
 	if can_throw_grenade and Globals.granada > 0:

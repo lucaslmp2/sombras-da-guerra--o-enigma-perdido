@@ -12,7 +12,7 @@ func _on_body_entered(body):
 		return
 	if body.is_in_group(player_group):
 		is_dying = true  # Marca que o player está morrendo para evitar loops
-		if body.has_method("pulo"):
+		if body.has_method(""):
 			body.jump()  # Faz o player pular
 		else:
 			body.velocity.y = jump_force  # Aplica impulso manualmente

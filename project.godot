@@ -19,11 +19,16 @@ config/icon="res://icon.svg"
 
 DialogManager="*res://singletons/dialog_manager.gd"
 Globals="*res://scripts/globals.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
 window/size/mode=2
 window/stretch/scale=2.43
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
