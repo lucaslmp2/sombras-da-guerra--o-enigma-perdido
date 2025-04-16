@@ -1032,9 +1032,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0ca7f")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_gangster",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1271,7 +1271,7 @@ target_position = Vector2(-28, 0)
 position = Vector2(-12, -19)
 scale = Vector2(0.671875, 0.703125)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"idle_gangster_2"
+animation = &"idle_gangster"
 autoplay = "idle"
 
 [node name="Marker2D" type="Marker2D" parent="."]
