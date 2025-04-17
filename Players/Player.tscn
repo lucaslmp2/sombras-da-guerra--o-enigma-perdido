@@ -1,4 +1,4 @@
-[gd_scene load_steps=184 format=3 uid="uid://q52ojf1xim6e"]
+[gd_scene load_steps=186 format=3 uid="uid://q52ojf1xim6e"]
 
 [ext_resource type="Script" uid="uid://bwpk77dc0rwif" path="res://scripts/player.gd" id="1_btl8f"]
 [ext_resource type="Texture2D" uid="uid://rwfxq2mdja07" path="res://Assets/Prontos/Gangsters_2/Attack_1.png" id="3_hfae2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d4ccubfu2in72" path="res://Assets/Prontos/Gangsters_1/Dead.png" id="7_2maub"]
 [ext_resource type="Texture2D" uid="uid://c3f2crl6s306b" path="res://Assets/Prontos/Gangsters_1/granade.png" id="8_3u7t7"]
 [ext_resource type="Texture2D" uid="uid://dl3k7p1ib7kio" path="res://Assets/Prontos/Gangsters_1/Jump.png" id="8_a72c0"]
+[ext_resource type="Texture2D" uid="uid://b5jyjmstrsax1" path="res://Assets/Prontos/Gangsters_1/EmTirolesa.png" id="8_ls07k"]
 [ext_resource type="Texture2D" uid="uid://vaoo5xvfwwo8" path="res://Assets/Prontos/Gangsters_2/Hurt.png" id="9_6k4kd"]
 [ext_resource type="Texture2D" uid="uid://3xmdd2wyay56" path="res://Assets/Prontos/Gangsters_1/Hurt.png" id="10_ymq04"]
 [ext_resource type="Texture2D" uid="uid://nhga7vops4ur" path="res://Assets/Prontos/Gangsters_2/Idle.png" id="11_2sfkr"]
@@ -141,6 +142,10 @@ region = Rect2(1024, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ivlq"]
 atlas = ExtResource("8_a72c0")
 region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j68rv"]
+atlas = ExtResource("8_ls07k")
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ls07k"]
 atlas = ExtResource("8_3u7t7")
@@ -786,6 +791,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j68rv")
+}],
+"loop": false,
+"name": &"emtirolesa",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ls07k")
 }, {
 "duration": 1.0,
@@ -1271,8 +1284,9 @@ target_position = Vector2(-28, 0)
 position = Vector2(-12, -19)
 scale = Vector2(0.671875, 0.703125)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"idle_gangster"
+animation = &"emtirolesa"
 autoplay = "idle"
+frame_progress = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(2, -2)

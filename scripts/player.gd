@@ -142,11 +142,7 @@ func agarrar_tirolesa(corda):
 			velocity = Vector2.ZERO # Zera a velocidade ao agarrar
 			gravity = 0 # Desativa a gravidade enquanto na tirolesa
 			is_jumping = false # Reseta o estado de pulo
-			print("PLAYER: Player agarrou a tirolesa! corda_path:", corda_path.name, "path_follow_node:", path_follow_node.name)
-		else:
-			print("PLAYER: ERRO! 'PathFollow2D' não encontrado como filho de:", corda.name)
-	else:
-		print("PLAYER: Já está na tirolesa.")
+			animation.play("emtirolesa")
 
 func soltar_tirolesa():
 	if is_na_tirolesa:

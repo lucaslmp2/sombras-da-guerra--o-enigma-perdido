@@ -1,9 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://bjea74380xpmf"]
+[gd_scene load_steps=25 format=3 uid="uid://bjea74380xpmf"]
 
 [ext_resource type="Script" uid="uid://bj26nb61f3h0u" path="res://scripts/area_de_corda.gd" id="1_wjbao"]
 [ext_resource type="Texture2D" uid="uid://6mphbfdssm1f" path="res://Assets/Prontos/cordas.png" id="2_sk61k"]
 [ext_resource type="Texture2D" uid="uid://bkn7qewgpfwst" path="res://Assets/Prontos/gancho.png" id="2_uvrwr"]
 [ext_resource type="Texture2D" uid="uid://dc37kdtv4u7xl" path="res://Assets/Prontos/engrenagens.png" id="3_a6ban"]
+[ext_resource type="Texture2D" uid="uid://bbgecoobuauen" path="res://Assets/Prontos/capa_de_engrenagem.png" id="5_bgi55"]
+[ext_resource type="Texture2D" uid="uid://c63ymkyftahjn" path="res://Assets/Prontos/correntes.png" id="6_4mdac"]
+[ext_resource type="Texture2D" uid="uid://nco8s8al6yg7" path="res://Assets/Prontos/polia_de_tirolesa.png" id="7_52trn"]
 
 [sub_resource type="Curve2D" id="Curve2D_wjbao"]
 _data = {
@@ -131,24 +134,23 @@ curve = SubResource("Curve2D_wjbao")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(3.82717, 2.70004)
-rotation = -0.000478626
-scale = Vector2(1, 1)
+rotation = -0.000478629
+cubic_interp = false
 
 [node name="Area2D" type="Area2D" parent="PathFollow2D"]
 position = Vector2(-2.87202, 3.43504)
 rotation = -6.28319
-scale = Vector2(1, 1)
 collision_layer = 2
 script = ExtResource("1_wjbao")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathFollow2D/Area2D"]
-position = Vector2(-9.56539, -5.28194)
+position = Vector2(-7.65178, -5.28105)
 scale = Vector2(1.99172, 1.16518)
 polygon = PackedVector2Array(5.76837, 0.648277, 1.94377, 0.788444, 3.87863, 1.3316, 2.88083, 5.37417, 5.76314, 5.37647, 7.69873, 1.06879)
 
 [node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/Area2D/CollisionPolygon2D"]
 z_index = 2
-position = Vector2(5.16549, 0.416021)
+position = Vector2(3.84212, 3.37376)
 scale = Vector2(0.0329106, 0.0104987)
 texture = ExtResource("2_uvrwr")
 flip_h = true
@@ -161,6 +163,28 @@ sprite_frames = SubResource("SpriteFrames_c0van")
 animation = &"engrenagens"
 frame = 8
 frame_progress = 0.547904
+
+[node name="Correntes2" type="Sprite2D" parent="PathFollow2D/Area2D/CollisionPolygon2D"]
+position = Vector2(2.40154, 1.34495)
+rotation = 0.000825787
+scale = Vector2(0.0675541, 0.0316815)
+skew = -0.000543237
+texture = ExtResource("6_4mdac")
+
+[node name="Correntes" type="Sprite2D" parent="PathFollow2D/Area2D/CollisionPolygon2D"]
+position = Vector2(5.28381, 1.47899)
+rotation = 0.000825787
+scale = Vector2(0.0579656, 0.0306529)
+skew = -0.000543237
+texture = ExtResource("6_4mdac")
+
+[node name="PoliaDeTirolesa" type="Sprite2D" parent="PathFollow2D/Area2D/CollisionPolygon2D"]
+z_index = 1
+position = Vector2(4.44362, -0.230033)
+rotation = 0.000825787
+scale = Vector2(0.0731836, 0.0177437)
+skew = -0.000543237
+texture = ExtResource("7_52trn")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_left = -9.56791
@@ -288,5 +312,17 @@ scale = Vector2(0.364519, 0.80009)
 pivot_offset = Vector2(11.4815, 0.490917)
 texture = ExtResource("2_sk61k")
 region_rect = Rect2(32, 99, 540, 40)
+
+[node name="CapaDeEngrenagem" type="Sprite2D" parent="."]
+position = Vector2(502.794, 0.122729)
+scale = Vector2(0.059321, 0.00785467)
+texture = ExtResource("5_bgi55")
+
+[node name="CapaDeEngrenagem2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-2.87037, 0.122729)
+scale = Vector2(0.059321, 0.00785467)
+texture = ExtResource("5_bgi55")
+flip_h = true
 
 [connection signal="body_entered" from="PathFollow2D/Area2D" to="PathFollow2D/Area2D" method="_on_body_entered"]
