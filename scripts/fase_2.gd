@@ -3,6 +3,8 @@ extends Node2D
 @onready var interface: Control = $HUD/Interface
 @onready var raider_1: CharacterBody2D = $raider_1
 @onready var agua: Node2D = $Agua/HurtBoxAgua
+@onready var queda: Node2D = $Agua/Queda_livre
+@onready var queda2: Node2D = $Agua/Queda_livre2
 
 
 @export var menu_scene: String = "res://Level/main_menu.tscn"  # Define a cena do menu principal
@@ -16,6 +18,8 @@ func _ready() -> void:
 	Globals.score = 0
 	player.player_died.connect(reload_game)
 	agua.player_died.connect(reload_game)
+	queda.player_died.connect(reload_game)
+	queda2.player_died.connect(reload_game)
 
 func reload_game():
 	Globals.life = 3 # **RESETA Globals.life AQUI**

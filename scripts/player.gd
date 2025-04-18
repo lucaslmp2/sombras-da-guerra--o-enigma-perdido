@@ -27,7 +27,6 @@ var distancia_para_soltar = 50.0 # Distância mínima para soltar ao final
 
 func _ready():
 	player_life = Globals.life
-	print("PLAYER: Script do player iniciado.")
 
 func throw_grenade():
 	if can_throw_grenade and Globals.granada > 0:
