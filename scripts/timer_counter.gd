@@ -4,7 +4,7 @@ extends NinePatchRect
 @onready var counter_timer: Timer = $counter_timer
 var minutes = 0
 var seconds = 0
-@export_range(0, 7) var default_minutes := 1
+@export_range(0, 30) var default_minutes := 1
 @export_range(0, 59) var default_seconds := 0
 signal timer_is_up
 

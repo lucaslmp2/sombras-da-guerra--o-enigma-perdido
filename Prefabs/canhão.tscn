@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://xu7c73f72ids"]
+[gd_scene load_steps=17 format=3 uid="uid://xu7c73f72ids"]
 
 [ext_resource type="Texture2D" uid="uid://cnxjm06833bmf" path="res://Assets/Prontos/canhão.png" id="1_ovtu3"]
 [ext_resource type="Texture2D" uid="uid://c7uq550p2ajwp" path="res://Assets/Prontos/canhão2.png" id="2_g43u2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cguyfmm8ltn8o" path="res://Assets/Prontos/battle-tank-game-assets/PNG/Effects/Flame_F.png" id="8_5ddqy"]
 [ext_resource type="Texture2D" uid="uid://cl00yrsynaeoe" path="res://Assets/Prontos/battle-tank-game-assets/PNG/Effects/Flame_G.png" id="9_utf0g"]
 [ext_resource type="Texture2D" uid="uid://hij4wkcvwktn" path="res://Assets/Prontos/battle-tank-game-assets/PNG/Effects/Flame_H.png" id="10_dx0h2"]
+[ext_resource type="Texture2D" uid="uid://cnineq1poybsm" path="res://Assets/Prontos/canos e painel.png" id="11_fvq2j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g43u2"]
 atlas = ExtResource("1_ovtu3")
@@ -34,7 +35,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k1v7"]
-size = Vector2(616, 219)
+size = Vector2(735, 144)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_svt80"]
 animations = [{
@@ -75,12 +76,12 @@ position = Vector2(895, 397)
 scale = Vector2(1.7998, 1.58105)
 sprite_frames = SubResource("SpriteFrames_d83tl")
 autoplay = "default"
-frame_progress = 0.0547053
+frame_progress = 0.553271
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(450, 232.5)
+position = Vector2(251.5, 419)
 shape = SubResource("RectangleShape2D_7k1v7")
+debug_color = Color(0.969853, 0.174665, 0, 0.42)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(282, 399)
@@ -89,13 +90,20 @@ scale = Vector2(1, 2.72241)
 sprite_frames = SubResource("SpriteFrames_svt80")
 animation = &"flash"
 autoplay = "flash"
-frame_progress = 0.150811
+frame_progress = 0.800357
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
-position = Vector2(285, 438)
+position = Vector2(285, 443)
 rotation = -1.5708
 scale = Vector2(1, 2.76846)
 sprite_frames = SubResource("SpriteFrames_svt80")
 animation = &"flash"
 autoplay = "flash"
-frame_progress = 0.455563
+frame_progress = 0.625847
+
+[node name="CanosEPainel" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1192, 831)
+rotation = -1.5708
+scale = Vector2(2.85948, 3.74251)
+texture = ExtResource("11_fvq2j")
