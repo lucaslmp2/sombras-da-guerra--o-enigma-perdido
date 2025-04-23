@@ -1,0 +1,96 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnipg5af4s0qc"]
+
+[ext_resource type="Texture2D" uid="uid://bahp3giigv562" path="res://Assets/Prontos/face aset elias sorrindo1.png" id="1_0533e"]
+[ext_resource type="Script" uid="uid://5xalmo85g6p6" path="res://scripts/dialog_screen.gd" id="1_pnrbl"]
+[ext_resource type="FontFile" uid="uid://bwd0ixjtgp8q4" path="res://Assets/Fonts/Pixica Fonts/Pixica-Regular.ttf" id="2_pnrbl"]
+[ext_resource type="FontFile" uid="uid://bqtftqsbweqpw" path="res://Assets/Fonts/Pixica Fonts/PixicaMicro-Regular.ttf" id="3_4r51r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qcwys"]
+font = ExtResource("2_pnrbl")
+font_size = 32
+outline_size = 3
+outline_color = Color(0.0352941, 0.0235294, 0.0156863, 1)
+shadow_size = 5
+shadow_color = Color(0.607843, 0.384314, 0.27451, 1)
+
+[node name="DialogScreen" type="Control" node_paths=PackedStringArray("_name", "_dialog", "_faceset")]
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -100.0
+offset_right = 160.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_pnrbl")
+_name = NodePath("background/Hcontainer/Vcontainer/Name")
+_dialog = NodePath("background/Hcontainer/Vcontainer/Dialog")
+_faceset = NodePath("background/Hcontainer/Border/FaceSet")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Hcontainer" type="HBoxContainer" parent="background"]
+custom_minimum_size = Vector2(312, 72)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -36.0
+offset_right = 156.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="ColorRect" parent="background/Hcontainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 0.737255)
+
+[node name="FaceSet" type="TextureRect" parent="background/Hcontainer/Border"]
+texture_filter = 1
+custom_minimum_size = Vector2(70, 72)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0533e")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Vcontainer" type="VBoxContainer" parent="background/Hcontainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="background/Hcontainer/Vcontainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_qcwys")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Dialog" type="RichTextLabel" parent="background/Hcontainer/Vcontainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_4r51r")

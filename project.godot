@@ -24,7 +24,8 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 [display]
 
 window/size/mode=2
-window/stretch/scale=2.43
+window/stretch/mode="canvas_items"
+window/stretch/scale=1.69
 
 [editor_plugins]
 
@@ -55,5 +56,6 @@ attack_2={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

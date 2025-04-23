@@ -4,9 +4,9 @@ extends Area2D
 @onready var correntes: Sprite2D = $CollisionPolygon2D/Correntes
 
 func _on_body_entered(body):
-	if body.has_method("agarrar_tirolesa"):
+	if body.has_method("grab_zipline"):
 		animated_sprite_2d.play("engrenagens")
 		correntes.visible = false
 		sprite_2d.visible = false
-		body.agarrar_tirolesa(get_parent().get_parent()) # Passa o nó Path2D ("Corda")
+		body.grab_zipline(get_parent().get_parent()) # Passa o nó Path2D ("Corda")
 		
