@@ -1189,20 +1189,20 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7i3np"]
-radius = 22.0
-height = 134.0
+radius = 15.0
+height = 88.0
 
 [node name="Elias" type="CharacterBody2D"]
-position = Vector2(-46, 118)
+position = Vector2(129, 41)
 script = ExtResource("1_3fhkc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.00002, -0.999996)
-scale = Vector2(1.85547, 1.84766)
+position = Vector2(-51.375, 41.1251)
+scale = Vector2(1.06836, 1.18946)
 sprite_frames = SubResource("SpriteFrames_5o85b")
-animation = &"idle"
+animation = &"idle2"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 52)
+position = Vector2(-55, 73)
 shape = SubResource("CapsuleShape2D_7i3np")

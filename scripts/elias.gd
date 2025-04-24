@@ -38,7 +38,7 @@ func _physics_process(delta):
 		animation.play("jump")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animation.play("idle")
+		animation.play("idle2")
 		
 		
 	if knockback_vector != Vector2.ZERO:
