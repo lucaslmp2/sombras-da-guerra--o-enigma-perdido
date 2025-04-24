@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdpanb3tigvwu"]
+[gd_scene load_steps=13 format=3 uid="uid://cdpanb3tigvwu"]
 
 [ext_resource type="Script" uid="uid://b7klppmi6e4ck" path="res://scripts/chest.gd" id="1_owa2d"]
 [ext_resource type="Texture2D" uid="uid://dh8kln3kdclrn" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation.png" id="2_1fvb7"]
-[ext_resource type="PackedScene" uid="uid://b6mk38m3it0ac" path="res://Prefabs/item.tscn" id="2_okv10"]
 [ext_resource type="Texture2D" uid="uid://ua4kc8cyd7rx" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation (1).png" id="3_8ni1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p71ex"]
@@ -74,13 +73,12 @@ size = Vector2(48, 24)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_owa2d")
-item_scene = ExtResource("2_okv10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9.53674e-07)
 scale = Vector2(0.0834921, 0.068254)
 sprite_frames = SubResource("SpriteFrames_hbfnn")
-animation = &"open"
+animation = &"closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)

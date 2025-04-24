@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=3 uid="uid://bmre8pc6hkini"]
+[gd_scene load_steps=176 format=3 uid="uid://bmre8pc6hkini"]
 
 [ext_resource type="Script" uid="uid://capkhvaygfhjk" path="res://scripts/elias.gd" id="1_3fhkc"]
 [ext_resource type="Texture2D" uid="uid://rwfxq2mdja07" path="res://Assets/Prontos/Gangsters_2/Attack_1.png" id="2_m5amu"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://p01568hcm66f" path="res://Assets/Prontos/Gangsters_1/Shot.png" id="18_fu2sk"]
 [ext_resource type="Texture2D" uid="uid://cavulsofta64e" path="res://Assets/Prontos/Gangsters_2/Walk.png" id="19_m2rap"]
 [ext_resource type="Texture2D" uid="uid://cco5yaww8a25x" path="res://Assets/Prontos/Gangsters_1/Walk.png" id="20_jax0o"]
+[ext_resource type="AudioStream" uid="uid://jqgdo4vp5aie" path="res://Assets/Prontos/passos-de-salto-70753.mp3" id="21_quj64"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi2od"]
 atlas = ExtResource("2_m5amu")
@@ -1206,3 +1207,6 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-55, 73)
 shape = SubResource("CapsuleShape2D_7i3np")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_quj64")

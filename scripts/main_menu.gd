@@ -1,6 +1,6 @@
 extends Control
 
-@export var game_scene: String = "res://Level/fase_0.tscn"  # Define a cena do jogo
+@export var game_scene: String = "res://Level/fase_1.tscn"  # Define a cena do jogo
 @export var menu_scene: String = "res://Level/main_menu.tscn"  # Define a cena do menu principal
 
 func _ready() -> void:
