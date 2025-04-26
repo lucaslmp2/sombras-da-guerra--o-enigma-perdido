@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var item_scene: PackedScene  # Referência ao item
+@export var item_scene: PackedScene  =preload("res://Prefabs/item.tscn")# Referência ao item
 
 var is_open = false
 

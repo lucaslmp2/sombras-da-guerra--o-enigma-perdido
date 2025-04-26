@@ -16,6 +16,7 @@ func _on_body_entered(body):
 		evento_realizado = true  # impede que o evento repita
 
 		body.global_position = get_node(destino).global_position
+		await get_tree().create_timer(2.0).timeout
 		get_node(campainha_audio).play()
 		await get_tree().create_timer(0.5).timeout
 
