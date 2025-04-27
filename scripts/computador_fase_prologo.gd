@@ -4,33 +4,16 @@ extends Area2D
 @onready var colisao_pc: CollisionShape2D = $CollisionShape2D
 @onready var audio_alerta: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@export var item_scene: PackedScene = preload("res://Prefabs/computer_screen.tscn")
+@onready var computer_cena: CanvasLayer = $"../../../../Computer_cena"
 
 func _ready():
-	# garante que nada aparece antes do jogador chegar
 	anim.visible = false
-	$CollisionShape2D.disabled = false
-	# Dentro do _ready()
-	connect("body_entered", Callable(self, "_on_body_entered"))
-
+	colisao_pc.disabled = true  # Desativa a colisão até que o pendrive seja coletado
+	computer_cena.visible = false
 
 func _on_body_entered(body: Node) -> void:
-	if body.name == "Elias":
-		# toca alerta e exibe animação
+	if body.name == "Elias" and not colisao_pc.disabled:
 		anim.visible = true
 		anim.play("alerta_computador")
 		audio_alerta.play()
-		# cria e mostra a tela de computador
-		show_screen()
-		# desabilita o trigger para não reabrir várias vezes
-		$CollisionShape2D.disabled = true
-
-func show_screen() -> void:
-	if not item_scene:
-		push_warning("item_scene não está definido!")
-		return
-
-	var screen_instance = item_scene.instantiate()
-	# centraliza um pouco acima do trigger
-	screen_instance.global_position = global_position + Vector2(0, -20)
-	get_tree().current_scene.add_child(screen_instance)
+		computer_cena.visible = true  # Mostra a tela do computador

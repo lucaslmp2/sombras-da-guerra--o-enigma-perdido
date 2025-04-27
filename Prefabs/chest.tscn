@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdpanb3tigvwu"]
+[gd_scene load_steps=14 format=3 uid="uid://cdpanb3tigvwu"]
 
 [ext_resource type="Script" uid="uid://b7klppmi6e4ck" path="res://scripts/chest.gd" id="1_owa2d"]
 [ext_resource type="Texture2D" uid="uid://dh8kln3kdclrn" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation.png" id="2_1fvb7"]
 [ext_resource type="Texture2D" uid="uid://ua4kc8cyd7rx" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation (1).png" id="3_8ni1p"]
+[ext_resource type="AudioStream" uid="uid://u3vrnko6s5s0" path="res://Assets/Prontos/chest_open.mp3" id="4_kbimj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p71ex"]
 atlas = ExtResource("2_1fvb7")
@@ -75,13 +76,18 @@ collision_mask = 2
 script = ExtResource("1_owa2d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -9.53674e-07)
-scale = Vector2(0.0834921, 0.068254)
+position = Vector2(2.14577e-06, -8.83333)
+scale = Vector2(0.142222, 0.110317)
 sprite_frames = SubResource("SpriteFrames_hbfnn")
 animation = &"closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_x56yj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kbimj")
+volume_db = 18.145
+pitch_scale = 3.26
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

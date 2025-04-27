@@ -4,13 +4,14 @@ extends Area2D
 @onready var fade_layer: CanvasLayer = $"/root/Fase_1/FadeLayer"
 @onready var fade_anim = $"/root/Fase_1/FadeLayer/FadeAnim"
 @onready var camera_jogador: Camera2D = $"../../Characteres/Elias/Camera_jogador"
+@onready var porta: AudioStreamPlayer2D = $"../Porta"
 
 var retorno_feito := false
 
 func _on_body_entered(body):
 	if body.name == "Elias" and not retorno_feito:
 		retorno_feito = true
-
+		porta.play()
 		fade_layer.visible = true
 		fade_anim.play("fade_out")
 		await fade_anim.animation_finished

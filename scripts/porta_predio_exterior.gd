@@ -8,15 +8,17 @@ extends Area2D
 @export var campainha_audio: NodePath
 @onready var fade_anim = $"/root/Fase_1/FadeLayer/FadeAnim"
 @onready var fade_layer: CanvasLayer = $"../../FadeLayer"
+@onready var porta: AudioStreamPlayer2D = $"../Porta"
+@onready var bau_spaw: AudioStreamPlayer2D = $bau_spaw
 
 var evento_realizado := false  # <- flag de controle
 
 func _on_body_entered(body):
 	if body.name == "Elias" and not evento_realizado:
 		evento_realizado = true  # impede que o evento repita
-
+		porta.play()
 		body.global_position = get_node(destino).global_position
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(6.0).timeout
 		get_node(campainha_audio).play()
 		await get_tree().create_timer(0.5).timeout
 
@@ -36,6 +38,7 @@ func _on_body_entered(body):
 		# Mostra o baú
 		var chest_node = get_node(chest)
 		chest_node.visible = true
+		bau_spaw.play()
 		if chest_node.has_node("AnimationPlayer"):
 			chest_node.get_node("AnimationPlayer").play("aparecer")
 

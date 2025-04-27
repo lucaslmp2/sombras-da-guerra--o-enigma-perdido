@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7mh5o85rxbb5"]
+[gd_scene load_steps=5 format=3 uid="uid://b7mh5o85rxbb5"]
 
 [ext_resource type="Script" uid="uid://c0syq7dpantg" path="res://scripts/computer_screen.gd" id="1_7bon8"]
 [ext_resource type="Texture2D" uid="uid://hkaps151gx54" path="res://Assets/Prontos/notebook.png" id="1_gjk85"]
+[ext_resource type="AudioStream" uid="uid://dwujvvxarbr34" path="res://Assets/Prontos/digitação.mp3" id="3_eeda6"]
+[ext_resource type="AudioStream" uid="uid://djojpmvkjxofh" path="res://Assets/Prontos/mouse_click.mp3" id="4_obsak"]
 
 [node name="ComputerScreen" type="Control"]
 layout_mode = 3
@@ -27,51 +29,97 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_gjk85")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label_senha_incorreta" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -229.5
-offset_top = 262.0
-offset_right = 232.5
-offset_bottom = 285.0
+offset_left = -233.5
+offset_top = 322.0
+offset_right = 228.5
+offset_bottom = 345.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label_texto" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 345.0
+offset_top = -188.0
+offset_right = -344.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label_senha_correta" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -229.5
-offset_top = 262.0
-offset_right = 232.5
-offset_bottom = 285.0
+offset_left = -233.5
+offset_top = 322.0
+offset_right = 228.5
+offset_bottom = 345.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1.73271e-06, 0.635651, 0.403047, 1)
 horizontal_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="."]
 layout_mode = 0
 offset_left = 345.0
-offset_top = 225.0
+offset_top = 289.0
 offset_right = 813.0
-offset_bottom = 256.0
+offset_bottom = 320.0
 
-[node name="Button" type="Button" parent="."]
+[node name="Button_entrar" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -27.5
+offset_top = 32.0
+offset_right = 29.5
+offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Entrar"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Button_sair" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 349.5
+offset_top = -211.0
+offset_right = 406.5
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.461017, 0.392737, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 0, 1)
+text = "X"
+
+[node name="digitação" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_eeda6")
+pitch_scale = 0.98
+
+[node name="Mouse_click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_obsak")
+volume_db = 7.523
+
+[connection signal="pressed" from="Button_entrar" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button_sair" to="." method="_on_button_pressed_sair"]

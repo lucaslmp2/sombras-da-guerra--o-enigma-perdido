@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6mk38m3it0ac"]
+[gd_scene load_steps=5 format=3 uid="uid://b6mk38m3it0ac"]
 
 [ext_resource type="Script" uid="uid://duop4j360jlt" path="res://scripts/item.gd" id="1_21l3k"]
 [ext_resource type="Texture2D" uid="uid://cxyfuta27g31w" path="res://Assets/Prontos/pendrive.png" id="2_okjcq"]
+[ext_resource type="AudioStream" uid="uid://suski7y3m4my" path="res://Assets/Prontos/coletando_pendrive.mp3" id="3_fnt8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwea"]
 size = Vector2(6, 11)
 
-[node name="Item" type="Area2D"]
+[node name="Item" type="Area2D" groups=["pendrives"]]
 position = Vector2(0, -30)
 script = ExtResource("1_21l3k")
 
@@ -18,5 +19,9 @@ texture = ExtResource("2_okjcq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_rhwea")
+
+[node name="pick_up" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fnt8b")
+volume_db = 8.409
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
