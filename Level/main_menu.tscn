@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2en0vndcdex3"]
+[gd_scene load_steps=5 format=3 uid="uid://c2en0vndcdex3"]
 
 [ext_resource type="Script" uid="uid://dr4ppeabavdqq" path="res://scripts/main_menu.gd" id="1_xh4ia"]
 [ext_resource type="Texture2D" uid="uid://cflowttr811n0" path="res://Assets/Prontos/download.png" id="2_etlro"]
 [ext_resource type="FontFile" uid="uid://byi5aplfgjr8y" path="res://Assets/Fonts/Pixica Fonts/PixicaMono-Wide.ttf" id="3_oxdyl"]
+[ext_resource type="AudioStream" uid="uid://djojpmvkjxofh" path="res://Assets/Prontos/mouse_click.mp3" id="4_qvt0h"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,8 +18,8 @@ script = ExtResource("1_xh4ia")
 layout_mode = 0
 offset_left = -514.0
 offset_top = -321.0
-offset_right = 291.0
-offset_bottom = 191.0
+offset_right = 639.0
+offset_bottom = 327.0
 texture = ExtResource("2_etlro")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -28,10 +29,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -289.0
-offset_top = -209.0
-offset_right = 53.0
-offset_bottom = -27.0
+offset_left = -265.0
+offset_top = -9.0
+offset_right = 77.0
+offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -61,3 +62,6 @@ text = "OPÇÕES"
 [node name="ButtonSair" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "SAIR"
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qvt0h")
