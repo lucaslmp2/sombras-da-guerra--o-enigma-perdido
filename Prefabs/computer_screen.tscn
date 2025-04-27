@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7mh5o85rxbb5"]
+
+[ext_resource type="Script" uid="uid://c0syq7dpantg" path="res://scripts/computer_screen.gd" id="1_7bon8"]
+[ext_resource type="Texture2D" uid="uid://hkaps151gx54" path="res://Assets/Prontos/notebook.png" id="1_gjk85"]
+
+[node name="ComputerScreen" type="Control"]
+layout_mode = 3
+anchor_right = 1.135
+anchor_bottom = 1.54
+offset_right = -150.52
+offset_bottom = -355.92
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7bon8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -155.0
+offset_top = -75.642
+offset_right = 139.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gjk85")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -229.5
+offset_top = 262.0
+offset_right = 232.5
+offset_bottom = 285.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -229.5
+offset_top = 262.0
+offset_right = 232.5
+offset_bottom = 285.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 225.0
+offset_right = 813.0
+offset_bottom = 256.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1211,4 +1211,4 @@ shape = SubResource("CapsuleShape2D_7i3np")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_quj64")
-max_distance = 158.0
+max_distance = 4096.0
