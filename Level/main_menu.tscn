@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2en0vndcdex3"]
+[gd_scene load_steps=6 format=3 uid="uid://c2en0vndcdex3"]
 
 [ext_resource type="Script" uid="uid://dr4ppeabavdqq" path="res://scripts/main_menu.gd" id="1_xh4ia"]
 [ext_resource type="Texture2D" uid="uid://cflowttr811n0" path="res://Assets/Prontos/download.png" id="2_etlro"]
 [ext_resource type="FontFile" uid="uid://byi5aplfgjr8y" path="res://Assets/Fonts/Pixica Fonts/PixicaMono-Wide.ttf" id="3_oxdyl"]
 [ext_resource type="AudioStream" uid="uid://djojpmvkjxofh" path="res://Assets/Prontos/mouse_click.mp3" id="4_qvt0h"]
+[ext_resource type="AudioStream" uid="uid://yrcl5qrjpdlg" path="res://Assets/Prontos/intro_menu.mp3" id="5_ph8w5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -65,3 +66,7 @@ text = "SAIR"
 
 [node name="click" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_qvt0h")
+
+[node name="Intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ph8w5")
+parameters/looping = true

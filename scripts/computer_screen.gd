@@ -6,6 +6,7 @@ extends Control
 @onready var label_texto: Label = $Label_texto
 @onready var audio_tecla: AudioStreamPlayer2D = $digitação
 @onready var mouse_click: AudioStreamPlayer2D = $Mouse_click
+@onready var enigma_resolvido: AudioStreamPlayer2D = $"../../escritorio/decoração_escritorio/NinePatchRect4/computador/enigma_resolvido"
 
 signal tela_fechada
 signal resposta_correta
@@ -21,6 +22,8 @@ func _on_Button_pressed():
 	if input_field.text == correct_answer or input_field.text == correct_answer2:
 		message_label_acesso.text = "Acesso concedido!"
 		message_label.text = ""  # limpa erro
+		enigma_resolvido.play()
+		await get_tree().create_timer(11.0).timeout
 		emit_signal("resposta_correta")
 	else:
 		message_label.text = "Desculpe. Tente novamente."

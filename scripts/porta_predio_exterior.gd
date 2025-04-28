@@ -10,6 +10,34 @@ extends Area2D
 @onready var fade_layer: CanvasLayer = $"../../FadeLayer"
 @onready var porta: AudioStreamPlayer2D = $"../Porta"
 @onready var bau_spaw: AudioStreamPlayer2D = $bau_spaw
+var _dialog_instance: DialogScreen
+var hud: CanvasLayer = null
+const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
+var dialog_data: Dictionary = {
+	0: {
+		"faceset": "res://Assets/Prontos/face aset elias2 sorrindo.png",
+		"dialog": "Ah, a campainha.",
+		"title": "Elias"
+	},
+	1: {
+		"faceset": "res://Assets/Prontos/face aset elias2 sorrindo.png",
+		"dialog": "Quem será?",
+		"title": "Elias"
+	},
+}
+func _ready():
+	var scene_root = get_tree().current_scene
+	hud = scene_root.find_child("HUD", true, false)
+
+func _show_dialog(dialog_data: Dictionary):
+	if not hud:
+		push_error("HUD não encontrado!")
+		return
+	if is_instance_valid(_dialog_instance):
+		_dialog_instance.queue_free()
+	_dialog_instance = DialogScreen.instantiate()
+	_dialog_instance.data = dialog_data
+	hud.add_child(_dialog_instance)
 
 var evento_realizado := false  # <- flag de controle
 
@@ -18,8 +46,9 @@ func _on_body_entered(body):
 		evento_realizado = true  # impede que o evento repita
 		porta.play()
 		body.global_position = get_node(destino).global_position
-		await get_tree().create_timer(6.0).timeout
+		await get_tree().create_timer(9.0).timeout
 		get_node(campainha_audio).play()
+		_show_dialog(dialog_data)
 		await get_tree().create_timer(0.5).timeout
 
 		# Fade out e muda para câmera da entrega

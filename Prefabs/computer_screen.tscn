@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7mh5o85rxbb5"]
+[gd_scene load_steps=6 format=3 uid="uid://b7mh5o85rxbb5"]
 
 [ext_resource type="Script" uid="uid://c0syq7dpantg" path="res://scripts/computer_screen.gd" id="1_7bon8"]
 [ext_resource type="Texture2D" uid="uid://hkaps151gx54" path="res://Assets/Prontos/notebook.png" id="1_gjk85"]
 [ext_resource type="AudioStream" uid="uid://dwujvvxarbr34" path="res://Assets/Prontos/digitação.mp3" id="3_eeda6"]
+[ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="3_g4210"]
 [ext_resource type="AudioStream" uid="uid://djojpmvkjxofh" path="res://Assets/Prontos/mouse_click.mp3" id="4_obsak"]
 
 [node name="ComputerScreen" type="Control"]
@@ -27,6 +28,7 @@ offset_right = 139.0
 offset_bottom = 380.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g4210")
 texture = ExtResource("1_gjk85")
 
 [node name="Label_senha_incorreta" type="Label" parent="."]
@@ -48,12 +50,13 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 345.0
+offset_left = 196.0
 offset_top = -188.0
-offset_right = -344.0
+offset_right = -265.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g4210")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 vertical_alignment = 1
 autowrap_mode = 2
@@ -91,6 +94,7 @@ offset_right = 29.5
 offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g4210")
 text = "Entrar"
 
 [node name="Button_sair" type="Button" parent="."]
@@ -106,6 +110,7 @@ offset_right = 406.5
 offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g4210")
 theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 0.461017, 0.392737, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)

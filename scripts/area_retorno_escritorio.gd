@@ -6,11 +6,10 @@ extends Area2D
 @onready var camera_jogador: Camera2D = $"../../Characteres/Elias/Camera_jogador"
 @onready var porta: AudioStreamPlayer2D = $"../Porta"
 
-var retorno_feito := false
+
 
 func _on_body_entered(body):
-	if body.name == "Elias" and not retorno_feito:
-		retorno_feito = true
+	if body.name == "Elias":
 		porta.play()
 		fade_layer.visible = true
 		fade_anim.play("fade_out")
