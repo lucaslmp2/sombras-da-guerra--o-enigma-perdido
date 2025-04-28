@@ -3,6 +3,8 @@ extends CharacterBody2D
 # Sinais
 signal player_damaged(damage_amount)
 signal player_died()
+@onready var correndo: AudioStreamPlayer2D = $correndo
+@onready var pulo: AudioStreamPlayer2D = $pulo
 
 # Constantes
 const SPEED = 200.0
@@ -17,6 +19,7 @@ const JUMP_FORCE = -300.0
 @onready var animation: AnimatedSprite2D = $anim_inicial
 @onready var remote_transform: RemoteTransform2D = $remote
 
+var is_running_sound_playing = false
 # Variáveis de estado
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping = false
@@ -70,6 +73,11 @@ func _process_movement(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_FORCE
 		is_jumping = true
+		animation.play("jump_gangster")
+		pulo.play() # Toca o som de pulo aqui
+		if is_running_sound_playing:
+			correndo.stop() # Para o som se pular enquanto corre
+			is_running_sound_playing = false
 	elif is_on_floor():
 		is_jumping = false
 
@@ -77,10 +85,20 @@ func _process_movement(delta):
 	if direction != 0:
 		velocity.x = direction * SPEED
 		animation.scale.x = direction
-		animation.play("run_gangster" if not is_jumping else "jump_gangster")
+		if is_jumping:
+			pass # Mantém a animação de pulo enquanto estiver pulando e se movendo
+		else:
+			animation.play("run_gangster")
+			if not is_running_sound_playing:
+				correndo.play()
+				is_running_sound_playing = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animation.play("idle_gangster")
+		if not is_jumping:
+			animation.play("idle_gangster")
+			if is_running_sound_playing:
+				correndo.stop()
+				is_running_sound_playing = false
 
 func _throw_grenade():
 	if can_throw_grenade and Globals.granada > 0:

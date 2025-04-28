@@ -6,6 +6,7 @@ extends Node2D
 @export var next_scene: String = "res://Level/fase_2.tscn"
 @export var menu_scene: String = "res://Level/main_menu.tscn"
 @onready var computer_screen = $Computer_cena
+@onready var ambiente: AudioStreamPlayer2D = $ambiente
 @onready var colisao_pc: CollisionShape2D = $escritorio/decoração_escritorio/NinePatchRect4/computador/CollisionShape2D
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var dialog_data: Dictionary={
@@ -31,6 +32,7 @@ func _on_dialog_exited():
 	_dialog_instance = null # Limpa a referência quando o diálogo é removido da cena
 func _ready() -> void:
 	fade_layer.visible = false
+	ambiente.play()
 	colisao_pc.disabled = true  # Desabilita a colisão até o pendrive ser coletado
 	add_to_group("fase_atual") # Certifique-se de ter isso se estiver usando a Opção 2
 	if _dialog_instance == null: # Verifica se não existe um diálogo já aberto

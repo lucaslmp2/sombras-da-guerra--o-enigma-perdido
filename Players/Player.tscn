@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=3 uid="uid://q52ojf1xim6e"]
+[gd_scene load_steps=188 format=3 uid="uid://q52ojf1xim6e"]
 
 [ext_resource type="Script" uid="uid://bwpk77dc0rwif" path="res://scripts/player.gd" id="1_btl8f"]
 [ext_resource type="Texture2D" uid="uid://rwfxq2mdja07" path="res://Assets/Prontos/Gangsters_2/Attack_1.png" id="3_hfae2"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://p01568hcm66f" path="res://Assets/Prontos/Gangsters_1/Shot.png" id="18_4htmj"]
 [ext_resource type="Texture2D" uid="uid://cavulsofta64e" path="res://Assets/Prontos/Gangsters_2/Walk.png" id="19_xxup7"]
 [ext_resource type="Texture2D" uid="uid://cco5yaww8a25x" path="res://Assets/Prontos/Gangsters_1/Walk.png" id="20_qsegn"]
+[ext_resource type="AudioStream" uid="uid://jqgdo4vp5aie" path="res://Assets/Prontos/passos-de-salto-70753.mp3" id="23_7rpo8"]
+[ext_resource type="AudioStream" uid="uid://damsaic2ei5bw" path="res://Assets/Prontos/jump.mp3" id="24_6oup7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi2od"]
 atlas = ExtResource("3_hfae2")
@@ -1284,7 +1286,7 @@ target_position = Vector2(-28, 0)
 position = Vector2(-12, -19)
 scale = Vector2(0.671875, 0.703125)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"idle_gangster"
+animation = &"down_gangster"
 autoplay = "idle"
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -1293,3 +1295,19 @@ position = Vector2(2, -2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-15, 2)
 shape = SubResource("CapsuleShape2D_6t581")
+
+[node name="correndo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_7rpo8")
+volume_db = -9.294
+pitch_scale = 1.6
+parameters/looping = true
+
+[node name="pulo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_6oup7")
+volume_db = 15.591
+pitch_scale = 1.6
+
+[node name="tiro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_6oup7")
+volume_db = 15.591
+pitch_scale = 1.6
