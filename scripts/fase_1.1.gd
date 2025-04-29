@@ -20,6 +20,11 @@ var dialog_data: Dictionary={
 		"dialog":"Até que em fim cheguei no trabalho.",
 		"title":"Elias"	
 	},
+	2:{
+		"faceset":"res://Assets/Prontos/face aset elias2 sorrindo.png",
+		"dialog":"Vamos lá! O que eu tenho que fazer primeiroooo...",
+		"title":"Elias"	
+	},
 }
 @export_category("Objects")
 
@@ -50,8 +55,6 @@ func habilitar_colisao_pc() -> void:
 
 func _on_computer_screen_resposta_correta() -> void:
 	fade_layer.visible = true
-	fade_anim.play("fade_in")
-	await fade_anim.animation_finished
 	get_tree().change_scene_to_file(next_scene)
 
 func _input(event: InputEvent) -> void:

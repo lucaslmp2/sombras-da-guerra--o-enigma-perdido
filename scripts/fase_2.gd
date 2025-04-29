@@ -76,6 +76,11 @@ func _ready() -> void:
 	queda.player_died.connect(reload_game)
 	queda2.player_died.connect(reload_game)
 	ambiente_açao.play()
+	if _dialog_instance == null: # Verifica se não existe um diálogo já aberto
+			_dialog_instance = DialogScreen.instantiate()
+			_dialog_instance.data = dialog_data
+			hud.add_child(_dialog_instance)
+			_dialog_instance.connect("tree_exited", Callable(self, "_on_dialog_exited")) 
 
 func reload_game():
 	Globals.life = 3 # **RESETA Globals.life AQUI**

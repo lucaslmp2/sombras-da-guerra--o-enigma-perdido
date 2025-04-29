@@ -16,6 +16,11 @@ var dialog_data: Dictionary = {
 		"dialog": "O que será que tem nele?",
 		"title": "Elias"
 	},
+	2:{
+		"faceset":"res://Assets/Prontos/face aset elias2 sorrindo.png",
+		"dialog":"Vou abrir ele no meu notebook.",
+		"title":"Elias"	
+	},
 }
 
 func _ready():

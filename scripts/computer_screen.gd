@@ -7,6 +7,8 @@ extends Control
 @onready var audio_tecla: AudioStreamPlayer2D = $digitação
 @onready var mouse_click: AudioStreamPlayer2D = $Mouse_click
 @onready var enigma_resolvido: AudioStreamPlayer2D = $"../../escritorio/decoração_escritorio/NinePatchRect4/computador/enigma_resolvido"
+@onready var fade_anim: AnimationPlayer = $"../../FadeLayer/FadeAnim"
+@onready var fade_layer: CanvasLayer = $"../../FadeLayer"
 
 signal tela_fechada
 signal resposta_correta
@@ -23,6 +25,8 @@ func _on_Button_pressed():
 		message_label_acesso.text = "Acesso concedido!"
 		message_label.text = ""  # limpa erro
 		enigma_resolvido.play()
+		fade_layer.visible = true
+		fade_anim.play("fade_enigma")
 		await get_tree().create_timer(11.0).timeout
 		emit_signal("resposta_correta")
 	else:

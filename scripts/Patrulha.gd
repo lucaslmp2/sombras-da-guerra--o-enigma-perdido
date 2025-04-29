@@ -14,7 +14,7 @@ const HEIGHT_TOLERANCE = 30     # Margem de tolerância no eixo Y para considera
 @onready var tiro: AudioStreamPlayer2D = $tiro
 @onready var correndo: AudioStreamPlayer2D = $correndo
 @onready var patrulhando: AudioStreamPlayer2D = $patrulhando
-@onready var morte: AudioStreamPlayer2D = $morte
+@onready var morte: AudioStreamPlayer2D = $Morte
 @onready var hurt: AudioStreamPlayer2D = $hurt
 
 var player: Node2D = null

@@ -1,0 +1,145 @@
+[gd_scene load_steps=16 format=3 uid="uid://b545v8wxcs1ar"]
+
+[ext_resource type="Script" uid="uid://bvi85yeogun1p" path="res://scripts/soldier_bunker_invertido.gd" id="1_fwsxv"]
+[ext_resource type="Texture2D" uid="uid://dksjcjkqyl8rb" path="res://Assets/Prontos/soldierbunkerdead.png" id="2_1lb7i"]
+[ext_resource type="Texture2D" uid="uid://htowpvhfcq01" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (2).png" id="3_q1dh3"]
+[ext_resource type="Texture2D" uid="uid://bhm7v7jddj8vm" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (1).png" id="4_0csoj"]
+[ext_resource type="PackedScene" uid="uid://dv14m3hvpm3vx" path="res://Prefabs/alerta_perigo.tscn" id="5_xyuef"]
+[ext_resource type="AudioStream" uid="uid://dmltifdjxd536" path="res://Assets/Prontos/mp40.mp3" id="6_g3ryp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b0qj"]
+size = Vector2(47, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6052q"]
+atlas = ExtResource("2_1lb7i")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cal2v"]
+atlas = ExtResource("2_1lb7i")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x2rc"]
+atlas = ExtResource("3_q1dh3")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdjw5"]
+atlas = ExtResource("3_q1dh3")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyxhw"]
+atlas = ExtResource("4_0csoj")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joegi"]
+atlas = ExtResource("4_0csoj")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guvco"]
+atlas = ExtResource("4_0csoj")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4s50n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6052q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cal2v")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x2rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdjw5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guvco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joegi")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 8.0
+}]
+
+[node name="soldier_bunker_invertido" type="Area2D"]
+position = Vector2(202, 117)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fwsxv")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(63, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(34, 11)
+shape = SubResource("RectangleShape2D_7b0qj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(42, 7)
+scale = Vector2(0.128, 0.112)
+sprite_frames = SubResource("SpriteFrames_4s50n")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(12, -0.5)
+target_position = Vector2(246, 0)
+
+[node name="Alerta_perigo" parent="." instance=ExtResource("5_xyuef")]
+position = Vector2(258, 11)
+
+[node name="tiro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_g3ryp")
+pitch_scale = 1.51
+
+[node name="sarcarsmo" type="AudioStreamPlayer2D" parent="."]
