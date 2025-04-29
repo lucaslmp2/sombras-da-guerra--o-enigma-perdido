@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bn53uyhi4ghve"]
+[gd_scene load_steps=17 format=3 uid="uid://bn53uyhi4ghve"]
 
 [ext_resource type="Texture2D" uid="uid://bbpglw8o5xn38" path="res://Assets/5 - Misc. universal tiles/hart.png" id="1_j0eai"]
 [ext_resource type="Script" uid="uid://b723asw4qypfh" path="res://scripts/hart.gd" id="1_psmct"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ckfm02cy7artx" path="res://Assets/Heal/9.png" id="10_3wx05"]
 [ext_resource type="Texture2D" uid="uid://cjeemy4owfx6x" path="res://Assets/Heal/10.png" id="11_guxx8"]
 [ext_resource type="Texture2D" uid="uid://duefgc4conp0p" path="res://Assets/Heal/11.png" id="12_u3uon"]
+[ext_resource type="AudioStream" uid="uid://caefpeen23oj6" path="res://Assets/Prontos/hart_pickup.mp3" id="14_g6n0j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_psmct"]
 radius = 8.0
@@ -80,5 +81,8 @@ scale = Vector2(0.084507, 0.0903955)
 sprite_frames = SubResource("SpriteFrames_psmct")
 animation = &"hart"
 autoplay = "hart"
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_g6n0j")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cnidnkigi8fn5"]
+[gd_scene load_steps=90 format=3 uid="uid://cnidnkigi8fn5"]
 
 [ext_resource type="Script" uid="uid://dc27simjbu2yp" path="res://teste/raider_1.gd" id="1_d3p28"]
 [ext_resource type="Texture2D" uid="uid://b5ka12qwge70r" path="res://Assets/Prontos/Raider_1/Attack_1.png" id="2_jsu1p"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://1pff2f6lvket" path="res://Assets/Prontos/Raider_1/Run.png" id="9_4hupt"]
 [ext_resource type="Texture2D" uid="uid://dimdtmxws36dj" path="res://Assets/Prontos/Raider_1/Shot.png" id="10_5yylh"]
 [ext_resource type="Texture2D" uid="uid://bcn2tuxu2geye" path="res://Assets/Prontos/Raider_1/Walk.png" id="11_hpaju"]
+[ext_resource type="AudioStream" uid="uid://bw5cxkwrlldwq" path="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Mono/mp3/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Fire - 1.mp3" id="12_g6j5n"]
+[ext_resource type="AudioStream" uid="uid://jqgdo4vp5aie" path="res://Assets/Prontos/passos-de-salto-70753.mp3" id="13_2xrll"]
+[ext_resource type="AudioStream" uid="uid://b8o23lvtqemdm" path="res://Assets/Prontos/dead_player.mp3" id="14_eifju"]
+[ext_resource type="AudioStream" uid="uid://c3e0t0xltbry1" path="res://Assets/Prontos/hurt_player.mp3" id="15_u7mv2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q67un"]
 atlas = ExtResource("2_jsu1p")
@@ -595,7 +599,7 @@ script = ExtResource("1_d3p28")
 position = Vector2(2, 11.5)
 scale = Vector2(0.84375, 0.851563)
 sprite_frames = SubResource("SpriteFrames_8si2i")
-animation = &"shot"
+animation = &"run"
 autoplay = "idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -620,3 +624,19 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="tiro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_g6j5n")
+pitch_scale = 0.82
+
+[node name="correndo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_2xrll")
+pitch_scale = 1.89
+max_distance = 797.0
+
+[node name="Morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_eifju")
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_u7mv2")
+pitch_scale = 0.89

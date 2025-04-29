@@ -1,9 +1,11 @@
 extends Area2D
 
 @export var speed : float = 400
+@onready var ricochet: AudioStreamPlayer2D = $ricochet
 
 var velocity : Vector2
-
+func _ready() -> void:
+	ricochet.play()
 func _physics_process(delta):
 	position += velocity * delta
 

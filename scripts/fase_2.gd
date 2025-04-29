@@ -7,6 +7,8 @@ class_name Level_2
 @onready var agua: Node2D = $Agua/HurtBoxAgua
 @onready var queda: Node2D = $Agua/Queda_livre
 @onready var queda2: Node2D = $Agua/Queda_livre2
+@onready var ambiente_açao: AudioStreamPlayer2D = $ambiente_açao
+
 @export var menu_scene: String = "res://Level/main_menu.tscn"# Define a cena do menu principal
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var dialog_data: Dictionary={
@@ -65,7 +67,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		get_tree().change_scene_to_file(menu_scene)  # Volta para o menu principal
 func _ready() -> void:
-	Globals.bulets = 10
+	Globals.bulets = 100
 	Globals.granada = 3
 	Globals.life = 3
 	Globals.score = 0
@@ -73,6 +75,7 @@ func _ready() -> void:
 	agua.player_died.connect(reload_game)
 	queda.player_died.connect(reload_game)
 	queda2.player_died.connect(reload_game)
+	ambiente_açao.play()
 
 func reload_game():
 	Globals.life = 3 # **RESETA Globals.life AQUI**

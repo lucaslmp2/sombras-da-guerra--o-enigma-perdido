@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmmrem1u8vffk"]
+[gd_scene load_steps=16 format=3 uid="uid://cmmrem1u8vffk"]
 
 [ext_resource type="Texture2D" uid="uid://dksjcjkqyl8rb" path="res://Assets/Prontos/soldierbunkerdead.png" id="1_2fecv"]
 [ext_resource type="Texture2D" uid="uid://htowpvhfcq01" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (2).png" id="1_7wv0l"]
 [ext_resource type="Script" uid="uid://dfag2i6vcc6tl" path="res://scripts/artilheiro_bunker.gd" id="1_6052q"]
 [ext_resource type="Texture2D" uid="uid://bhm7v7jddj8vm" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (1).png" id="2_7qgcw"]
 [ext_resource type="PackedScene" uid="uid://dv14m3hvpm3vx" path="res://Prefabs/alerta_perigo.tscn" id="5_cal2v"]
+[ext_resource type="AudioStream" uid="uid://dmltifdjxd536" path="res://Assets/Prontos/mp40.mp3" id="6_8na0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b0qj"]
 size = Vector2(47, 45)
@@ -135,3 +136,9 @@ target_position = Vector2(-166, 0)
 
 [node name="Alerta_perigo" parent="." instance=ExtResource("5_cal2v")]
 position = Vector2(-155, 10)
+
+[node name="tiro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8na0w")
+pitch_scale = 1.51
+
+[node name="sarcarsmo" type="AudioStreamPlayer2D" parent="."]

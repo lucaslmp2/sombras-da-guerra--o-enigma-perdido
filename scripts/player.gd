@@ -5,10 +5,15 @@ signal player_damaged(damage_amount)
 signal player_died()
 @onready var correndo: AudioStreamPlayer2D = $correndo
 @onready var pulo: AudioStreamPlayer2D = $pulo
+@onready var tiro: AudioStreamPlayer2D = $tiro
+@onready var granada_lançada: AudioStreamPlayer2D = $granada_lançada
+@onready var morte: AudioStreamPlayer2D = $morte
+@onready var hurt: AudioStreamPlayer2D = $hurt
 
 # Constantes
 const SPEED = 200.0
 const JUMP_FORCE = -300.0
+const SHOOT_DELAY = 0.1 # Adiciona um pequeno delay para evitar disparos rápidos demais
 
 # Recursos externos
 @export var grenade_scene: PackedScene = preload("res://Prefabs/granada2.tscn")
@@ -20,6 +25,11 @@ const JUMP_FORCE = -300.0
 @onready var remote_transform: RemoteTransform2D = $remote
 
 var is_running_sound_playing = false
+var is_shooting = false # Nova variável para controlar se o jogador está a disparar.
+var time_since_last_shot = 0.0 # Variável para controlar o tempo desde o último disparo
+var has_played_death_sound = false # Variável para garantir que o som de morte toque apenas uma vez
+var has_played_hurt_sound = false # Variável para garantir que o som de dano toque apenas uma vez
+
 # Variáveis de estado
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping = false
@@ -41,6 +51,8 @@ func _ready():
 	player_life = Globals.life
 
 func _physics_process(delta):
+	time_since_last_shot += delta # Atualiza o tempo desde o último disparo
+
 	if is_attacking:
 		return
 
@@ -51,10 +63,15 @@ func _physics_process(delta):
 	_process_movement(delta)
 
 	if Input.is_action_just_pressed("attack") and Globals.granada > 0:
+		granada_lançada.play()
 		await _play_attack_animation("granade")
 		_throw_grenade()
-	elif Input.is_action_just_pressed("attack_2"):
+	elif Input.is_action_pressed("attack_2"): # Modificado para "is_action_pressed"
 		_attack_shot()
+	elif Input.is_action_just_released("attack_2"): # Adicionado para parar o som
+		is_shooting = false
+		tiro.stop()
+		time_since_last_shot = 0.0 # Reseta o timer quando o botão é solto
 
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
@@ -86,7 +103,7 @@ func _process_movement(delta):
 		velocity.x = direction * SPEED
 		animation.scale.x = direction
 		if is_jumping:
-			pass # Mantém a animação de pulo enquanto estiver pulando e se movendo
+			pass # Mantém a animação de pulo enquanto estiver a pular e a mover-se
 		else:
 			animation.play("run_gangster")
 			if not is_running_sound_playing:
@@ -145,7 +162,7 @@ func grab_zipline(zipline):
 		zipline_speed = 100.0
 		gravity = 0
 
-		if zipline_path.has_node("PathFollow2D"):
+		if zipline_path and zipline_path.has_node("PathFollow2D"):
 			path_follow_node = zipline_path.get_node("PathFollow2D")
 			var offset = zipline_path.curve.get_closest_offset(global_position)
 			offset = clamp(offset, 0.0, zipline_path.curve.get_baked_length())
@@ -183,10 +200,16 @@ func take_damage(amount := 1, knockback := Vector2.ZERO, duration := 0.25):
 	player_life -= amount
 	Globals.life = player_life
 	_play_attack_animation("hurt_gangster")
+	if not has_played_hurt_sound:
+		hurt.play()
+		has_played_hurt_sound = true
 	emit_signal("player_damaged", amount)
 
 	if player_life <= 0:
 		_play_attack_animation("dead_gangster")
+		if not has_played_death_sound:
+			morte.play()
+			has_played_death_sound = true
 		emit_signal("player_died")
 
 		if has_node("CollisionShape2D"):
@@ -200,18 +223,17 @@ func take_damage(amount := 1, knockback := Vector2.ZERO, duration := 0.25):
 		tween.tween_property(self, "knockback_vector", Vector2.ZERO, duration)
 
 func _attack_shot():
-	if Globals.bulets > 0:
+	if Globals.bulets > 0 and time_since_last_shot >= SHOOT_DELAY: # Verifica o delay
 		_shoot()
 		_play_attack_animation("shot")
-
+		is_shooting = true
+		tiro.play()
+		time_since_last_shot = 0.0 # Reseta o timer após o disparo
+		
 func _shoot():
 	var bullet = bullet_scene.instantiate()
 	Globals.bulets -= 1
-
 	bullet.position = global_position + Vector2(animation.scale.x * 20, -12)
 	bullet.velocity = Vector2(animation.scale.x, 0).normalized() * 600
 
 	get_parent().add_child(bullet)
-
-func can_grab_zipline():
-	return true

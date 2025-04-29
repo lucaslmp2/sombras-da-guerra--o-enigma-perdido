@@ -11,6 +11,7 @@ var shooting = false
 
 var bullet_count: int = 0
 @export var health: int = 3  # Vida do artilheiro
+@onready var tiro: AudioStreamPlayer2D = $tiro
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -20,6 +21,7 @@ func _process(delta):
 		var target = ray_cast_2d.get_collider()
 		# Adicionando uma verificação para garantir que 'target' não seja nulo
 		if target != null and target.is_in_group("player") and not shooting:
+			tiro.play()
 			start_shooting()
 	else:
 		stop_shooting()

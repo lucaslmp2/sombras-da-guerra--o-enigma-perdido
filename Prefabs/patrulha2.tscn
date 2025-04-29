@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dbak1g00f1x70"]
+[gd_scene load_steps=59 format=3 uid="uid://dbak1g00f1x70"]
 
 [ext_resource type="Script" uid="uid://dd3a6rptxym2n" path="res://scripts/Patrulha.gd" id="1_yvfvc"]
 [ext_resource type="Texture2D" uid="uid://bhq2hychlm61u" path="res://Assets/craftpix-net-507107-free-soldier-sprite-sheets-pixel-art/Soldier_3/Attacck.png" id="2_3elv8"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://blvuucd2nxyn2" path="res://Assets/craftpix-net-507107-free-soldier-sprite-sheets-pixel-art/Soldier_3/Shot_1.png" id="7_88idp"]
 [ext_resource type="Texture2D" uid="uid://b4m2puua7re5y" path="res://Assets/craftpix-net-507107-free-soldier-sprite-sheets-pixel-art/Soldier_3/Shot_2.png" id="8_t1pir"]
 [ext_resource type="Texture2D" uid="uid://d2soiqdaog4tc" path="res://Assets/craftpix-net-507107-free-soldier-sprite-sheets-pixel-art/Soldier_3/Walk.png" id="9_1ap1n"]
+[ext_resource type="AudioStream" uid="uid://bw5cxkwrlldwq" path="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Mono/mp3/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Fire - 1.mp3" id="10_cb3vt"]
+[ext_resource type="AudioStream" uid="uid://jqgdo4vp5aie" path="res://Assets/Prontos/passos-de-salto-70753.mp3" id="11_cb3vt"]
+[ext_resource type="AudioStream" uid="uid://b8o23lvtqemdm" path="res://Assets/Prontos/dead_player.mp3" id="12_ni1ms"]
+[ext_resource type="AudioStream" uid="uid://c3e0t0xltbry1" path="res://Assets/Prontos/hurt_player.mp3" id="13_hcrit"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1gg5"]
 atlas = ExtResource("2_3elv8")
@@ -288,7 +292,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"run",
-"speed": 7.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -322,7 +326,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shot2",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -351,7 +355,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4on0"]
@@ -361,12 +365,13 @@ height = 50.0
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_yvfvc")
+speed = 80.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-17.5, -9)
 scale = Vector2(0.851563, 0.78125)
 sprite_frames = SubResource("SpriteFrames_b0iiw")
-animation = &"shot"
+animation = &"shot2"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -382,3 +387,24 @@ position = Vector2(1.00003, 0)
 position = Vector2(-21, 16)
 target_position = Vector2(16, 0)
 collision_mask = 2
+
+[node name="tiro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_cb3vt")
+pitch_scale = 0.82
+
+[node name="correndo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_cb3vt")
+pitch_scale = 1.89
+max_distance = 318.0
+
+[node name="patrulhando" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_cb3vt")
+pitch_scale = 1.45
+max_distance = 114.0
+
+[node name="Morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ni1ms")
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_hcrit")
+pitch_scale = 0.89

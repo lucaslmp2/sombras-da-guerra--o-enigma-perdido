@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3okc7tjk3dce"]
+[gd_scene load_steps=18 format=3 uid="uid://b3okc7tjk3dce"]
 
 [ext_resource type="Script" uid="uid://d002q0a4xo4j5" path="res://scripts/granada_2.gd" id="1_h2te7"]
 [ext_resource type="Texture2D" uid="uid://c2frde2yo4826" path="res://Assets/craftpix-net-507107-free-soldier-sprite-sheets-pixel-art/Soldier_1/Explosion.png" id="1_ojmll"]
 [ext_resource type="Texture2D" uid="uid://dfgplefpvn8ah" path="res://Assets/Prontos/grenade3.png" id="2_h2te7"]
+[ext_resource type="AudioStream" uid="uid://cua7nvqlrh4xy" path="res://Assets/Prontos/ganada_explodindo.mp3" id="4_vg1qk"]
+[ext_resource type="AudioStream" uid="uid://b11al1oj7d8yh" path="res://Assets/Prontos/rolando_granada_chao.mp3" id="5_xipes"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojmll"]
 radius = 4.0
@@ -103,5 +105,13 @@ scale = Vector2(0.109375, 0.101563)
 sprite_frames = SubResource("SpriteFrames_eeddk")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="explosão" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vg1qk")
+volume_db = -27.881
+pitch_scale = 1.47
+
+[node name="rolando_no_chão" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xipes")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

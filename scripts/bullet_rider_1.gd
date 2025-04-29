@@ -2,7 +2,9 @@ extends Area2D
 
 @export var damage: int = 1
 var velocity: Vector2
-
+@onready var ricochet: AudioStreamPlayer2D = $ricochet
+func _ready() -> void:
+	ricochet.play()
 func _physics_process(delta):
 	position += velocity * delta
 	# Adicione lógica para a bala ser destruída após um tempo ou sair da tela

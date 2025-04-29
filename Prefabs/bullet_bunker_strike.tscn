@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://1i3r0q7v3tom"]
+[gd_scene load_steps=5 format=3 uid="uid://1i3r0q7v3tom"]
 
 [ext_resource type="Script" uid="uid://cvrja21sjpinv" path="res://scripts/bullet_bunker_strike.gd" id="1_2hhmh"]
 [ext_resource type="Texture2D" uid="uid://g8xngfmhkph" path="res://Assets/Prontos/bullet_rider (1).png" id="2_p6sfh"]
+[ext_resource type="AudioStream" uid="uid://isedndlond4i" path="res://Assets/Prontos/ricochet_bullet.mp3" id="3_p6sfh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv5ng"]
 radius = 1.0
@@ -21,6 +22,10 @@ shape = SubResource("CapsuleShape2D_pv5ng")
 position = Vector2(16, 15.5)
 scale = Vector2(0.032, 0.034)
 texture = ExtResource("2_p6sfh")
+
+[node name="ricochet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p6sfh")
+pitch_scale = 1.52
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

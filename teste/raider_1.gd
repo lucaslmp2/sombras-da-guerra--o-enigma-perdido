@@ -5,17 +5,23 @@ signal player_died()
 @export var health: int = 3
 @export var jump_force: float = -300
 @export var bullet_scene: PackedScene = preload("res://Prefabs/bullet_rider_1.tscn")
+@onready var tiro: AudioStreamPlayer2D = $tiro
+@onready var correndo: AudioStreamPlayer2D = $correndo
+@onready var morte: AudioStreamPlayer2D = $Morte
+@onready var hurt: AudioStreamPlayer2D = $hurt
 
 @onready var player = null
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var ray_cast_2d_2: RayCast2D = $RayCast2D2
 @onready var gun: Node2D = $Gun
-@onready var animation := $Anim
+@onready var animation: AnimatedSprite2D = $Anim # Mudado para AnimatedSprite2D
 
 var shooting_timer: float = 0.0
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_shooting := false
 var should_follow_player := false
+var is_dead := false # Adicionado para controlar o estado de morte
+var dead_animation_finished := false
 
 const DETECTION_RANGE_X = 500
 const SHOOTING_RANGE_X = 300
@@ -28,6 +34,9 @@ func _ready():
 		player.player_died.connect(_on_player_died)
 
 func _physics_process(delta):
+	if is_dead:
+		return  # Não processa lógica se já estiver morto
+
 	if is_instance_valid(player):
 		var player_pos = player.global_position
 		var distance_x = abs(player_pos.x - global_position.x)
@@ -56,6 +65,7 @@ func _physics_process(delta):
 		should_follow_player = false
 		is_shooting = false
 		velocity.x = 0
+
 func flip():
 	if velocity.x > 0:
 		animation.flip_h = false
@@ -65,6 +75,7 @@ func flip():
 		animation.flip_h = true
 		animation.play("run")
 		raycast.position.x = -abs(raycast.position.x)
+
 func shoot():
 	is_shooting = true
 	should_follow_player = false
@@ -102,18 +113,31 @@ func shoot():
 
 	is_shooting = false
 	should_follow_player = abs(player.global_position.x - global_position.x) <= DETECTION_RANGE_X
+
 func take_damage(amount: int):
+	if is_dead:  # Não processa dano se já estiver morto
+		return
 	health -= amount
 	if health <= 0:
-		animation.stop()
-		animation.play("dead")
-		await animation.animation_finished
-		Globals.score += 300
-		queue_free()
+		die()
 	else:
 		animation.stop()
 		animation.play("hurt")
+		if is_instance_valid(hurt):
+			hurt.play()
 		await get_tree().create_timer(0.5).timeout
+
+func die():
+	if is_dead:
+		return
+	is_dead = true # Garante que a função die() seja chamada apenas uma vez
+	animation.stop()
+	animation.play("dead")
+	if is_instance_valid(morte):
+		morte.play()
+	Globals.score += 300
+	await animation.animation_finished
+	queue_free()
 
 func _on_player_died():
 	player = null
