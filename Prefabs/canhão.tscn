@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://xu7c73f72ids"]
+[gd_scene load_steps=19 format=3 uid="uid://xu7c73f72ids"]
 
+[ext_resource type="Script" uid="uid://bb15u26bfldrr" path="res://scripts/canhão.gd" id="1_egqmj"]
 [ext_resource type="Texture2D" uid="uid://cnxjm06833bmf" path="res://Assets/Prontos/canhão.png" id="1_ovtu3"]
 [ext_resource type="Texture2D" uid="uid://c7uq550p2ajwp" path="res://Assets/Prontos/canhão2.png" id="2_g43u2"]
 [ext_resource type="Texture2D" uid="uid://ccv4eoo4dogwr" path="res://Assets/Prontos/battle-tank-game-assets/PNG/Effects/Flame_A.png" id="3_rgkoo"]
@@ -11,17 +12,26 @@
 [ext_resource type="Texture2D" uid="uid://cl00yrsynaeoe" path="res://Assets/Prontos/battle-tank-game-assets/PNG/Effects/Flame_G.png" id="9_utf0g"]
 [ext_resource type="Texture2D" uid="uid://hij4wkcvwktn" path="res://Assets/Prontos/battle-tank-game-assets/PNG/Effects/Flame_H.png" id="10_dx0h2"]
 [ext_resource type="Texture2D" uid="uid://cnineq1poybsm" path="res://Assets/Prontos/canos e painel.png" id="11_fvq2j"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g43u2"]
-atlas = ExtResource("1_ovtu3")
-region = Rect2(0, 0, 512, 512)
+[ext_resource type="AudioStream" uid="uid://ytmrah2minri" path="res://Assets/Prontos/fire_machine_sound.mp3" id="13_igffs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d83tl"]
 atlas = ExtResource("2_g43u2")
 region = Rect2(0, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g43u2"]
+atlas = ExtResource("1_ovtu3")
+region = Rect2(0, 0, 512, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_d83tl"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d83tl")
+}],
+"loop": true,
+"name": &"desligado",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g43u2")
@@ -30,7 +40,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_d83tl")
 }],
 "loop": true,
-"name": &"default",
+"name": &"ligado",
 "speed": 5.0
 }]
 
@@ -70,20 +80,22 @@ animations = [{
 }]
 
 [node name="canhao" type="Area2D"]
+script = ExtResource("1_egqmj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(895, 397)
 scale = Vector2(1.7998, 1.58105)
 sprite_frames = SubResource("SpriteFrames_d83tl")
-autoplay = "default"
-frame_progress = 0.553271
+animation = &"ligado"
+autoplay = "ligado"
+frame_progress = 0.350276
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="hurt_box_canhao" type="CollisionShape2D" parent="."]
 position = Vector2(251.5, 419)
 shape = SubResource("RectangleShape2D_7k1v7")
 debug_color = Color(0.969853, 0.174665, 0, 0.42)
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="Fogo" type="AnimatedSprite2D" parent="."]
 position = Vector2(282, 399)
 rotation = -1.5708
 scale = Vector2(1, 2.72241)
@@ -92,7 +104,7 @@ animation = &"flash"
 autoplay = "flash"
 frame_progress = 0.800357
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+[node name="Fogo2" type="AnimatedSprite2D" parent="."]
 position = Vector2(285, 443)
 rotation = -1.5708
 scale = Vector2(1, 2.76846)
@@ -107,3 +119,12 @@ position = Vector2(1192, 831)
 rotation = -1.5708
 scale = Vector2(2.85948, 3.74251)
 texture = ExtResource("11_fvq2j")
+
+[node name="som_de_fogo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_igffs")
+max_distance = 306.0
+playback_type = 1
+parameters/looping = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

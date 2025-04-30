@@ -34,7 +34,6 @@ var has_played_hurt_sound = false # Variável para garantir que o som de dano to
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping = false
 var is_attacking = false
-var player_life = Globals.life
 var knockback_vector = Vector2.ZERO
 var can_throw_grenade = true
 
@@ -48,7 +47,7 @@ var zipline_acceleration = 30.0
 var zipline_release_distance = 50.0
 
 func _ready():
-	player_life = Globals.life
+	pass
 
 func _physics_process(delta):
 	time_since_last_shot += delta # Atualiza o tempo desde o último disparo
@@ -197,15 +196,15 @@ func follow_camera(camera):
 	remote_transform.remote_path = camera.get_path()
 
 func take_damage(amount := 1, knockback := Vector2.ZERO, duration := 0.25):
-	player_life -= amount
-	Globals.life = player_life
+	Globals.life -= amount # Use Globals.life diretamente
+	# A linha Globals.life = player_life; não é mais necessária e pode ser removida.
 	_play_attack_animation("hurt_gangster")
 	if not has_played_hurt_sound:
 		hurt.play()
 		has_played_hurt_sound = true
 	emit_signal("player_damaged", amount)
 
-	if player_life <= 0:
+	if Globals.life <= 0: # Use Globals.life para verificar se o jogador morreu
 		_play_attack_animation("dead_gangster")
 		if not has_played_death_sound:
 			morte.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmmrem1u8vffk"]
+[gd_scene load_steps=17 format=3 uid="uid://cmmrem1u8vffk"]
 
 [ext_resource type="Texture2D" uid="uid://dksjcjkqyl8rb" path="res://Assets/Prontos/soldierbunkerdead.png" id="1_2fecv"]
 [ext_resource type="Texture2D" uid="uid://htowpvhfcq01" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (2).png" id="1_7wv0l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bhm7v7jddj8vm" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (1).png" id="2_7qgcw"]
 [ext_resource type="PackedScene" uid="uid://dv14m3hvpm3vx" path="res://Prefabs/alerta_perigo.tscn" id="5_cal2v"]
 [ext_resource type="AudioStream" uid="uid://dmltifdjxd536" path="res://Assets/Prontos/mp40.mp3" id="6_8na0w"]
+[ext_resource type="AudioStream" uid="uid://b8o23lvtqemdm" path="res://Assets/Prontos/dead_player.mp3" id="7_htnp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b0qj"]
 size = Vector2(47, 45)
@@ -141,4 +142,5 @@ position = Vector2(-155, 10)
 stream = ExtResource("6_8na0w")
 pitch_scale = 1.51
 
-[node name="sarcarsmo" type="AudioStreamPlayer2D" parent="."]
+[node name="morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_htnp4")

@@ -8,6 +8,7 @@ var shooting = false
 @export var fire_rate: float = 0.1  # Intervalo entre disparos
 @export var burst_count: int = 7  # Disparar 7 vezes em rajada
 @export var spawn_offset: Vector2 = Vector2(-20, -12)  # 10px acima
+@onready var morte: AudioStreamPlayer2D = $morte
 
 var bullet_count: int = 0
 @export var health: int = 3  # Vida do artilheiro
@@ -77,6 +78,8 @@ func _on_body_entered(body):
 func take_damage(amount: int):
 	health -= amount
 	if health <= 0:
+		morte.play()
+		await get_tree().create_timer(0.3).timeout
 		die()
 	else:
 		animated_sprite_2d.play("idle")

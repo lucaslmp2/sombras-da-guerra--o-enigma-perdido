@@ -8,7 +8,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("enable_throwing") and body is CharacterBody2D:
 		anim.play("collect")
 		Globals.life += hart
-		await $collision.call_deferred("queue_free")
 		await anim.animation_finished
 		queue_free()
 	else:

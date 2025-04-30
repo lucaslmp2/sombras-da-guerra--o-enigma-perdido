@@ -8,7 +8,7 @@ class_name Level_2
 @onready var queda: Node2D = $Agua/Queda_livre
 @onready var queda2: Node2D = $Agua/Queda_livre2
 @onready var ambiente_açao: AudioStreamPlayer2D = $ambiente_açao
-
+@onready var colisao_pc: CollisionShape2D = $computador/Computador_retro/CollisionShape2D
 @export var menu_scene: String = "res://Level/main_menu.tscn"# Define a cena do menu principal
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var dialog_data: Dictionary={
@@ -21,32 +21,7 @@ var dialog_data: Dictionary={
 		"faceset":"res://Assets/Prontos/face aset elias asustado.png",
 		"dialog":"Há muitos inimigos por aqui!",
 		"title":"Elias"
-	},	
-	2:{
-		"faceset":"res://Assets/Prontos/face aset elias asustado.png",
-		"dialog":"Preciso correr contra o tempo.",
-		"title":"Elias"
-	},	
-	3:{
-		"faceset":"res://Assets/Prontos/face aset vilao ironico.png",
-		"dialog":"Já ordenei minhas tropas para que acabem com você!",
-		"title":"Maj. Klaus"
-	},	
-	4:{
-		"faceset":"res://Assets/Prontos/face aset vilao ironico.png",
-		"dialog":"Peguem-no, agora!!!",
-		"title":"Maj. Klaus"
-	},	
-	5:{
-		"faceset":"res://Assets/Prontos/face assets rider_1 raivoso.png",
-		"dialog":"Ele não vai escapar chefe.",
-		"title":"Rider"
-	},	
-	6:{
-		"faceset":"res://Assets/Prontos/face assets rider_1 irado.png",
-		"dialog":"Acabem com ele Tropas!!!",
-		"title":"Rider"
-	},	
+	},
 }
 @export_category("Objects")
 
@@ -62,7 +37,13 @@ func _process(delta: float) -> void:
 			
 func _on_dialog_exited():
 	_dialog_instance = null # Limpa a referência quando o diálogo é removido da cena
+func _on_pendrive_coletado() -> void:
+	print("Pendrive coletado, destravando PC!")
+	# Use call_deferred para habilitar a colisão com segurança
+	call_deferred("habilitar_colisao_pc")
 
+func habilitar_colisao_pc() -> void:
+	colisao_pc.disabled = false  # Habilita a colisão do computador
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		get_tree().change_scene_to_file(menu_scene)  # Volta para o menu principal
@@ -76,6 +57,7 @@ func _ready() -> void:
 	queda.player_died.connect(reload_game)
 	queda2.player_died.connect(reload_game)
 	ambiente_açao.play()
+	colisao_pc.disabled = true  # Desabilita a colisão até o pendrive ser coletado
 	if _dialog_instance == null: # Verifica se não existe um diálogo já aberto
 			_dialog_instance = DialogScreen.instantiate()
 			_dialog_instance.data = dialog_data
