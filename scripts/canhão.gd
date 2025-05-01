@@ -1,6 +1,6 @@
 extends Area2D
 
-signal desligar_canhao # Sinal para ser emitido pelo computador
+
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hurt_box_canhao: CollisionShape2D = $hurt_box_canhao
@@ -10,7 +10,7 @@ signal desligar_canhao # Sinal para ser emitido pelo computador
 
 var ligado: bool = false
 
-func _ready():
+func _ready() -> void:
 	ligar()
 
 func ligar():

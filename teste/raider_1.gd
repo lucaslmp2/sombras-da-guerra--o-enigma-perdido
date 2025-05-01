@@ -9,7 +9,7 @@ signal player_died()
 @onready var correndo: AudioStreamPlayer2D = $correndo
 @onready var morte: AudioStreamPlayer2D = $Morte
 @onready var hurt: AudioStreamPlayer2D = $hurt
-@export var item_scene: PackedScene = preload("res://Prefabs/item.tscn")
+@export var item_scene: PackedScene = preload("res://Prefabs/drive.tscn")
 @onready var player = null
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var ray_cast_2d_2: RayCast2D = $RayCast2D2
@@ -102,6 +102,7 @@ func shoot():
 			bullet.queue_free()
 
 	animation.play("shot")
+	tiro.play()
 	await get_tree().create_timer(0.3).timeout
 
 	# **ADICIONE ESTA VERIFICAÇÃO APÓS O TIMER**
@@ -130,7 +131,13 @@ func take_damage(amount: int):
 func die():
 	if is_dead:
 		return
-	spawn_item()
+	var chave = preload("res://Prefabs/drive.tscn").instantiate()
+	chave.position = position
+	get_tree().current_scene.add_child(chave)  # Adiciona à fase atual
+
+	# Conecta o sinal do Drive ao método da fase
+	if get_tree().current_scene.has_method("_on_pendrive_coletado"):
+		chave.connect("pick_up_chave", get_tree().current_scene._on_pendrive_coletado)
 	is_dead = true # Garante que a função die() seja chamada apenas uma vez
 	animation.stop()
 	animation.play("dead")
@@ -147,15 +154,3 @@ func _on_player_died():
 	velocity.x = 0
 	emit_signal("player_died")
 	# Você pode adicionar aqui qualquer outra lógica que este inimigo deva fazer ao player morrer
-func spawn_item():
-	if item_scene:
-		var item_instance = item_scene.instantiate()
-		if item_instance is Area2D:
-			item_instance.global_position = global_position + Vector2(0, -40)
-			get_parent().get_parent().add_child(item_instance)
-			item_instance.add_to_group("pendrives")
-			item_instance.connect("pick_up_pendrive", Callable(get_parent().get_parent(), "_on_pendrive_coletado"))
-			Globals.pen_drive = item_scene
-			print(Globals.pen_drive)
-		else:
-			print("Erro: item_scene não é um Area2D!")

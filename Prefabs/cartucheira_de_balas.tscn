@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6tfbrb1tvy0l" path="res://scripts/cartucheira_de_balas.gd" id="1_gj0kc"]
 [ext_resource type="Texture2D" uid="uid://2y44hjq1y7t4" path="res://Assets/Prontos/cartucheira_de_balaspng (1).png" id="2_gj0kc"]
-[ext_resource type="AudioStream" uid="uid://om6nla5mjyot" path="res://Assets/Prontos/item-pickup-37089.mp3" id="3_ayq86"]
+[ext_resource type="AudioStream" uid="uid://b34ebom263502" path="res://Assets/Prontos/caixa_de_balas (mp3cut.net).mp3" id="3_ayq86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gj0kc"]
 
@@ -20,6 +20,7 @@ texture = ExtResource("2_gj0kc")
 
 [node name="pickup_bala" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ayq86")
-volume_db = 24.0
+volume_db = 6.196
+playback_type = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -226,7 +226,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -371,7 +371,7 @@ speed = 80.0
 position = Vector2(-17.5, -9)
 scale = Vector2(0.851563, 0.78125)
 sprite_frames = SubResource("SpriteFrames_b0iiw")
-animation = &"shot2"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

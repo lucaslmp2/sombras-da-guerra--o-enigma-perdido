@@ -128,3 +128,4 @@ parameters/looping = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="desligar_canhao" from="." to="." method="_on_Canhao_desligar_canhao"]

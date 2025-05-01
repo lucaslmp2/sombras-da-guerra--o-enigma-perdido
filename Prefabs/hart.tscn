@@ -56,7 +56,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"collect",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -64,7 +64,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hart",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="hart" type="Area2D"]
@@ -81,6 +81,7 @@ scale = Vector2(0.084507, 0.0903955)
 sprite_frames = SubResource("SpriteFrames_psmct")
 animation = &"hart"
 autoplay = "hart"
+frame_progress = 0.759299
 
 [node name="pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_g6n0j")

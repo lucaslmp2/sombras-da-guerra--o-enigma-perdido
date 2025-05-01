@@ -127,17 +127,22 @@ func take_damage(amount: int):
 
 func die():
 	if is_dead:
-		return # Garante que die() seja executado apenas uma vez
+		return
 	is_dead = true
 	set_physics_process(false)
 	velocity = Vector2.ZERO
 	if is_instance_valid(animated_sprite_2d):
 		animated_sprite_2d.play("dead")
+		await get_tree().create_timer(0.3).timeout
 	if is_instance_valid(morte):
 		morte.play()
 	Globals.score += 200
-	await animated_sprite_2d.animation_finished
-	dead_animation_finished = true
+	if has_node("CollisionShape2D"):
+		get_node("CollisionShape2D").disabled = true
+	elif has_node("CollisionPolygon2D"):
+		get_node("CollisionPolygon2D").disabled = true
+
+	await get_tree().create_timer(1.0).timeout # Espera 1 segundo (ajuste conforme necessário)
 	queue_free()
 
 func update_direction():

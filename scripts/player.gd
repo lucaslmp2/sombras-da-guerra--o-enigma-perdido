@@ -22,7 +22,6 @@ const SHOOT_DELAY = 0.1 # Adiciona um pequeno delay para evitar disparos rápido
 # Nós
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var animation: AnimatedSprite2D = $anim_inicial
-@onready var remote_transform: RemoteTransform2D = $remote
 
 var is_running_sound_playing = false
 var is_shooting = false # Nova variável para controlar se o jogador está a disparar.
@@ -191,9 +190,6 @@ func _play_attack_animation(name: String):
 	animation.play(name)
 	await animation.animation_finished
 	is_attacking = false
-
-func follow_camera(camera):
-	remote_transform.remote_path = camera.get_path()
 
 func take_damage(amount := 1, knockback := Vector2.ZERO, duration := 0.25):
 	Globals.life -= amount # Use Globals.life diretamente

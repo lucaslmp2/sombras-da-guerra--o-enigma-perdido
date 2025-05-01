@@ -3,6 +3,7 @@ extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var bullet_scene = preload("res://Prefabs/bullet_bunker_strike.tscn")
+@onready var morte: AudioStreamPlayer2D = $morte
 
 var shooting = false
 @export var fire_rate: float = 0.1  # Intervalo entre disparos
@@ -77,6 +78,8 @@ func _on_body_entered(body):
 func take_damage(amount: int):
 	health -= amount
 	if health <= 0:
+		morte.play()
+		await get_tree().create_timer(0.2).timeout
 		die()
 	else:
 		animated_sprite_2d.play("idle")

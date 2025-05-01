@@ -79,7 +79,7 @@ func take_damage(amount: int):
 	health -= amount
 	if health <= 0:
 		morte.play()
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.2).timeout
 		die()
 	else:
 		animated_sprite_2d.play("idle")

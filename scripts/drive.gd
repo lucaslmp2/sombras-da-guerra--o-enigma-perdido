@@ -1,25 +1,20 @@
 extends Area2D
 
-signal pick_up_pendrive
+signal pick_up_chave
 @onready var audio_pickup: AudioStreamPlayer2D = $pick_up
 var _dialog_instance: DialogScreen
 var hud: CanvasLayer = null
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var dialog_data: Dictionary = {
 	0: {
-		"faceset": "res://Assets/Prontos/face aset elias2 sorrindo.png",
-		"dialog": "Nossa um pendrive.",
+		"faceset": "res://Assets/Prontos/face_aset_elias_sorrindo1.png",
+		"dialog": "Nossa a Chave.",
 		"title": "Elias"
 	},
-	1: {
-		"faceset": "res://Assets/Prontos/face aset elias2 sorrindo.png",
-		"dialog": "O que será que tem nele?",
+	1:{
+		"faceset": "res://Assets/Prontos/face_aset_elias_sorrindo1.png",
+		"dialog": "Foi mais facíl do que imaginei.",
 		"title": "Elias"
-	},
-	2:{
-		"faceset":"res://Assets/Prontos/face aset elias2 sorrindo.png",
-		"dialog":"Vou abrir ele no meu notebook.",
-		"title":"Elias"	
 	},
 }
 
@@ -42,6 +37,6 @@ func _on_body_entered(body: Node) -> void:
 		print("Item coletado!")
 		_show_dialog(dialog_data)
 		audio_pickup.play()
-		emit_signal("pick_up_pendrive")
+		emit_signal("pick_up_chave")
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

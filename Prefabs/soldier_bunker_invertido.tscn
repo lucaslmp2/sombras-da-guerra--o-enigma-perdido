@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b545v8wxcs1ar"]
+[gd_scene load_steps=17 format=3 uid="uid://b545v8wxcs1ar"]
 
 [ext_resource type="Script" uid="uid://bvi85yeogun1p" path="res://scripts/soldier_bunker_invertido.gd" id="1_fwsxv"]
 [ext_resource type="Texture2D" uid="uid://dksjcjkqyl8rb" path="res://Assets/Prontos/soldierbunkerdead.png" id="2_1lb7i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bhm7v7jddj8vm" path="res://Assets/Prontos/wmremove-transformed-removebg-preview (1).png" id="4_0csoj"]
 [ext_resource type="PackedScene" uid="uid://dv14m3hvpm3vx" path="res://Prefabs/alerta_perigo.tscn" id="5_xyuef"]
 [ext_resource type="AudioStream" uid="uid://dmltifdjxd536" path="res://Assets/Prontos/mp40.mp3" id="6_g3ryp"]
+[ext_resource type="AudioStream" uid="uid://b8o23lvtqemdm" path="res://Assets/Prontos/dead_player.mp3" id="7_1lb7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b0qj"]
 size = Vector2(47, 48)
@@ -110,7 +111,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="soldier_bunker_invertido" type="Area2D"]
+[node name="soldier_bunker_invertido" type="Area2D" groups=["enemy"]]
 position = Vector2(202, 117)
 collision_layer = 4
 collision_mask = 2
@@ -143,3 +144,6 @@ stream = ExtResource("6_g3ryp")
 pitch_scale = 1.51
 
 [node name="sarcarsmo" type="AudioStreamPlayer2D" parent="."]
+
+[node name="morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_1lb7i")

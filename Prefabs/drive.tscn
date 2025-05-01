@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cki4xmsig8hu4"]
+
+[ext_resource type="Script" uid="uid://do2cawkiohro2" path="res://scripts/drive.gd" id="1_vshao"]
+[ext_resource type="Texture2D" uid="uid://d4au5w2y68nyd" path="res://Assets/Prontos/key_maquina.png" id="2_vshao"]
+[ext_resource type="AudioStream" uid="uid://suski7y3m4my" path="res://Assets/Prontos/coletando_pendrive.mp3" id="3_8386a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwea"]
+size = Vector2(16, 16)
+
+[node name="Drive" type="Area2D" groups=["pendrives"]]
+position = Vector2(0, -30)
+script = ExtResource("1_vshao")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_vshao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_rhwea")
+
+[node name="pick_up" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8386a")
+volume_db = 8.409
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

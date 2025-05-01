@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://brfyk6iufmosp"]
+[gd_scene load_steps=17 format=3 uid="uid://brfyk6iufmosp"]
 
 [ext_resource type="Script" uid="uid://cp5qio8gfvt35" path="res://scripts/granada.gd" id="1_cvwvd"]
 [ext_resource type="Texture2D" uid="uid://bk2rthaiiasxg" path="res://Assets/Heal/1.png" id="2_afyqv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cjeemy4owfx6x" path="res://Assets/Heal/10.png" id="11_du15l"]
 [ext_resource type="Texture2D" uid="uid://duefgc4conp0p" path="res://Assets/Heal/11.png" id="12_jsik3"]
 [ext_resource type="Texture2D" uid="uid://6kih8guq17kc" path="res://Assets/5 - Misc. universal tiles/grenade2.png" id="13_4l8ts"]
+[ext_resource type="AudioStream" uid="uid://om6nla5mjyot" path="res://Assets/Prontos/item-pickup-37089.mp3" id="14_afyqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_psmct"]
 radius = 8.0
@@ -80,5 +81,8 @@ scale = Vector2(0.084507, 0.0903955)
 sprite_frames = SubResource("SpriteFrames_psmct")
 animation = &"grenade"
 autoplay = "grenade"
+
+[node name="pick_up_granada" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_afyqv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -4,31 +4,33 @@ extends Area2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var maquina_ligada: AudioStreamPlayer2D = $Maquina_ligada
 @onready var canhao: Area2D = $"../canhão"
+signal desligar_canhao
+@onready var alavanca_de_computador: CanvasLayer = $Alavanca_de_computador
+@onready var animated_sprite_2d: AnimatedSprite2D = $Alavanca_de_computador/Control/AnimatedSprite2D
 
-signal desligar_canhão
+func _ready() -> void:
+	maquina_ligada.play()
+	computador.play("ligado")
 
-var interagivel: bool = true
+	# Conectar o sinal usando Callable (Godot 4)
+	if not is_connected("desligar_canhao", Callable(canhao, "_on_Canhao_desligar_canhao")):
+		connect("desligar_canhao", Callable(canhao, "_on_Canhao_desligar_canhao"))
+
 
 func _on_body_entered(body):
-	if interagivel and body.has_method("_on_pendrive_coletado"): # Substitua "algum_metodo_de_interacao" pelo método real do seu player
-		computador.play("ligado")
-		maquina_ligada.play()
-		interagivel = false # Impede interações repetidas até que o computador seja reiniciado (opcional)
+	if body.name == "Player":  # ou outro critério de identificação
 		if is_instance_valid(canhao) and canhao.has_method("desligar"):
-			canhao.desligar()
+			emit_signal("desligar_canhao")
+			computador.play("desligado")
+			maquina_ligada.stop()
+			
+			# Mostrar alavanca
+			alavanca_de_computador.visible = true
+			animated_sprite_2d.play("alavanca")  # Certifique-se que a animação se chama assim
+
+			await get_tree().create_timer(0.8).timeout
+
+			# Esconder a alavanca novamente
+			alavanca_de_computador.visible = false
 		else:
-			push_error("Canhão não encontrado ou não tem o método 'ligar'.")
-
-func _on_body_exited(body):
-	# Opcional: Adicionar alguma lógica ao sair da área, se necessário
-	pass
-
-# Função para reiniciar o computador (opcional)
-func reiniciar_computador():
-	interagivel = true
-	computador.play("desligado")
-	maquina_ligada.stop()
-	if is_instance_valid(canhao) and canhao.has_method("desligar"):
-		canhao.desligar()
-	else:
-		push_error("Canhão não encontrado ou não tem o método 'desligar'.")
+			push_error("Canhão não encontrado ou não tem o método 'desligar'.")
