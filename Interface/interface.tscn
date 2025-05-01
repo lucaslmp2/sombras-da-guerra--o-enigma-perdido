@@ -115,7 +115,7 @@ patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
-default_minutes = 15
+default_minutes = 10
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="counter_Timer"]
