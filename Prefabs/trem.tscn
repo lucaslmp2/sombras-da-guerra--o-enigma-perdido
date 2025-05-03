@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=3 uid="uid://c107843kfla1g"]
+
+[ext_resource type="Texture2D" uid="uid://dpwf0enmos2ms" path="res://Assets/Prontos/trem2.png" id="1_5js44"]
+[ext_resource type="Script" uid="uid://t82b0110iqgt" path="res://scripts/locomotiva.gd" id="1_ekhp5"]
+[ext_resource type="Texture2D" uid="uid://si1m0rx2s78r" path="res://Assets/Prontos/trem.png" id="2_ekhp5"]
+[ext_resource type="AudioStream" uid="uid://fdqxyx2recly" path="res://Assets/Prontos/trem.mp3" id="3_5js44"]
+[ext_resource type="PackedScene" uid="uid://f5vq1wjg4xht" path="res://Prefabs/plataform_movel.tscn" id="5_isb6j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_73d5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ekhp5")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5js44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ekhp5")
+}],
+"loop": true,
+"name": &"run",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4p87"]
+size = Vector2(726, 139)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekhp5"]
+size = Vector2(29, 24.125)
+
+[node name="Locomotiva" type="Area2D"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_ekhp5")
+
+[node name="plataform_movel" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(541, 95)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel2" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(430, 109)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel5" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(339, 109)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel6" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(371, 109)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel3" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(403, 109)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel4" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(307, 109)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel7" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(198, 107)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel8" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(102, 107)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel9" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(134, 107)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel10" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(166, 107)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel11" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(70, 107)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel12" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(458, 109)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel13" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(280, 108)
+movie_speed = 0.0
+distance = 0
+
+[node name="plataform_movel14" parent="." instance=ExtResource("5_isb6j")]
+visible = false
+z_index = -1
+position = Vector2(217, 108)
+movie_speed = 0.0
+distance = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(388.5, 74.25)
+scale = Vector2(0.373535, 0.345102)
+sprite_frames = SubResource("SpriteFrames_73d5g")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(389, 59.5)
+shape = SubResource("RectangleShape2D_j4p87")
+
+[node name="trem_andando" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5js44")
+parameters/looping = true
+
+[node name="area de embarque" type="Area2D" parent="."]
+position = Vector2(540, 88)
+collision_layer = 2
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="area de embarque"]
+position = Vector2(0.5, -36.0625)
+shape = SubResource("RectangleShape2D_ekhp5")
+
+[connection signal="body_entered" from="area de embarque" to="." method="_on_area_de_embarque_body_entered"]
+[connection signal="body_exited" from="area de embarque" to="." method="_on_area_de_embarque_body_exited"]

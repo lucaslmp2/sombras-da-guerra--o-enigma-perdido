@@ -57,10 +57,10 @@ func _physics_process(delta):
 	if is_on_zipline:
 		_process_zipline(delta)
 		return
-	
+
 
 	_process_movement_topdown(delta)
-	_process_movement(delta)
+	#_process_movement(delta)
 
 	if Input.is_action_just_pressed("attack") and Globals.granada > 0:
 		granada_lançada.play()
@@ -84,6 +84,23 @@ func _physics_process(delta):
 			collision.get_collider().has_collided_with(collision, self)
 
 func _process_movement_topdown(delta):
+	# Aplica gravidade
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	# Pulo
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_FORCE
+		is_jumping = true
+		animation.play("jump_gangster")
+		pulo.play() # Toca o som de pulo
+		if is_running_sound_playing:
+			correndo.stop()
+			is_running_sound_playing = false
+	elif is_on_floor():
+		is_jumping = false
+
+	# Movimento Topdown
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
@@ -94,52 +111,68 @@ func _process_movement_topdown(delta):
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 
-	velocity = direction.normalized() * SPEED
+	velocity.x = direction.x * SPEED
+	velocity.y = direction.y * SPEED
 
 	if direction != Vector2.ZERO:
 		animation.play("run_gangster")
+		if not correndo.playing: # Verifica se o áudio já não está tocando
+			correndo.play()
 
 		if direction.x != 0:
 			animation.scale.x = direction.x # Ajusta a direção do sprite (esquerda/direita)
 	else:
 		animation.play("idle_gangster")
-
-func _process_movement(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Pulo
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_FORCE
-		is_jumping = true
-		animation.play("jump_gangster")
-		pulo.play()
-		if is_running_sound_playing:
+		if correndo.playing: # Verifica se o áudio está tocando para parar
 			correndo.stop()
-			is_running_sound_playing = false
-	elif is_on_floor():
-		is_jumping = false
 
-	# Movimento horizontal
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction != 0:
-		velocity.x = direction * SPEED
-		animation.scale.x = direction
+	if direction != Vector2.ZERO:
+		animation.play("run_gangster")
+		if not correndo.playing: # Verifica se o áudio já não está tocando
+			correndo.play()
 
-		if is_on_floor(): # Só anima correr se estiver no chão
-			animation.play("run_gangster")
-			if not is_running_sound_playing:
-				correndo.play()
-				is_running_sound_playing = true
+		if direction.x != 0:
+			animation.scale.x = direction.x # Ajusta a direção do sprite (esquerda/direita)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-		# Se estiver parado e no chão, toca idle
-		if is_on_floor() and not is_jumping:
-			animation.play("idle_gangster")
-			if is_running_sound_playing:
-				correndo.stop()
-				is_running_sound_playing = false
+		animation.play("idle_gangster")
+		if correndo.playing: # Verifica se o áudio está tocando para parar
+			correndo.stop()
+#func _process_movement(delta):
+	#if not is_on_floor():
+		#velocity.y += gravity * delta
+#
+	## Pulo
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_FORCE
+		#is_jumping = true
+		#animation.play("jump_gangster")
+		#pulo.play() # Toca o som de pulo
+		#if is_running_sound_playing:
+		#	correndo.stop()
+		#	is_running_sound_playing = false
+	#elif is_on_floor():
+	#	is_jumping = false
+#
+	## Movimento horizontal
+	#var direction = Input.get_axis("ui_left", "ui_right")
+	#if direction != 0:
+	#	velocity.x = direction * SPEED
+	#	animation.scale.x = direction
+#
+	#	if is_on_floor(): # Só anima correr se estiver no chão
+	#		animation.play("run_gangster")
+	#		if not is_running_sound_playing:
+	#			correndo.play()
+	#			is_running_sound_playing = true
+	#else:
+	#	velocity.x = move_toward(velocity.x, 0, SPEED)
+#
+	#	# Se estiver parado e no chão, toca idle
+	#	if is_on_floor() and not is_jumping:
+	#		animation.play("idle_gangster")
+	#		if is_running_sound_playing:
+	#			correndo.stop()
+	#			is_running_sound_playing = false
 
 
 func _throw_grenade():
@@ -251,7 +284,7 @@ func _attack_shot():
 		is_shooting = true
 		tiro.play()
 		time_since_last_shot = 0.0 # Reseta o timer após o disparo
-		
+
 func _shoot():
 	var bullet = bullet_scene.instantiate()
 	Globals.bulets -= 1

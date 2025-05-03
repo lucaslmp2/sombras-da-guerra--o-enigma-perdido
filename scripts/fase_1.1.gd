@@ -3,7 +3,7 @@ extends Node2D
 @onready var fade_layer: CanvasLayer = $FadeLayer
 @onready var fade_rect: ColorRect = $FadeLayer/FadeRect
 @onready var fade_anim: AnimationPlayer = $FadeLayer/FadeAnim
-@export var next_scene: String = "res://Level/fase_2.tscn"
+@export var next_scene: String = "res://Level/fase_3.tscn"
 @export var menu_scene: String = "res://Level/main_menu.tscn"
 @onready var computer_screen = $Computer_cena
 @onready var ambiente: AudioStreamPlayer2D = $ambiente

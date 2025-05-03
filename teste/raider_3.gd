@@ -1,46 +1,152 @@
 extends CharacterBody2D
 
-@onready var animation: AnimatedSprite2D = $anim
+# Nós Onready
+@onready var collision: CollisionShape2D = $collision
+@onready var correndo: AudioStreamPlayer2D = $correndo
+@onready var pulo: AudioStreamPlayer2D = $pulo
+@onready var morte: AudioStreamPlayer2D = $morte
+@onready var hurt: AudioStreamPlayer2D = $hurt
+@onready var anim: AnimatedSprite2D = $anim
+@onready var porrada: AudioStreamPlayer2D = $porrada
+@onready var wall_ray = $WallRay
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-var velocidade = 200  # Velocidade do jogador
-var velocidade_salto = 600  # Velocidade do salto
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var is_jumping := false
-var player_life := 10
-var knockback_vector := Vector2.ZERO
-# Variáveis de controle
-var movimento = Vector2.ZERO
-const JUMP_FORCE = -250.0
+# Parâmetros do Inimigo (ajuste conforme necessário)
+const DETECTION_RANGE_X = 500     # Distância máxima para detectar o player no eixo X
+const SAFE_DISTANCE_X = 100     # Distância mínima para parar de avançar
+const HEIGHT_TOLERANCE = 30     # Margem de tolerância no eixo Y para considerar que estão na mesma altura
 
-# Função chamada a cada quadro de física
+@export var speed: float = 100
+@export var direction: int = 1     # 1 para direita, -1 para esquerda
+@onready var patrulhando: AudioStreamPlayer2D = $patrulhando
+@export var health: int = 3 # Vida do inimigo
+
+# Variáveis de Estado
+var should_follow_player := false
+var is_atacking := false
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var player: Node2D = null
+var is_dead := false # Adicionado para evitar chamadas de som após a morte
+var current_attack_animation := 0 # Variável para controlar qual animação de ataque está sendo tocada
+var attack_animations = ["atack_1", "atack_2", "atack_3"]
+
+
+func _ready():
+	# Busca o player na árvore de nós.  Isso é mais robusto.
+	player = get_parent().get_node_or_null("Player")
+	if is_instance_valid(patrulhando):
+		patrulhando.play()
+	update_direction()
+
+
 func _physics_process(delta):
-	# Add the gravity.
+	if is_dead:
+		return    # Não processa lógica se já estiver morto
+
+	# Aplica gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_FORCE
-		is_jumping = true
-	elif is_on_floor():
-		is_jumping = false
 
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var distance_x = INF
+	var distance_y = INF
 
-	if direction != 0:
-		velocity.x = direction * SPEED
-		animation.scale.x = direction
-		if !is_jumping: #if is_not jumping
-			animation.play("walk")
-	elif is_jumping: #is_jumping == true
-		animation.play("jump")
+	# Verifica se a referência do jogador ainda é válida
+	if is_instance_valid(player):
+		distance_x = abs(player.global_position.x - global_position.x)
+		distance_y = abs(player.global_position.y - global_position.y)
+
+		should_follow_player = distance_x <= DETECTION_RANGE_X and distance_y <= HEIGHT_TOLERANCE
+
+		if should_follow_player and not is_atacking:
+			if distance_x > SAFE_DISTANCE_X:
+				run_towards_player()
+			else:
+				attack()
+		else:
+			patrol()    # Se o player não for detectado ou o inimigo não estiver atirando, patrulha
+
+	move_and_slide()     # Movimento do inimigo
+	
+
+func patrol():
+	if is_atacking:
+		return
+	if is_instance_valid(patrulhando) and !patrulhando.playing:
+		patrulhando.play()
+	velocity.x = speed * direction
+	anim.play("walk")
+
+	# Inverter direção se detectar parede à frente
+	if wall_ray.is_colliding():
+		direction *= -1
+		update_direction()
+	elif is_on_wall(): # Detecta colisão com paredes
+		direction *= -1
+		update_direction()
+
+
+func attack():
+	if abs(player.global_position.y - global_position.y) > HEIGHT_TOLERANCE:
+		return     # Se o player estiver em outra altura, não atira
+
+	velocity.x = 0
+	is_atacking = true    # Evita múltiplos tiros ao mesmo tempo
+	var attack_animation = attack_animations[current_attack_animation]
+	anim.play(attack_animation)
+	if is_instance_valid(porrada):
+		porrada.play()
+	await anim.animation_finished
+	deal_damage() # Chama a função para causar dano
+	is_atacking = false    # Libera para próximas ações
+	anim.play("idle")
+	current_attack_animation = (current_attack_animation + 1) % attack_animations.size()
+
+
+
+func run_towards_player():
+	direction = 1 if player.global_position.x > global_position.x else -1
+	velocity.x = speed * direction * 1.5     # Corre mais rápido quando detecta o jogador
+	update_direction() # Garante que a direção/flip esteja correta.
+	anim.play("run")
+	if is_instance_valid(correndo) and !correndo.playing:
+		correndo.play()# Agora a animação de corrida sempre toca corretamente
+		if is_instance_valid(patrulhando):
+			patrulhando.stop() # PARE o áudio de patrulha aqui.
+			
+func update_direction():
+	anim.flip_h = direction < 0
+	wall_ray.target_position.x = 16 * direction
+
+func take_damage(amount: int):
+	if is_dead:
+		return     # Não processa dano se já estiver morto
+
+	health -= amount
+	if health <= 0:
+		die()
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animation.play("idle")
+		if is_instance_valid(hurt):
+			hurt.play()
+		# Não zere a velocidade aqui a menos que você queira que o inimigo pare quando atingido
+		# velocity = Vector2.ZERO
+		anim.play("hurt") # Assumindo que "hurt" é a animação de dano
+		await anim.animation_finished
 		
-		
-	if knockback_vector != Vector2.ZERO:
-		velocity = knockback_vector
-		
-	move_and_slide()
+func die():
+	if is_dead:
+		return
+	is_dead = true
+	set_physics_process(false) # Pare de mover
+	velocity = Vector2.ZERO
+	anim.play("morte")
+	if is_instance_valid(morte):
+		morte.play()
+	if is_instance_valid(collision):
+		collision.disabled = true # Desativa a colisão do inimigo.
+	await anim.animation_finished
+	queue_free()
+	
+func deal_damage():
+	# Implemente a lógica para causar dano ao jogador aqui
+	if is_instance_valid(player) and player.has_method("take_damage"):
+		player.take_damage(1)     # Exemplo: 10 de dano
+	pass
