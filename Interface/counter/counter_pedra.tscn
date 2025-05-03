@@ -1,34 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3onesj6vxk6w"]
+[gd_scene load_steps=6 format=3 uid="uid://0o4yhpu4ciwy"]
 
-[ext_resource type="Texture2D" uid="uid://dfgplefpvn8ah" path="res://Assets/Prontos/grenade3.png" id="1_pooyl"]
-[ext_resource type="Script" uid="uid://ibt07gymrjpr" path="res://scripts/counter_granada.gd" id="2_mrxel"]
-[ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="3_mrxel"]
-[ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="4_gkqgd"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g82hc"]
-load_path = "res://.godot/imported/alena-fedorova-lunaris-ui.jpg-6189bf94117b1d0617162ffff5fc50bd.ctex"
+[ext_resource type="Texture2D" uid="uid://30cm8r8qa02c" path="res://Assets/Prontos/pedra (1).png" id="1_8ojj3"]
+[ext_resource type="Script" uid="uid://d1u862l01psj1" path="res://scripts/counter_pedra.gd" id="1_iklnx"]
+[ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="2_iklnx"]
+[ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="3_o4yrc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hmw6a"]
-font = ExtResource("4_gkqgd")
+font = ExtResource("3_o4yrc")
 font_size = 32
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
 
-[node name="counter_granada" type="NinePatchRect"]
+[node name="counter_pedra" type="NinePatchRect"]
 offset_right = 85.0
 offset_bottom = 29.0
 size_flags_vertical = 3
-texture = SubResource("CompressedTexture2D_g82hc")
 region_rect = Rect2(853, 2111, 122, 56)
 patch_margin_left = 6
 patch_margin_top = 8
 patch_margin_right = 5
 patch_margin_bottom = 7
-script = ExtResource("2_mrxel")
+script = ExtResource("1_iklnx")
 
-[node name="granada" type="TextureRect" parent="."]
+[node name="pedra" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -41,7 +37,7 @@ offset_right = -3.0
 offset_bottom = 18.5
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("1_pooyl")
+texture = ExtResource("1_8ojj3")
 expand_mode = 3
 
 [node name="Label" type="Label" parent="."]
@@ -54,7 +50,7 @@ offset_top = -13.5
 offset_right = 46.0
 offset_bottom = 12.5
 grow_vertical = 2
-theme = ExtResource("3_mrxel")
+theme = ExtResource("2_iklnx")
 theme_override_colors/font_color = Color(0.705882, 0.627451, 0.552941, 1)
 theme_override_colors/font_shadow_color = Color(0.258824, 0.254902, 0.305882, 1)
 theme_override_colors/font_outline_color = Color(0.615686, 0.419608, 0.258824, 1)

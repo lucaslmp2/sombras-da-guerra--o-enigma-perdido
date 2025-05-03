@@ -1,91 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3okc7tjk3dce"]
+[gd_scene load_steps=7 format=3 uid="uid://b3okc7tjk3dce"]
 
 [ext_resource type="Script" uid="uid://d002q0a4xo4j5" path="res://scripts/granada_2.gd" id="1_h2te7"]
-[ext_resource type="Texture2D" uid="uid://c2frde2yo4826" path="res://Assets/craftpix-net-507107-free-soldier-sprite-sheets-pixel-art/Soldier_1/Explosion.png" id="1_ojmll"]
-[ext_resource type="Texture2D" uid="uid://dfgplefpvn8ah" path="res://Assets/Prontos/grenade3.png" id="2_h2te7"]
+[ext_resource type="Texture2D" uid="uid://cw2v2m6w77ync" path="res://Assets/Prontos/pedra.png" id="2_eeddk"]
 [ext_resource type="AudioStream" uid="uid://cua7nvqlrh4xy" path="res://Assets/Prontos/ganada_explodindo.mp3" id="4_vg1qk"]
 [ext_resource type="AudioStream" uid="uid://b11al1oj7d8yh" path="res://Assets/Prontos/rolando_granada_chao.mp3" id="5_xipes"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojmll"]
 radius = 4.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eeddk"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vg1qk"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xipes"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pafls"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iv6m5"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_onyov"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3gfu3"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(768, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v5g00"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(896, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jgie"]
-atlas = ExtResource("1_ojmll")
-region = Rect2(1024, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6k2kd"]
-atlas = ExtResource("2_h2te7")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_eeddk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eeddk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vg1qk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xipes")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pafls")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iv6m5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_onyov")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3gfu3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v5g00")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6jgie")
-}],
-"loop": false,
-"name": &"explosion",
-"speed": 26.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6k2kd")
+"texture": ExtResource("2_eeddk")
 }],
 "loop": true,
 "name": &"idle",

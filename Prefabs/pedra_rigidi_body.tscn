@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://crx475q0iippg"]
+
+[ext_resource type="Texture2D" uid="uid://cw2v2m6w77ync" path="res://Assets/Prontos/pedra.png" id="1_h5rmw"]
+[ext_resource type="Script" uid="uid://ba86s32psec46" path="res://scripts/pedra_rigidi_body.gd" id="1_s4ov0"]
+[ext_resource type="AudioStream" uid="uid://c1v1wt3d4bkjx" path="res://Assets/Prontos/pedra_rolando.mp3" id="4_s4ov0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ojmll"]
+radius = 4.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eeddk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h5rmw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="pedra" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_s4ov0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ojmll")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.03125, 0.0371096)
+sprite_frames = SubResource("SpriteFrames_eeddk")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="rolando_no_chão" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s4ov0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

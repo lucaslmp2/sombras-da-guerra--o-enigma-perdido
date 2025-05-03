@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bndua3esxkuwg"]
+
+[ext_resource type="Texture2D" uid="uid://cw2v2m6w77ync" path="res://Assets/Prontos/pedra.png" id="1_016jl"]
+[ext_resource type="Script" uid="uid://dw86w7h43vpqa" path="res://scripts/pedra.gd" id="1_kv40w"]
+[ext_resource type="AudioStream" uid="uid://om6nla5mjyot" path="res://Assets/Prontos/item-pickup-37089.mp3" id="3_4npgk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kv40w"]
+radius = 6.0
+
+[node name="pedra" type="Area2D"]
+script = ExtResource("1_kv40w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kv40w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.0405273, 0.0405273)
+texture = ExtResource("1_016jl")
+
+[node name="coletado" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4npgk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

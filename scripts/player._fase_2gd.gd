@@ -6,16 +6,18 @@ signal player_died()
 
 @onready var correndo: AudioStreamPlayer2D = $correndo
 @onready var pulo: AudioStreamPlayer2D = $pulo
-@onready var tiro: AudioStreamPlayer2D = $tiro
-@onready var granada_lançada: AudioStreamPlayer2D = $granada_lançada
+@onready var tiro: AudioStreamPlayer2D = $tiro # Usado para o tiro, mas pode ser usado para outros sons
+@onready var granada_lançada: AudioStreamPlayer2D = $granada_lançada # Vou deixar, mas pode remover se não usar granadas
 @onready var morte: AudioStreamPlayer2D = $morte
 @onready var hurt_sound: AudioStreamPlayer2D = $hurt # Renomeei para evitar confusão com a animação
+
 var is_undercover = true # Ativa o conjunto de animações alternativas
 
 # Constantes
 const SPEED = 200.0
 const JUMP_FORCE = -300.0
 const KNOCKBACK_FADE_DURATION = 0.25
+const SHOOT_DELAY = 0.2  # Adicionei um delay para o lançamento de pedras
 
 # Nós
 @onready var marker_2d: Marker2D = $Marker2D
@@ -30,6 +32,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping = false
 var is_attacking = false
 var knockback_vector = Vector2.ZERO
+var time_since_last_shot = 0.0 # Para controlar o delay do lançamento de pedras
 
 # Tirolesa
 var is_on_zipline = false
@@ -39,6 +42,10 @@ var zipline_speed = 0.0
 var max_zipline_speed = 150.0
 var zipline_acceleration = 30.0
 var zipline_release_distance = 50.0
+
+# Recursos externos
+@export var stone_scene: PackedScene = preload("res://Prefabs/pedra_rigidi_body.tscn") # Preload da cena da pedra
+var can_throw_stone = true # Variável para controlar se pode lançar pedra
 
 func play_animation(name: String):
 	var anim_name = name
@@ -56,8 +63,10 @@ func play_animation(name: String):
 				anim_name = "hurt"
 			"dead":
 				anim_name = "dead"
-			"atack_1", "atack_2", "atack_3":
+			"atack_1", "atack_2", "atack_3": # Mantive os ataques
 				anim_name = name
+			"throw_stone":       # Adicionei animação para arremessar pedra
+				anim_name = "throw_stone" # Você precisa ter essa animação
 			_:
 				printerr("Animação desconhecida: ", name)
 				return
@@ -75,8 +84,10 @@ func play_animation(name: String):
 				anim_name = "hurt_gangster"
 			"dead":
 				anim_name = "dead_gangster"
-			"atack_1", "atack_2", "atack_3":
+			"atack_1", "atack_2", "atack_3": # Mantive os ataques
 				anim_name = name + "_gangster"
+			"throw_stone":
+				anim_name = "throw_stone_gangster" # Animação para arremessar pedra
 			_:
 				printerr("Animação desconhecida (gangster): ", name)
 				return
@@ -88,6 +99,8 @@ func _ready():
 	play_animation("idle") # Inicia com a animação de idle
 
 func _physics_process(delta):
+	time_since_last_shot += delta # Atualiza o timer para o lançamento de pedras
+
 	if is_attacking:
 		return
 
@@ -97,7 +110,7 @@ func _physics_process(delta):
 
 	_process_movement(delta)
 	_process_jump()
-	_process_attack_input()
+	_process_attack_input() # Chamei a função que verifica os inputs de ataque
 
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
@@ -152,6 +165,21 @@ func _process_attack_input():
 		_play_attack_animation("atack_2")
 	elif Input.is_action_just_pressed("attack_3"):
 		_play_attack_animation("atack_3")
+	elif Input.is_action_just_pressed("throw_stone") and can_throw_stone and time_since_last_shot >= SHOOT_DELAY: #nova entrada
+		_throw_stone()
+
+func _throw_stone():
+	if can_throw_stone:
+		play_animation("throw_stone") # Toca a animação de arremesso
+		await animation.animation_finished
+		var stone = stone_scene.instantiate()
+		stone.position = global_position
+		get_parent().add_child(stone)
+
+		var throw_direction = Vector2(1, 0) if animation.scale.x > 0 else Vector2(-1, 0)
+		stone.throw_stone(throw_direction) # Chama a função throw_stone da pedra
+		time_since_last_shot = 0.0 # Reseta o timer
+		# Pode adicionar um som aqui se desejar
 
 func _process_zipline(delta):
 	if zipline_path and zipline_path.has_node("PathFollow2D"):

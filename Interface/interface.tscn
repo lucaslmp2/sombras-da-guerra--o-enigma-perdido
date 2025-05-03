@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr57trjkre8y3"]
+[gd_scene load_steps=7 format=3 uid="uid://cr57trjkre8y3"]
 
 [ext_resource type="PackedScene" uid="uid://pea2ltdddcbv" path="res://Interface/counter/Counter_life.tscn" id="1_q5xbw"]
 [ext_resource type="PackedScene" uid="uid://dgrqlj7psoi4g" path="res://Interface/counter/Counter_bullets.tscn" id="2_kqlm8"]
 [ext_resource type="PackedScene" uid="uid://c3onesj6vxk6w" path="res://Interface/counter/Counter_granada.tscn" id="3_kqlm8"]
 [ext_resource type="PackedScene" uid="uid://bw5w034b733in" path="res://Interface/counter/Counter_score.tscn" id="4_tutnl"]
+[ext_resource type="PackedScene" uid="uid://0o4yhpu4ciwy" path="res://Interface/counter/counter_pedra.tscn" id="4_u0f5l"]
 [ext_resource type="PackedScene" uid="uid://b7wivyq2tis3d" path="res://Interface/counter/Timer_counter.tscn" id="5_i2fxc"]
 
 [node name="Interface" type="Control"]
@@ -16,10 +17,9 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 18.0
-offset_top = -9.0
-offset_right = 104.0
-offset_bottom = 67.0
+offset_top = 6.0
+offset_right = 86.0
+offset_bottom = 122.0
 alignment = 1
 
 [node name="counter_life" parent="VBoxContainer" instance=ExtResource("1_q5xbw")]
@@ -51,13 +51,14 @@ patch_margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/counter_granada"]
 layout_mode = 2
-anchor_top = -2.522
-anchor_right = 1.0
-anchor_bottom = 1.304
-offset_top = 5.006
-offset_bottom = 0.00799942
+offset_top = -68.0
+offset_right = 86.0
+offset_bottom = 68.0
 size_flags_vertical = 3
 color = Color(0, 0, 0, 0.243137)
+
+[node name="counter_pedra" parent="VBoxContainer" instance=ExtResource("4_u0f5l")]
+layout_mode = 2
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
