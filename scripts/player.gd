@@ -60,7 +60,7 @@ func _physics_process(delta):
 
 	_process_movement(delta)
 
-	if Input.is_action_just_pressed("attack") and Globals.granada > 0:
+	if Input.is_action_just_pressed("granade") and Globals.granada > 0:
 		granada_lançada.play()
 		await _play_attack_animation("granade")
 		_throw_grenade()

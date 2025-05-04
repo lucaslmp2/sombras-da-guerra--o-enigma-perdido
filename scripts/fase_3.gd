@@ -28,6 +28,7 @@ func _ready() -> void:
 	Globals.granada = 0
 	Globals.life = 3
 	Globals.score = 0
+	Globals.pedra = 0
 	player.player_died.connect(reload_game)
 	#if _dialog_instance == null: # Verifica se não existe um diálogo já aberto
 			#_dialog_instance = DialogScreen.instantiate()

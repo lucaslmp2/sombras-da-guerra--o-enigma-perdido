@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=3 uid="uid://tf282bnrudno"]
+[gd_scene load_steps=202 format=3 uid="uid://tf282bnrudno"]
 
 [ext_resource type="Script" uid="uid://mf1oq0ifgsig" path="res://scripts/player._fase_2gd.gd" id="1_1yc12"]
 [ext_resource type="Texture2D" uid="uid://rwfxq2mdja07" path="res://Assets/Prontos/Gangsters_2/Attack_1.png" id="2_ph8tn"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://p01568hcm66f" path="res://Assets/Prontos/Gangsters_1/Shot.png" id="20_iqiw8"]
 [ext_resource type="Texture2D" uid="uid://cavulsofta64e" path="res://Assets/Prontos/Gangsters_2/Walk.png" id="21_t0bl7"]
 [ext_resource type="Texture2D" uid="uid://cco5yaww8a25x" path="res://Assets/Prontos/Gangsters_1/Walk.png" id="22_crkoo"]
+[ext_resource type="Texture2D" uid="uid://mt3dsep404ef" path="res://Assets/Prontos/Gangsters_2/lança_pedra.png" id="22_ekjau"]
 [ext_resource type="AudioStream" uid="uid://jqgdo4vp5aie" path="res://Assets/Prontos/passos-de-salto-70753.mp3" id="23_2dexs"]
 [ext_resource type="AudioStream" uid="uid://damsaic2ei5bw" path="res://Assets/Prontos/jump.mp3" id="24_pqytp"]
 [ext_resource type="AudioStream" uid="uid://cl33ym4qdalqp" path="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Stereo/mp3/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Fire - 1.mp3" id="25_g78i5"]
@@ -613,6 +614,18 @@ region = Rect2(768, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7jgay"]
 atlas = ExtResource("9_uq4op")
 region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4xk0"]
+atlas = ExtResource("22_ekjau")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq4op"]
+atlas = ExtResource("22_ekjau")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwsv8"]
+atlas = ExtResource("22_ekjau")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyo7l"]
 atlas = ExtResource("21_t0bl7")
@@ -1236,7 +1249,21 @@ animations = [{
 "texture": SubResource("AtlasTexture_7jgay")
 }],
 "loop": false,
-"name": &"throw_stone",
+"name": &"throw_granade",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4xk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq4op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwsv8")
+}],
+"loop": false,
+"name": &"throw_pedra",
 "speed": 16.0
 }, {
 "frames": [{
@@ -1331,7 +1358,7 @@ target_position = Vector2(-28, 0)
 position = Vector2(-28, -33.5)
 scale = Vector2(0.695313, 0.742187)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"throw_stone"
+animation = &"throw_pedra"
 autoplay = "idle"
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -1356,7 +1383,7 @@ stream = ExtResource("25_g78i5")
 pitch_scale = 1.37
 parameters/looping = false
 
-[node name="granada_lançada" type="AudioStreamPlayer2D" parent="."]
+[node name="pedra_lançada" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("26_8rly6")
 pitch_scale = 1.43
 

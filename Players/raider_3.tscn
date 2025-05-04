@@ -451,7 +451,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="raider_3" type="CharacterBody2D"]
+[node name="raider_3" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(423, 342)
 collision_mask = 2
 script = ExtResource("1_veof5")
@@ -464,7 +464,7 @@ shape = SubResource("CapsuleShape2D_y6af7")
 position = Vector2(15, -37)
 scale = Vector2(0.851563, 0.796875)
 sprite_frames = SubResource("SpriteFrames_skism")
-animation = &"idle_2"
+animation = &"dead"
 autoplay = "idle_2"
 
 [node name="correndo" type="AudioStreamPlayer2D" parent="."]

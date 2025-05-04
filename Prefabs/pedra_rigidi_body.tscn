@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://crx475q0iippg"]
+[gd_scene load_steps=8 format=3 uid="uid://crx475q0iippg"]
 
 [ext_resource type="Texture2D" uid="uid://cw2v2m6w77ync" path="res://Assets/Prontos/pedra.png" id="1_h5rmw"]
 [ext_resource type="Script" uid="uid://ba86s32psec46" path="res://scripts/pedra_rigidi_body.gd" id="1_s4ov0"]
+[ext_resource type="Script" uid="uid://7ud4j0yfrj0j" path="res://scripts/detector.gd" id="4_pfwng"]
 [ext_resource type="AudioStream" uid="uid://c1v1wt3d4bkjx" path="res://Assets/Prontos/pedra_rolando.mp3" id="4_s4ov0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojmll"]
@@ -18,12 +19,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5rmw"]
+radius = 4.0
+
 [node name="pedra" type="RigidBody2D"]
-collision_layer = 8
-collision_mask = 6
+mass = 0.32
 script = ExtResource("1_s4ov0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_ojmll")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -36,4 +40,14 @@ autoplay = "idle"
 [node name="rolando_no_chão" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_s4ov0")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("4_pfwng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("CircleShape2D_h5rmw")
+
+[connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]
+[connection signal="body_detected" from="Detector" to="." method="_on_detector_body_detected"]
+[connection signal="body_entered" from="Detector" to="Detector" method="_on_body_entered"]

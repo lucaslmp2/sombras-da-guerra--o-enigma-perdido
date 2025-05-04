@@ -12,9 +12,9 @@ extends CharacterBody2D
 
 # Parâmetros do Inimigo (ajuste conforme necessário)
 const DETECTION_RANGE_X = 500     # Distância máxima para detectar o player no eixo X
-const SAFE_DISTANCE_X = 100     # Distância mínima para parar de avançar
-const HEIGHT_TOLERANCE = 30     # Margem de tolerância no eixo Y para considerar que estão na mesma altura
-
+const SAFE_DISTANCE_X = 50     # Distância mínima para parar de avançar
+const HEIGHT_TOLERANCE = 10     # Margem de tolerância no eixo Y para considerar que estão na mesma altura
+const ATTACK_RANGE_X = 20
 @export var speed: float = 100
 @export var direction: int = 1     # 1 para direita, -1 para esquerda
 @onready var patrulhando: AudioStreamPlayer2D = $patrulhando
@@ -40,16 +40,14 @@ func _ready():
 
 func _physics_process(delta):
 	if is_dead:
-		return    # Não processa lógica se já estiver morto
+		return
 
-	# Aplica gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	var distance_x = INF
 	var distance_y = INF
 
-	# Verifica se a referência do jogador ainda é válida
 	if is_instance_valid(player):
 		distance_x = abs(player.global_position.x - global_position.x)
 		distance_y = abs(player.global_position.y - global_position.y)
@@ -57,14 +55,14 @@ func _physics_process(delta):
 		should_follow_player = distance_x <= DETECTION_RANGE_X and distance_y <= HEIGHT_TOLERANCE
 
 		if should_follow_player and not is_atacking:
-			if distance_x > SAFE_DISTANCE_X:
+			if distance_x > ATTACK_RANGE_X: # Se estiver longe da distância de ataque, corre
 				run_towards_player()
 			else:
-				attack()
+				attack() # Se estiver dentro da distância de ataque, ataca
 		else:
-			patrol()    # Se o player não for detectado ou o inimigo não estiver atirando, patrulha
+			patrol()
 
-	move_and_slide()     # Movimento do inimigo
+	move_and_slide()
 	
 
 func patrol():
@@ -137,16 +135,20 @@ func die():
 	is_dead = true
 	set_physics_process(false) # Pare de mover
 	velocity = Vector2.ZERO
-	anim.play("morte")
+	anim.play("dead")
 	if is_instance_valid(morte):
 		morte.play()
 	if is_instance_valid(collision):
-		collision.disabled = true # Desativa a colisão do inimigo.
+		call_deferred("desativar_collision_shape") # Adia a desativação da colisão
 	await anim.animation_finished
 	queue_free()
+
+func desativar_collision_shape():
+	if is_instance_valid(collision):
+		collision.disabled = true
 	
 func deal_damage():
 	# Implemente a lógica para causar dano ao jogador aqui
 	if is_instance_valid(player) and player.has_method("take_damage"):
-		player.take_damage(1)     # Exemplo: 10 de dano
+		player.take_damage(1)   
 	pass

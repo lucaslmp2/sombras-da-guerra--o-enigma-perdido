@@ -102,7 +102,7 @@ collision_layer = 2
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trilho"]
-position = Vector2(4286, 551)
+position = Vector2(4290, 574)
 shape = SubResource("RectangleShape2D_aqwi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Trilho"]
@@ -215,7 +215,49 @@ collision_layer = 4
 
 [node name="Interface" parent="HUD" instance=ExtResource("13_46x10")]
 
-[node name="pedra" parent="." instance=ExtResource("14_gmpq7")]
+[node name="pedras" type="Node2D" parent="."]
+
+[node name="pedra" parent="pedras" instance=ExtResource("14_gmpq7")]
 position = Vector2(656, 514)
+collision_layer = 8
+collision_mask = 3
+
+[node name="pedra2" parent="pedras" instance=ExtResource("14_gmpq7")]
+position = Vector2(746, 512)
+collision_layer = 8
+collision_mask = 3
+
+[node name="pedra3" parent="pedras" instance=ExtResource("14_gmpq7")]
+position = Vector2(700, 514)
+collision_layer = 8
+collision_mask = 3
+
+[node name="pedra4" parent="pedras" instance=ExtResource("14_gmpq7")]
+position = Vector2(893, 510)
+collision_layer = 8
+collision_mask = 3
+
+[node name="pedra5" parent="pedras" instance=ExtResource("14_gmpq7")]
+position = Vector2(983, 508)
+collision_layer = 8
+collision_mask = 3
+
+[node name="pedra6" parent="pedras" instance=ExtResource("14_gmpq7")]
+position = Vector2(937, 510)
+collision_layer = 8
+collision_mask = 3
+
+[node name="pedra7" parent="pedras" instance=ExtResource("14_gmpq7")]
+position = Vector2(1969, 509)
+collision_layer = 8
+collision_mask = 3
+
+[node name="pedra8" parent="pedras" instance=ExtResource("14_gmpq7")]
+position = Vector2(2059, 507)
+collision_layer = 8
+collision_mask = 3
+
+[node name="pedra9" parent="pedras" instance=ExtResource("14_gmpq7")]
+position = Vector2(2013, 509)
 collision_layer = 8
 collision_mask = 3

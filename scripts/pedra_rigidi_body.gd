@@ -1,30 +1,30 @@
 extends RigidBody2D
 
 @onready var rolando_no_chão: AudioStreamPlayer2D = $rolando_no_chão
-var is_rolling := false # Variável para controlar se a pedra está rolando
-@export var damage := 1 # Dano que a pedra causa ao contato
+@onready var detector: Area2D = $Detector
+@export var damage := 1
 
 func _ready():
 	rolando_no_chão.play()
-	is_rolling = true
 
 func _physics_process(delta):
-	# Se a pedra estiver se movendo e o som não estiver tocando, comece a tocar
-	if linear_velocity.length() > 10 && !rolando_no_chão.playing && is_rolling:
+	if linear_velocity.length() > 10 and !rolando_no_chão.playing:
 		rolando_no_chão.play()
-	# Se a pedra estiver parada ou quase parada, pare o som
 	elif linear_velocity.length() <= 10:
 		rolando_no_chão.stop()
-		is_rolling = false
 
 func throw_stone(direction: Vector2):
-	var speed = 150 # Ajuste a velocidade do lançamento conforme necessário
-	linear_velocity = direction * speed
-	apply_impulse(direction * speed)
+	var speed = 600
+	var upward_boost = -200
+	linear_velocity = (direction.normalized() * speed) + Vector2(0, upward_boost)
 
-func _on_body_entered(body):
-	if body.is_in_group("enemy"):
+func _on_detector_body_detected(body):
+	print("Detector bateu em:", body)
+	if body.has_method("take_damage"):
+		print("Causando dano ao inimigo")
 		body.take_damage(damage)
-	if !is_rolling:
-		rolando_no_chão.play()
-		is_rolling = true
+	queue_free()
+
+
+func _on_detector_area_entered(area: Area2D) -> void:
+	queue_free()
