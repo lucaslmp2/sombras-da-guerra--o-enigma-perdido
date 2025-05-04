@@ -4,6 +4,7 @@ extends Area2D
 @onready var trem_andando: AudioStreamPlayer2D = $trem_andando
 #@onready var collision_shape_2d_4: CollisionShape2D = $CharacterBody2D/CollisionShape2D4
 @onready var locomotiva: Area2D = $"."
+@onready var smoke: AnimatedSprite2D = $smoke
 
 var andando = false
 var velocidade = 100 # Pixels por segundo (ajuste conforme necessário)
@@ -13,6 +14,7 @@ var distancia_total = 4000
 func _ready():
 	pass
 func iniciar_movimento():
+	smoke.play("smoke")
 	locomotiva.z_index = 1
 	animated_sprite_2d.play("run")
 	andando = true

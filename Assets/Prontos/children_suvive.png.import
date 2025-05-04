@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cajl6jrgy2gkb"
-path="res://.godot/imported/Smoke_A.png-62d00085e88f078f059bd9cb402cfce5.ctex"
+uid="uid://c1hngfsrw1uy1"
+path="res://.godot/imported/children_suvive.png-5b9a418593cea9569538b98a6f2c0c3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Prontos/battle-tank-game-assets/PNG/Effects/Smoke_A.png"
-dest_files=["res://.godot/imported/Smoke_A.png-62d00085e88f078f059bd9cb402cfce5.ctex"]
+source_file="res://Assets/Prontos/children_suvive.png"
+dest_files=["res://.godot/imported/children_suvive.png-5b9a418593cea9569538b98a6f2c0c3e.ctex"]
 
 [params]
 

@@ -484,7 +484,7 @@ stream = ExtResource("14_5kd7u")
 stream = ExtResource("15_brnme")
 
 [node name="WallRay" type="RayCast2D" parent="."]
-position = Vector2(9, 2)
+position = Vector2(8, 12)
 target_position = Vector2(41, 0)
 collision_mask = 2
 collide_with_areas = true

@@ -1339,10 +1339,9 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t581"]
 radius = 9.0
-height = 52.0
+height = 44.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(38, 35)
 collision_mask = 10
 script = ExtResource("1_1yc12")
 
@@ -1358,37 +1357,43 @@ target_position = Vector2(-28, 0)
 position = Vector2(-28, -33.5)
 scale = Vector2(0.695313, 0.742187)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"throw_pedra"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-7, -22)
+position = Vector2(-8, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-31, -12)
+position = Vector2(-31, -8)
 shape = SubResource("CapsuleShape2D_6t581")
 
 [node name="correndo" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-38, -43)
 stream = ExtResource("23_2dexs")
 pitch_scale = 1.6
 parameters/looping = true
 
 [node name="pulo" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-38, -43)
 stream = ExtResource("24_pqytp")
 volume_db = 15.591
 pitch_scale = 1.6
 
 [node name="tiro" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-38, -43)
 stream = ExtResource("25_g78i5")
 pitch_scale = 1.37
 parameters/looping = false
 
 [node name="pedra_lançada" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-38, -43)
 stream = ExtResource("26_8rly6")
 pitch_scale = 1.43
 
 [node name="morte" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-38, -43)
 stream = ExtResource("27_5fitb")
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-38, -43)
 stream = ExtResource("28_ufbld")

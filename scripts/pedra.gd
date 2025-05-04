@@ -10,5 +10,5 @@ func _on_body_entered(body: Node2D) -> void:
 			Globals.pedra += pedra
 			if Globals.pedra > 0:
 				body.enable_throwing()
-			await get_tree().create_timer(0.3).timeout
+			await get_tree().create_timer(0.2).timeout
 			queue_free()

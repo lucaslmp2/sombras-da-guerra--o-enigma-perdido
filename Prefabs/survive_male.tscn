@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8hgqhavq1j3k"]
+
+[ext_resource type="Texture2D" uid="uid://c6kxa8g6a27pm" path="res://Assets/Prontos/Male Skin1-4.png.png" id="1_jbqnw"]
+[ext_resource type="Script" uid="uid://caatcangu1mcg" path="res://scripts/survive_male.gd" id="1_lgxvi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tw1dk"]
+radius = 7.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgxvi"]
+atlas = ExtResource("1_jbqnw")
+region = Rect2(720, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqjoo"]
+atlas = ExtResource("1_jbqnw")
+region = Rect2(640, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlui2"]
+atlas = ExtResource("1_jbqnw")
+region = Rect2(560, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai604"]
+atlas = ExtResource("1_jbqnw")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52y1p"]
+atlas = ExtResource("1_jbqnw")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iqfpn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgxvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqjoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlui2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai604")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52y1p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="survive_male" type="StaticBody2D"]
+collision_mask = 2
+script = ExtResource("1_lgxvi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tw1dk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(0.8875, 1)
+sprite_frames = SubResource("SpriteFrames_iqfpn")
+animation = &"idle"
+frame_progress = 0.640526
