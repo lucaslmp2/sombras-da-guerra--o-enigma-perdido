@@ -5,16 +5,19 @@ extends Area2D
 #@onready var collision_shape_2d_4: CollisionShape2D = $CharacterBody2D/CollisionShape2D4
 @onready var locomotiva: Area2D = $"."
 @onready var smoke: AnimatedSprite2D = $smoke
+@onready var smoke2: AnimatedSprite2D = $smoke2
 
 var andando = false
 var velocidade = 100 # Pixels por segundo (ajuste conforme necessário)
 var distancia_percorrida = 0
 var distancia_total = 4000
+@onready var smoke_2: AnimatedSprite2D = $smoke2
 
 func _ready():
 	pass
 func iniciar_movimento():
-	smoke.play("smoke")
+	smoke.play("smoke_2")
+	smoke2.play("smoke")
 	locomotiva.z_index = 1
 	animated_sprite_2d.play("run")
 	andando = true
