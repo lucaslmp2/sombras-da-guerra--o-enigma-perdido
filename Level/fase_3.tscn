@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://xqmbcil02yuj"]
+[gd_scene load_steps=36 format=4 uid="uid://xqmbcil02yuj"]
 
 [ext_resource type="Script" uid="uid://bcdbtopo8bt0g" path="res://scripts/fase_3.gd" id="1_31nrp"]
 [ext_resource type="Texture2D" uid="uid://b55bfe2kwqsuq" path="res://Assets/Prontos/asfalto_meio.png" id="1_a0xjp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c107843kfla1g" path="res://Prefabs/trem.tscn" id="10_p3n0d"]
 [ext_resource type="PackedScene" uid="uid://d1eyhjp364j1t" path="res://Prefabs/children_survive.tscn" id="11_c75ad"]
 [ext_resource type="Texture2D" uid="uid://v57s44jnxtvd" path="res://Assets/Prontos/trilho.png" id="11_kumk2"]
+[ext_resource type="PackedScene" uid="uid://b8mofkk25x2jo" path="res://Players/npc_bryan.tscn" id="12_2k5s4"]
 [ext_resource type="PackedScene" uid="uid://dwjjsmbfvfqfg" path="res://Players/raider_3.tscn" id="12_aqwi4"]
 [ext_resource type="PackedScene" uid="uid://ctbed1brqotqd" path="res://Prefabs/children_survive_2.tscn" id="12_ike08"]
 [ext_resource type="PackedScene" uid="uid://cj0qxh6t675w3" path="res://Prefabs/criança1.tscn" id="13_2nkxw"]
@@ -659,6 +660,41 @@ position = Vector2(8399, 500)
 scale = Vector2(0.442871, 0.426538)
 texture = ExtResource("11_kumk2")
 
+[node name="characters" type="Node2D" parent="."]
+
+[node name="Player" parent="characters" instance=ExtResource("9_31nrp")]
+position = Vector2(-1111, 546)
+
+[node name="Camera2D" type="Camera2D" parent="characters/Player"]
+position = Vector2(112.656, -3.15955)
+scale = Vector2(1.29572, 1.9247)
+zoom = Vector2(1.5, 1.5)
+limit_left = -1270
+limit_top = -700
+limit_bottom = 700
+limit_smoothed = true
+
+[node name="raider_3" parent="characters" instance=ExtResource("12_aqwi4")]
+position = Vector2(1477, 385)
+collision_layer = 4
+
+[node name="raider_4" parent="characters" instance=ExtResource("12_aqwi4")]
+position = Vector2(8390, 386)
+collision_layer = 4
+
+[node name="raider_5" parent="characters" instance=ExtResource("12_aqwi4")]
+position = Vector2(5988, 402)
+collision_layer = 4
+
+[node name="raider_6" parent="characters" instance=ExtResource("12_aqwi4")]
+position = Vector2(3555, 402)
+collision_layer = 4
+
+[node name="Npc_bryan" parent="characters" instance=ExtResource("12_2k5s4")]
+position = Vector2(-970, 592)
+collision_layer = 32
+collision_mask = 2
+
 [node name="Locomotiva" parent="." instance=ExtResource("10_p3n0d")]
 z_index = -1
 position = Vector2(1367, 425)
@@ -691,18 +727,6 @@ position = Vector2(-52, 501)
 z_index = -1
 position = Vector2(408, 484)
 
-[node name="Player" parent="." instance=ExtResource("9_31nrp")]
-position = Vector2(-1111, 542)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(112.656, -3.15955)
-scale = Vector2(1.29572, 1.9247)
-zoom = Vector2(1.5, 1.5)
-limit_left = -1270
-limit_top = -700
-limit_bottom = 700
-limit_smoothed = true
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -718,22 +742,6 @@ texture = ExtResource("8_31nrp")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2(0.423698, 0.444908)
-
-[node name="raider_3" parent="." instance=ExtResource("12_aqwi4")]
-position = Vector2(1477, 385)
-collision_layer = 4
-
-[node name="raider_4" parent="." instance=ExtResource("12_aqwi4")]
-position = Vector2(8390, 386)
-collision_layer = 4
-
-[node name="raider_5" parent="." instance=ExtResource("12_aqwi4")]
-position = Vector2(5988, 402)
-collision_layer = 4
-
-[node name="raider_6" parent="." instance=ExtResource("12_aqwi4")]
-position = Vector2(3555, 402)
-collision_layer = 4
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

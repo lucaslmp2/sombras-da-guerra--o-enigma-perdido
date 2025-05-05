@@ -5,7 +5,7 @@ var body: CharacterBody2D = null
 @export var menu_scene: String = "res://Level/main_menu.tscn"# Define a cena do menu principal
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 @onready var locomotiva: Area2D = $Locomotiva
-@onready var player: CharacterBody2D = $Player
+@onready var player: CharacterBody2D = $characters/Player
 @onready var interface: Control = $HUD/Interface
 
 var dialog_data: Dictionary={
