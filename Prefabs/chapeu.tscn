@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://lruo65sqa8mu"]
+
+[ext_resource type="Texture2D" uid="uid://bbxn84n2fxu1k" path="res://Assets/Prontos/Conjunto_de_Roupas_e_Armas_Retro-removebg-preview.png" id="1_gvqc4"]
+[ext_resource type="Script" uid="uid://dfsrwnkbxl8gn" path="res://scripts/chapeu.gd" id="1_jl5wf"]
+[ext_resource type="AudioStream" uid="uid://om6nla5mjyot" path="res://Assets/Prontos/item-pickup-37089.mp3" id="2_jl5wf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u77ux"]
+size = Vector2(34, 27)
+
+[node name="chapeu" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_jl5wf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u77ux")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.115385, 0.114583)
+texture = ExtResource("1_gvqc4")
+region_enabled = true
+region_rect = Rect2(27, 62, 156, 96)
+
+[node name="pick_up" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jl5wf")
+pitch_scale = 1.78
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

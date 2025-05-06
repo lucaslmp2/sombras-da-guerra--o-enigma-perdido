@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl6ixmxdadx7o"]
+
+[ext_resource type="Script" uid="uid://gds5kagr4l1f" path="res://scripts/mp_40.gd" id="1_5xkvv"]
+[ext_resource type="AudioStream" uid="uid://dmltifdjxd536" path="res://Assets/Prontos/mp40.mp3" id="1_ielkm"]
+[ext_resource type="AudioStream" uid="uid://cbot3llebwvo0" path="res://Assets/Prontos/winner_disfarce_fase.mp3" id="3_f0dnq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ielkm"]
+size = Vector2(34, 27)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5xkvv"]
+load_path = "res://.godot/imported/498-4983477_pixel-gun-weapon-png-clipart.png-4d552cadbc91f03dc937b3393ee43f78.ctex"
+
+[node name="Mp40" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_5xkvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_ielkm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-06, -0.999999)
+scale = Vector2(0.00816327, 0.00881356)
+texture = SubResource("CompressedTexture2D_5xkvv")
+region_enabled = true
+region_rect = Rect2(884, 239, 3920, 2950)
+
+[node name="pick_up" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_ielkm")
+
+[node name="comemoração" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_f0dnq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -8,7 +8,7 @@ extends Area2D
 @onready var smoke2: AnimatedSprite2D = $smoke2
 
 var andando = false
-var velocidade = 100 # Pixels por segundo (ajuste conforme necessário)
+var velocidade = 300 # Pixels por segundo (ajuste conforme necessário)
 var distancia_percorrida = 0
 var distancia_total = 4000
 @onready var smoke_2: AnimatedSprite2D = $smoke2
