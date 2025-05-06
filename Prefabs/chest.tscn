@@ -1,43 +1,46 @@
 [gd_scene load_steps=14 format=3 uid="uid://cdpanb3tigvwu"]
 
 [ext_resource type="Script" uid="uid://b7klppmi6e4ck" path="res://scripts/chest.gd" id="1_owa2d"]
-[ext_resource type="Texture2D" uid="uid://dh8kln3kdclrn" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation.png" id="2_1fvb7"]
-[ext_resource type="Texture2D" uid="uid://ua4kc8cyd7rx" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation (1).png" id="3_8ni1p"]
+[ext_resource type="Texture2D" uid="uid://3gh50gutf3wo" path="res://Assets/Prontos/chest.png" id="2_yaanm"]
 [ext_resource type="AudioStream" uid="uid://u3vrnko6s5s0" path="res://Assets/Prontos/chest_open.mp3" id="4_kbimj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p71ex"]
-atlas = ExtResource("2_1fvb7")
-region = Rect2(0, 420, 450, 420)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbimj"]
+atlas = ExtResource("2_yaanm")
+region = Rect2(0, 0, 112, 69)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xnfki"]
-atlas = ExtResource("3_8ni1p")
-region = Rect2(3150, 0, 3150, 2520)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1fom"]
+atlas = ExtResource("2_yaanm")
+region = Rect2(0, 0, 112, 69)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5h88m"]
-atlas = ExtResource("3_8ni1p")
-region = Rect2(0, 2520, 3150, 2520)
+[sub_resource type="AtlasTexture" id="AtlasTexture_83v38"]
+atlas = ExtResource("2_yaanm")
+region = Rect2(112, 0, 112, 69)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_igous"]
-atlas = ExtResource("3_8ni1p")
-region = Rect2(3150, 2520, 3150, 2520)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei121"]
+atlas = ExtResource("2_yaanm")
+region = Rect2(224, 0, 112, 69)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_13lmn"]
-atlas = ExtResource("3_8ni1p")
-region = Rect2(0, 5040, 3150, 2520)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kif2"]
+atlas = ExtResource("2_yaanm")
+region = Rect2(336, 0, 112, 69)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nuleq"]
-atlas = ExtResource("3_8ni1p")
-region = Rect2(3150, 5040, 3150, 2520)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmj0a"]
+atlas = ExtResource("2_yaanm")
+region = Rect2(448, 0, 112, 69)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cy1a0"]
-atlas = ExtResource("3_8ni1p")
-region = Rect2(0, 7560, 3150, 2520)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g6cf"]
+atlas = ExtResource("2_yaanm")
+region = Rect2(560, 0, 112, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d6q0"]
+atlas = ExtResource("2_yaanm")
+region = Rect2(672, 0, 112, 69)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hbfnn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p71ex")
+"texture": SubResource("AtlasTexture_kbimj")
 }],
 "loop": true,
 "name": &"closed",
@@ -45,22 +48,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xnfki")
+"texture": SubResource("AtlasTexture_b1fom")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5h88m")
+"texture": SubResource("AtlasTexture_83v38")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_igous")
+"texture": SubResource("AtlasTexture_ei121")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_13lmn")
+"texture": SubResource("AtlasTexture_3kif2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nuleq")
+"texture": SubResource("AtlasTexture_dmj0a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cy1a0")
+"texture": SubResource("AtlasTexture_7g6cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d6q0")
 }],
 "loop": false,
 "name": &"open",
@@ -76,10 +82,10 @@ collision_mask = 2
 script = ExtResource("1_owa2d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.14577e-06, -8.83333)
-scale = Vector2(0.142222, 0.110317)
+position = Vector2(4.76837e-07, -12)
+scale = Vector2(0.428571, 0.347826)
 sprite_frames = SubResource("SpriteFrames_hbfnn")
-animation = &"closed"
+animation = &"open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)

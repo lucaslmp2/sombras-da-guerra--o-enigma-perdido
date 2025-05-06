@@ -190,7 +190,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8hkwf")
 }],
-"loop": false,
+"loop": true,
 "name": &"falando",
 "speed": 8.0
 }, {
@@ -237,4 +237,4 @@ flip_h = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-64, -56)
-target_position = Vector2(-48, 0)
+target_position = Vector2(-100, 0)

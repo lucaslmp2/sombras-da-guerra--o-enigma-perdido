@@ -7,26 +7,60 @@ extends StaticBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
-
+signal dialogo_inicial_terminou # Declara o sinal
 var _dialog_instance: DialogScreen = null
-var dialog_data_inicial: Dictionary = { # Dados dos diálogos iniciais
+var dialog_data_inicial: Dictionary = {
 	0: {
-		"faceset": "res://Assets/Prontos/face aset elias2 sorrindo.png",
-		"dialog": "O que? onde.. onde é que estou? quem é você?",
+		"faceset": "res://Assets/Prontos/elias_face_asset_realista.png",
+		"dialog": "O que? Onde... onde é que estou? Quem é você?",
 		"title": "Elias"
 	},
 	1: {
 		"faceset": "res://Assets/Prontos/bryan_npc.png",
-		"dialog": "Olá, Seja Bem Vindo!!!",
+		"dialog": "Calma, Elias. Você foi teletransportado para um território hostil.",
 		"title": "Bryan"
 	},
-	2:{
+	2: {
 		"faceset": "res://Assets/Prontos/bryan_npc.png",
-		"dialog": "Eu sei está tudo muito confuso agr, mas para frente eu irei lhe explicar",
+		"dialog": "Ainda é cedo pra explicar tudo, mas você tem uma missão.",
 		"title": "Bryan"
 	},
+	3:{
+		"faceset": "res://Assets/Prontos/bryan_npc.png",
+		"dialog": "Você precisa se disfarçar para passar despercebido. Existem baús espalhados pelas estações.",
+		"title": "Bryan"
+	},
+	4: {
+		"faceset": "res://Assets/Prontos/bryan_npc.png",
+		"dialog": "Neles, há cinco peças: camisa, calça, capuz, chapéu e uma arma.",
+		"title": "Bryan"
+	},
+	5: {
+		"faceset": "res://Assets/Prontos/bryan_npc.png",
+		"dialog": "Mas cuidado! Patrulhas hostis estão por toda parte e não hesitarão em te eliminar.",
+		"title": "Bryan"
+	},
+	6: {
+		"faceset": "res://Assets/Prontos/bryan_npc.png",
+		"dialog": "Colete pedras pelo caminho. Pressione a tecla '4' para lançá-las e eliminar os inimigos.",
+		"title": "Bryan"
+	},
+	7: {
+		"faceset": "res://Assets/Prontos/bryan_npc.png",
+		"dialog": "Use as setas para 'esquerda' e 'direita' para se mover. Pressione 'Espaço' para pular.",
+		"title": "Bryan"
+	},
+	8: {
+		"faceset": "res://Assets/Prontos/bryan_npc.png",
+		"dialog": "Depois de se equipar, pegue o trem até o final da fase. É o único jeito de sair daqui.",
+		"title": "Bryan"
+	},
+	9: {
+		"faceset": "res://Assets/Prontos/elias_face_asset_realista.png",
+		"dialog": "Certo... não sei o que tá acontecendo, mas vou confiar em você por enquanto.",
+		"title": "Elias"
+	}
 }
-
 var dialogo_saudacao: Dictionary = { # Dados do diálogo de saudação
 	0: {
 		"faceset": "res://Assets/Prontos/bryan_npc.png",
@@ -47,6 +81,7 @@ func _show_dialog(dialog_data: Dictionary):
 	dialogo_exibido_atual = true
 	await _dialog_instance.tree_exited # Espera o diálogo ser fechado
 	dialogo_exibido_atual = false
+	
 
 func _ready() -> void:
 	animated_sprite_2d.play("idle")
@@ -57,7 +92,9 @@ func _process(delta: float) -> void:
 			_show_dialog(dialog_data_inicial)
 			animated_sprite_2d.play("falando")
 			dialogos_iniciais_exibidos = true # Marca que os diálogos iniciais foram exibidos
+
 		else:
+			emit_signal("dialogo_inicial_terminou") # Emite o sinal quando o diálogo inicial termina
 			_show_dialog(dialogo_saudacao)
 			animated_sprite_2d.play("falando")
 	elif not ray_cast_2d.is_colliding():

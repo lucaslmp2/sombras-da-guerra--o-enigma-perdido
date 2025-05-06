@@ -1,0 +1,140 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8wnc3dmd7h4x"]
+
+[ext_resource type="Texture2D" uid="uid://v57s44jnxtvd" path="res://Assets/Prontos/trilho.png" id="1_q4hgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqwi4"]
+size = Vector2(92, 20)
+
+[node name="Trilho" type="Area2D"]
+collision_layer = 2
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-78, 574)
+shape = SubResource("RectangleShape2D_aqwi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(-116.5, 501.25)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(788, 501.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(1693, 501.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(2598, 501.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(3503, 501.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(4408.5, 501.25)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(5313, 501.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(6218, 501.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(7123, 501.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(8028, 501.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(8933.5, 501.25)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(9838.5, 501.25)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(10743.5, 501.25)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(11648.5, 501.25)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D15" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(12553.5, 501.25)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D16" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(13458.5, 501.25)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D17" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(14360, 500.625)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D18" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(15261, 501)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")

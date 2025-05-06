@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://o1iv8rqqlosj"]
+[gd_scene load_steps=5 format=3 uid="uid://o1iv8rqqlosj"]
 
 [ext_resource type="Texture2D" uid="uid://bbxn84n2fxu1k" path="res://Assets/Prontos/Conjunto_de_Roupas_e_Armas_Retro-removebg-preview.png" id="1_cs5bs"]
+[ext_resource type="Script" uid="uid://lqcxgi041af8" path="res://scripts/calça.gd" id="1_ruda6"]
 [ext_resource type="AudioStream" uid="uid://om6nla5mjyot" path="res://Assets/Prontos/item-pickup-37089.mp3" id="2_ruda6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs5bs"]
 size = Vector2(34, 32)
 
 [node name="Calça" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_ruda6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cs5bs")
@@ -20,3 +23,5 @@ region_rect = Rect2(51, 385, 117, 182)
 [node name="pick_up" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ruda6")
 pitch_scale = 1.78
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

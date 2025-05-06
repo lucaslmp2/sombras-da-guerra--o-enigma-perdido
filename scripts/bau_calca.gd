@@ -1,21 +1,21 @@
 extends Area2D
-@export var item_scene: PackedScene = preload("res://Prefabs/mp_40.tscn")
-@onready var sprite: AnimatedSprite2D = $sprite
-@onready var chest_open: AudioStreamPlayer2D = $chest_open
-@onready var chest_close: AudioStreamPlayer2D = $chest_close
+@export var item_scene: PackedScene = preload("res://Prefabs/calça.tscn")
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var chest_open: AudioStreamPlayer2D = $open_chest
+@onready var chest_close: AudioStreamPlayer2D = $close_chest
 
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 @onready var hud: CanvasLayer = get_node("/root/Fase_3/HUD")
-signal arma_coletada
+signal calca_coletada
 var dialog_data: Dictionary = {
 	0: {
 		"faceset": "res://Assets/Prontos/elias_face_asset_realista.png",
-		"dialog": "Heheheue, pelas minhas contas agora é a melhor parte!!!.",
+		"dialog": "Opa, mais um item.",
 		"title": "Elias"
 	},
 	1: {
 		"faceset": "res://Assets/Prontos/elias_face_asset_realista.png",
-		"dialog": "IIIIIUUUUUUUHHHH!!!",
+		"dialog": "Será que vai caber?",
 		"title": "Elias"
 	},
 }
@@ -27,9 +27,7 @@ func _ready():
 	sprite.play("idle")
 
 func _on_body_entered(body):
-	print("Corpo entrou no baú!")
 	if body.is_in_group("player") and not is_open:
-		print("É o player e o baú não está aberto.")
 		await show_dialog_before_opening()
 
 func _show_dialog(dialog_data: Dictionary):
@@ -42,14 +40,10 @@ func _show_dialog(dialog_data: Dictionary):
 
 func show_dialog_before_opening():
 	is_open = true
-	print("Mostrando o diálogo...")
 	await _show_dialog(dialog_data)
-	print("Diálogo terminado.")
 	chest_open.play()
 	sprite.play("open")
-	print("Animação de abrir iniciada.")
 	await sprite.animation_finished
-	print("Animação de abrir terminou.")
 	spawn_item()
 
 func spawn_item():
@@ -59,6 +53,6 @@ func spawn_item():
 			item_instance.global_position = global_position + Vector2(0, -40)
 			get_parent().get_parent().add_child(item_instance)
 			item_instance.add_to_group("disfarce")
-			item_instance.connect("arma_coletada", Callable(get_parent().get_parent(), "_on_disfarce_coletado"))
+			item_instance.connect("calca_coletada", Callable(get_parent().get_parent(), "_on_disfarce_coletado"))
 		else:
 			print("Erro: item_scene não é um Area2D!")

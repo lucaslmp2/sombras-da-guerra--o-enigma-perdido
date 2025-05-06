@@ -8,12 +8,12 @@ const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 signal chapeu_coletado
 var dialog_data: Dictionary = {
 	0: {
-		"faceset": "res://Assets/Prontos/face aset elias2 sorrindo.png",
+		"faceset": "res://Assets/Prontos/elias_face_asset_realista.png",
 		"dialog": "Nossa um baú.",
 		"title": "Elias"
 	},
 	1: {
-		"faceset": "res://Assets/Prontos/face aset elias2 sorrindo.png",
+		"faceset": "res://Assets/Prontos/elias_face_asset_realista.png",
 		"dialog": "Será que aqui está o disfarce que o Bryan falou?",
 		"title": "Elias"
 	},
