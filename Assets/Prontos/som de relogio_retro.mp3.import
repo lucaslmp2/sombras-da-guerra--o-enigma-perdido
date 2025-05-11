@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7k6whqgmwrpt"
+path="res://.godot/imported/som de relogio_retro.mp3-e0ae368031f2fc86084b8f7b1eabae19.mp3str"
+
+[deps]
+
+source_file="res://Assets/Prontos/som de relogio_retro.mp3"
+dest_files=["res://.godot/imported/som de relogio_retro.mp3-e0ae368031f2fc86084b8f7b1eabae19.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

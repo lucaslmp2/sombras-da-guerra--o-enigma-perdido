@@ -1,4 +1,5 @@
 extends Area2D
+
 @export var item_scene: PackedScene = preload("res://Prefabs/chapeu.tscn")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var chest_open: AudioStreamPlayer2D = $chest_open
@@ -35,14 +36,14 @@ func _show_dialog(dialog_data: Dictionary):
 	_dialog_instance = DialogScreen.instantiate()
 	_dialog_instance.data = dialog_data
 	hud.add_child(_dialog_instance)
-	await _dialog_instance.tree_exited  # Espera o diálogo ser fechado (quando for removido da árvore)
+	await _dialog_instance.tree_exited# Espera o diálogo ser fechado (quando for removido da árvore)
 
 func show_dialog_before_opening():
 	is_open = true
-	await _show_dialog(dialog_data)  # Mostra e espera o diálogo terminar
+	await _show_dialog(dialog_data)# Mostra e espera o diálogo terminar
 	chest_open.play()
 	sprite.play("open")
-	await sprite.animation_finished  # Espera a animação terminar
+	await sprite.animation_finished# Espera a animação terminar
 	spawn_item()
 
 func spawn_item():
@@ -52,6 +53,12 @@ func spawn_item():
 			item_instance.global_position = global_position + Vector2(0, -40)
 			get_parent().get_parent().add_child(item_instance)
 			item_instance.add_to_group("disfarce")
-			item_instance.connect("chapeu_coletado", Callable(get_parent().get_parent(), "_on_disfarce_coletado"))
+			# Conecta o sinal do item à função no script area_saida_2.gd
+			# Supondo que o script area_saida_2.gd esteja no mesmo pai do pai deste nó.
+			if get_parent().get_parent().has_node("AreaSaida2"):
+				var area_saida_node = get_parent().get_parent().get_node("AreaSaida2")
+				item_instance.connect("chapeu_coletado", Callable(area_saida_node, "_on_disfarce_coletado"))
+			else:
+				printerr("Erro: Nó 'AreaSaida2' não encontrado!")
 		else:
 			print("Erro: item_scene não é um Area2D!")

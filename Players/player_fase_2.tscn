@@ -1357,7 +1357,7 @@ target_position = Vector2(-28, 0)
 position = Vector2(-28, -33.5)
 scale = Vector2(0.695313, 0.742187)
 sprite_frames = SubResource("SpriteFrames_f4bqt")
-animation = &"idle"
+animation = &"idle_gangster"
 autoplay = "idle"
 
 [node name="Marker2D" type="Marker2D" parent="."]

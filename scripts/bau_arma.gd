@@ -2,7 +2,6 @@ extends Area2D
 @export var item_scene: PackedScene = preload("res://Prefabs/mp_40.tscn")
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var chest_open: AudioStreamPlayer2D = $chest_open
-@onready var chest_close: AudioStreamPlayer2D = $chest_close
 
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 @onready var hud: CanvasLayer = get_node("/root/Fase_3/HUD")
@@ -46,6 +45,7 @@ func show_dialog_before_opening():
 	await _show_dialog(dialog_data)
 	print("Diálogo terminado.")
 	chest_open.play()
+	await get_tree().create_timer(0.2).timeout
 	sprite.play("open")
 	print("Animação de abrir iniciada.")
 	await sprite.animation_finished
@@ -59,6 +59,10 @@ func spawn_item():
 			item_instance.global_position = global_position + Vector2(0, -40)
 			get_parent().get_parent().add_child(item_instance)
 			item_instance.add_to_group("disfarce")
-			item_instance.connect("arma_coletada", Callable(get_parent().get_parent(), "_on_disfarce_coletado"))
+			if get_parent().get_parent().has_node("AreaSaida2"):
+				var area_saida_node = get_parent().get_parent().get_node("AreaSaida2")
+				item_instance.connect("arma_coletada", Callable(area_saida_node, "_on_disfarce_coletado"))
+			else:
+				printerr("Erro: Nó 'AreaSaida2' não encontrado!")
 		else:
 			print("Erro: item_scene não é um Area2D!")

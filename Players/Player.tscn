@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=3 uid="uid://q52ojf1xim6e"]
+[gd_scene load_steps=196 format=3 uid="uid://q52ojf1xim6e"]
 
 [ext_resource type="Script" uid="uid://bwpk77dc0rwif" path="res://scripts/player.gd" id="1_btl8f"]
 [ext_resource type="Texture2D" uid="uid://rwfxq2mdja07" path="res://Assets/Prontos/Gangsters_2/Attack_1.png" id="3_hfae2"]
@@ -28,6 +28,9 @@
 [ext_resource type="AudioStream" uid="uid://dqe8kkrtbe8af" path="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Stereo/mp3/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Equip - 1.mp3" id="26_7hdqr"]
 [ext_resource type="AudioStream" uid="uid://b8o23lvtqemdm" path="res://Assets/Prontos/dead_player.mp3" id="27_8fvxs"]
 [ext_resource type="AudioStream" uid="uid://c3e0t0xltbry1" path="res://Assets/Prontos/hurt_player.mp3" id="27_c5dsh"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="29_ihrsp"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="30_fjbjo"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="31_yuv1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi2od"]
 atlas = ExtResource("3_hfae2")
@@ -1273,6 +1276,12 @@ animations = [{
 radius = 9.0
 height = 48.0
 
+[sub_resource type="Resource" id="Resource_6b0pm"]
+script = ExtResource("31_yuv1p")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(38, 35)
 collision_mask = 10
@@ -1324,3 +1333,21 @@ stream = ExtResource("27_8fvxs")
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_c5dsh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+zoom = Vector2(2, 2)
+process_callback = 0
+limit_left = -1200
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("29_ihrsp")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("30_fjbjo")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_6b0pm")
+draw_limits = true

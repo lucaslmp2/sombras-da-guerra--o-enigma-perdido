@@ -53,6 +53,10 @@ func spawn_item():
 			item_instance.global_position = global_position + Vector2(0, -40)
 			get_parent().get_parent().add_child(item_instance)
 			item_instance.add_to_group("disfarce")
-			item_instance.connect("calca_coletada", Callable(get_parent().get_parent(), "_on_disfarce_coletado"))
+			if get_parent().get_parent().has_node("AreaSaida2"):
+				var area_saida_node = get_parent().get_parent().get_node("AreaSaida2")
+				item_instance.connect("calca_coletada", Callable(area_saida_node, "_on_disfarce_coletado"))
+			else:
+				printerr("Erro: Nó 'AreaSaida2' não encontrado!")
 		else:
 			print("Erro: item_scene não é um Area2D!")

@@ -138,3 +138,10 @@ texture_repeat = 2
 position = Vector2(15261, 501)
 scale = Vector2(0.442871, 0.426538)
 texture = ExtResource("1_q4hgi")
+
+[node name="Sprite2D19" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(16165, 501)
+scale = Vector2(0.442871, 0.426538)
+texture = ExtResource("1_q4hgi")

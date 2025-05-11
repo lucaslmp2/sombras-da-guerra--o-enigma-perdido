@@ -9,7 +9,7 @@ signal player_died()
 @onready var granada_lançada: AudioStreamPlayer2D = $granada_lançada
 @onready var morte: AudioStreamPlayer2D = $morte
 @onready var hurt: AudioStreamPlayer2D = $hurt
-
+@onready var camera: Camera2D = get_node_or_null("Camera2D")
 # Constantes
 const SPEED = 200.0
 const JUMP_FORCE = -300.0
@@ -46,8 +46,13 @@ var zipline_acceleration = 30.0
 var zipline_release_distance = 50.0
 
 func _ready():
-	pass
-
+	Globals.granada = 3
+	Globals.bulets = 10
+	if camera:
+		camera.make_current()
+		print("Câmera 'Camera2D' tornada corrente via script na cena player_fase_2.")
+	else:
+		print("Erro: Nó 'Camera2D' não encontrado na cena player_fase_2.")
 func _physics_process(delta):
 	time_since_last_shot += delta # Atualiza o tempo desde o último disparo
 

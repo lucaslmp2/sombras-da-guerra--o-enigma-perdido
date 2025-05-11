@@ -232,7 +232,7 @@ shape = SubResource("CapsuleShape2D_apreo")
 position = Vector2(-64, -57)
 scale = Vector2(0.34359, 0.370146)
 sprite_frames = SubResource("SpriteFrames_bhj1p")
-animation = &"falando"
+animation = &"andando"
 flip_h = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
