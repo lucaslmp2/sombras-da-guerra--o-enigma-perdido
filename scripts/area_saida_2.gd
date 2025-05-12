@@ -10,6 +10,7 @@ func _on_body_entered(body: Node2D) -> void:
 	animation_player.play("fade_out")
 	await get_tree().create_timer(0.5).timeout
 	animation_player.play("fade_in")
+	animation_player.play("night")
 	porta.play()
 	if body.get_collision_layer_value(player_layer):
 		if area_entrada and area_entrada.has_node("entrada2"):

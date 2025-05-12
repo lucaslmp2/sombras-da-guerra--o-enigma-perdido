@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcwwt7d6vftra"]
+
+[ext_resource type="Texture2D" uid="uid://c4l6x07bhmcm3" path="res://Assets/Prontos/poste_retro.png" id="1_8leuh"]
+[ext_resource type="Texture2D" uid="uid://dgxorkvo1uwqj" path="res://Assets/Prontos/light.png" id="2_0k3gl"]
+
+[node name="PosteRetro" type="Sprite2D"]
+z_index = -1
+position = Vector2(145, 137)
+scale = Vector2(0.201009, 0.16223)
+texture = ExtResource("1_8leuh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(14.9247, 215.743)
+scale = Vector2(2.70632, 2.65333)
+energy = 5.0
+shadow_enabled = true
+texture = ExtResource("2_0k3gl")
+texture_scale = 4.61

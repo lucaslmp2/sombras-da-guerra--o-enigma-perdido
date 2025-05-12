@@ -12,6 +12,12 @@ const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 @onready var oil_bublle: Area2D = $oleo/Oil_bublle
 @onready var oil_bublle_2: Area2D = $oleo/Oil_bublle2
 @onready var oil_bublle_3: Area2D = $oleo/Oil_bublle3
+@onready var hurt_box_agua: Area2D = $agua/HurtBoxAgua
+@onready var hurt_box_agua_5: Area2D = $agua/HurtBoxAgua5
+@onready var hurt_box_agua_6: Area2D = $agua/HurtBoxAgua6
+@onready var hurt_box_agua_2: Area2D = $agua/HurtBoxAgua2
+@onready var hurt_box_agua_3: Area2D = $agua/HurtBoxAgua3
+@onready var hurt_box_agua_4: Area2D = $agua/HurtBoxAgua4
 
 var dialog_data: Dictionary={
 	0:{
@@ -37,10 +43,15 @@ func _ready() -> void:
 	player.player_died.connect(reload_game)
 	animation_player.play("chegada")
 	await animation_player.animation_finished
-	animation_player.play("RESET")
 	oil_bublle.player_died.connect(reload_game)
 	oil_bublle_2.player_died.connect(reload_game)
 	oil_bublle_3.player_died.connect(reload_game)
+	hurt_box_agua.player_died.connect(reload_game)
+	hurt_box_agua_2.player_died.connect(reload_game)
+	hurt_box_agua_3.player_died.connect(reload_game)
+	hurt_box_agua_4.player_died.connect(reload_game)
+	hurt_box_agua_5.player_died.connect(reload_game)
+	hurt_box_agua_6.player_died.connect(reload_game)
 	animation_player.play("night")
 	#if _dialog_instance == null: # Verifica se não existe um diálogo já aberto
 			#_dialog_instance = DialogScreen.instantiate()

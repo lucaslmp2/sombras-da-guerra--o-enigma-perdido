@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c107843kfla1g"]
+[gd_scene load_steps=33 format=3 uid="uid://c107843kfla1g"]
 
 [ext_resource type="Texture2D" uid="uid://dpwf0enmos2ms" path="res://Assets/Prontos/trem2.png" id="1_5js44"]
 [ext_resource type="Script" uid="uid://t82b0110iqgt" path="res://scripts/locomotiva.gd" id="1_ekhp5"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://d0uorpiq6w1c" path="res://Assets/Prontos/smoke_trem2.png" id="17_kyx8w"]
 [ext_resource type="Texture2D" uid="uid://dmf6qtyw2hmg4" path="res://Assets/Prontos/smoke_trem1.png" id="18_8lp3p"]
 [ext_resource type="Texture2D" uid="uid://ve1vuexyym5d" path="res://Assets/Prontos/smoke_trem.png" id="19_ff434"]
+[ext_resource type="Texture2D" uid="uid://0nrpqfw35we6" path="res://Assets/Prontos/light_trem.png" id="21_rc26f"]
+[ext_resource type="Texture2D" uid="uid://c6yrtx3215tpt" path="res://Assets/Prontos/light_trem_farol.png" id="22_oox2k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_73d5g"]
 animations = [{
@@ -288,6 +290,22 @@ collision_layer = 2
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="area de embarque"]
 position = Vector2(-268.75, -56)
 shape = SubResource("RectangleShape2D_ekhp5")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(660, 37)
+energy = 2.0
+texture = ExtResource("21_rc26f")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(622, 40)
+scale = Vector2(0.421875, 0.34375)
+energy = 2.0
+texture = ExtResource("21_rc26f")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(861, 66)
+energy = 3.06
+texture = ExtResource("22_oox2k")
 
 [connection signal="body_entered" from="area de embarque" to="." method="_on_area_de_embarque_body_entered"]
 [connection signal="body_exited" from="area de embarque" to="." method="_on_area_de_embarque_body_exited"]

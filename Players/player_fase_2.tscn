@@ -1399,3 +1399,5 @@ stream = ExtResource("27_5fitb")
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-38, -43)
 stream = ExtResource("28_ufbld")
+
+[node name="MainLight" type="PointLight2D" parent="."]
