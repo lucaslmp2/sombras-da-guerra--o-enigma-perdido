@@ -1,7 +1,8 @@
-[gd_scene load_steps=97 format=3 uid="uid://bgpcuo4ewsxn6"]
+[gd_scene load_steps=104 format=3 uid="uid://bgpcuo4ewsxn6"]
 
 [ext_resource type="Script" uid="uid://cftrsjopijjre" path="res://teste/major_klaus_reinhardt.gd" id="1_gmd26"]
 [ext_resource type="Texture2D" uid="uid://bbyu2hgas1cha" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Attack.png" id="2_jhfot"]
+[ext_resource type="PackedScene" uid="uid://cnrjbl5id2yv5" path="res://Prefabs/bullet_rider_1.tscn" id="2_uswrc"]
 [ext_resource type="Texture2D" uid="uid://dp132sypqeoak" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Idle.png" id="3_4sjwa"]
 [ext_resource type="Texture2D" uid="uid://c7xgtyryn23b8" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Dead.png" id="3_7vnmw"]
 [ext_resource type="Texture2D" uid="uid://bcygt264lk8x" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Hurt.png" id="4_1c4sd"]
@@ -11,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://dxf2qlyneovy6" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Shot.png" id="6_cmrwv"]
 [ext_resource type="Texture2D" uid="uid://ctqmglt1fm1mn" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Walk.png" id="7_bcmbi"]
 [ext_resource type="Texture2D" uid="uid://c2s5jpjoq4nbd" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Recharge.png" id="8_dw24f"]
+[ext_resource type="AudioStream" uid="uid://be8un3gtm888f" path="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Stereo/wav (SD)/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Fire - 1.wav" id="13_kqvcn"]
+[ext_resource type="AudioStream" uid="uid://jqgdo4vp5aie" path="res://Assets/Prontos/passos-de-salto-70753.mp3" id="14_gysea"]
+[ext_resource type="AudioStream" uid="uid://cs1jfelobj7oc" path="res://Assets/Prontos/passos-2.mp3" id="15_ixyv3"]
+[ext_resource type="AudioStream" uid="uid://c3e0t0xltbry1" path="res://Assets/Prontos/hurt_player.mp3" id="16_743dx"]
+[ext_resource type="AudioStream" uid="uid://b8o23lvtqemdm" path="res://Assets/Prontos/dead_player.mp3" id="17_as1yb"]
+[ext_resource type="AudioStream" uid="uid://daajh80epixg" path="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Stereo/wav (SD)/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Aim - 1.wav" id="18_qpamu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j84my"]
 height = 62.0
@@ -365,7 +372,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mke4g")
 }],
-"loop": true,
+"loop": false,
 "name": &"atack_1",
 "speed": 8.0
 }, {
@@ -385,9 +392,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pdpjl")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -402,9 +409,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6wi4n")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -430,7 +437,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -475,7 +482,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l7iaq")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_2",
 "speed": 5.0
 }, {
@@ -510,7 +517,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_doxam")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 15.0
 }, {
@@ -533,9 +540,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q3sba")
 }],
-"loop": true,
+"loop": false,
 "name": &"recharge",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -570,7 +577,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -609,9 +616,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xhrha")
 }],
-"loop": true,
+"loop": false,
 "name": &"shot",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -650,19 +657,55 @@ animations = [{
 }]
 
 [node name="Major Klaus Reinhardt" type="CharacterBody2D"]
+position = Vector2(58, 69)
 collision_mask = 2
 script = ExtResource("1_gmd26")
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(503, 278)
+patrol_distance = 500.0
+idle_time_min = 2.0
+idle_time_max = 4.0
+shot_cooldown = 0.2
+recharge_time = 1.0
+bullet_scene = ExtResource("2_uswrc")
+run_away_speed = 400.0
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(500, 337)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_j84my")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(505, 305)
+position = Vector2(5, -30)
 sprite_frames = SubResource("SpriteFrames_oyupu")
-animation = &"atack_1"
-autoplay = "idle"
-frame_progress = 0.381777
+animation = &"idle"
+
+[node name="PlayerDetector" type="RayCast2D" parent="."]
+target_position = Vector2(262, 0)
+
+[node name="GunPosition" type="Marker2D" parent="."]
+position = Vector2(42, -27)
+
+[node name="tiro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_kqvcn")
+max_distance = 715.0
+
+[node name="andar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_gysea")
+max_distance = 656.0
+parameters/looping = true
+
+[node name="correr" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_ixyv3")
+pitch_scale = 1.74
+max_distance = 779.0
+parameters/looping = true
+
+[node name="dano" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_743dx")
+max_distance = 507.0
+
+[node name="morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_as1yb")
+max_distance = 715.0
+
+[node name="recarregar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_qpamu")
+max_distance = 779.0
