@@ -140,6 +140,7 @@ func die():
 		morte.play()
 	if is_instance_valid(collision):
 		call_deferred("desativar_collision_shape") # Adia a desativação da colisão
+	Globals.score += 50
 	await anim.animation_finished
 	queue_free()
 

@@ -78,6 +78,7 @@ func take_damage(damage_amount: int) -> void:
 	health -= damage_amount
 	hurt.play() # Toca o som de dano
 	if health <= 0:
+		Globals.score += 100
 		dead.play() # Toca o som de morte
 		queue_free() # Destrói o inimigo
 
