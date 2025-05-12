@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccta8cig4qgd8"]
 
 [ext_resource type="Script" uid="uid://bstcl38aa7vu0" path="res://scripts/falling_plataform.gd" id="1_hhdks"]
-[ext_resource type="Texture2D" uid="uid://bihrn123j0wt7" path="res://Assets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="1_hnuxg"]
+[ext_resource type="Texture2D" uid="uid://bxq6b27jc8a2p" path="res://Assets/5 - Misc. universal tiles/warTileset_16x16.png" id="2_cg3k1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bm2wl"]
 size = Vector2(32, 16)
@@ -49,9 +49,9 @@ collision_mask = 0
 script = ExtResource("1_hhdks")
 
 [node name="texture" type="Sprite2D" parent="."]
-texture = ExtResource("1_hnuxg")
+texture = ExtResource("2_cg3k1")
 region_enabled = true
-region_rect = Rect2(144, 64, 16, 16)
+region_rect = Rect2(49, 1, 30, 14)
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bm2wl")

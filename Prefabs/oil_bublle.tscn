@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://c815oje4fcnhc"]
+
+[ext_resource type="Script" uid="uid://b682scgp8coue" path="res://scripts/oil_bublle.gd" id="1_b5mdo"]
+[ext_resource type="Texture2D" uid="uid://bln8x1a6s7s6d" path="res://Assets/Prontos/oil_buble1.png" id="1_wvbju"]
+[ext_resource type="Texture2D" uid="uid://61ui0tkn1h4l" path="res://Assets/Prontos/oil_buble2.png" id="2_b5mdo"]
+[ext_resource type="Texture2D" uid="uid://difhnqahdcdr4" path="res://Assets/Prontos/oil_buble3.png" id="3_iu3a2"]
+[ext_resource type="Texture2D" uid="uid://c0td8n0ilm2b4" path="res://Assets/Prontos/oil_buble5.png" id="4_a5iae"]
+[ext_resource type="Texture2D" uid="uid://b6rv484idvjjl" path="res://Assets/Prontos/oil_buble6.png" id="5_0tgka"]
+[ext_resource type="Texture2D" uid="uid://cbugww62r5ndm" path="res://Assets/Prontos/oil_buble8.png" id="6_8m53k"]
+[ext_resource type="Texture2D" uid="uid://bqi04h53lxu8l" path="res://Assets/Prontos/oil_buble7.png" id="7_o351e"]
+[ext_resource type="Texture2D" uid="uid://d0njefqw3k0t1" path="res://Assets/Prontos/oil_buble9.png" id="8_0o2l5"]
+[ext_resource type="Texture2D" uid="uid://cuc2x3gkcvu4s" path="res://Assets/Prontos/oil_buble10.png" id="9_figcv"]
+[ext_resource type="Texture2D" uid="uid://b7waajj05eoci" path="res://Assets/Prontos/oil_buble11.png" id="10_0crau"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq1tw"]
+atlas = ExtResource("1_wvbju")
+region = Rect2(0, 0, 512, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wf3ft"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq1tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b5mdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iu3a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a5iae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0tgka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8m53k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o351e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0o2l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_figcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0crau")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnngi"]
+size = Vector2(321, 20)
+
+[node name="Oil_bublle" type="Area2D"]
+script = ExtResource("1_b5mdo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.53674e-06, 0)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_wf3ft")
+autoplay = "default"
+frame_progress = 0.800047
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(64, 0)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_wf3ft")
+autoplay = "default"
+frame_progress = 0.31313
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(128, 0)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_wf3ft")
+autoplay = "default"
+frame_progress = 0.849729
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(192, 0)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_wf3ft")
+autoplay = "default"
+frame_progress = 0.830006
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+position = Vector2(256, 0)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_wf3ft")
+autoplay = "default"
+frame_progress = 0.295646
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-96.5, 22)
+shape = SubResource("RectangleShape2D_bnngi")
+debug_color = Color(0.997697, 0, 0.160094, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

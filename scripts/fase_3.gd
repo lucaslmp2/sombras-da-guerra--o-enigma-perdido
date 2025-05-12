@@ -9,6 +9,9 @@ const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 @onready var interface: Control = $HUD/Interface
 @onready var porta_colisao: CollisionShape2D = $AreaSaida/saida# Pega a colisão da porta
 @onready var animation_player: AnimationPlayer = $HUD/AnimationPlayer
+@onready var oil_bublle: Area2D = $oleo/Oil_bublle
+@onready var oil_bublle_2: Area2D = $oleo/Oil_bublle2
+@onready var oil_bublle_3: Area2D = $oleo/Oil_bublle3
 
 var dialog_data: Dictionary={
 	0:{
@@ -35,6 +38,10 @@ func _ready() -> void:
 	animation_player.play("chegada")
 	await animation_player.animation_finished
 	animation_player.play("RESET")
+	oil_bublle.player_died.connect(reload_game)
+	oil_bublle_2.player_died.connect(reload_game)
+	oil_bublle_3.player_died.connect(reload_game)
+	animation_player.play("night")
 	#if _dialog_instance == null: # Verifica se não existe um diálogo já aberto
 			#_dialog_instance = DialogScreen.instantiate()
 			#_dialog_instance.data = dialog_data
