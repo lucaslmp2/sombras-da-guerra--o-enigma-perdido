@@ -1,4 +1,9 @@
 extends CharacterBody2D
+@onready var player_collision: Area2D = $PlayerCollision
+var shots_remaining: int = 0
+var triggered_run_away: bool = false
+var is_special_attack: bool = false
+@export var gravity: float = 600.0
 
 @onready var animation: AnimatedSprite2D = $Anim
 @onready var player_detector: RayCast2D = $PlayerDetector
@@ -42,6 +47,30 @@ var can_shoot: bool = true
 func _ready():
 	patrol_start_position = global_position
 	_change_state(State.PATROLLING)
+	patrol_start_position = global_position
+	player_collision.connect("body_entered", Callable(self, "_on_player_collision"))
+	_change_state(State.PATROLLING)
+
+func _on_player_collision(body):
+	if body.is_in_group("player") and not triggered_run_away:
+		player = body
+		shots_remaining = 3
+		triggered_run_away = true
+		is_special_attack = true
+
+		# 👉 Faz o inimigo olhar para o jogador
+		if player.global_position.x > global_position.x:
+			animation.flip_h = false
+			player_detector.target_position = Vector2(detection_range, 0)
+			gun_position.position.x = abs(gun_position.position.x)
+		else:
+			animation.flip_h = true
+			player_detector.target_position = Vector2(-detection_range, 0)
+			gun_position.position.x = -abs(gun_position.position.x)
+
+		_change_state(State.SHOOTING)
+
+
 
 func _physics_process(delta):
 	match current_state:
@@ -59,7 +88,11 @@ func _physics_process(delta):
 			_run_away(delta)
 
 	_detect_player() # Chama a função de detecção do jogador a cada frame físico
+
+	velocity.y += gravity * delta
 	move_and_slide()
+
+
 @onready var sprite: AnimatedSprite2D = $Anim # Garante que temos uma referência ao AnimatedSprite2D
 
 func _patrol(delta):
@@ -138,32 +171,47 @@ func _idle(delta):
 		animation.flip_h = !animation.flip_h
 		_change_state(State.PATROLLING)
 
-
 func _shoot(delta):
 	if shot_timer <= 0:
 		if is_instance_valid(player):
 			var bullet = bullet_scene.instantiate()
 			bullet.global_position = gun_position.global_position
-			var shoot_direction = Vector2.RIGHT # Direção padrão para a direita
+			var shoot_direction = Vector2.RIGHT
 			if animation.flip_h:
 				shoot_direction = Vector2.LEFT
 
-			# Define a velocidade da bala na direção horizontal
-			bullet.velocity = shoot_direction * 400.0 # Ajuste a velocidade conforme necessário
+			bullet.velocity = shoot_direction * 400.0
 			get_parent().add_child(bullet)
-			_change_state(State.RECHARGING)
+
+			tiro.play()
+			shot_timer = shot_cooldown
+			shots_remaining -= 1
+
+			if is_special_attack:
+				if shots_remaining > 0:
+					_change_state(State.RECHARGING)
+				else:
+					is_special_attack = false
+					_change_state(State.RUNNING_AWAY)
+			else:
+				_change_state(State.RECHARGING)
 		else:
 			_change_state(State.PATROLLING)
-	shot_timer -= delta
+	else:
+		shot_timer -= delta
 
 func _recharge(delta):
 	recharging_timer -= delta
 	if recharging_timer <= 0:
 		can_shoot = true
 		if is_instance_valid(player):
-			_change_state(State.CHASING)
+			if is_special_attack and shots_remaining > 0:
+				_change_state(State.SHOOTING)
+			else:
+				_change_state(State.CHASING)
 		else:
 			_change_state(State.PATROLLING)
+
 
 func _run_away(delta):
 	if global_position.distance_to(run_away_door_position) > 5:

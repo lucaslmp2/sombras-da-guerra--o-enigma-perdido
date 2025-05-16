@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://bgpcuo4ewsxn6"]
+[gd_scene load_steps=105 format=3 uid="uid://bgpcuo4ewsxn6"]
 
 [ext_resource type="Script" uid="uid://cftrsjopijjre" path="res://teste/major_klaus_reinhardt.gd" id="1_gmd26"]
 [ext_resource type="Texture2D" uid="uid://bbyu2hgas1cha" path="res://Assets/gangster-pixel-character-sprite-sheets-pack/Gangsters_3/Attack.png" id="2_jhfot"]
@@ -656,8 +656,11 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqvcn"]
+
 [node name="Major Klaus Reinhardt" type="CharacterBody2D"]
 position = Vector2(58, 69)
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_gmd26")
 patrol_distance = 500.0
@@ -709,3 +712,10 @@ max_distance = 715.0
 [node name="recarregar" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_qpamu")
 max_distance = 779.0
+
+[node name="PlayerCollision" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
+position = Vector2(-177, -2)
+shape = SubResource("CircleShape2D_kqvcn")
