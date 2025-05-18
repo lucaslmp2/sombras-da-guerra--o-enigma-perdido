@@ -46,8 +46,6 @@ var zipline_acceleration = 30.0
 var zipline_release_distance = 50.0
 
 func _ready():
-	Globals.granada += 3
-	Globals.bulets += 90
 	if camera:
 		camera.make_current()
 		print("Câmera 'Camera2D' tornada corrente via script na cena player_fase_2.")

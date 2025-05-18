@@ -2449,12 +2449,12 @@ position = Vector2(567, -14)
 
 [node name="Player" parent="characters" instance=ExtResource("9_31nrp")]
 z_index = 1
-position = Vector2(21998, 3345)
+position = Vector2(21498, 3346)
 collision_mask = 138
 
 [node name="PhantomCamera2D" type="Node2D" parent="characters/Player" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(21998, 3345)
+position = Vector2(21498, 3346)
 script = ExtResource("20_kthkm")
 priority = 1
 follow_mode = 2
@@ -2472,7 +2472,7 @@ scale = Vector2(0.803226, 0.770043)
 idle_time_min = 3.0
 idle_time_max = 6.0
 run_away_speed = 300.0
-run_away_door_position = Vector2(22830, 3321)
+run_away_door_position = Vector2(22830, 3349)
 detection_range = 500.0
 
 [node name="raider_3" parent="characters" instance=ExtResource("12_aqwi4")]
@@ -2673,6 +2673,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
 [node name="QuadroEnigmaExpandido" type="Control" parent="HUD"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -3496,7 +3497,7 @@ stream = ExtResource("35_lrd1l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(21998, 3345)
+position = Vector2(21498, 3346)
 zoom = Vector2(2, 2)
 process_callback = 0
 limit_left = -1200
@@ -3592,6 +3593,8 @@ texture = ExtResource("11_1ytoa")
 
 [node name="run_away_door_position" type="Area2D" parent="."]
 position = Vector2(22791, 3326)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("95_4fc7p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="run_away_door_position"]
@@ -3600,9 +3603,10 @@ shape = SubResource("CircleShape2D_jlpay")
 
 [node name="porta" type="AudioStreamPlayer2D" parent="run_away_door_position"]
 stream = ExtResource("35_lrd1l")
-max_distance = 4096.0
+max_distance = 1007.0
 
 [connection signal="dialogo_inicial_terminou" from="characters/Npc_bryan" to="AreaSaida" method="_on_npc_bryan_dialogo_inicial_terminou"]
+[connection signal="mouse_entered" from="HUD/QuadroEnigmaExpandido/PanelContainer/MarginContainer/TextureRect/TextureRect2" to="HUD/QuadroEnigmaExpandido/PanelContainer/MarginContainer/TextureRect/TextureRect2" method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="HUD/QuadroEnigmaExpandido/PanelContainer/MarginContainer/TextureRect/TextureRect2/TextureRect" to="HUD/QuadroEnigmaExpandido/PanelContainer/MarginContainer/TextureRect/TextureRect2/TextureRect" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/QuadroEnigmaExpandido/PanelContainer/MarginContainer/TextureRect/TextureRect2/TextureRect" to="HUD/QuadroEnigmaExpandido/PanelContainer/MarginContainer/TextureRect/TextureRect2/TextureRect" method="_on_mouse_exited"]
 [connection signal="tree_exited" from="HUD/QuadroEnigmaExpandido/PanelContainer/MarginContainer/TextureRect/TextureRect2/TextureRect" to="HUD/QuadroEnigmaExpandido/PanelContainer/MarginContainer/TextureRect/TextureRect2" method="_on_dialogo_exited"]

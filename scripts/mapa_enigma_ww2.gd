@@ -1,42 +1,14 @@
 extends TextureRect
-
-const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var scale_factor = 4.0
 var original_scale = Vector2(1, 1)
-@onready var hud: CanvasLayer = $"../../../../../.."
-
-var dialog_data: Dictionary = {
-	0: {
-		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog": "Um mapa da ocupação nazista",
-		"title": "Elias",
-	},
-	1: {
-		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog": "Não acredito que estou neste tempo!",
-		"title": "Elias",
-	},
-}
-var _dialog_instance: DialogScreen
-var _dialog_exibido: bool = false
 
 func _ready() -> void:
 	original_scale = scale
 
-func _on_dialog_exited():
-	_dialog_instance = null
-
 func _on_mouse_entered() -> void:
 	scale = original_scale * scale_factor
 	z_index += 1
-	if !_dialog_exibido:
-		_dialog_instance = DialogScreen.instantiate()
-		_dialog_instance.data = dialog_data
-		hud.add_child(_dialog_instance)
-		_dialog_instance.connect("tree_exited", Callable(self, "_on_dialog_exited"))
-		_dialog_exibido = true
 
 func _on_mouse_exited() -> void:
-	_on_dialog_exited()
 	scale = original_scale
 	z_index -= 1
