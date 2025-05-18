@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://6hklkbw243to"]
+
+[ext_resource type="Script" uid="uid://voc0vsk6k77o" path="res://scripts/porta_transição.gd" id="1_ifau0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5aq6"]
+size = Vector2(31, 55.5)
+
+[node name="porta" type="Area2D"]
+script = ExtResource("1_ifau0")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(15.5, 28.25)
+shape = SubResource("RectangleShape2D_f5aq6")

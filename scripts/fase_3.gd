@@ -53,6 +53,10 @@ func _ready() -> void:
 	hurt_box_agua_5.player_died.connect(reload_game)
 	hurt_box_agua_6.player_died.connect(reload_game)
 	animation_player.play("night")
+	if TransitionLevel.destino_level != "":
+		var point = get_node(TransitionLevel.destino_level)
+		if point:
+			player.global_position = point.global_position
 	#if _dialog_instance == null: # Verifica se não existe um diálogo já aberto
 			#_dialog_instance = DialogScreen.instantiate()
 			#_dialog_instance.data = dialog_data

@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 # Sinais
 signal player_damaged(damage_amount)
 signal player_died()
