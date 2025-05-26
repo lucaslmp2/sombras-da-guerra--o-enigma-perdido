@@ -11,57 +11,52 @@ var dialog_data: Dictionary = {
 	},
 	1: {
 		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog": "Não acredito que estou neste tempo!",
+		"dialog": "A estrada de sangue",
 		"title": "Elias",
 	},
 	2:{
 		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog":"Onde é esta estrada?",
+		"dialog":"Berlim",
 		"title":"Elias"
 	},	
 	3:{
 		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog":"Não me recordo de nenhum lugar assim.",
+		"dialog":"Meu deus quanta crueldade!!!",
 		"title":"Elias"
 	},
 	4:{
 		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog":"Berlim parece ser o coração de toda a operação",
+		"dialog":"Trabaladores sendo explorados de forma desuman",
 		"title":"Elias"
 	},	
 	5:{
 		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog":"Deve ser a casa do Adolf",
+		"dialog":"Esse lugar!!!",
 		"title":"Elias"
 	},
 	6:{
 		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog":"Meu deus quanta crueldade!!!",
+		"dialog":"Que sensacao horrível!!!",
 		"title":"Elias"
-	},	
-	7:{
-		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog":"Trabaladores sendo explorados de forma desumana",
-		"title":"Elias"
+	},
+	7: {
+		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
+		"dialog": "Não faz sentido uma estação abandonada, por quê?",
+		"title": "Elias",
 	},
 	8: {
 		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog": "Esse lugar!!!",
+		"dialog": "Por que alguém iria querer investigar isso tudo",
 		"title": "Elias",
 	},
-	9: {
-		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog": "Que sensacao horrível!!!",
-		"title": "Elias",
-	},
-	10:{
+	9:{
 		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog":"Não faz sentido uma estação abandonada, por quê?",
+		"dialog":"Não faz sentido tantas provas assim",
 		"title":"Elias"
 	},	
-	11:{
+	10:{
 		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog":"Estes símbolos nas paredes devem significar algo!",
+		"dialog":"Quem está por traz disso?",
 		"title":"Elias"
 	},
 }

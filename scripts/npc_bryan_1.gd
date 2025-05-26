@@ -52,7 +52,7 @@ var dialog_data_inicial: Dictionary = {
 	},
 	8: {
 		"faceset": "res://Assets/Prontos/bryan_npc.png",
-		"dialog": "Depois de se equipar, pegue o trem até o final da fase. É o único jeito de sair daqui.",
+		"dialog": "Depois de se equipar, eu encontro você mais a frente.",
 		"title": "Bryan"
 	},
 	9: {

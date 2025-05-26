@@ -681,7 +681,7 @@ sprite_frames = SubResource("SpriteFrames_oyupu")
 animation = &"idle"
 
 [node name="PlayerDetector" type="RayCast2D" parent="."]
-target_position = Vector2(262, 0)
+target_position = Vector2(14, 1)
 
 [node name="GunPosition" type="Marker2D" parent="."]
 position = Vector2(42, -27)

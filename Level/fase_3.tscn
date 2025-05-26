@@ -2453,12 +2453,12 @@ position = Vector2(567, -14)
 
 [node name="Player" parent="characters" instance=ExtResource("9_31nrp")]
 z_index = 1
-position = Vector2(21498, 3346)
+position = Vector2(-1144, 546)
 collision_mask = 138
 
 [node name="PhantomCamera2D" type="Node2D" parent="characters/Player" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(21498, 3346)
+position = Vector2(-912, 546)
 script = ExtResource("20_kthkm")
 priority = 1
 follow_mode = 2
@@ -2965,6 +2965,12 @@ position = Vector2(22568, 1407)
 
 [node name="cartucheira_de_balas11" parent="balas" instance=ExtResource("26_csebe")]
 position = Vector2(21932, 545)
+
+[node name="cartucheira_de_balas16" parent="balas" instance=ExtResource("26_csebe")]
+position = Vector2(21604, 258)
+
+[node name="cartucheira_de_balas17" parent="balas" instance=ExtResource("26_csebe")]
+position = Vector2(21510, 802)
 
 [node name="cartucheira_de_balas14" parent="balas" instance=ExtResource("26_csebe")]
 position = Vector2(20173, 519)
@@ -3501,7 +3507,7 @@ stream = ExtResource("35_lrd1l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(21498, 3346)
+position = Vector2(-912, 546)
 zoom = Vector2(2, 2)
 process_callback = 0
 limit_left = -1200
