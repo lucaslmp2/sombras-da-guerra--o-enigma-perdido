@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://dh5nkeublvijr"]
+[gd_scene load_steps=43 format=4 uid="uid://dh5nkeublvijr"]
 
 [ext_resource type="Script" uid="uid://bexmyiprb6wo6" path="res://scripts/fase_3_1.gd" id="1_5gg10"]
 [ext_resource type="Texture2D" uid="uid://bxq6b27jc8a2p" path="res://Assets/5 - Misc. universal tiles/warTileset_16x16.png" id="1_g82hc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cb2jkb5dn3kxb" path="res://Prefabs/lustre.tscn" id="7_kkujb"]
 [ext_resource type="Texture2D" uid="uid://wdjmctld32b1" path="res://Assets/Prontos/tunel_fase_2-invertido.png" id="8_y657b"]
 [ext_resource type="PackedScene" uid="uid://6hklkbw243to" path="res://Prefabs/porta.tscn" id="9_fevje"]
+[ext_resource type="PackedScene" uid="uid://d61ofw0lm0r0" path="res://Players/patrulha_fase_3_1.tscn" id="12_e5qfj"]
 [ext_resource type="PackedScene" uid="uid://f5vq1wjg4xht" path="res://Prefabs/plataform_movel.tscn" id="14_y657b"]
 [ext_resource type="PackedScene" uid="uid://ccta8cig4qgd8" path="res://Prefabs/falling_plataform.tscn" id="15_qg70f"]
 [ext_resource type="Texture2D" uid="uid://watanymvasqm" path="res://Assets/5 - Misc. universal tiles/Metal_Wire_fence (16 x 16).png" id="16_bwckm"]
@@ -20,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://kybig1mly6gp" path="res://Prefabs/mulher_survive.tscn" id="18_u14ay"]
 [ext_resource type="PackedScene" uid="uid://ctbed1brqotqd" path="res://Prefabs/children_survive_2.tscn" id="19_8hyyu"]
 [ext_resource type="PackedScene" uid="uid://bv84iaycq5fs7" path="res://Prefabs/children_survive_3.tscn" id="20_ot5go"]
+[ext_resource type="Script" uid="uid://bvtgx1d1crvxw" path="res://scripts/dialogo_socorro_refens.gd" id="21_e5qfj"]
 [ext_resource type="PackedScene" uid="uid://cjdwxhun5i4b8" path="res://Prefabs/survive_male_negro.tscn" id="21_g7cry"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_5gg10"]
@@ -805,6 +807,9 @@ _data = {
 &"nigth": SubResource("Animation_fevje")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ot5go"]
+radius = 30.0321
+
 [node name="Fase_3_1" type="Node2D"]
 script = ExtResource("1_5gg10")
 
@@ -853,8 +858,14 @@ position = Vector2(570, 1256)
 
 [node name="Player" parent="characters" instance=ExtResource("3_gxosw")]
 z_index = 2
-position = Vector2(1178, 3774)
+position = Vector2(1195, 2381)
 scale = Vector2(0.813436, 1.32415)
+
+[node name="patrulha_fase_3_1" parent="characters" instance=ExtResource("12_e5qfj")]
+position = Vector2(1035, 3752)
+collision_layer = 4
+collision_mask = 2
+fire_rate = 0.5
 
 [node name="decorações" type="Node2D" parent="."]
 
@@ -1010,6 +1021,14 @@ scale = Vector2(0.867188, 0.429688)
 position = Vector2(889.5, 2315.5)
 scale = Vector2(0.867188, 0.429688)
 
+[node name="Lustre39" parent="decorações" instance=ExtResource("7_kkujb")]
+position = Vector2(233, 2618)
+scale = Vector2(1.56539, 0.903527)
+
+[node name="Lustre40" parent="decorações" instance=ExtResource("7_kkujb")]
+position = Vector2(949, 2908)
+scale = Vector2(1.49691, 0.963482)
+
 [node name="porta" parent="." instance=ExtResource("9_fevje")]
 position = Vector2(32, 200)
 next_level = "res://Level/fase_3.tscn"
@@ -1048,6 +1067,16 @@ position = Vector2(1093, 2117)
 distance = 220
 movie_horizontal = false
 
+[node name="plataform_movel3" parent="plataformas_moveis" instance=ExtResource("14_y657b")]
+position = Vector2(1366, 3125)
+distance = 324
+movie_horizontal = false
+
+[node name="plataform_movel4" parent="plataformas_moveis" instance=ExtResource("14_y657b")]
+position = Vector2(1092, 2757)
+distance = 290
+movie_horizontal = false
+
 [node name="plataformas_ingrimes" type="Node2D" parent="."]
 
 [node name="falling_plataform" parent="plataformas_ingrimes" instance=ExtResource("15_qg70f")]
@@ -1084,6 +1113,16 @@ position = Vector2(904, 3121)
 scale = Vector2(-1.47245, 1.39768)
 
 [node name="gaiola" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="gaiola"]
+position = Vector2(206, 2815)
+scale = Vector2(1.31167, 0.832658)
+script = ExtResource("21_e5qfj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gaiola/Area2D"]
+position = Vector2(64.0405, 1.20097)
+scale = Vector2(0.330581, 0.683728)
+shape = SubResource("CircleShape2D_ot5go")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="gaiola"]
 z_index = 1
@@ -1324,3 +1363,5 @@ offset_bottom = 3094.0
 scale = Vector2(1.31167, 0.832658)
 texture = ExtResource("16_bwckm")
 region_rect = Rect2(6, 14, 52, 34)
+
+[connection signal="body_entered" from="gaiola/Area2D" to="gaiola/Area2D" method="_on_body_entered"]

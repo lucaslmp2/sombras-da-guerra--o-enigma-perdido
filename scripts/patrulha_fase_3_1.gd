@@ -10,6 +10,7 @@ var is_dead := false # Novo: Para controlar o estado de morte
 @export var fire_rate := 1.0 # Intervalo entre os disparos em segundos
 @export var shot_animation_duration := 0.2 # Duração da animação de disparo em segundos
 
+@export var item_scene: PackedScene = preload("res://Prefabs/chave_gaiola.tscn")
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shot_marker: Marker2D = $Shot_marker
 @onready var ground_detector: RayCast2D = $ground_detector
@@ -104,6 +105,7 @@ func take_damage(damage_amount: int) -> void:
 	await animated_sprite_2d.animation_finished # Espera a animação de hurt terminar
 
 	if health <= 0:
+		die()
 		if not is_dead: # Garante que a morte só aconteça uma vez
 			is_dead = true
 			Globals.score += 100
@@ -121,7 +123,13 @@ func take_damage(damage_amount: int) -> void:
 			queue_free()
 	else:
 		is_taking_damage = false # Reseta o estado de dano se o inimigo ainda estiver vivo
-
+func die():
+	if is_dead:
+		return
+	var chave = preload("res://Prefabs/chave_gaiola.tscn").instantiate()
+	chave.position = position
+	get_tree().current_scene.add_child(chave)  # Adiciona à fase atual
+	
 func _on_fire_timer_timeout():
 	can_shoot = true
 
