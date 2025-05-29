@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://dh5nkeublvijr"]
+[gd_scene load_steps=44 format=4 uid="uid://dh5nkeublvijr"]
 
 [ext_resource type="Script" uid="uid://bexmyiprb6wo6" path="res://scripts/fase_3_1.gd" id="1_5gg10"]
 [ext_resource type="Texture2D" uid="uid://bxq6b27jc8a2p" path="res://Assets/5 - Misc. universal tiles/warTileset_16x16.png" id="1_g82hc"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bv84iaycq5fs7" path="res://Prefabs/children_survive_3.tscn" id="20_ot5go"]
 [ext_resource type="Script" uid="uid://bvtgx1d1crvxw" path="res://scripts/dialogo_socorro_refens.gd" id="21_e5qfj"]
 [ext_resource type="PackedScene" uid="uid://cjdwxhun5i4b8" path="res://Prefabs/survive_male_negro.tscn" id="21_g7cry"]
+[ext_resource type="Texture2D" uid="uid://bpdvvc8vlscgm" path="res://Assets/Prontos/fechadura_fase_3_1.png" id="24_8vg21"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_5gg10"]
 tile_data = PackedInt32Array(0, 196608, 2, 65536, 65536, 3, 131072, 65536, 0, 196608, 196608, 3, 262144, 262144, 1, 327680, 65536, 1, 393216, 65536, 0, 458752, 0, 3, 1, 65536, 0, 65537, 196608, 3, 131073, 131072, 2, 196609, 65536, 3, 262145, 0, 3, 327681, 65536, 0, 393217, 131072, 0, 458753, 131072, 0, 2, 262144, 1, 65538, 65536, 1, 131074, 196608, 3, 196610, 196608, 3, 262146, 65536, 3, 327682, 196608, 3, 393218, 262144, 1, 458754, 0, 3, 3, 262144, 1, 65539, 65536, 0, 131075, 196608, 2, 196611, 196608, 2, 262147, 65536, 0, 327683, 131072, 0, 393219, 65536, 0, 458755, 65536, 0, 4, 131072, 2, 65540, 262144, 1, 131076, 196608, 1, 196612, 0, 3, 262148, 131072, 0, 327684, 65536, 3, 393220, 65536, 1, 458756, 131072, 2, 5, 65536, 3, 65541, 196608, 2, 131077, 196608, 2, 196613, 196608, 1, 262149, 196608, 1, 327685, 196608, 3, 393221, 196608, 3, 458757, 0, 3, 6, 0, 3, 65542, 262144, 1, 131078, 65536, 1, 196614, 65536, 0, 262150, 196608, 3, 327686, 131072, 0, 393222, 196608, 2, 458758, 65536, 0, 7, 262144, 1, 65543, 0, 3, 131079, 196608, 1, 196615, 262144, 1, 262151, 131072, 2, 327687, 65536, 3, 393223, 65536, 1, 458759, 131072, 0)
@@ -1363,5 +1364,17 @@ offset_bottom = 3094.0
 scale = Vector2(1.31167, 0.832658)
 texture = ExtResource("16_bwckm")
 region_rect = Rect2(6, 14, 52, 34)
+
+[node name="FechaduraFase31" type="Sprite2D" parent="gaiola"]
+z_index = 1
+position = Vector2(146, 2814)
+scale = Vector2(0.325, 0.395832)
+texture = ExtResource("24_8vg21")
+
+[node name="FechaduraFase32" type="Sprite2D" parent="gaiola"]
+z_index = 1
+position = Vector2(897, 3121)
+scale = Vector2(0.325, 0.395832)
+texture = ExtResource("24_8vg21")
 
 [connection signal="body_entered" from="gaiola/Area2D" to="gaiola/Area2D" method="_on_body_entered"]
