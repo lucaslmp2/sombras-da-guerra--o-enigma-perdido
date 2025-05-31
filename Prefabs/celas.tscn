@@ -1,0 +1,298 @@
+[gd_scene load_steps=10 format=3 uid="uid://ck4wt627psmtg"]
+
+[ext_resource type="Script" uid="uid://bvtgx1d1crvxw" path="res://scripts/dialogo_socorro_refens.gd" id="1_xk3cn"]
+[ext_resource type="Texture2D" uid="uid://watanymvasqm" path="res://Assets/5 - Misc. universal tiles/Metal_Wire_fence (16 x 16).png" id="2_egxr5"]
+[ext_resource type="PackedScene" uid="uid://d1eyhjp364j1t" path="res://Prefabs/children_survive.tscn" id="3_7fcah"]
+[ext_resource type="PackedScene" uid="uid://kybig1mly6gp" path="res://Prefabs/mulher_survive.tscn" id="4_lu6wa"]
+[ext_resource type="PackedScene" uid="uid://ctbed1brqotqd" path="res://Prefabs/children_survive_2.tscn" id="5_xfra5"]
+[ext_resource type="PackedScene" uid="uid://bv84iaycq5fs7" path="res://Prefabs/children_survive_3.tscn" id="6_u7n2o"]
+[ext_resource type="PackedScene" uid="uid://cjdwxhun5i4b8" path="res://Prefabs/survive_male_negro.tscn" id="7_8wk7u"]
+[ext_resource type="Texture2D" uid="uid://bpdvvc8vlscgm" path="res://Assets/Prontos/fechadura_fase_3_1.png" id="8_egxr5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ot5go"]
+radius = 30.0321
+
+[node name="Celas" type="Area2D"]
+scale = Vector2(1.31167, 0.832658)
+script = ExtResource("1_xk3cn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64.0405, 1.20097)
+scale = Vector2(0.330581, 0.683728)
+shape = SubResource("CircleShape2D_ot5go")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -87.6745
+offset_right = -47.6745
+offset_bottom = 40.0
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -87.6745
+offset_top = -39.6321
+offset_right = -47.6745
+offset_bottom = 0.36792
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -87.6745
+offset_top = -79.2642
+offset_right = -47.6745
+offset_bottom = -39.2642
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -131.893
+offset_right = -91.8929
+offset_bottom = 40.0
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect5" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -131.893
+offset_top = -39.6321
+offset_right = -91.8929
+offset_bottom = 0.36792
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect6" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -131.893
+offset_top = -79.2642
+offset_right = -91.8929
+offset_bottom = -39.2642
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect7" type="NinePatchRect" parent="."]
+z_index = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect8" type="NinePatchRect" parent="."]
+z_index = 1
+offset_top = -39.6321
+offset_right = 40.0
+offset_bottom = 0.36792
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect9" type="NinePatchRect" parent="."]
+z_index = 1
+offset_top = -79.2642
+offset_right = 40.0
+offset_bottom = -39.2642
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect10" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -44.2184
+offset_right = -4.21844
+offset_bottom = 40.0
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect11" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -44.2184
+offset_top = -39.6321
+offset_right = -4.21844
+offset_bottom = 0.36792
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect12" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -44.2184
+offset_top = -79.2642
+offset_right = -4.21844
+offset_bottom = -39.2642
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect13" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 484.878
+offset_top = 366.297
+offset_right = 524.878
+offset_bottom = 406.297
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect14" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 484.878
+offset_top = 326.665
+offset_right = 524.878
+offset_bottom = 366.665
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect15" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 484.878
+offset_top = 287.033
+offset_right = 524.878
+offset_bottom = 327.033
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect16" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 440.66
+offset_top = 366.297
+offset_right = 480.66
+offset_bottom = 406.297
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect17" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 440.66
+offset_top = 326.665
+offset_right = 480.66
+offset_bottom = 366.665
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect18" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 440.66
+offset_top = 287.033
+offset_right = 480.66
+offset_bottom = 327.033
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect19" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 572.553
+offset_top = 366.297
+offset_right = 612.553
+offset_bottom = 406.297
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect20" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 572.553
+offset_top = 326.665
+offset_right = 612.553
+offset_bottom = 366.665
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect21" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 572.553
+offset_top = 287.033
+offset_right = 612.553
+offset_bottom = 327.033
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect22" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 528.334
+offset_top = 366.297
+offset_right = 568.334
+offset_bottom = 406.297
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect23" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 528.334
+offset_top = 326.665
+offset_right = 568.334
+offset_bottom = 366.665
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="NinePatchRect24" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 528.334
+offset_top = 287.033
+offset_right = 568.334
+offset_bottom = 327.033
+scale = Vector2(0.94607, 0.927118)
+texture = ExtResource("2_egxr5")
+region_rect = Rect2(6, 14, 52, 34)
+
+[node name="refens" type="Node2D" parent="."]
+position = Vector2(-157.052, -3380.74)
+scale = Vector2(0.762387, 1.20097)
+
+[node name="children_survive" parent="refens" instance=ExtResource("3_7fcah")]
+z_index = -2
+position = Vector2(858, 3129)
+scale = Vector2(1.64181, 1.38202)
+
+[node name="mulher_survive" parent="refens" instance=ExtResource("4_lu6wa")]
+z_index = -2
+position = Vector2(122, 2816)
+scale = Vector2(1.64181, 1.38202)
+
+[node name="children_survive_2" parent="refens" instance=ExtResource("5_xfra5")]
+z_index = -2
+position = Vector2(50, 2809)
+scale = Vector2(1.64181, 1.38202)
+
+[node name="survive" parent="refens" instance=ExtResource("6_u7n2o")]
+z_index = -2
+position = Vector2(150, 2840)
+scale = Vector2(1.64181, 1.38202)
+
+[node name="survive_male_negro" parent="refens" instance=ExtResource("7_8wk7u")]
+z_index = -2
+position = Vector2(904, 3121)
+scale = Vector2(-1.47245, 1.39768)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-47.268, -10.8136)
+scale = Vector2(0.304955, 0.500203)
+texture = ExtResource("8_egxr5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(525.285, 353.086)
+scale = Vector2(0.304955, 0.500203)
+texture = ExtResource("8_egxr5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

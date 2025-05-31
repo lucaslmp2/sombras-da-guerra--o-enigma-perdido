@@ -9,12 +9,10 @@ func _ready() -> void:
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
 	animation_player.play("nigth")
-	if TransitionLevel.destino_level != "":
-		var point = get_node(TransitionLevel.destino_level)
-		if point:
-			player.global_position = point.global_position
+	
 func reload_game():
 	Globals.life = 3 # **RESETA Globals.life AQUI**
+	Globals.bulets = 10
 	await get_tree().create_timer(1.0).timeout
 	get_tree().reload_current_scene()
 	

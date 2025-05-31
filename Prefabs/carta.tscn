@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2nbkhrxc6r4j"]
+
+[ext_resource type="Texture2D" uid="uid://d18oeu2la3trm" path="res://Assets/Prontos/quadro_estação.png" id="1_faaf2"]
+[ext_resource type="Script" uid="uid://bkc3dn7ld381" path="res://scripts/carta.gd" id="1_ksxb7"]
+[ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="2_3nbjt"]
+[ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="4_i3sou"]
+[ext_resource type="Texture2D" uid="uid://03iibmkm7c84" path="res://Assets/Prontos/button_esc_normal.png" id="5_3twll"]
+[ext_resource type="Texture2D" uid="uid://c7bmf2kk4vmwu" path="res://Assets/Prontos/button_esc_click.png" id="6_35env"]
+[ext_resource type="Texture2D" uid="uid://byt5heswbfftx" path="res://Assets/Prontos/button_esc_hoverpng.png" id="7_3ea6j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3twll"]
+font = ExtResource("4_i3sou")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="carta" type="Control"]
+layout_mode = 3
+anchor_left = 0.148
+anchor_right = 0.789
+anchor_bottom = 1.0
+offset_left = -0.496002
+offset_top = 3.0
+offset_right = 0.0719604
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksxb7")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_faaf2")
+region_rect = Rect2(113, 215, 38, 17)
+patch_margin_left = 12
+patch_margin_top = 16
+patch_margin_right = 12
+patch_margin_bottom = 16
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 41.0
+offset_top = 44.0
+offset_right = 684.0
+offset_bottom = 345.0
+theme = ExtResource("2_3nbjt")
+label_settings = SubResource("LabelSettings_3twll")
+vertical_alignment = 1
+justification_flags = 171
+visible_characters_behavior = 3
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 26.0
+offset_right = 676.0
+offset_bottom = 42.0
+texture_normal = ExtResource("5_3twll")
+texture_pressed = ExtResource("7_3ea6j")
+texture_hover = ExtResource("6_35env")

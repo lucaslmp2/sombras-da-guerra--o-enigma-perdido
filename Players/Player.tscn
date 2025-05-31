@@ -1338,7 +1338,6 @@ stream = ExtResource("27_c5dsh")
 physics_interpolation_mode = 1
 zoom = Vector2(2, 2)
 process_callback = 0
-limit_left = -1200
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
