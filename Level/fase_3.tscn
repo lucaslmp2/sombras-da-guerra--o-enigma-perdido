@@ -2453,12 +2453,12 @@ position = Vector2(567, -14)
 
 [node name="Player" parent="characters" instance=ExtResource("9_31nrp")]
 z_index = 1
-position = Vector2(16467, 386)
+position = Vector2(-1144, 546)
 collision_mask = 138
 
 [node name="PhantomCamera2D" type="Node2D" parent="characters/Player" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(16467, 386)
+position = Vector2(-912, 546)
 script = ExtResource("20_kthkm")
 priority = 1
 follow_mode = 2
@@ -2471,8 +2471,8 @@ limit_left = -1200
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="Major Klaus Reinhardt" parent="characters" groups=["enemy"] instance=ExtResource("27_jlpay")]
-position = Vector2(22173, 3335)
-scale = Vector2(0.803226, 0.770043)
+position = Vector2(22009, 3333)
+scale = Vector2(0.8, 0.8)
 idle_time_min = 3.0
 idle_time_max = 6.0
 run_away_speed = 300.0
@@ -3507,10 +3507,9 @@ stream = ExtResource("35_lrd1l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(16467, 386)
+position = Vector2(-912, 546)
 zoom = Vector2(2, 2)
 process_callback = 0
-limit_left = -1200
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]

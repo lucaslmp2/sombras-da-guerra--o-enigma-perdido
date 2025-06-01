@@ -49,6 +49,10 @@ func adicionar_novo_player(novo_player: Node2D) -> void:
 	if characters_node:
 		characters_node.add_child(novo_player)
 		print("Novo player adicionado ao nó 'characters' (via grupo) na posição:", novo_player.global_position)
+		
+		# Define a escala do novo player
+		novo_player.scale = Vector2(0.952, 1.201)
+		print("Escala do novo player definida para:", novo_player.scale)
 
 		# Conecta o sinal player_died do novo player ao reload_game deste script
 		if novo_player.has_signal("player_died"):
