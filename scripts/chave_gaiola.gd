@@ -1,5 +1,5 @@
 extends Area2D
-signal pick_up_chave # O sinal já existe, perfeito!
+# Remova 'signal pick_up_chave' daqui, pois o sinal será emitido pelo SignalManager
 
 @onready var player: CharacterBody2D = null
 var hud: CanvasLayer = null
@@ -33,14 +33,18 @@ func _show_dialog(dialog_data: Dictionary):
 	_dialog_instance = DialogScreen.instantiate()
 	_dialog_instance.data = dialog_data
 	hud.add_child(_dialog_instance)
-	# Espere o diálogo ser fechado antes de continuar
-	await _dialog_instance.tree_exited # Adicione esta linha se quiser que o diálogo bloqueie a coleta
-	
+	await _dialog_instance.tree_exited
+
 func _on_body_entered(body: Node):
 	if body.is_in_group("player"):
 		print("Item coletado!")
-		await _show_dialog(dialog_data) # Use await para esperar o diálogo fechar
+		await _show_dialog(dialog_data)
 		pick_up.play()
-		emit_signal("pick_up_chave") # A chave emite o sinal
+		
+		# <<< AQUI ESTÁ A MUDANÇA PRINCIPAL >>>
+		# Emite o sinal através do SignalManager
+		SignalManager.chave_coletada.emit() 
+		print("Sinal 'chave_coletada' emitido via SignalManager!")
+		
 		await get_tree().create_timer(1.0).timeout
-		queue_free() # A chave desaparece
+		queue_free()

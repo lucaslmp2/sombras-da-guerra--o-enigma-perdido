@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var move_speed := 50
 var direction := 1
-var health := 3
+var health := 6
 var can_shoot := true
 var is_shooting_animation_playing := false
 var is_taking_damage := false # Novo: Para controlar o estado de dano

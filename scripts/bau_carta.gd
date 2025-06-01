@@ -4,11 +4,10 @@ extends Area2D
 @onready var chest_open: AudioStreamPlayer2D = $chest_open
 @onready var chest_close: AudioStreamPlayer2D = $chest_close
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
-signal camisa_coletada
 var hud: CanvasLayer = null
 var dialog_data2: Dictionary = {
 	0: {
-		"faceset": "res://Assets/Prontos/elias_face_asset_realista.png",
+		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
 		"dialog": "Um báu o que é que tem ai dentro?.",
 		"title": "Elias"
 	},

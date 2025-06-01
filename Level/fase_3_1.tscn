@@ -850,7 +850,7 @@ position = Vector2(570, 1256)
 
 [node name="Player" parent="characters" instance=ExtResource("3_gxosw")]
 z_index = 2
-position = Vector2(62, 225)
+position = Vector2(55, 225)
 scale = Vector2(0.813436, 1.20121)
 
 [node name="patrulha_fase_3_1" parent="characters" instance=ExtResource("12_e5qfj")]
