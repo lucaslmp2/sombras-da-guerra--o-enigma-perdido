@@ -371,7 +371,7 @@ speed = 80.0
 position = Vector2(-17.5, -9)
 scale = Vector2(0.851563, 0.78125)
 sprite_frames = SubResource("SpriteFrames_b0iiw")
-animation = &"idle"
+animation = &"shot2"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -379,12 +379,17 @@ position = Vector2(-21, 16)
 shape = SubResource("CapsuleShape2D_g4on0")
 
 [node name="Gun" type="Node2D" parent="."]
-position = Vector2(1.00003, 0)
+position = Vector2(-21, -9)
 
 [node name="Marker2D" type="Marker2D" parent="Gun"]
 
 [node name="WallRay" type="RayCast2D" parent="."]
 position = Vector2(-21, 16)
+target_position = Vector2(16, 0)
+collision_mask = 2
+
+[node name="WallRay2" type="RayCast2D" parent="."]
+position = Vector2(-21, 38)
 target_position = Vector2(16, 0)
 collision_mask = 2
 

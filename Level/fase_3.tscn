@@ -2453,7 +2453,7 @@ position = Vector2(567, -14)
 
 [node name="Player" parent="characters" instance=ExtResource("9_31nrp")]
 z_index = 1
-position = Vector2(-1144, 546)
+position = Vector2(-1151, 546)
 collision_mask = 138
 
 [node name="PhantomCamera2D" type="Node2D" parent="characters/Player" node_paths=PackedStringArray("follow_target")]
@@ -3510,6 +3510,7 @@ physics_interpolation_mode = 1
 position = Vector2(-912, 546)
 zoom = Vector2(2, 2)
 process_callback = 0
+limit_left = -1200
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]

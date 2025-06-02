@@ -32,6 +32,12 @@ signal viewfinder_disable_dead_zone
 ## The result will be visible in the viewfinder when multiple instances are present.
 signal has_error()
 
+## Emitted when a new [param PhantomCamera] becomes active and assigned to this [param PhantomCameraHost].
+signal pcam_became_active(pcam: Node)
+
+## Emitted when an active [param PhantomCamera] becomes inactive.
+signal pcam_became_inactive(pcam: Node)
+
 #endregion
 
 
@@ -197,7 +203,7 @@ var _noise_emitted_output_3d: Transform3D = Transform3D()
 #endregion
 
 # NOTE - Temp solution until Godot has better plugin autoload recognition out-of-the-box.
-var _phantom_camera_manager: Node
+var _phantom_camera_manager: Node = null
 
 #region Public Variables
 
@@ -391,6 +397,7 @@ func _assign_new_active_pcam(pcam: Node) -> void:
 			_active_pcam_2d.queue_redraw()
 			_active_pcam_2d.set_is_active(self, false)
 			_active_pcam_2d.became_inactive.emit()
+			pcam_became_inactive.emit(_active_pcam_2d)
 
 			if _active_pcam_2d.physics_target_changed.is_connected(_check_pcam_physics):
 				_active_pcam_2d.physics_target_changed.disconnect(_check_pcam_physics)
@@ -404,6 +411,7 @@ func _assign_new_active_pcam(pcam: Node) -> void:
 			_prev_active_pcam_3d_transform = camera_3d.global_transform
 			_active_pcam_3d.set_is_active(self, false)
 			_active_pcam_3d.became_inactive.emit()
+			pcam_became_inactive.emit(_active_pcam_3d)
 
 			if _active_pcam_3d.physics_target_changed.is_connected(_check_pcam_physics):
 				_active_pcam_3d.physics_target_changed.disconnect(_check_pcam_physics)
@@ -497,10 +505,11 @@ func _assign_new_active_pcam(pcam: Node) -> void:
 			# Assigns a default shape to SpringArm3D node is none is supplied
 			if _active_pcam_3d.follow_mode == _active_pcam_3d.FollowMode.THIRD_PERSON:
 				if not _active_pcam_3d.shape:
-					var pyramid_shape_data = PhysicsServer3D.shape_get_data(
+
+					var pyramid_shape_data = Engine.get_singleton("PhysicsServer3D").call("shape_get_data",
 						camera_3d.get_pyramid_shape_rid()
 					)
-					var shape = ConvexPolygonShape3D.new()
+					var shape = ClassDB.instantiate("ConvexPolygonShape3D")
 					shape.points = pyramid_shape_data
 					_active_pcam_3d.shape = shape
 
@@ -634,6 +643,7 @@ func _assign_new_active_pcam(pcam: Node) -> void:
 
 		_active_pcam_2d.set_is_active(self, true)
 		_active_pcam_2d.became_active.emit()
+		pcam_became_active.emit(_active_pcam_2d)
 		_camera_zoom = camera_2d.zoom
 	else:
 		if _active_pcam_3d.show_viewfinder_in_play:
@@ -641,6 +651,7 @@ func _assign_new_active_pcam(pcam: Node) -> void:
 
 		_active_pcam_3d.set_is_active(self, true)
 		_active_pcam_3d.became_active.emit()
+		pcam_became_active.emit(_active_pcam_3d)
 		if _active_pcam_3d.camera_3d_resource:
 			camera_3d.keep_aspect = _active_pcam_3d.keep_aspect
 			camera_3d.cull_mask = _active_pcam_3d.cull_mask
@@ -1271,15 +1282,17 @@ func _pcam_visibility_changed(pcam: Node) -> void:
 	_check_pcam_priority(pcam)
 
 
-func _pcam_teleported() -> void:
+func _pcam_teleported(pcam: Node) -> void:
 	if _is_2d:
+		if not pcam == _active_pcam_2d: return
 		if not is_instance_valid(camera_2d): return
-		camera_2d.global_position = _active_pcam_2d.global_position
+		camera_2d.global_position = _active_pcam_2d.get_transform_output().origin
 		camera_2d.call("reset_physics_interpolation")
 #		camera_2d.reset_physics_interpolation() # TODO - For when Godot 4.3 becomes the minimum version
 	else:
+		if not pcam == _active_pcam_3d: return
 		if not is_instance_valid(camera_3d): return
-		camera_3d.global_position = _active_pcam_3d.global_position
+		camera_3d.global_position = _active_pcam_3d.get_transform_output().origin
 		camera_3d.call("reset_physics_interpolation")
 #		camera_3d.reset_physics_interpolation() # TODO - For when Godot 4.3 becomes the minimum version
 
@@ -1390,15 +1403,14 @@ func refresh_pcam_list_priorty() -> void:
 	_active_pcam_priority = -1
 	_find_pcam_with_highest_priority()
 
+#endregion
+
+#region Setters / Getters
 
 #func set_interpolation_mode(value: int) -> void:
 	#interpolation_mode = value
 #func get_interpolation_mode() -> int:
 	#return interpolation_mode
-
-#endregion
-
-##region Setters / Getters
 
 ## Sets the [member host_layers] value.
 func set_host_layers(value: int) -> void:
@@ -1422,4 +1434,4 @@ func set_host_layers_value(layer: int, value: bool) -> void:
 func get_host_layers() -> int:
 	return host_layers
 
-##endregion
+#endregion

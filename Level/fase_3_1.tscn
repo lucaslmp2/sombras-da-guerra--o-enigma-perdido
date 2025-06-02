@@ -816,7 +816,6 @@ tile_set = SubResource("TileSet_f7br6")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="HUD" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Interface" parent="HUD" instance=ExtResource("2_gxosw")]
 

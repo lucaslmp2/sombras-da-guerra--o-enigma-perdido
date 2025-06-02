@@ -1029,6 +1029,7 @@ physics_interpolation_mode = 1
 position = Vector2(269, 198)
 zoom = Vector2(2, 2)
 process_callback = 0
+limit_bottom = 750
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -1041,6 +1042,7 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 physics_interpolation_mode = 1
 zoom = Vector2(2, 2)
 process_callback = 0
+limit_bottom = 750
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D/Camera2D"]
@@ -1057,10 +1059,10 @@ anchor_left = -0.014
 anchor_top = 0.029
 anchor_right = 0.957
 anchor_bottom = 1.023
-offset_left = 0.128
-offset_top = 0.208
-offset_right = 0.536011
-offset_bottom = 1.09601
+offset_left = 16.128
+offset_top = -18.792
+offset_right = 16.536
+offset_bottom = -17.904
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(168, 48)

@@ -2,6 +2,7 @@ extends Area2D
 @onready var hud: CanvasLayer = $"../../HUD"
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 @onready var area_2d: Area2D = $"."
+@onready var collision_shape_2d: CollisionShape2D = $"../../porta/CollisionShape2D"
 
 # Agrupando os NinePatchRects e Sprites para facilitar o controle
 @onready var cell_visuals: Array[Node] = [
@@ -33,6 +34,7 @@ func _ready():
 	# Conecta diretamente ao SignalManager global
 	SignalManager.chave_coletada.connect(_on_chave_coletada)
 	print("Script da cela: Conectado ao SignalManager.chave_coletada!")
+	collision_shape_2d.disabled = true
 
 func _show_dialog(dialog_data: Dictionary):
 	if is_instance_valid(_dialog_instance):
@@ -68,3 +70,4 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_chave_coletada():
 	print("Sinal 'chave_coletada' recebido pelo script da cela! Abrindo celas...")
 	_open_jail_animation()
+	collision_shape_2d.disabled = false

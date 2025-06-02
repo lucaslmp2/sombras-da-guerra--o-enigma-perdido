@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpfx34m16i4w1"]
+
+[ext_resource type="Script" uid="uid://r6x51lfpl2mn" path="res://scripts/pista_1.gd" id="1_55hxl"]
+[ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="2_55hxl"]
+[ext_resource type="Texture2D" uid="uid://bwjousjaebsmx" path="res://Assets/Prontos/identificação.png" id="2_555w3"]
+[ext_resource type="FontFile" uid="uid://bqtftqsbweqpw" path="res://Assets/Fonts/Pixica Fonts/PixicaMicro-Regular.ttf" id="4_555w3"]
+[ext_resource type="Texture2D" uid="uid://03iibmkm7c84" path="res://Assets/Prontos/button_esc_normal.png" id="4_yfea8"]
+[ext_resource type="Texture2D" uid="uid://cj57dwxdxpaqn" path="res://Assets/Prontos/face asset antagonista.png" id="5_555w3"]
+[ext_resource type="Texture2D" uid="uid://byt5heswbfftx" path="res://Assets/Prontos/button_esc_hoverpng.png" id="5_h6csv"]
+[ext_resource type="Texture2D" uid="uid://c7bmf2kk4vmwu" path="res://Assets/Prontos/button_esc_click.png" id="6_acoh3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gvhbd"]
+font = ExtResource("4_555w3")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="Pista_1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55hxl")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 279.0
+offset_right = -161.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_555w3")
+region_rect = Rect2(-1, 0, 500, 500)
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 56.0
+offset_top = 55.0
+offset_right = 412.0
+offset_bottom = 219.0
+theme = ExtResource("2_55hxl")
+text = "Oficial do Exercito Alemão
+
+Major Klaus Reinhardt N° 200
+
+             LegityMacja
+
+Gulting 2 Jahre  _____  Wazna 2 lata"
+label_settings = SubResource("LabelSettings_gvhbd")
+justification_flags = 171
+visible_characters_behavior = 3
+
+[node name="Label2" type="Label" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 61.0
+offset_top = 259.0
+offset_right = 415.0
+offset_bottom = 289.0
+theme = ExtResource("2_55hxl")
+text = "des Major Klaus Reinhardt"
+label_settings = SubResource("LabelSettings_gvhbd")
+vertical_alignment = 1
+justification_flags = 171
+visible_characters_behavior = 3
+
+[node name="Label3" type="Label" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 61.0
+offset_top = 325.0
+offset_right = 415.0
+offset_bottom = 355.0
+theme = ExtResource("2_55hxl")
+text = "Gebore in Müchen"
+label_settings = SubResource("LabelSettings_gvhbd")
+vertical_alignment = 1
+justification_flags = 171
+visible_characters_behavior = 3
+
+[node name="Label4" type="Label" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 65.0
+offset_top = 377.0
+offset_right = 419.0
+offset_bottom = 407.0
+theme = ExtResource("2_55hxl")
+text = "Warscheu  den 2.0kt    1942"
+label_settings = SubResource("LabelSettings_gvhbd")
+vertical_alignment = 1
+justification_flags = 171
+visible_characters_behavior = 3
+
+[node name="Label5" type="Label" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 70.0
+offset_top = 567.0
+offset_right = 324.0
+offset_bottom = 597.0
+theme = ExtResource("2_55hxl")
+text = "Oficial des Crosser black"
+label_settings = SubResource("LabelSettings_gvhbd")
+vertical_alignment = 1
+justification_flags = 171
+visible_characters_behavior = 3
+
+[node name="Label6" type="Label" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 386.0
+offset_top = 564.0
+offset_right = 463.0
+offset_bottom = 594.0
+theme = ExtResource("2_55hxl")
+text = "unterscrift"
+label_settings = SubResource("LabelSettings_gvhbd")
+vertical_alignment = 1
+justification_flags = 171
+visible_characters_behavior = 3
+
+[node name="Label7" type="Label" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 575.0
+offset_top = 562.0
+offset_right = 683.0
+offset_bottom = 585.0
+theme = ExtResource("2_55hxl")
+text = "inhanberss"
+label_settings = SubResource("LabelSettings_gvhbd")
+vertical_alignment = 1
+justification_flags = 171
+visible_characters_behavior = 3
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+offset_left = 472.0
+offset_top = 25.0
+offset_right = 693.0
+offset_bottom = 356.0
+texture = ExtResource("5_555w3")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 1001.0
+offset_top = 3.0
+offset_right = 1017.0
+offset_bottom = 19.0
+texture_normal = ExtResource("4_yfea8")
+texture_pressed = ExtResource("5_h6csv")
+texture_hover = ExtResource("6_acoh3")
