@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://durtn0n7vo8gp"]
+
+[ext_resource type="Script" uid="uid://b66oofa1hymqi" path="res://scripts/pista_4.gd" id="1_4x424"]
+[ext_resource type="Texture2D" uid="uid://bwjousjaebsmx" path="res://Assets/Prontos/identificação.png" id="1_axvwv"]
+[ext_resource type="FontFile" uid="uid://bqtftqsbweqpw" path="res://Assets/Fonts/Pixica Fonts/PixicaMicro-Regular.ttf" id="2_4x424"]
+[ext_resource type="Texture2D" uid="uid://b4mkx3crpuqt0" path="res://Assets/Prontos/Linha de Montagem de Tanques.png" id="3_8l1b1"]
+[ext_resource type="Texture2D" uid="uid://03iibmkm7c84" path="res://Assets/Prontos/button_esc_normal.png" id="4_ytvnb"]
+[ext_resource type="Texture2D" uid="uid://c7bmf2kk4vmwu" path="res://Assets/Prontos/button_esc_click.png" id="5_ikak6"]
+[ext_resource type="Texture2D" uid="uid://byt5heswbfftx" path="res://Assets/Prontos/button_esc_hoverpng.png" id="6_86q06"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kskkw"]
+font = ExtResource("2_4x424")
+font_size = 47
+font_color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="Pista_4" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4x424")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_right = -201.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_axvwv")
+region_rect = Rect2(19, 19, 308, 144)
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 587.0
+offset_right = 566.0
+offset_bottom = 684.0
+text = "Linha de montagem des 1943."
+label_settings = SubResource("LabelSettings_kskkw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 287.0
+offset_top = 11.0
+offset_right = 868.0
+offset_bottom = 595.0
+texture = ExtResource("3_8l1b1")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.556
+anchor_right = 0.569
+anchor_bottom = 0.025
+offset_left = 316.488
+offset_right = 317.512
+offset_bottom = -0.200001
+texture_normal = ExtResource("4_ytvnb")
+texture_pressed = ExtResource("5_ikak6")
+texture_hover = ExtResource("6_86q06")

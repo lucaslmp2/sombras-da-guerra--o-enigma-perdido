@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3x1yecite2nn"]
+
+[ext_resource type="Script" uid="uid://cpfgefv7ggkk3" path="res://scripts/pista_3.gd" id="1_o21ww"]
+[ext_resource type="Texture2D" uid="uid://bwjousjaebsmx" path="res://Assets/Prontos/identificação.png" id="1_ppbfc"]
+[ext_resource type="FontFile" uid="uid://dafqcswt4f46v" path="res://Assets/Fonts/Pixica Fonts/PixicaMono-Regular.ttf" id="2_cmahn"]
+[ext_resource type="Texture2D" uid="uid://dlu7ugvuwv54y" path="res://Assets/Prontos/tank_statico.png" id="3_ppbfc"]
+[ext_resource type="Texture2D" uid="uid://03iibmkm7c84" path="res://Assets/Prontos/button_esc_normal.png" id="5_bbb0o"]
+[ext_resource type="Texture2D" uid="uid://c7bmf2kk4vmwu" path="res://Assets/Prontos/button_esc_click.png" id="6_lw8sk"]
+[ext_resource type="Texture2D" uid="uid://byt5heswbfftx" path="res://Assets/Prontos/button_esc_hoverpng.png" id="7_bsdix"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5v0sl"]
+line_spacing = 0.1
+paragraph_spacing = 0.1
+font = ExtResource("2_cmahn")
+font_color = Color(0, 0, 0, 1)
+
+[node name="Pista_3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o21ww")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_right = -201.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ppbfc")
+region_rect = Rect2(19, 19, 308, 144)
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 346.0
+offset_right = 755.0
+offset_bottom = 630.0
+text = "O Panzerkampfwagen VI Ausf. E (Tiger I) 
+Blindagem: espessa e resistente, capaz de suportar impactos de canhões de alto calibre.
+
+Armamento: canhão principal de 88 mm (KwK 36 L/56), poderoso o suficiente para destruir qualquer tanque aliado.
+
+Capacidade Anfíbia Inicial: os primeiros 495 modelos podem atravessar rios com até 4 metros de profundidade; 
+essa característica foi removida posteriormente para acelerar a produção.
+
+Mobilidade: apresenta baixa velocidade de rotação transversal da torre e curto alcance operacional 
+(limitado por seu alto consumo de combustível).
+
+Chassi e Sistema de Rodagem: monte as rodas de apoio e o conjunto de suspensão intercalada.
+
+Casco Superior: posicione as placas de blindagem frontal e traseira, com destaque para a blindagem inclinada.
+
+Motor e Sistema de Exaustão: insira o motor na traseira, conectando-o ao sistema de ventilação e aos tubos de escape.
+
+Torre e Armamento: monte a torre com o canhão de 88 mm e adicione a metralhadora coaxial.
+
+Detalhes Finais: aplique acessórios externos, antenas e ferramentas de campo."
+label_settings = SubResource("LabelSettings_5v0sl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 201.0
+offset_top = 6.0
+offset_right = 940.0
+offset_bottom = 338.749
+texture = ExtResource("3_ppbfc")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.556
+anchor_right = 0.569
+anchor_bottom = 0.025
+offset_left = 316.488
+offset_right = 317.512
+offset_bottom = -0.200001
+texture_normal = ExtResource("5_bbb0o")
+texture_pressed = ExtResource("6_lw8sk")
+texture_hover = ExtResource("7_bsdix")

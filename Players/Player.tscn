@@ -1339,7 +1339,8 @@ physics_interpolation_mode = 1
 position = Vector2(250, 0)
 zoom = Vector2(2, 2)
 process_callback = 0
-limit_left = -1200
+limit_top = -325
+limit_bottom = 750
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -1351,6 +1352,7 @@ script = ExtResource("29_ihrsp")
 top_level = true
 position = Vector2(288, 35)
 script = ExtResource("30_fjbjo")
+priority = 1
 follow_mode = 2
 follow_target = NodePath("..")
 zoom = Vector2(2, 2)

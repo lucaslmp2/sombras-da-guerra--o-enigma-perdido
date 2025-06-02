@@ -1,5 +1,5 @@
 extends Area2D
-@export var item_scene: PackedScene = preload("res://Prefabs/pista_2.tscn") # Certifique-se de que esta cena é o seu NinePatchRect com Label
+@export var item_scene: PackedScene = preload("res://Prefabs/pista_4.tscn") # Certifique-se de que esta cena é o seu NinePatchRect com Label
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var chest_open: AudioStreamPlayer2D = $chest_open
 @onready var chest_close: AudioStreamPlayer2D = $chest_close
@@ -8,7 +8,7 @@ var hud: CanvasLayer = null
 var dialog_data2: Dictionary = {
 	0: {
 		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
-		"dialog": "Vamos lá!!!",
+		"dialog": "Elementar, meu caro, Bryan",
 		"title": "Elias"
 	},
 }

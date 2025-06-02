@@ -298,10 +298,11 @@ func _ready() -> void:
 	# Waits for the first process tick to finish before initializing any logic
 	# This should help with avoiding ocassional erratic camera movement upon running a scene
 	await get_tree().process_frame
-
+	
 	process_priority = 300
 	process_physics_priority = 300
-
+	
+	
 	# PCam Host Signals
 	if Engine.has_singleton(_constants.PCAM_MANAGER_NODE_NAME):
 		_phantom_camera_manager = Engine.get_singleton(_constants.PCAM_MANAGER_NODE_NAME)

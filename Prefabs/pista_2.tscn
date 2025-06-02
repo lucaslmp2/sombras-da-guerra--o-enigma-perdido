@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyf0ds4hn4u5d"]
+
+[ext_resource type="Texture2D" uid="uid://bwjousjaebsmx" path="res://Assets/Prontos/identificação.png" id="1_dqcfj"]
+[ext_resource type="Script" uid="uid://r8oox1ics0fn" path="res://scripts/pista_2.gd" id="1_pdwyh"]
+[ext_resource type="Texture2D" uid="uid://b13o6s16f67hm" path="res://Assets/Prontos/rotas de ataque dos aliados.png" id="1_qbpy7"]
+[ext_resource type="Texture2D" uid="uid://03iibmkm7c84" path="res://Assets/Prontos/button_esc_normal.png" id="2_kk8ht"]
+[ext_resource type="FontFile" uid="uid://bqtftqsbweqpw" path="res://Assets/Fonts/Pixica Fonts/PixicaMicro-Regular.ttf" id="2_pdwyh"]
+[ext_resource type="Texture2D" uid="uid://m1vjb6ywihku" path="res://Assets/Prontos/janela_nasista.png" id="3_4quh0"]
+[ext_resource type="Texture2D" uid="uid://c7bmf2kk4vmwu" path="res://Assets/Prontos/button_esc_click.png" id="3_g40m2"]
+[ext_resource type="Texture2D" uid="uid://byt5heswbfftx" path="res://Assets/Prontos/button_esc_hoverpng.png" id="4_dqcfj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3x5pt"]
+font = ExtResource("2_pdwyh")
+font_size = 47
+font_color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="pista_2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pdwyh")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_right = -201.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dqcfj")
+region_rect = Rect2(19, 19, 308, 144)
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 346.0
+offset_right = 755.0
+offset_bottom = 630.0
+text = "Caro Adolf Saudações Major Klaus
+Venho por meio desta trazer boas noticias a nossa 
+força encontra-se esperançosa neste momento os 
+novos equipamentos já estão prontos para serem
+utilizados nas frente de combate trago as rotas dos 
+nossos inimigos também para serem estudadas
+meus espiões garantem que estamos no percurso certo. "
+label_settings = SubResource("LabelSettings_3x5pt")
+
+[node name="JanelaNasista" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(634, 177)
+scale = Vector2(9.25, 6.8125)
+texture = ExtResource("3_4quh0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 13.0
+offset_right = 714.0
+offset_bottom = 344.406
+texture = ExtResource("1_qbpy7")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.556
+anchor_right = 0.569
+anchor_bottom = 0.025
+offset_left = 316.488
+offset_right = 317.512
+offset_bottom = -0.200001
+texture_normal = ExtResource("2_kk8ht")
+texture_pressed = ExtResource("3_g40m2")
+texture_hover = ExtResource("4_dqcfj")
