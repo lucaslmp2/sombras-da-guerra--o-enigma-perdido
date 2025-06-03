@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_detector: RayCast2D = $wall_detector
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
@@ -10,6 +11,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		audio_stream_player_2d.play()
 	
 	if wall_detector.is_colliding():
 		direction *= -1

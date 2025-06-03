@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_vwv73")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 648.0
 texture = ExtResource("2_vxjm6")
@@ -63,7 +64,7 @@ text = "Fase 3"
 
 [node name="Faze_4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Fase 3"
+text = "Fase 4"
 
 [node name="Voltar" type="Button" parent="VBoxContainer"]
 layout_mode = 2

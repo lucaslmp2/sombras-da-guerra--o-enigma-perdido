@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjea74380xpmf"]
+[gd_scene load_steps=26 format=3 uid="uid://bjea74380xpmf"]
 
 [ext_resource type="Script" uid="uid://bj26nb61f3h0u" path="res://scripts/area_de_corda.gd" id="1_wjbao"]
 [ext_resource type="Texture2D" uid="uid://6mphbfdssm1f" path="res://Assets/Prontos/cordas.png" id="2_sk61k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbgecoobuauen" path="res://Assets/Prontos/capa_de_engrenagem.png" id="5_bgi55"]
 [ext_resource type="Texture2D" uid="uid://c63ymkyftahjn" path="res://Assets/Prontos/correntes.png" id="6_4mdac"]
 [ext_resource type="Texture2D" uid="uid://nco8s8al6yg7" path="res://Assets/Prontos/polia_de_tirolesa.png" id="7_52trn"]
+[ext_resource type="AudioStream" uid="uid://bqxf4yqu7rurp" path="res://Assets/Prontos/zipline.mp3" id="8_kqelk"]
 
 [sub_resource type="Curve2D" id="Curve2D_wjbao"]
 _data = {
@@ -185,6 +186,13 @@ rotation = 0.000825787
 scale = Vector2(0.0731836, 0.0177437)
 skew = -0.000543237
 texture = ExtResource("7_52trn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PathFollow2D/Area2D"]
+position = Vector2(-0.95383, -6.13692)
+rotation = 0.000483096
+stream = ExtResource("8_kqelk")
+pitch_scale = 0.29
+parameters/looping = false
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_left = -9.56791

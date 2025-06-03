@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddmnxapiw3h5p"]
+
+[ext_resource type="Script" uid="uid://gf1oe6p3lxld" path="res://scripts/plataforma_movel_militar.gd" id="1_gg0u4"]
+[ext_resource type="Texture2D" uid="uid://cop4ekgtet86t" path="res://Assets/Prontos/plataforma_militar.png" id="2_gg0u4"]
+[ext_resource type="AudioStream" uid="uid://bbj4ydj5aqg8o" path="res://Assets/Prontos/plataforma_militar sound.mp3" id="3_qj07c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gg0u4"]
+size = Vector2(32, 16)
+
+[node name="Plataforma_movel_militar" type="Node2D"]
+script = ExtResource("1_gg0u4")
+
+[node name="Plataform" type="AnimatableBody2D" parent="."]
+collision_layer = 2
+
+[node name="texture" type="Sprite2D" parent="Plataform"]
+texture = ExtResource("2_gg0u4")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)
+
+[node name="collision" type="CollisionShape2D" parent="Plataform"]
+shape = SubResource("RectangleShape2D_gg0u4")
+one_way_collision = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Plataform"]
+stream = ExtResource("3_qj07c")
+max_distance = 919.0
+attenuation = 61.8201
+parameters/looping = true

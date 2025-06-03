@@ -11,16 +11,17 @@ class_name Level_2
 @onready var colisao_pc: CollisionShape2D = $computador/Computador_retro/CollisionShape2D
 @export var menu_scene: String = "res://Level/main_menu.tscn"# Define a cena do menu principal
 @onready var computador_retro: Area2D = $computador/Computador_retro
+@onready var animation_player: AnimationPlayer = $HUD/AnimationPlayer
 
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var dialog_data: Dictionary={
 	0:{
-		"faceset":"res://Assets/Prontos/face aset elias asustado.png",
-		"dialog":"O que eu vou fazer agora?",
+		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
+		"dialog":"Finalmente o predio de campanha do Major Klaus",
 		"title":"Elias"
 	},	
 	1:{
-		"faceset":"res://Assets/Prontos/face aset elias asustado.png",
+		"faceset":"res://Assets/Prontos/face asset elias serio realista.png",
 		"dialog":"Há muitos inimigos por aqui!",
 		"title":"Elias"
 	},
@@ -53,6 +54,7 @@ func _input(event: InputEvent) -> void:
 		get_tree().change_scene_to_file(menu_scene)  # Volta para o menu principal
 
 func _ready() -> void:
+	animation_player.play("fade_in")
 	Globals.bulets = 100
 	Globals.granada = 3
 	Globals.life = 3
@@ -72,7 +74,7 @@ func _ready() -> void:
 
 func reload_game():
 	Globals.life = 3 # **RESETA Globals.life AQUI**
-	await   get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	get_tree().reload_current_scene()
 
 func _on_computador_retro_desligar_canhao() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://cl48exalflkka"]
+[gd_scene load_steps=59 format=4 uid="uid://cl48exalflkka"]
 
 [ext_resource type="Texture2D" uid="uid://d12l1mu1bo5c7" path="res://Assets/Prontos/Textures-16.png" id="1_7ym7k"]
 [ext_resource type="Script" uid="uid://b1q4oj1h8fwtf" path="res://scripts/fase_4_0.gd" id="1_hkgpn"]
@@ -33,6 +33,10 @@
 [ext_resource type="PackedScene" uid="uid://ccta8cig4qgd8" path="res://Prefabs/falling_plataform.tscn" id="31_24dvi"]
 [ext_resource type="AudioStream" uid="uid://f31f345ywqg3" path="res://Assets/Prontos/ambiente_loop_fase_action.mp3" id="32_guyrc"]
 [ext_resource type="Script" uid="uid://7x3minx52bdc" path="res://scripts/porta_fase_4.gd" id="33_nvvo7"]
+[ext_resource type="PackedScene" uid="uid://dgiu1tjm7umvf" path="res://Prefabs/cartucheira_de_balas.tscn" id="34_axkkk"]
+[ext_resource type="PackedScene" uid="uid://bn53uyhi4ghve" path="res://Prefabs/hart.tscn" id="35_3viot"]
+[ext_resource type="PackedScene" uid="uid://brfyk6iufmosp" path="res://Prefabs/granada.tscn" id="36_0gkpk"]
+[ext_resource type="PackedScene" uid="uid://cnidnkigi8fn5" path="res://Players/raider_1.tscn" id="37_rol5b"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_hkgpn"]
 tile_data = PackedInt32Array(0, 262147, 3, 65536, 327683, 1, 131072, 327683, 1, 196608, 327683, 2, 262144, 327683, 1, 327680, 327683, 1, 393216, 327683, 2, 458752, 327683, 0, 524288, 327683, 1, 1, 327683, 0, 65537, 327683, 0, 131073, 327683, 0, 196609, 327683, 1, 262145, 262147, 3, 327681, 327683, 0, 393217, 327683, 2, 458753, 327683, 2, 524289, 262147, 3, 2, 327683, 0, 65538, 327683, 1, 131074, 327683, 0, 196610, 262147, 3, 262146, 327683, 0, 327682, 327683, 2, 393218, 262147, 3, 458754, 262147, 3, 524290, 262147, 3, 3, 327683, 2, 65539, 327683, 2, 131075, 262147, 3, 196611, 327683, 2, 262147, 327683, 2, 327683, 327683, 0, 393219, 262147, 3, 458755, 327683, 0, 524291, 327683, 2, 4, 327683, 0, 65540, 262147, 3, 131076, 262147, 3, 196612, 262147, 3, 262148, 327683, 1, 327684, 327683, 2, 393220, 327683, 2, 458756, 327683, 1, 524292, 327683, 2, 5, 327683, 1, 65541, 327683, 2, 131077, 327683, 1, 196613, 262147, 3, 262149, 327683, 0, 327685, 327683, 1, 393221, 327683, 0, 458757, 327683, 1, 524293, 262147, 3, 6, 327683, 2, 65542, 327683, 0, 131078, 327683, 1, 196614, 327683, 0, 262150, 327683, 2, 327686, 327683, 1, 393222, 327683, 0, 458758, 327683, 1, 524294, 327683, 2, 7, 327683, 0, 65543, 262147, 3, 131079, 262147, 3, 196615, 327683, 2, 262151, 262147, 3, 327687, 262147, 3, 393223, 327683, 0, 458759, 327683, 0, 524295, 262147, 3, 8, 327683, 1, 65544, 327683, 2, 131080, 327683, 1, 196616, 262147, 3, 262152, 327683, 1, 327688, 262147, 3, 393224, 327683, 2, 458760, 262147, 3, 524296, 262147, 3, 9, 327683, 0, 65545, 262147, 3, 131081, 327683, 2, 196617, 327683, 1, 262153, 327683, 1, 327689, 262147, 3, 393225, 327683, 2, 458761, 327683, 2, 524297, 262147, 3, 10, 327683, 1, 65546, 327683, 2, 131082, 327683, 1, 196618, 327683, 1, 262154, 327683, 0, 327690, 262147, 3, 393226, 262147, 3, 458762, 327683, 2, 524298, 327683, 0, 11, 327683, 1, 65547, 327683, 1, 131083, 327683, 2, 196619, 327683, 0, 262155, 262147, 3, 327691, 262147, 3, 393227, 262147, 3, 458763, 327683, 2, 524299, 327683, 1, 12, 327683, 1, 65548, 327683, 1, 131084, 327683, 2, 196620, 327683, 0, 262156, 327683, 0, 327692, 262147, 3, 393228, 262147, 3, 458764, 327683, 1, 524300, 327683, 2, 13, 327683, 0, 65549, 327683, 1, 131085, 262147, 3, 196621, 327683, 1, 262157, 262147, 3, 327693, 327683, 1, 393229, 327683, 0, 458765, 327683, 1, 524301, 262147, 3, 14, 327683, 1, 65550, 327683, 1, 131086, 262147, 3, 196622, 262147, 3, 262158, 327683, 1, 327694, 262147, 3, 393230, 327683, 0, 458766, 262147, 3, 524302, 327683, 1, 15, 327683, 1, 65551, 327683, 0, 131087, 327683, 0, 196623, 327683, 2, 262159, 262147, 3, 327695, 327683, 2, 393231, 327683, 1, 458767, 327683, 2, 524303, 327683, 1, 16, 327683, 1, 65552, 327683, 2, 131088, 327683, 1, 196624, 327683, 1, 262160, 327683, 1, 327696, 327683, 1, 393232, 327683, 0, 458768, 327683, 1, 524304, 327683, 2, 17, 327683, 0, 65553, 327683, 2, 131089, 327683, 0, 196625, 327683, 2, 262161, 327683, 1, 327697, 327683, 1, 393233, 327683, 2, 458769, 262147, 3, 524305, 327683, 2, 18, 327683, 2, 65554, 327683, 1, 131090, 327683, 1, 196626, 327683, 0, 262162, 262147, 3, 327698, 327683, 1, 393234, 327683, 1, 458770, 262147, 3, 524306, 262147, 3, 19, 262147, 3, 65555, 327683, 1, 131091, 327683, 0, 196627, 262147, 3, 262163, 327683, 1, 327699, 327683, 0, 393235, 327683, 2, 458771, 262147, 3, 524307, 327683, 1, 20, 327683, 1, 65556, 262147, 3, 131092, 327683, 1, 196628, 327683, 2, 262164, 327683, 1, 327700, 327683, 0, 393236, 262147, 3, 458772, 262147, 3, 524308, 327683, 0, 21, 327683, 2, 65557, 327683, 1, 131093, 327683, 0, 196629, 327683, 1, 262165, 327683, 2, 327701, 327683, 0, 393237, 327683, 1, 458773, 327683, 0, 524309, 327683, 2, 22, 327683, 2, 65558, 262147, 3, 131094, 327683, 1, 196630, 327683, 2, 262166, 327683, 2, 327702, 327683, 1, 393238, 327683, 2, 458774, 262147, 3, 524310, 327683, 1, 23, 327683, 2, 65559, 327683, 0, 131095, 327683, 2, 196631, 327683, 1, 262167, 327683, 2, 327703, 327683, 0, 393239, 327683, 1, 458775, 327683, 0, 524311, 327683, 0, 24, 327683, 1, 65560, 327683, 2, 131096, 327683, 1, 196632, 262147, 3, 262168, 262147, 3, 327704, 327683, 1, 393240, 327683, 1, 458776, 327683, 0, 524312, 327683, 0, 25, 327683, 0, 65561, 327683, 1, 131097, 327683, 2, 196633, 327683, 1, 262169, 327683, 0, 327705, 262147, 3, 393241, 327683, 0, 458777, 262147, 3, 524313, 327683, 1, 26, 327683, 0, 65562, 327683, 2, 131098, 327683, 0, 196634, 262147, 3, 262170, 327683, 1, 327706, 262147, 3, 393242, 327683, 2, 458778, 262147, 3, 524314, 327683, 0, 27, 262147, 3, 65563, 327683, 0, 131099, 262147, 3, 196635, 327683, 2, 262171, 327683, 1, 327707, 327683, 2, 393243, 262147, 3, 458779, 327683, 2, 524315, 327683, 1, 28, 327683, 1, 65564, 262147, 3, 131100, 327683, 2, 196636, 327683, 0, 262172, 327683, 0, 327708, 262147, 3, 393244, 327683, 2, 458780, 327683, 1, 524316, 327683, 2)
@@ -1026,13 +1030,12 @@ position = Vector2(-736, 582)
 [node name="Bryan_fase_4_2" parent="character" instance=ExtResource("11_3dabo")]
 position = Vector2(8158, 514)
 
-[node name="PhantomCamera2D2" type="Node2D" parent="character" node_paths=PackedStringArray("follow_target", "follow_targets")]
+[node name="PhantomCamera2D2" type="Node2D" parent="character" node_paths=PackedStringArray("follow_targets")]
 top_level = true
 position = Vector2(-736, 582)
 script = ExtResource("7_wmeul")
 priority = 2
 follow_mode = 3
-follow_target = NodePath("../Player")
 follow_targets = [NodePath("../Player")]
 zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_hkgpn")
@@ -1260,3 +1263,69 @@ next_level = "res://Level/fase_2.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="porta"]
 position = Vector2(10455.5, 567.5)
 shape = SubResource("RectangleShape2D_fppyj")
+
+[node name="bulets" type="Node2D" parent="."]
+
+[node name="cartucheira_de_balas" parent="bulets" instance=ExtResource("34_axkkk")]
+position = Vector2(187, 410)
+
+[node name="cartucheira_de_balas2" parent="bulets" instance=ExtResource("34_axkkk")]
+position = Vector2(1577, 480)
+
+[node name="cartucheira_de_balas3" parent="bulets" instance=ExtResource("34_axkkk")]
+position = Vector2(3156, -190)
+
+[node name="cartucheira_de_balas4" parent="bulets" instance=ExtResource("34_axkkk")]
+position = Vector2(3932, 171)
+
+[node name="cartucheira_de_balas5" parent="bulets" instance=ExtResource("34_axkkk")]
+position = Vector2(5657, -169)
+
+[node name="cartucheira_de_balas6" parent="bulets" instance=ExtResource("34_axkkk")]
+position = Vector2(7192, 586)
+
+[node name="lifes" type="Node2D" parent="."]
+
+[node name="hart" parent="lifes" instance=ExtResource("35_3viot")]
+position = Vector2(451, 687)
+
+[node name="hart3" parent="lifes" instance=ExtResource("35_3viot")]
+position = Vector2(3650, -167)
+
+[node name="hart2" parent="lifes" instance=ExtResource("35_3viot")]
+position = Vector2(2056, 579)
+
+[node name="hart4" parent="lifes" instance=ExtResource("35_3viot")]
+position = Vector2(5042, 576)
+
+[node name="hart5" parent="lifes" instance=ExtResource("35_3viot")]
+position = Vector2(6695, 580)
+
+[node name="hart6" parent="lifes" instance=ExtResource("35_3viot")]
+position = Vector2(7693, -9)
+
+[node name="granadas" type="Node2D" parent="."]
+
+[node name="granada" parent="granadas" instance=ExtResource("36_0gkpk")]
+position = Vector2(2039, 403)
+
+[node name="granada2" parent="granadas" instance=ExtResource("36_0gkpk")]
+position = Vector2(4408, 571)
+
+[node name="granada3" parent="granadas" instance=ExtResource("36_0gkpk")]
+position = Vector2(6537, 186)
+
+[node name="granada4" parent="granadas" instance=ExtResource("36_0gkpk")]
+position = Vector2(7898, 425)
+
+[node name="raider_1" parent="." instance=ExtResource("37_rol5b")]
+position = Vector2(9507, 542)
+
+[node name="raider_2" parent="." instance=ExtResource("37_rol5b")]
+position = Vector2(9784, 46)
+
+[node name="raider_3" parent="." instance=ExtResource("37_rol5b")]
+position = Vector2(9728, 302)
+
+[node name="raider_4" parent="." instance=ExtResource("37_rol5b")]
+position = Vector2(10113, 542)

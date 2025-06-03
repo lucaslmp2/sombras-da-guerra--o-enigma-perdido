@@ -319,7 +319,7 @@ position = Vector2(0, 10)
 position = Vector2(2, 0)
 scale = Vector2(0.835938, 0.875)
 sprite_frames = SubResource("SpriteFrames_yjiny")
-animation = &"walk"
+animation = &"shot"
 autoplay = "walk"
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]

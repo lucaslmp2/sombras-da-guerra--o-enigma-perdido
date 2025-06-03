@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://c1eabs8b40fgq"]
+[gd_scene load_steps=80 format=3 uid="uid://c1eabs8b40fgq"]
 
 [ext_resource type="Script" uid="uid://oi8uys2jth6b" path="res://teste/raider_2.gd" id="1_wdt4v"]
 [ext_resource type="Texture2D" uid="uid://ppmnqi7jqlvr" path="res://Assets/Prontos/Raider_2/Attack.png" id="2_4pewn"]
@@ -11,9 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://cbtwmsbn4qwmy" path="res://Assets/Prontos/Raider_2/Shot_1.png" id="9_y5ehu"]
 [ext_resource type="Texture2D" uid="uid://ci7kddq7s88xc" path="res://Assets/Prontos/Raider_2/Shot_2.png" id="10_jluvj"]
 [ext_resource type="Texture2D" uid="uid://8yw3c1jsedu4" path="res://Assets/Prontos/Raider_2/Walk.png" id="11_081pm"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5nmjt"]
-height = 62.0
+[ext_resource type="AudioStream" uid="uid://c3e0t0xltbry1" path="res://Assets/Prontos/hurt_player.mp3" id="12_24iyj"]
+[ext_resource type="AudioStream" uid="uid://b8o23lvtqemdm" path="res://Assets/Prontos/dead_player.mp3" id="13_dfaow"]
+[ext_resource type="AudioStream" uid="uid://cs1jfelobj7oc" path="res://Assets/Prontos/passos-2.mp3" id="14_grn3m"]
+[ext_resource type="AudioStream" uid="uid://be8un3gtm888f" path="res://Assets/JDSherbert - FirearmFX - Walther P38 SFX Pack (FREE)/Free/Stereo/wav (SD)/JDSherbert - Firearm FX - Weapon SFX Pack - Walther P38 - Fire - 1.wav" id="15_ke57x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqh2d"]
 atlas = ExtResource("2_4pewn")
@@ -298,7 +299,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hvun1")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 5.0
 }, {
@@ -312,7 +313,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nr3er")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -341,7 +342,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yl14s")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -367,7 +368,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k8fq3")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 9.0
 }, {
@@ -408,7 +409,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kxtnb")
 }],
-"loop": true,
+"loop": false,
 "name": &"recharge",
 "speed": 9.0
 }, {
@@ -439,7 +440,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -499,24 +500,62 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 7.0
+"speed": 10.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nb5ms"]
+height = 54.0
 
 [node name="raider_2" type="CharacterBody2D"]
 position = Vector2(345, 304)
-collision_mask = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_wdt4v")
 
-[node name="camera" type="Camera2D" parent="."]
-position = Vector2(-1, -24)
-
-[node name="colision" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 34)
-shape = SubResource("CapsuleShape2D_5nmjt")
-
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(1, 10)
+scale = Vector2(0.851563, 0.835938)
 sprite_frames = SubResource("SpriteFrames_at2ij")
-animation = &"dead"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.886261
+
+[node name="Shot_marker" type="Marker2D" parent="."]
+position = Vector2(0, 23)
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_24iyj")
+
+[node name="dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_dfaow")
+pitch_scale = 1.32
+
+[node name="walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_grn3m")
+autoplay = true
+max_distance = 360.0
+parameters/looping = true
+
+[node name="run" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_grn3m")
+pitch_scale = 1.7
+
+[node name="shot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_ke57x")
+pitch_scale = 1.5
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+position = Vector2(-1, 59)
+target_position = Vector2(0, 13)
+collision_mask = 2
+
+[node name="player_detector" type="RayCast2D" parent="."]
+position = Vector2(0, 38)
+target_position = Vector2(208, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 37)
+shape = SubResource("CapsuleShape2D_nb5ms")
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="ShotAnimationTimer" type="Timer" parent="."]

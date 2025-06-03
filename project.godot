@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/net.yarvis.pixel_pen/plugin.cfg", "res:/
 [global_group]
 
 pendrives=""
+enemies=""
 
 [input]
 
