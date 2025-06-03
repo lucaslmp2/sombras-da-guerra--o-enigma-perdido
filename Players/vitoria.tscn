@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://fm0dmwrdjbcl"]
+[gd_scene load_steps=9 format=3 uid="uid://fm0dmwrdjbcl"]
 
 [ext_resource type="VideoStream" uid="uid://bfqwoo5safopl" path="res://Assets/Prontos/victory.ogv" id="1_jmfos"]
 [ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="2_g00lw"]
 [ext_resource type="Script" uid="uid://bouyxtqadsars" path="res://scripts/vitoria.gd" id="2_qal2w"]
 [ext_resource type="AudioStream" uid="uid://yrcl5qrjpdlg" path="res://Assets/Prontos/intro_menu.mp3" id="3_vhw2c"]
+[ext_resource type="Theme" uid="uid://dmwdvp6w7vvpf" path="res://tres_font/vitoria.tres" id="4_vhw2c"]
+[ext_resource type="Script" uid="uid://cytg24ol1j88" path="res://scripts/score_final.gd" id="7_2cf7w"]
+[ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="7_wleam"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2cf7w"]
+font = ExtResource("7_wleam")
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
 
 [node name="Vitoria" type="Control"]
 layout_mode = 3
@@ -55,6 +66,51 @@ offset_right = 469.0
 offset_bottom = 338.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_g00lw")
+theme = ExtResource("4_vhw2c")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.706175, 0.446668, 0.0703939, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = -5
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 11
 text = "VITÓRIA"
 horizontal_alignment = 1
+
+[node name="score_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 897.0
+offset_top = 379.0
+offset_right = 991.0
+offset_bottom = 405.0
+grow_vertical = 2
+theme = ExtResource("2_g00lw")
+text = "Pontos:"
+label_settings = SubResource("LabelSettings_2cf7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -919.0
+offset_top = 379.0
+offset_right = -824.0
+offset_bottom = 405.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_g00lw")
+text = "100000"
+label_settings = SubResource("LabelSettings_2cf7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_2cf7w")

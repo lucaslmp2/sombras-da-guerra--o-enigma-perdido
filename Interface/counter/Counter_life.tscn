@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://pea2ltdddcbv"]
+[gd_scene load_steps=6 format=3 uid="uid://pea2ltdddcbv"]
 
-[ext_resource type="Texture2D" uid="uid://dfpqtelbpli1x" path="res://Assets/Prontos/alena-fedorova-lunaris-ui.jpg" id="1_717l5"]
 [ext_resource type="Texture2D" uid="uid://bbpglw8o5xn38" path="res://Assets/5 - Misc. universal tiles/hart.png" id="2_4un1l"]
 [ext_resource type="Script" uid="uid://cw4vp2ag2s18k" path="res://scripts/counter_life.gd" id="2_p8qjq"]
 [ext_resource type="Theme" uid="uid://bgr6oco88pmgc" path="res://Interface/theme/default_theme.tres" id="3_p8qjq"]
@@ -18,7 +17,6 @@ shadow_color = Color(0.607579, 0.383009, 0.274327, 1)
 offset_right = 120.0
 offset_bottom = 26.0
 size_flags_vertical = 3
-texture = ExtResource("1_717l5")
 region_rect = Rect2(855, 2112, 120, 53)
 patch_margin_left = 8
 patch_margin_top = 9

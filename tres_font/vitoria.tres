@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dmwdvp6w7vvpf"]
+
+[ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="1_j753c"]
+
+[resource]
+default_font = ExtResource("1_j753c")
+default_font_size = 300

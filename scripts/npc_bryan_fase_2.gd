@@ -64,6 +64,11 @@ var dialog_data_inicial: Dictionary = {
 		"faceset": "res://Assets/Prontos/bryan_npc.png",
 		"dialog": "São tempos sombrios meu amigo.",
 		"title": "Bryan"
+	},
+	11:{
+		"faceset": "res://Assets/Prontos/bryan_npc.png",
+		"dialog": "Por Acaso aperte a tecla '5' para lançar eventuais granadas.",
+		"title": "Bryan"
 	}
 }
 var dialogo_saudacao: Dictionary = { # Dados do diálogo de saudação

@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfpqtelbpli1x"
-valid=false
+uid="uid://dk5fxn6opouu8"
+path="res://.godot/imported/wmremove-transformed - Copia.png-b70c5b40a6d855f94a77f3f3c093552c.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Assets/Prontos/alena-fedorova-lunaris-ui.jpg"
+source_file="res://Assets/Prontos/wmremove-transformed - Copia.png"
+dest_files=["res://.godot/imported/wmremove-transformed - Copia.png-b70c5b40a6d855f94a77f3f3c093552c.ctex"]
 
 [params]
 
