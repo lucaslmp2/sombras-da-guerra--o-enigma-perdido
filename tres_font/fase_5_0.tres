@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://pke02sctuk6k"]
+
+[ext_resource type="FontFile" uid="uid://qjegyq6fpmou" path="res://Assets/Fonts/Pixica Fonts/Pixica-Bold.ttf" id="1_ot0xm"]
+
+[resource]
+default_font = ExtResource("1_ot0xm")
+default_font_size = 32
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0.333333, 0.211765, 0.152941, 1)

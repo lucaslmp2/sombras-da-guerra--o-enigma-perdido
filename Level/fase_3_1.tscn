@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://dh5nkeublvijr"]
+[gd_scene load_steps=41 format=4 uid="uid://dh5nkeublvijr"]
 
 [ext_resource type="Script" uid="uid://bexmyiprb6wo6" path="res://scripts/fase_3_1.gd" id="1_5gg10"]
 [ext_resource type="Texture2D" uid="uid://bxq6b27jc8a2p" path="res://Assets/5 - Misc. universal tiles/warTileset_16x16.png" id="1_g82hc"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://ccta8cig4qgd8" path="res://Prefabs/falling_plataform.tscn" id="15_qg70f"]
 [ext_resource type="PackedScene" uid="uid://ck4wt627psmtg" path="res://Prefabs/celas.tscn" id="17_tmaoa"]
 [ext_resource type="Script" uid="uid://bnckd68nmockh" path="res://scripts/porta_3.1.gd" id="19_u14ay"]
+[ext_resource type="PackedScene" uid="uid://bn53uyhi4ghve" path="res://Prefabs/hart.tscn" id="20_8hyyu"]
+[ext_resource type="AudioStream" uid="uid://bvbh84u8am4sc" path="res://Assets/Prontos/Fase_2_sound_ambiente.mp3" id="21_ot5go"]
 [ext_resource type="PackedScene" uid="uid://dgiu1tjm7umvf" path="res://Prefabs/cartucheira_de_balas.tscn" id="24_lvkp7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_5gg10"]
@@ -747,7 +749,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_k6t5d"]
@@ -830,7 +832,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="characters" type="Node2D" parent="."]
 
@@ -1166,6 +1168,9 @@ position = Vector2(206, 2815)
 [node name="cartucheira_de_balas" parent="balas" instance=ExtResource("24_lvkp7")]
 position = Vector2(249, 496)
 
+[node name="cartucheira_de_balas5" parent="balas" instance=ExtResource("24_lvkp7")]
+position = Vector2(176, 232)
+
 [node name="cartucheira_de_balas2" parent="balas" instance=ExtResource("24_lvkp7")]
 position = Vector2(214, 1014)
 
@@ -1182,3 +1187,31 @@ next_level = "res://Level/fase_3_2.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="porta"]
 position = Vector2(1368, 3768)
 shape = SubResource("RectangleShape2D_8hyyu")
+
+[node name="lifes" type="Node2D" parent="."]
+
+[node name="hart" parent="lifes" instance=ExtResource("20_8hyyu")]
+position = Vector2(1039, 226)
+
+[node name="hart2" parent="lifes" instance=ExtResource("20_8hyyu")]
+position = Vector2(846, 756)
+
+[node name="hart3" parent="lifes" instance=ExtResource("20_8hyyu")]
+position = Vector2(224, 1277)
+
+[node name="hart4" parent="lifes" instance=ExtResource("20_8hyyu")]
+position = Vector2(124, 3759)
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(649, 1107)
+stream = ExtResource("21_ot5go")
+autoplay = true
+max_distance = 4096.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(641, 2507)
+stream = ExtResource("21_ot5go")
+autoplay = true
+max_distance = 4096.0
+parameters/looping = true

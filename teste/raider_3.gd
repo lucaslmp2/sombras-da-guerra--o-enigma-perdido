@@ -9,14 +9,15 @@ extends CharacterBody2D
 @onready var anim: AnimatedSprite2D = $anim
 @onready var porrada: AudioStreamPlayer2D = $porrada
 @onready var wall_ray = $WallRay
+@onready var ground_detector: RayCast2D = $floor_detector # Adicionado para detectar o fim do chão
 
 # Parâmetros do Inimigo (ajuste conforme necessário)
-const DETECTION_RANGE_X = 500     # Distância máxima para detectar o player no eixo X
-const SAFE_DISTANCE_X = 50     # Distância mínima para parar de avançar
-const HEIGHT_TOLERANCE = 10     # Margem de tolerância no eixo Y para considerar que estão na mesma altura
+const DETECTION_RANGE_X = 500       # Distância máxima para detectar o player no eixo X
+const SAFE_DISTANCE_X = 50          # Distância mínima para parar de avançar
+const HEIGHT_TOLERANCE = 10         # Margem de tolerância no eixo Y para considerar que estão na mesma altura
 const ATTACK_RANGE_X = 20
 @export var speed: float = 100
-@export var direction: int = 1     # 1 para direita, -1 para esquerda
+@export var direction: int = 1      # 1 para direita, -1 para esquerda
 @onready var patrulhando: AudioStreamPlayer2D = $patrulhando
 @export var health: int = 3 # Vida do inimigo
 
@@ -31,7 +32,7 @@ var attack_animations = ["atack_1", "atack_2", "atack_3"]
 
 
 func _ready():
-	# Busca o player na árvore de nós.  Isso é mais robusto.
+	# Busca o player na árvore de nós. Isso é mais robusto.
 	player = get_parent().get_node_or_null("Player")
 	if is_instance_valid(patrulhando):
 		patrulhando.play()
@@ -77,24 +78,28 @@ func patrol():
 	if wall_ray.is_colliding():
 		direction *= -1
 		update_direction()
-	elif is_on_wall(): # Detecta colisão com paredes
+	# Inverter direção se não detectar chão à frente (borda da plataforma)
+	elif not ground_detector.is_colliding():
+		direction *= -1
+		update_direction()
+	elif is_on_wall(): # Detecta colisão com paredes (redundante com wall_ray mas pode ser útil)
 		direction *= -1
 		update_direction()
 
 
 func attack():
 	if abs(player.global_position.y - global_position.y) > HEIGHT_TOLERANCE:
-		return     # Se o player estiver em outra altura, não atira
+		return      # Se o player estiver em outra altura, não atira
 
 	velocity.x = 0
-	is_atacking = true    # Evita múltiplos tiros ao mesmo tempo
+	is_atacking = true      # Evita múltiplos tiros ao mesmo tempo
 	var attack_animation = attack_animations[current_attack_animation]
 	anim.play(attack_animation)
 	if is_instance_valid(porrada):
 		porrada.play()
 	await anim.animation_finished
 	deal_damage() # Chama a função para causar dano
-	is_atacking = false    # Libera para próximas ações
+	is_atacking = false      # Libera para próximas ações
 	anim.play("idle")
 	current_attack_animation = (current_attack_animation + 1) % attack_animations.size()
 
@@ -102,7 +107,7 @@ func attack():
 
 func run_towards_player():
 	direction = 1 if player.global_position.x > global_position.x else -1
-	velocity.x = speed * direction * 1.5     # Corre mais rápido quando detecta o jogador
+	velocity.x = speed * direction * 1.5      # Corre mais rápido quando detecta o jogador
 	update_direction() # Garante que a direção/flip esteja correta.
 	anim.play("run")
 	if is_instance_valid(correndo) and !correndo.playing:
@@ -112,11 +117,17 @@ func run_towards_player():
 			
 func update_direction():
 	anim.flip_h = direction < 0
-	wall_ray.target_position.x = 16 * direction
+	# Ajusta a posição do wall_ray e ground_detector para a nova direção
+	wall_ray.target_position.x = abs(wall_ray.target_position.x) * direction
+	ground_detector.target_position.x = abs(ground_detector.target_position.x) * direction
+	# Certifique-se de que o ground_detector está apontando para baixo
+	# A posição Y deve ser um valor positivo para apontar para baixo
+	ground_detector.target_position.y = abs(ground_detector.target_position.y) # Garante que é positivo
+
 
 func take_damage(amount: int):
 	if is_dead:
-		return     # Não processa dano se já estiver morto
+		return      # Não processa dano se já estiver morto
 
 	health -= amount
 	if health <= 0:
@@ -151,5 +162,5 @@ func desativar_collision_shape():
 func deal_damage():
 	# Implemente a lógica para causar dano ao jogador aqui
 	if is_instance_valid(player) and player.has_method("take_damage"):
-		player.take_damage(1)   
+		player.take_damage(1)    
 	pass

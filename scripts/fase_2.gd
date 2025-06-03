@@ -55,10 +55,6 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	animation_player.play("fade_in")
-	Globals.bulets = 100
-	Globals.granada = 3
-	Globals.life = 3
-	Globals.score = 0
 	player.player_died.connect(reload_game)
 	agua.player_died.connect(reload_game)
 	queda.player_died.connect(reload_game)
@@ -73,9 +69,11 @@ func _ready() -> void:
 	# Conecta o sinal do item à função da fase
 
 func reload_game():
-	Globals.life = 3 # **RESETA Globals.life AQUI**
+	Globals.life = 3 # Reseta a vida
+	Globals.bulets = 10
+	Globals.score = 0
 	await get_tree().create_timer(1.0).timeout
 	get_tree().reload_current_scene()
 
 func _on_computador_retro_desligar_canhao() -> void:
-	computador_retro.desligar_canhao.connect("_on_Canhao_desligar_canhao")		
+	computador_retro.desligar_canhao.connect("_on_Canhao_desligar_canhao")

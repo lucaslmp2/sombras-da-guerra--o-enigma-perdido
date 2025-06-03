@@ -10,8 +10,9 @@ func _ready() -> void:
 	animation_player.play("fade_in")
 
 func reload_game():
-	Globals.life = 3 # **RESETA Globals.life AQUI**
+	Globals.life = 3 # Reseta a vida
 	Globals.bulets = 10
+	Globals.score = 0
 	await get_tree().create_timer(1.0).timeout
 	get_tree().reload_current_scene()
 # Called every frame. 'delta' is the elapsed time since the previous frame.

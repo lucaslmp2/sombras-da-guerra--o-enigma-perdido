@@ -7,12 +7,12 @@ var hud: CanvasLayer = null
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var dialog_data: Dictionary = {
 	0: {
-		"faceset": "res://Assets/Prontos/face_aset_elias_sorrindo1.png",
+		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
 		"dialog": "Nossa a Chave.",
 		"title": "Elias"
 	},
 	1:{
-		"faceset": "res://Assets/Prontos/face_aset_elias_sorrindo1.png",
+		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
 		"dialog": "Foi mais facíl do que imaginei.",
 		"title": "Elias"
 	},

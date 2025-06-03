@@ -997,7 +997,7 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.933333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -1183,6 +1183,18 @@ movie_speed = 25.0
 distance = 548
 movie_horizontal = false
 
+[node name="plataform_movel10" parent="plataformas_moveis" instance=ExtResource("22_tl1sa")]
+position = Vector2(7944, 438)
+movie_speed = 25.0
+distance = 391
+movie_horizontal = false
+
+[node name="plataform_movel11" parent="plataformas_moveis" instance=ExtResource("22_tl1sa")]
+position = Vector2(8144, 587)
+movie_speed = 25.0
+distance = 116
+movie_horizontal = false
+
 [node name="plataform_movel7" parent="plataformas_moveis" instance=ExtResource("22_tl1sa")]
 position = Vector2(9112, 584)
 movie_speed = 25.0
@@ -1256,6 +1268,20 @@ volume_db = -12.391
 max_distance = 7700.0
 parameters/looping = true
 
+[node name="ambiente_açao2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-609, 150)
+stream = ExtResource("32_guyrc")
+volume_db = -12.391
+max_distance = 7700.0
+parameters/looping = true
+
+[node name="ambiente_açao3" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(8825, -29)
+stream = ExtResource("32_guyrc")
+volume_db = -12.391
+max_distance = 7700.0
+parameters/looping = true
+
 [node name="porta" type="Area2D" parent="."]
 script = ExtResource("33_nvvo7")
 next_level = "res://Level/fase_2.tscn"
@@ -1284,6 +1310,12 @@ position = Vector2(5657, -169)
 [node name="cartucheira_de_balas6" parent="bulets" instance=ExtResource("34_axkkk")]
 position = Vector2(7192, 586)
 
+[node name="cartucheira_de_balas7" parent="bulets" instance=ExtResource("34_axkkk")]
+position = Vector2(9235, 333)
+
+[node name="cartucheira_de_balas8" parent="bulets" instance=ExtResource("34_axkkk")]
+position = Vector2(9852, 576)
+
 [node name="lifes" type="Node2D" parent="."]
 
 [node name="hart" parent="lifes" instance=ExtResource("35_3viot")]
@@ -1304,6 +1336,12 @@ position = Vector2(6695, 580)
 [node name="hart6" parent="lifes" instance=ExtResource("35_3viot")]
 position = Vector2(7693, -9)
 
+[node name="hart7" parent="lifes" instance=ExtResource("35_3viot")]
+position = Vector2(9236, 72)
+
+[node name="hart8" parent="lifes" instance=ExtResource("35_3viot")]
+position = Vector2(10014, 325)
+
 [node name="granadas" type="Node2D" parent="."]
 
 [node name="granada" parent="granadas" instance=ExtResource("36_0gkpk")]
@@ -1318,6 +1356,12 @@ position = Vector2(6537, 186)
 [node name="granada4" parent="granadas" instance=ExtResource("36_0gkpk")]
 position = Vector2(7898, 425)
 
+[node name="granada5" parent="granadas" instance=ExtResource("36_0gkpk")]
+position = Vector2(9866, 327)
+
+[node name="granada6" parent="granadas" instance=ExtResource("36_0gkpk")]
+position = Vector2(9866, 72)
+
 [node name="raider_1" parent="." instance=ExtResource("37_rol5b")]
 position = Vector2(9507, 542)
 
@@ -1329,3 +1373,9 @@ position = Vector2(9728, 302)
 
 [node name="raider_4" parent="." instance=ExtResource("37_rol5b")]
 position = Vector2(10113, 542)
+
+[connection signal="pista_1" from="Baus_pistas/Bau_pista_1" to="porta" method="_on_pista_lida"]
+[connection signal="pista_2" from="Baus_pistas/bau_pista_2" to="porta" method="_on_pista_lida"]
+[connection signal="pista_3" from="Baus_pistas/bau_pista_3" to="porta" method="_on_pista_lida"]
+[connection signal="pista_4" from="Baus_pistas/bau_pista_4" to="porta" method="_on_pista_lida"]
+[connection signal="body_entered" from="porta" to="porta" method="_on_body_entered"]

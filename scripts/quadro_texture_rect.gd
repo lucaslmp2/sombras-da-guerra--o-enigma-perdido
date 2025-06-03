@@ -1,7 +1,7 @@
 extends Control
 
 @onready var hud: CanvasLayer = $"../../../../.."
-
+signal dialogo_enigma_finalizado
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var dialog_data: Dictionary = {
 	0: {
@@ -70,3 +70,4 @@ func _on_mouse_entered() -> void:
 			hud.add_child(_dialog_instance)
 			_dialog_instance.connect("tree_exited", Callable(self, "_on_dialog_exited"))
 			_dialog_exibido = true
+			emit_signal("dialogo_enigma_finalizado")

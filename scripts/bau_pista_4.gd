@@ -5,6 +5,7 @@ extends Area2D
 @onready var chest_close: AudioStreamPlayer2D = $chest_close
 const DialogScreen: PackedScene = preload("res://Prefabs/dialog_screen.tscn")
 var hud: CanvasLayer = null
+signal pista_4
 var dialog_data2: Dictionary = {
 	0: {
 		"faceset": "res://Assets/Prontos/face asset elias serio realista.png",
@@ -59,6 +60,7 @@ func spawn_card():
 			
 			# Após o sinal ser emitido (e a carta já ter sido liberada por si mesma)
 			_card_instance = null # Limpa a referência
+			emit_signal("pista_4")
 
 		else:
 			print("Erro: item_scene não é um Control (NinePatchRect/Label)! Verifique a cena 'carta.tscn'.")

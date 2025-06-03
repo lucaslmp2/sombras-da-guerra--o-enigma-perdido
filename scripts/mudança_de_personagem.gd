@@ -6,8 +6,7 @@ extends Area2D
 @onready var animation_player: AnimationPlayer = $"../../HUD/AnimationPlayer"
 
 func _ready() -> void:
-	Globals.bulets = 10
-	Globals.granada = 3
+	pass
 
 func apagar_camera_do_player():
 	var player_node = get_node_or_null("../../characters/Player") # Caminho ajustado

@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @onready var player: CharacterBody2D = $character/Player
 @export var menu_scene: String = "res://Level/main_menu.tscn"# Define a cena do menu principal
 @onready var animation_player: AnimationPlayer = $HUD/AnimationPlayer
@@ -17,8 +18,9 @@ func _ready() -> void:
 
 
 func reload_game():
-	Globals.life = 3 # **RESETA Globals.life AQUI**
+	Globals.life = 3 # Reseta a vida
 	Globals.bulets = 10
+	Globals.score = 0
 	await get_tree().create_timer(1.0).timeout
 	get_tree().reload_current_scene()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
