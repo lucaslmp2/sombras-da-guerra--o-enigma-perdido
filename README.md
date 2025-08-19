@@ -98,6 +98,6 @@ Contribuições são o que tornam a comunidade de código aberto um lugar incrí
 
 ## 📄 Licença
 
-Distribuído sob a Licença MIT. Veja `LICENSE.txt` para mais informações.
+Distribuído sob a Licença MIT. Veja para mais informações.
 
-*(Nota: Adicione um arquivo LICENSE.txt ao seu projeto se ainda não tiver um.)*
+
